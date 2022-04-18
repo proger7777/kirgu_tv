@@ -14,7 +14,6 @@ import Catalog from "./pages/Catalog";
 import { CatContext } from "./context";
 import Categories from "./pages/Categories";
 import Product from "./pages/Product";
-import { createStore } from "redux";
 
 function App() {
 
@@ -30,30 +29,24 @@ function App() {
     fetchHomeCategories()
   }, [])
 
-
-  // const reducer = 
-
-  // const categories = createStore()
-
-
   return (
-    <CatContext.Provider value={{homeCategories}}>
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path='info' element={<Info />} />
-          <Route path='info/stocks' element={<Stocks />} />
-          <Route path='info/stocks/:title' element={<StockId />} />
-          <Route path='info/services' element={<Services />} />
-          <Route path='info/delivery' element={<Delivery />} />
-          <Route path='info/bonus_conditions' element={<BonusConditions />} />
-          <Route path='categories' element={<Categories />} />
-          <Route path='category/:id' element={<Category />} />
-          <Route path='catalog/:id' element={<Catalog />} />
-          <Route path='catalog/:cat_id/product/:id' element={<Product />} />
-        </Routes>
-      </BrowserRouter>
-    </CatContext.Provider>
+      <CatContext.Provider value={{homeCategories}}>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path='info' element={<Info />} />
+            <Route path='info/stocks' element={<Stocks />} />
+            <Route path='info/stocks/:title' element={<StockId />} />
+            <Route path='info/services' element={<Services />} />
+            <Route path='info/delivery' element={<Delivery />} />
+            <Route path='info/bonus_conditions' element={<BonusConditions />} />
+            <Route path='categories' element={<Categories />} />
+            <Route path='category/:id' element={<Category />} />
+            <Route path='catalog/:id' element={<Catalog />} />
+            <Route path='catalog/:cat_id/product/:id' element={<Product />} />
+          </Routes>
+        </BrowserRouter>
+      </CatContext.Provider>
   );
 }
 

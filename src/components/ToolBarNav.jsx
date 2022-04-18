@@ -17,7 +17,7 @@ const ToolBarNav = ({activeMenu, crumbs}) => {
     return (
         <nav className='space-x-[70px]'>
             {navList.map(i => 
-                <Link key={i.id} to={i[0]} className={`${activeMenu === 'main' ? activeCl : '' } text-green text-[22px]`}>{i[1]}</Link>
+                <Link key={i[2]} to={i[0]} className={`${activeMenu === 'main' ? activeCl : '' } text-green text-[22px]`}>{i[1]}</Link>
             )}
         </nav>
     )
