@@ -1,0 +1,35 @@
+import { useEffect, useState } from "react";
+import { useFetching } from "../hooks/useFetching";
+import { getCategories, getCategoriesById } from "../components/services/categories";
+import Layout from "../layout";
+import CategoryList from "../components/CategoryList";
+
+const Categories = () => {
+
+    const [allCats, setAllCats] = useState([])
+    const [categories, setCategories] = useState([])
+
+    const [fetchCategories, isCatsLoading, catsError] = useFetching(async() => {
+        const resultAllCats = await getCategories()
+        setAllCats(resultAllCats)
+
+        const result = await getCategoriesById(null)
+        setCategories(result)
+    })
+
+    useEffect(() => {
+        fetchCategories()
+    }, [])
+
+    const crumbs = ['Категории']
+
+    return(
+        <Layout crumbs={crumbs}>
+            <CategoryList categories={categories} allCats={allCats} />
+        </Layout>
+    )
+
+}
+
+
+export default Categories;
