@@ -1,8 +1,8 @@
 import Layout from "../layout";
 
 const Delivery = () => {
-
-    const crumbs = ['Информация', 'Доставка']
+    
+    const crumbs = [['Информация', 'info'], ['Доставка', 'delivery']]
 
     return(
         <Layout crumbs={crumbs}>

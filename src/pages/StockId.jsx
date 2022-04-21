@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "react-spinners/BarLoader";
 import KirguSource from "../components/API/KirguSource";
-import Loader from "../components/loader/Loader";
 import { useFetching } from "../hooks/useFetching";
 import Layout from "../layout";
 import { setImagePath } from "../utils/images";

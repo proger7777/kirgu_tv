@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BreadcrumbItem from "./BreadcrumbItem";
 import Icons from "./Icons";
 
@@ -14,9 +14,9 @@ const Breadcrumbs = ({ crumbs }) => {
         </button>
 
         <div className='breadcrumbs_block flex items-center space-x-[14px] text-[#c4c4c4]'>
-            <span className='text-[14px]'>Главная</span>
-            {crumbs && crumbs.map(name =>
-                <BreadcrumbItem key={name} name={name} isLast={crumbs.slice(-1)[0] === name}  />
+            <Link to='/' className='text-[14px]'>Главная</Link>
+            {crumbs && crumbs.map(i =>
+                <BreadcrumbItem key={i[1]} item={i} isLast={crumbs.slice(-1)[0][0] === i[0]}  />
             )}
         </div>
     </div>

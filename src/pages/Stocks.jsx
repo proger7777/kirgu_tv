@@ -17,7 +17,7 @@ const Stocks = () => {
         fetchStocks()
     }, [])
 
-    const crumbs = ['Информация', 'Акции']
+    const crumbs = [['Информация', 'info'], ['Акции', 'stocks']]
 
     return(
         <Layout crumbs={crumbs}>

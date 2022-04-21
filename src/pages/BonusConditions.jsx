@@ -2,8 +2,10 @@ import Layout from "../layout";
 
 const BonusConditions = () => {
 
+    const crumbs = [['Информация', 'info'], ['Условия бонусной програмы', 'bonus_conditions']]
+
     return(
-        <Layout>
+        <Layout crumbs={crumbs}>
             <div>
                 <h2 className='text-[24px] font-semibold'>Бонусная программа компании Киргу</h2>
                 <p className='text-[#505050] mt-[8px] mb-[25px]'>

@@ -14,14 +14,16 @@ import Catalog from "./pages/Catalog";
 import { CatContext } from "./context";
 import Categories from "./pages/Categories";
 import Product from "./pages/Product";
+import Bonus from "./pages/Bonus";
+import Search from "./pages/Search";
 
 function App() {
 
   const [homeCategories, setHomeCategories] = useState([])
 
   async function fetchHomeCategories() {
-      const result = await getHomeCategories()
-      setHomeCategories(result)
+    const result = await getHomeCategories()
+    setHomeCategories(result)
   }
 
   useEffect(() => {
@@ -44,6 +46,8 @@ function App() {
             <Route path='category/:id' element={<Category />} />
             <Route path='catalog/:id' element={<Catalog />} />
             <Route path='catalog/:cat_id/product/:id' element={<Product />} />
+            <Route path='bonus/:phone' element={<Bonus />} />
+            <Route path='search' element={<Search />} />
           </Routes>
         </BrowserRouter>
       </CatContext.Provider>

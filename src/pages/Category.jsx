@@ -11,7 +11,7 @@ const Category = () => {
     
     const [allCats, setAllCats] = useState([])
     const [categories, setCategories] = useState([])
-
+    
     const [crumbs, setСrumbs] = useState([])
 
     const [fetchCategories, isCatsLoading, catsError] = useFetching(async(id) => {
@@ -25,12 +25,12 @@ const Category = () => {
         setCategories(result)
     })
 
-    useEffect(() => {
+    useEffect(() => {        
         fetchCategories(params.id)
     }, [params.id])
 
     return(
-        <Layout crumbs={crumbs}>
+        <Layout crumbs={crumbs} >
             {!isCatsLoading && <CategoryList categories={categories} allCats={allCats} /> }
         </Layout>
     )

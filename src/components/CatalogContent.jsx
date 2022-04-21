@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useFetching } from "../hooks/useFetching";
 import CatalogList from "./CatalogList";
 import FiltersCatalog from "./FiltersCatalog";
+import Loadering from "./Loadering";
 import Pagination from "./Pagination";
 import { getCatalog } from "./services/categories";
 
@@ -47,7 +48,10 @@ const CatalogContent = ({catalogId, title}) => {
                     <h2 className='text-[24px]'>{title}</h2>
                     <Pagination pageNum={pageNum} setPageNum={setPageNum} lastPage={false} /> 
                 </div>
-                <CatalogList catalog={catalog} catalogId={catalogId} /> 
+                {isCatalogLoading
+                    ? <Loadering />
+                    : <CatalogList catalog={catalog} catalogId={catalogId} />
+                } 
             </div>
         </>
     )

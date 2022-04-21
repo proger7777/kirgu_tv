@@ -3,11 +3,11 @@ export const getCatCrumbs = (catId, allCategories) => {
 
     while(catId !== null) {
         let cat = allCategories.find(i => i.id === catId)
-        result.push(cat.name)
+        result.push([cat.name, `category/${catId}`])
         catId = cat.parent_id
     }
 
-    result.push('Категории')
+    result.push(['Категории', 'categories'])
 
     return result.reverse()
 }

@@ -21,7 +21,7 @@ const Categories = () => {
         fetchCategories()
     }, [])
 
-    const crumbs = ['Категории']
+    const crumbs = [['Категории', 'categories']]
 
     return(
         <Layout crumbs={crumbs}>

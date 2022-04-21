@@ -8,11 +8,15 @@ import contactsSvg from '../images/contacts.svg'
 
 import { Link } from "react-router-dom";
 import Layout from '../layout'
+import CheckBonus from '../components/CheckBonus'
+import { useState } from 'react'
 
 
 const Info = () => {
 
-    const crumbs = ['Информация']
+    const [enableCheckBonus, setEnableCheckBonus] = useState(false)
+
+    const crumbs = [['Информация', 'info']]
 
     return(
         <Layout crumbs={crumbs}>
@@ -28,7 +32,7 @@ const Info = () => {
                         <span className='absolute bottom-[20px] block w-full text-center'>Условия программы “Бонусы Киргу”</span>
                     </Link>
 
-                    <Link to='' className='check_bonus bg-[#F5F5F5] h-[427px] relative'>
+                    <Link to='' onClick={() => setEnableCheckBonus(true) } className='check_bonus bg-[#F5F5F5] h-[427px] relative'>
                         <img src={bonusCartSvg} alt='' className='w-[253px] h-[267px] m-auto absolute right-0 left-0 top-[-40px] bottom-0' />
                         <span className='absolute bottom-[20px] block w-full text-center'>Узнать бонусные баллы</span>
                     </Link>
@@ -49,6 +53,9 @@ const Info = () => {
                     </Link>
                 </div>
             </div>
+
+            {enableCheckBonus && <CheckBonus setEnableCheckBonus={setEnableCheckBonus} />}
+
         </Layout>
 
     )

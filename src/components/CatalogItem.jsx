@@ -4,8 +4,10 @@ import { truncate } from "../utils/str";
 
 const CatalogItem = ({cat, catalogId}) => {
 
+    let catUrl = `/catalog/${catalogId}/product/${cat.id}`
+
     return (
-        <Link to={`/catalog/${catalogId}/product/${cat.id}`} className='product_item flex flex-col items-center w-[322px] h-[350px] border border-[#e6e6e6] pl-[20px] pr-[20px]'>
+        <Link to={catUrl} className='product_item flex flex-col items-center w-[322px] h-[350px] border border-[#e6e6e6] pl-[20px] pr-[20px]'>
             <img src={setImagePath(cat.image)} alt='' className='object-contain h-[162px] mt-[20px] mb-[12px]' />
             
             <span className='flex mb-[10px]'>

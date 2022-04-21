@@ -8,8 +8,6 @@ import CatalogContent from "../components/CatalogContent";
 
 const Catalog = () => {
 
-    
-
     const params = useParams()
 
     const [category, setCategory] = useState([])
