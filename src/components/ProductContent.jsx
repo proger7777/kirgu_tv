@@ -42,9 +42,6 @@ const ProductContent = ({item}) => {
                 {item.description !== item.name && <ProductDescBlock item={item} open={activePart === 'desc'} />}
                 <ProductPropsBlock item={item} open={activePart === 'props'} />
                 <ProductReviewsBlock item={item} open={activePart === 'reviews'} />
-                
-                {/*  <div data-page_type='props' class='hidden pb-[30px]'><%= render 'product_props' %></div>
-                <div data-page_type='reviews' class='hidden'><%= render 'product_reviews' %></div> */}
             </div>
         </div>
     )

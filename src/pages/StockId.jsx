@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Loader from "react-spinners/BarLoader";
 import KirguSource from "../components/API/KirguSource";
+import Loadering from "../components/Loadering";
 import { useFetching } from "../hooks/useFetching";
 import Layout from "../layout";
 import { setImagePath } from "../utils/images";
@@ -11,12 +11,12 @@ const StockId = () => {
     const params = useParams()
     const [stock, setStock] = useState(null)
 
-    const [crumbs, setСrumbs] = useState(['Информация', 'Акции'])
+    const [crumbs, setСrumbs] = useState([['Информация', 'info'], ['Акции', 'info/stocks']])
 
     const [fetchStock, stockLoading, stockError] = useFetching(async(title) => {
         const result = await KirguSource.getStock(title)
         setStock(result)
-        setСrumbs([...crumbs, result.name])
+        setСrumbs([...crumbs, [result.name, `info/stocks/${result.name}`]])
     })
 
     useEffect(() => {
@@ -24,9 +24,9 @@ const StockId = () => {
     }, [])
 
     return(
-        <Layout crumbs={crumbs}>
+        <Layout crumbs={crumbs} activeMenu='info'>
             {!stock
-                ? <Loader />
+                ? <Loadering />
                 : <div className='w-full h-[800px] overflow-y-auto'>
                     <img src={setImagePath(stock.image)} alt='' className='w-full object-contain h-[620px] mb-[20px]' />
                     <div className='w-1/2'>

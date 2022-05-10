@@ -2,25 +2,11 @@
   "name": "term",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.3",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.26.1",
-    "localforage": "^1.10.0",
-    "rc-slider": "^10.0.0-alpha.6",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-imask": "^6.4.2",
-    "react-redux": "^8.0.0",
-    "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
-    "react-spinners": "^0.11.0",
-    "react-svg-sprite": "^1.0.8",
-    "reduct": "^3.3.1",
-    "redux": "^4.1.2",
-    "swiper": "^8.0.7",
-    "web-vitals": "^2.1.4"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,11 +14,32 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "^14.1.1",
+    "axios": "^0.26.1",
+    "localforage": "^1.10.0",
+    "npm-check-updates": "^12.5.9",
+    "nuka-carousel": "^5.0.13",
+    "rc-slider": "^10.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-imask": "^6.4.2",
+    "react-redux": "^8.0.1",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
+    "react-select": "^5.3.1",
+    "react-speech-recognition": "^3.9.0",
+    "react-spinners": "^0.11.0",
+    "react-svg-sprite": "^1.0.8",
+    "reduct": "^3.3.1",
+    "redux": "^4.2.0",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.5",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.24"
   },
   "browserslist": {
     "production": [
@@ -45,10 +52,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.4",
-    "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.23"
   }
 }

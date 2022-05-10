@@ -7,7 +7,7 @@ const ProductInfoDataBlock = ({item}) => {
         <div className='w-[420px] border border-[#e6e6e6] rounded-[5px] p-[50px] pb-0'>
             <p>
                 <span className='text-[28px] mr-[9px]'>{item.name}</span>
-                <span className='text-[14px] text-[#8f8f8f]'>#20054536</span>
+                <span className='text-[14px] text-[#8f8f8f]'>#{item.properties.Артикул}</span>
             </p>
 
             <div className='flex items-center mt-[20px]'>
@@ -22,7 +22,7 @@ const ProductInfoDataBlock = ({item}) => {
             <div className='flex mb-[15px]'>
                 <Icons name='check' className='w-[24px] h-[24px]' />
                 <div className='ml-[12px]'>
-                    <p className='text-[16px]'>В наличии {item.product_quantity} шт.</p>
+                    <p className='text-[16px]'>В наличии <span className='font-bold'>{item.product_label.toLowerCase()}</span></p>
                     <Link to='' className='block text-green text-[14px] mt-[0px]'>Посмотреть наличие в магазинах</Link>
                 </div>
             </div>

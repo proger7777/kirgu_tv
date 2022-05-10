@@ -1,28 +1,37 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useFetching } from "../hooks/useFetching";
-import { getCategories } from "../components/services/categories";
+import { getCategories, getCatCrumbs } from "../components/services/categories";
 import Layout from "../layout";
-import { getCatCrumbs } from "../components/services/breadcrumbs";
 import { getProduct } from "../components/services/product";
 import ProductContent from "../components/ProductContent";
+import { activeMenu } from "../components/services/menu";
 
 const Product = () => {
     const params = useParams()
+
+    const search = useLocation().search;
+    const fromAllCats = new URLSearchParams(search).get('from_all_cats'); 
     
     const [product, setProduct] = useState()
-    const [allCats, setAllCats] = useState([])
     const [crumbs, setСrumbs] = useState([])
 
-    const [fetchProduct, isProductLoading, productError] = useFetching(async(cat_id, id) => {
-      
+    const [mainCatId, setMainCatId] = useState()
+
+    const [fetchProduct, isProductLoading, productError] = useFetching(async(catId, id) => {
+
         const resultAllCats = await getCategories()
-        setAllCats(resultAllCats)
- 
-        const res = getCatCrumbs(cat_id, resultAllCats)
-        setСrumbs(res)   
-        
+
         const resProduct = await getProduct(id)
+
+        if(catId) {
+            const res = getCatCrumbs(catId, resultAllCats)
+            setСrumbs(res)   
+            setMainCatId(activeMenu(catId, resultAllCats, fromAllCats))
+        } else {
+            setСrumbs([['Поиск', '/search'], [resProduct.name, '']])
+        }
+        
         setProduct(resProduct)
     })
 
@@ -31,7 +40,7 @@ const Product = () => {
     }, [])
 
     return(
-        <Layout crumbs={crumbs}>
+        <Layout crumbs={crumbs} activeMenu={mainCatId}>
             {product && <ProductContent item={product} /> }
         </Layout>
     )

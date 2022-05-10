@@ -24,8 +24,8 @@ const Categories = () => {
     const crumbs = [['Категории', 'categories']]
 
     return(
-        <Layout crumbs={crumbs}>
-            <CategoryList categories={categories} allCats={allCats} />
+        <Layout crumbs={crumbs} activeMenu='allcats'>
+            <CategoryList categories={categories} allCats={allCats} fromAllCats='true' />
         </Layout>
     )
 

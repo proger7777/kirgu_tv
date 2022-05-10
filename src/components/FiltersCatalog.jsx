@@ -1,36 +1,12 @@
-import { useEffect, useState } from "react";
-import { useFetching } from "../hooks/useFetching";
-import KirguSource from "./API/KirguSource";
-import PriceRange from "./PriceRange/PriceRange";
+import PriceFilter from "./PriceRange/PriceFilter";
 import PropFilters from "./PropFilters";
 
-const FiltersCatalog = ({id, setFilterProp}) => {
-    
-    const [priceData, setPriceData] = useState(null)
-    const [propsData, setPropsData] = useState(null)
-
-    const [fetchFilters, isFiltersLoading, filtersError] = useFetching(async(id) => {
-        const result = await KirguSource.getFilters(id)
-        setPriceAndPropsData(result)
-    })
-
-    function setPriceAndPropsData(res) {
-        setPriceData(res[0])
-        setPropsData(res.slice(1))
-    }
-
-    useEffect(() => {
-        fetchFilters(id)
-    }, [])
+const FiltersCatalog = ({height, filterData, setFilterProp, setPriceFilter}) => {
 
     return (
-        <div className='w-[256px] h-[840px] overflow-scroll'>
-            {priceData && propsData && 
-                <>
-                    {/* <PriceRange minPr={parseInt(priceData.min)} maxPr={parseInt(priceData.max)} /> */}
-                    <PropFilters propsData={propsData} setFilterProp={setFilterProp} />
-                </>
-            }
+        <div className={`w-[256px]`}>
+            {filterData.price && <PriceFilter onChange={setPriceFilter} minPrice={filterData.price.min} maxPrice={filterData.price.max} /> } 
+            <PropFilters propsData={filterData.props} setFilterProp={setFilterProp} />
         </div>
     )
 

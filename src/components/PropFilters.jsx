@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import PropFilterItem from "./PropFilterItem"
 
 const PropFilters = ({propsData, setFilterProp}) => {
@@ -14,9 +13,9 @@ const PropFilters = ({propsData, setFilterProp}) => {
     return (
         <>
             { 
-                propsData.map((i) => {
-                    return Object.keys(i.values).length
-                    ? <PropFilterItem key={i.id} pr={i} openData={openPropFiltId} openAccord={openAccord} setFilterProp={setFilterProp} />
+                propsData.map((i, inx) => {
+                    return i.props.length
+                    ? <PropFilterItem key={inx} pr={i} openData={openPropFiltId} openAccord={openAccord} setFilterProp={setFilterProp} />
                     : false
                 }) 
             }

@@ -11,7 +11,7 @@ const ProductPropsBlock = ({item, open}) => {
                         <div className='w-1/2 text-right'>{item.properties[key]}</div>
                     </div>
                 )
-            : <p class='text-[18px] text-[#8f8f8f]'>Нет данных</p>
+            : <p className='text-[18px] text-[#8f8f8f]'>Нет данных</p>
             }
         </div>
     )

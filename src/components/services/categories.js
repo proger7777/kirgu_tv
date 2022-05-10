@@ -1,5 +1,6 @@
 import localforage from "localforage";
 import KirguSource from "../API/KirguSource";
+import RatingSource from "../API/RatingSource";
 import { setPriceData } from "./prices";
 
 async function setCategories() {
@@ -41,8 +42,15 @@ function setPrice(res) {
     return res
 }
 
+async function setRating(res) {
+    const ids = res.map(i => i.site_id )
+    const ratings = await RatingSource.getCollectRating(ids)
+    res.forEach((i, inx) => i.rating = ratings[inx].TotalScore.toFixed() )
+    return res
+}
 
 function setImages(res) {
+
     res.forEach(i => {
         i.image = ''
 
@@ -51,12 +59,16 @@ function setImages(res) {
         if(i.images.length) {
             i.images.forEach(img => { if(img) images.push(img) })
         }
-       
-        if(!images.length && i.offers.length && i.offers[0].images.length) images = i.offers[0].images
-
+        
+        if(!images.length && i.offers && i.offers.length && i.offers[0].images.length) {
+            images = i.offers[0].images
+        }
+        
         const filteredImages = images.filter(function(el) { return el })
-        i.image = filteredImages[0]
+        i.image_url = filteredImages[0]
     })
+
+    
 
     return res
 }
@@ -80,11 +92,18 @@ function join4Cats(cats) {
 }
 
 
+function setConcretImages(res) {
+    res.forEach(i => { if(i.mobile_image) i.image = i.mobile_image })
+    return res
+}
+
+
 export const getCategories = async() => {
     let result = [];
 
     try {
         result = await localforage.getItem('categories');
+        result = setConcretImages(result)
     } catch (err) {
         console.log(err);
     }
@@ -92,7 +111,7 @@ export const getCategories = async() => {
     return result
 }
 
-export const setCatUrl = (allCats, id) => {
+export const setCatUrl = (allCats, id, fromAllCats) => {
 
     let res = '/catalog/' + id
 
@@ -102,6 +121,10 @@ export const setCatUrl = (allCats, id) => {
             return false
         }
     })
+
+    if(fromAllCats) {
+        res += '?from_all_cats=true'
+    }
 
     return res
 }
@@ -125,6 +148,7 @@ export const getCategoriesById = async(id) => {
 }
 
 export const getHomeCategories = async() => {
+
     let res = [];
 
     try {
@@ -142,6 +166,7 @@ export const loadCategories = async() => {
     if(!categories) {
         await setCategories()
     }
+
 }
 
 export const getBothСategories = async() => {
@@ -151,9 +176,42 @@ export const getBothСategories = async() => {
     return res
 }
 
-export const getCatalog = async(id, pageNum, filter = {}) => {
-    let res = await KirguSource.getCatalog(id, pageNum, filter)
-    res = setPrice(res)
-    res = setImages(res)
+export const getCatalog = async(id, pageNum, sort = 'popular', filter = {}) => {
+    let res = await KirguSource.getCatalog(id, pageNum, sort, filter)
+
+    res = { items: res.items, totalCount: res.totalCount }
+
+    res.items = setPrice(res.items)
+    res.items = setImages(res.items)
+
+    if(res.items.length) res.items = await setRating(res.items)
+
     return res
+}
+
+export const getCatCrumbs = (catId, allCategories) => {
+    let result = []
+
+    while(catId !== null) {
+        let cat = allCategories.find(i => i.id === catId)
+        result.push([cat.name, `category/${catId}`])
+        catId = cat.parent_id
+    }
+
+    result.push(['Категории', 'categories'])
+
+    return result.reverse()
+}
+
+export const getMainCatId = (catId, allCategories) => {
+
+    let mainCatId = null
+
+    while(catId !== null) {
+        let cat = allCategories.find(i => i.id === catId)
+        mainCatId = cat.id
+        catId = cat.parent_id
+    }
+
+    return mainCatId
 }

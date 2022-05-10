@@ -16,6 +16,8 @@ import Categories from "./pages/Categories";
 import Product from "./pages/Product";
 import Bonus from "./pages/Bonus";
 import Search from "./pages/Search";
+import NotFound404 from "./pages/NotFound404";
+import Contacts from "./pages/Contacts";
 
 function App() {
 
@@ -42,12 +44,15 @@ function App() {
             <Route path='info/services' element={<Services />} />
             <Route path='info/delivery' element={<Delivery />} />
             <Route path='info/bonus_conditions' element={<BonusConditions />} />
+            <Route path='info/contacts' element={<Contacts />} />
             <Route path='categories' element={<Categories />} />
             <Route path='category/:id' element={<Category />} />
             <Route path='catalog/:id' element={<Catalog />} />
             <Route path='catalog/:cat_id/product/:id' element={<Product />} />
+            <Route path='product/:id' element={<Product />} />
             <Route path='bonus/:phone' element={<Bonus />} />
             <Route path='search' element={<Search />} />
+            <Route path='*' element={<NotFound404 />} />
           </Routes>
         </BrowserRouter>
       </CatContext.Provider>

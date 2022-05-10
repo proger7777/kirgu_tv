@@ -6,10 +6,10 @@ const BreadcrumbItem = ({ item, isLast }) => {
 
   return (
     <>
-      <Icons name='right_p' className='w-[6px] h-[9px]' />
+      <Icons name='right_p' className='mt-[3px] w-[6px] h-[9px]' />
       {isLast
         ? <span className='text-[14px] text-[#3f3f3f]'>{item[0]}</span>
-        : <Link to={`/${item[1]}`} className='text-[14px]'>{item[0]}</Link>
+        : <Link to={`/${item[1]}`}>{item[0]}</Link>
       }
     </>
   );

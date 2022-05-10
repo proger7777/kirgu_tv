@@ -20,7 +20,7 @@ const Stocks = () => {
     const crumbs = [['Информация', 'info'], ['Акции', 'stocks']]
 
     return(
-        <Layout crumbs={crumbs}>
+        <Layout crumbs={crumbs} activeMenu='info'>
             <div className='overflow-y-auto'>
 
                 <h2 className='text-[28px] font-semibold'>Акции</h2>

@@ -2,10 +2,10 @@ import axios from 'axios';
 
 class RatingSource {
   
-    static siteUrl = "https://api.mneniya.pro/v1.3/clients/9b28b175-52a6-43b3-b262-a0c14149d22e/reviews/Product"
+    static siteUrl = "https://api.mneniya.pro/v2.1/clients/9b28b175-52a6-43b3-b262-a0c14149d22e"
 
     static async get(id) {
-        const response = await axios.get(this.siteUrl + `/${id}/All`)
+        const response = await axios.get(this.siteUrl + `/reviews/Product/Aggregated/${id}`)
         const res = response.data
 
         let data = { rating: 0, reviewsCount: 0, reviews: res.Reviews }
@@ -21,6 +21,16 @@ class RatingSource {
 
         return data
     }
+
+    static async getCollectRating(ids) {
+        ids = ids.join('%7C')
+
+        const response = await axios.get(this.siteUrl + `/ratings/Product/${ids}`)
+        const res = response.data
+
+        return res
+    }
+
     
 }
 

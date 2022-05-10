@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import Layout from '../layout'
 import CheckBonus from '../components/CheckBonus'
 import { useState } from 'react'
+import { useEffect } from 'react'
+import localforage from 'localforage'
 
 
 const Info = () => {
@@ -18,8 +20,12 @@ const Info = () => {
 
     const crumbs = [['Информация', 'info']]
 
+    useEffect(() => {
+        localforage.setItem('activeMenu', 'info')
+    }, [])
+
     return(
-        <Layout crumbs={crumbs}>
+        <Layout crumbs={crumbs} activeMenu='info'>
             <div className='w-full flex flex-col text-[22px] font-semibold'>
                 <div className='grid grid-cols-3 gap-[25px] justify-between w-full'>
                     <Link to='/info/stocks' className='bg-[#F5F5F5] h-[427px] relative'>

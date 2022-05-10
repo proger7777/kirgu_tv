@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useIMask } from "react-imask";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFetching } from "../hooks/useFetching";
 import KirguSource from "./API/KirguSource";
 import BgBlock from "./BgBlock";
 import Icons from "./Icons";
-import PhoneNumberBlock from "./PhoneNumberBlock";
+import NumbersBlock from "./NumbersBlock";
+import { setCheckBonus } from "./services/bonus";
 
 const CheckBonus = ({setEnableCheckBonus}) => {
 
@@ -34,7 +35,7 @@ const CheckBonus = ({setEnableCheckBonus}) => {
     const [sendCode, isSendCodeLoading, sendCodeError] = useFetching(async() => {
         if(unmaskedValue.length !== 11) return;
         phoneFormRef.current.classList.add('pointer-events-none', 'opacity-25')
-        const code = await KirguSource.sendCode('forBonus', unmaskedValue)
+        const code = await KirguSource.sendCode(unmaskedValue)
         setCheckCode(code)
         setStage(2)
     })
@@ -55,41 +56,39 @@ const CheckBonus = ({setEnableCheckBonus}) => {
             sendCheckCodeButt.current.classList.remove('bg-[#008954]')
         }
 
-        var newVal = unmaskedValue.substring(0, unmaskedValue.length - 1)
+        const newVal = unmaskedValue.substring(0, unmaskedValue.length - 1)
         setValue(newVal)
     }
 
     function setCodeNumber(num){
-        for (var i = 0; i < 4; i++) {
-            
+        for (let i = 0; i < 4; i++) {
             if(!codeRef.current.children[i].value) {
                 codeRef.current.children[i].value = num
                 break;
             }
-
         }
 
         let code = ''
 
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             if(codeRef.current.children[i].value) code += codeRef.current.children[i].value
         }
 
         if(code.length !== 4) return;
-
-        console.log(code + '---' + checkCode)
         
         if(code === checkCode) {
             close()
-            navigate('')
+            setCheckBonus()
+            navigate(`/bonus/${unmaskedValue}`)
         } else {
             setCodeReviewError(true)
+            for (let i = 0; i < 4; i++) { codeRef.current.children[i].value = '' }
         }
     }
 
     function clearCodeNumber(){
     
-        for (var i = 3; i !== -1; i--) {
+        for (let i = 3; i !== -1; i--) {
             if(codeRef.current.children[i].value) {
                 codeRef.current.children[i].value = ''
                 break;
@@ -123,12 +122,12 @@ const CheckBonus = ({setEnableCheckBonus}) => {
                     <div ref={phoneFormRef}>
                         <p className='text-[22px] text-center'>Введите номер телефона</p>
 
-                        <div className='w-[336px] m-auto mt-[70px] grid grid-cols-3 gap-[10px]'>
-                            <input ref={ref} className='focus:border-green focus:outline-none col-span-3 pl-[25px] pr-[25px] h-[58px] border border-[#e6e6e6] text-[20px]' /> 
+                        <div className='w-[336px] m-auto mt-[70px]'>
+                            <input ref={ref} className='w-full focus:border-green focus:outline-none mb-[10px] pl-[25px] pr-[25px] h-[58px] border border-[#e6e6e6] text-[20px]' /> 
 
-                            <PhoneNumberBlock setNumber={setPhoneNumber} clearNum={clearPhoneNumber}  />
+                            <NumbersBlock set={setPhoneNumber} clear={clearPhoneNumber} className='mb-[10px]' />
             
-                            <button ref={sendCheckCodeButt} onClick={() => sendCode() } className='bg-[#8f8f8f] mt-[10px] text-[16px] text-[#fff] flex items-center justify-center rounded-[4px] h-[48px] cursor-pointer col-span-3'>Отправить</button>
+                            <button ref={sendCheckCodeButt} onClick={() => sendCode() } className='w-full bg-[#8f8f8f] mt-[10px] text-[16px] text-[#fff] flex items-center justify-center rounded-[4px] h-[48px] cursor-pointer'>Отправить</button>
                             {sendCodeError && <p className='col-span-3 text-[#E6141E] text-center mt-[20px]'>{sendCodeError}</p> }
                         </div>
                     </div>
@@ -147,9 +146,9 @@ const CheckBonus = ({setEnableCheckBonus}) => {
                         </div>
 
                         {codeReviewError && <p className='text-[#E6141E] text-center mt-[-20px] mb-[20px]'>Неверный код. Введите заново!</p> }
-
-                        <div className='w-[336px] m-auto grid grid-cols-3 gap-[10px]'>
-                            <PhoneNumberBlock setNumber={setCodeNumber} clearNum={clearCodeNumber} />
+                        
+                        <div className='w-[336px] m-auto'>
+                            <NumbersBlock set={setCodeNumber} clear={clearCodeNumber} />
                         </div>
                     </div>
                 }

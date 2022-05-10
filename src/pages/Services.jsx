@@ -5,7 +5,7 @@ const Services = () => {
     const crumbs = [['Информация', 'info'], ['Услуги', 'services']]
 
     return(
-        <Layout crumbs={crumbs}>
+        <Layout crumbs={crumbs} activeMenu='info'>
             <div>
                 <h2 className='text-[24px] font-semibold'>Сборка мебели</h2>
                 <p className='text-[#505050] mt-[20px] mb-[45px]'>Сборка мебели услуга бесплатная. За пределами города Махачкала/Дербент/Кизляр/Хасавюрт клиент должен оплатить сборщику дорожный расход из расчета 18 руб./км в одну сторону. 
