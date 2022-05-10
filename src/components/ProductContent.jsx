@@ -11,8 +11,6 @@ const ProductContent = ({item}) => {
 
     const navigate = useNavigate()
 
-    const [activePart, setActivePart] = useState('info')
-
     const prMenuList = [
         ['info', 'Информация о товаре'], 
         ['desc', 'Описание'], 
@@ -22,6 +20,8 @@ const ProductContent = ({item}) => {
 
     // Если описание пустое (не берем в расчет, что описание содержит наименование продукта), то удаляет пункт
     if(item.description === item.name) prMenuList.splice(1,1)
+
+    const [activePart, setActivePart] = useState(prMenuList[0][0])
     
     function openPartFnc(currEl, part) {
         setActivePart(part)

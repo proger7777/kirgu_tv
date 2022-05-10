@@ -18,6 +18,7 @@ import Bonus from "./pages/Bonus";
 import Search from "./pages/Search";
 import NotFound404 from "./pages/NotFound404";
 import Contacts from "./pages/Contacts";
+import PausePrompBlock from "./components/PausePrompBlock";
 
 function App() {
 
@@ -55,6 +56,9 @@ function App() {
             <Route path='*' element={<NotFound404 />} />
           </Routes>
         </BrowserRouter>
+
+        <PausePrompBlock />
+
       </CatContext.Provider>
   );
 }
