@@ -14,7 +14,7 @@ const Breadcrumbs = ({ crumbs }) => {
         </button>
 
         <div className='breadcrumbs_block flex items-center space-x-[14px] text-[14px] text-[#c4c4c4]'>
-            <Link to='/'>Главная</Link>
+            <Link to='/tv'>Главная</Link>
             {crumbs && crumbs.map(i =>
                 <BreadcrumbItem key={i[1]} item={i} isLast={crumbs.slice(-1)[0][0] === i[0]}  />
             )}

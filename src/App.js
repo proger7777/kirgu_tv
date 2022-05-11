@@ -20,8 +20,6 @@ import NotFound404 from "./pages/NotFound404";
 import Contacts from "./pages/Contacts";
 import PausePrompBlock from "./components/PausePrompBlock";
 
-// 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
-
 function App() {
 
   const [homeCategories, setHomeCategories] = useState([])
@@ -37,7 +35,7 @@ function App() {
 
   return (
       <CatContext.Provider value={{homeCategories}}>
-        <BrowserRouter>
+        <BrowserRouter basename='/tv'>
           <Routes>
             <Route index element={<Home />} />
             <Route path='info' element={<Info />} />
