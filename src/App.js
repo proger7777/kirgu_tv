@@ -20,6 +20,8 @@ import NotFound404 from "./pages/NotFound404";
 import Contacts from "./pages/Contacts";
 import PausePrompBlock from "./components/PausePrompBlock";
 
+// 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
+
 function App() {
 
   const [homeCategories, setHomeCategories] = useState([])
