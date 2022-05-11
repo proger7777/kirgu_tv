@@ -1,7 +1,7 @@
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Category from "./pages/Category";
-import { getHomeCategories, loadCategories } from "./components/services/categories";
+import { getHomeCategories } from "./components/services/categories";
 import BonusConditions from "./pages/BonusConditions";
 import Delivery from "./pages/Delivery";
 import Home from "./pages/Home";
@@ -30,7 +30,6 @@ function App() {
   }
 
   useEffect(() => {
-    loadCategories()
     fetchHomeCategories()
   }, [])
 

@@ -6,6 +6,7 @@ import { setPriceData } from "./prices";
 async function setCategories() {
     let categories = await KirguSource.getCategories()
     categories = join4Cats(categories)
+    categories = setConcretImages(categories)
     localforage.setItem('categories', categories)
     setHomeCategories(categories)
 }
@@ -68,8 +69,6 @@ function setImages(res) {
         i.image_url = filteredImages[0]
     })
 
-    
-
     return res
 }
 
@@ -103,7 +102,6 @@ export const getCategories = async() => {
 
     try {
         result = await localforage.getItem('categories');
-        result = setConcretImages(result)
     } catch (err) {
         console.log(err);
     }
@@ -149,6 +147,8 @@ export const getCategoriesById = async(id) => {
 
 export const getHomeCategories = async() => {
 
+    await loadCategories()
+
     let res = [];
 
     try {
@@ -166,14 +166,6 @@ export const loadCategories = async() => {
     if(!categories) {
         await setCategories()
     }
-
-}
-
-export const getBothСategories = async() => {
-    let res = { }
-    res.home = await getHomeCategories()
-    res.all = await getCategories()
-    return res
 }
 
 export const getCatalog = async(id, pageNum, sort = 'popular', filter = {}) => {

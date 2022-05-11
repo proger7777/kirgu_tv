@@ -17,6 +17,8 @@ const Bonus = () => {
     const buttonsRef = useRef()
     const navigate = useNavigate()
 
+    const [exitPrompt, setExitPrompt] = useState(false)
+
     const [fetchBonusData, isBonusDataLoading, bonusDataError] = useFetching(async(phone) => {
         const res = checkAuthBonusForm()
         if(!res) navigate('/info')
@@ -76,7 +78,6 @@ const Bonus = () => {
 
     return(
         <Layout crumbs={crumbs} activeMenu='info'>
-
             {isBonusDataLoading 
                 ? <Loadering />
                 : (bonusData 
@@ -156,6 +157,9 @@ const Bonus = () => {
                 : <p className='text-[18px] text-[#8f8f8f]'>Нет данных по номеру {params.phone}</p>
                 )
             }
+
+            {/* {exitPrompt && <BonusExitPrompt /> } */}
+
         </Layout>
     )
 
