@@ -1,6 +1,6 @@
 {
-  "name": "term",
-  "homepage": "tv",
+  "name": "tv",
+  "homepage": "https://kirgu.ru/tv",
   "version": "0.1.0",
   "private": true,
   "eslintConfig": {
