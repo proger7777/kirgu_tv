@@ -4,7 +4,7 @@ import { getTitleFromLinkStock } from '../../utils/str';
 class KirguSource {
     
     static siteUrl = 'https://kirgu.ru/api'
-    static siteUrl2 = 'http://api.kirgu.ru/api/1c-proxy?url=http://public.kirgu.ru:81/mobile/hs/exchangemobileapp'
+    static siteUrl2 = 'https://api.kirgu.ru/api/1c-proxy?url=http://public.kirgu.ru:81/mobile/hs/exchangemobileapp'
 
     static async getCategories() {
         const response = await axios.get(this.siteUrl + '/sections/')

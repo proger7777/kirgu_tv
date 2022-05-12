@@ -13,7 +13,7 @@ const ProductImagesBlock = ({smallImages, images}) => {
     }
 
     useEffect(() => {
-        console.log(111555)
+        console.log(activeSmallImg)
 
     }, [])
 
