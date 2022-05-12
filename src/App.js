@@ -43,6 +43,7 @@ function App() {
             <Route path='info/stocks/:title' element={<StockId />} />
             <Route path='info/services' element={<Services />} />
             <Route path='info/delivery' element={<Delivery />} />
+            <Route path='info/bonus/:phone' element={<Bonus />} />
             <Route path='info/bonus_conditions' element={<BonusConditions />} />
             <Route path='info/contacts' element={<Contacts />} />
             <Route path='categories' element={<Categories />} />
@@ -50,7 +51,6 @@ function App() {
             <Route path='catalog/:id' element={<Catalog />} />
             <Route path='catalog/:cat_id/product/:id' element={<Product />} />
             <Route path='product/:id' element={<Product />} />
-            <Route path='bonus/:phone' element={<Bonus />} />
             <Route path='search' element={<Search />} />
             <Route path='*' element={<NotFound404 />} />
           </Routes>

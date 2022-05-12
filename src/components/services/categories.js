@@ -186,7 +186,7 @@ export const getCatCrumbs = (catId, allCategories) => {
 
     while(catId !== null) {
         let cat = allCategories.find(i => i.id === catId)
-        result.push([cat.name, `category/${catId}`])
+        result.push([cat.name, `/category/${catId}`])
         catId = cat.parent_id
     }
 

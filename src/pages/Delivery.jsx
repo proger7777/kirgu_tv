@@ -2,7 +2,7 @@ import Layout from "../layout";
 
 const Delivery = () => {
     
-    const crumbs = [['Информация', 'info'], ['Доставка', 'delivery']]
+    const crumbs = [['Информация', 'info'], ['Доставка', 'info/delivery']]
 
     return(
         <Layout crumbs={crumbs} activeMenu='info'>

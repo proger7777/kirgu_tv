@@ -2,7 +2,7 @@ import Layout from "../layout";
 
 const BonusConditions = () => {
 
-    const crumbs = [['Информация', 'info'], ['Условия бонусной програмы', 'bonus_conditions']]
+    const crumbs = [['Информация', 'info'], ['Условия бонусной програмы', 'info/bonus_conditions']]
 
     return(
         <Layout crumbs={crumbs} activeMenu='info'>

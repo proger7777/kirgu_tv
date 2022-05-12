@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ProductContext } from "../context";
 import Icons from "./Icons";
 import ProductDescBlock from "./ProductDescBlock";
 import ProductInfoBlock from "./ProductInfoBlock";
@@ -8,6 +9,8 @@ import ProductPropsBlock from "./ProductPropsBlock";
 import ProductReviewsBlock from "./ProductReviewsBlock";
 
 const ProductContent = ({item}) => {
+
+    const [product, setProduct] = useState(item)
 
     const navigate = useNavigate()
 
@@ -27,6 +30,12 @@ const ProductContent = ({item}) => {
         setActivePart(part)
     }
 
+    function changeOffer(e) {
+        // console.log(e)
+        // product.name = '123'
+        // setProduct({...product})
+    }
+
     return (
         <div className='flex flex-col overflow-y-auto w-full'>
             <nav className='fixed flex bg-white w-[1720px] border-b border-[#e6e6e6] text-[24px] text-[#505050]'>
@@ -38,10 +47,12 @@ const ProductContent = ({item}) => {
             </nav>
 
             <div className='mt-[100px]'>
-                <ProductInfoBlock item={item} open={activePart === 'info'} />
-                {item.description !== item.name && <ProductDescBlock item={item} open={activePart === 'desc'} />}
-                <ProductPropsBlock item={item} open={activePart === 'props'} />
-                <ProductReviewsBlock item={item} open={activePart === 'reviews'} />
+                <ProductContext.Provider value={{changeOffer}}>
+                    <ProductInfoBlock item={product} open={activePart === 'info'} />
+                    {product.description !== product.name && <ProductDescBlock item={product} open={activePart === 'desc'} />}
+                    <ProductPropsBlock item={product} open={activePart === 'props'} />
+                    <ProductReviewsBlock item={product} open={activePart === 'reviews'} />
+                </ProductContext.Provider>
             </div>
         </div>
     )

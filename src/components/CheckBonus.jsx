@@ -27,7 +27,6 @@ const CheckBonus = ({setEnableCheckBonus}) => {
     const sendCheckCodeButt = useRef(null)
 
     const codeRef = useRef(null)
-    
 
     const phoneFormRef = useRef(null)
     const codeFormRef = useRef(null)    
@@ -39,7 +38,7 @@ const CheckBonus = ({setEnableCheckBonus}) => {
         setCheckCode(code)
         setStage(2)
     })
-
+    
     function setPhoneNumber(num){
         const newVal = unmaskedValue + num
         setValue(newVal)
@@ -79,7 +78,7 @@ const CheckBonus = ({setEnableCheckBonus}) => {
         if(code === checkCode) {
             close()
             setCheckBonus()
-            navigate(`/bonus/${unmaskedValue}`)
+            navigate(`/info/bonus/${unmaskedValue}`)
         } else {
             setCodeReviewError(true)
             for (let i = 0; i < 4; i++) { codeRef.current.children[i].value = '' }

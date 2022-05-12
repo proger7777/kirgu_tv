@@ -17,7 +17,7 @@ const Stocks = () => {
         fetchStocks()
     }, [])
 
-    const crumbs = [['Информация', 'info'], ['Акции', 'stocks']]
+    const crumbs = [['Информация', 'info'], ['Акции', 'info/stocks']]
 
     return(
         <Layout crumbs={crumbs} activeMenu='info'>

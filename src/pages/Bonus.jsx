@@ -7,6 +7,7 @@ import KirguSource from "../components/API/KirguSource";
 import Loadering from "../components/Loadering";
 import { useRef } from "react";
 import { checkAuthBonusForm, clearCheckBonus } from "../components/services/bonus";
+import BonusExitPrompt from "../components/BonusExitPrompt";
 
 const Bonus = () => {
 
@@ -18,6 +19,7 @@ const Bonus = () => {
     const navigate = useNavigate()
 
     const [exitPrompt, setExitPrompt] = useState(false)
+    const [exitPath, setExitPath] = useState('')
 
     const [fetchBonusData, isBonusDataLoading, bonusDataError] = useFetching(async(phone) => {
         const res = checkAuthBonusForm()
@@ -46,7 +48,12 @@ const Bonus = () => {
 
     }
 
-    function exitPage(e) {
+    function onExitPage() {
+        clearCheckBonus()
+        navigate(exitPath)  
+    }
+
+    function exitLinkPage(e) {
         e.preventDefault()
         clearCheckBonus()
         navigate('/info')  
@@ -54,27 +61,51 @@ const Bonus = () => {
 
     function redirectToBonCondsPage(e) {
         e.preventDefault()
+        showExitPrompt('/info/bonus_conditions')
+    }
 
-        if(window.confirm('Вы действительно хотите покинуть страницу?')) {
-            clearCheckBonus()
-            navigate('/info/bonus_conditions')
-        } 
+    function closeExitPrompt() {
+        setExitPrompt(false)
+    }
+
+    function showExitPrompt(path) {
+        setExitPath(path)
+        setExitPrompt(true)
     }
 
     useEffect(() => {
         fetchBonusData(params.phone)
 
         document.querySelector('.toolbar').addEventListener('click', (e) => {
-            if(window.confirm('Вы действительно хотите покинуть страницу?')) {
-                clearCheckBonus()
-            } else {
-                e.preventDefault()
-                e.stopPropagation()
+            e.preventDefault()
+            e.stopPropagation()
+
+            if(e.target.classList.contains('bread_back')) {
+                showExitPrompt('/info')
+                return
             }
+
+            if(e.target.classList.contains('search_inp')) {
+                showExitPrompt('/search')
+                return
+            }
+
+            if(e.target.classList.contains('voice_search')) {
+                showExitPrompt('/search?voice=true')
+                return
+            }
+            
+            if(e.target.href) {
+                let path = ''
+
+                path = e.target.href.split('tv').slice(-1)[0]
+                showExitPrompt(path)
+            }
+
         })
     }, [])
 
-    const crumbs = [['Информация', 'info'], ['Мои бонусные баллы', 'bonus']]
+    const crumbs = [['Информация', 'info'], ['Мои бонусные баллы', 'info/bonus']]
 
     return(
         <Layout crumbs={crumbs} activeMenu='info'>
@@ -115,7 +146,7 @@ const Bonus = () => {
 
                                     <Link to='' onClick={(e) => redirectToBonCondsPage(e)} className='table text-[24px] text-[#11A9FF] font-semibold underline'>Условия программы "Бонусы Киргу"</Link>
 
-                                    <Link to='' onClick={(e) => exitPage(e) } className='table mt-[70px] text-[40px] text-[#EB5757] underline'>Выйти</Link>
+                                    <Link to='' onClick={exitLinkPage} className='table mt-[70px] text-[40px] text-[#EB5757] underline'>Выйти</Link>
                                 </div>
                             </>
                         }
@@ -158,7 +189,7 @@ const Bonus = () => {
                 )
             }
 
-            {/* {exitPrompt && <BonusExitPrompt /> } */}
+            {exitPrompt && <BonusExitPrompt confirm={onExitPage} close={closeExitPrompt}  /> } 
 
         </Layout>
     )

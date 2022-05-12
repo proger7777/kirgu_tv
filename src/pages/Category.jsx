@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useFetching } from "../hooks/useFetching";
 import { getCategories, getCategoriesById, getCatCrumbs } from "../components/services/categories";
 import Layout from "../layout";
@@ -9,8 +9,6 @@ import Loadering from "../components/Loadering";
 
 const Category = () => {
     const params = useParams()
-
-    const navigate = useNavigate()
     
     const search = useLocation().search;
     const fromAllCats = new URLSearchParams(search).get('from_all_cats'); 

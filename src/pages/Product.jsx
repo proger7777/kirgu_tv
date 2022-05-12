@@ -24,12 +24,14 @@ const Product = () => {
 
         const resProduct = await getProduct(id)
 
+        console.log(resProduct)
+
         if(catId) {
             const res = getCatCrumbs(catId, resultAllCats)
             setСrumbs(res)   
             setMainCatId(activeMenu(catId, resultAllCats, fromAllCats))
         } else {
-            setСrumbs([['Поиск', '/search'], [resProduct.name, '']])
+            setСrumbs([['Поиск', 'search'], [resProduct.name, '']])
         }
         
         setProduct(resProduct)
