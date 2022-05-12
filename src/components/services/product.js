@@ -2,37 +2,12 @@ import KirguSource from "../API/KirguSource"
 import RatingSource from "../API/RatingSource"
 import { setPriceData } from "./prices";
 
-function setOfferPrice(item) {
-
-    if(item.offers) {
-        item.price_1 = item.offers[0].price_1
-        item.price_2 = item.offers[0].price_2
-        item.price_3 = item.offers[0].price_3
-    }
-
-    return item
-}
-
-function setOfferProperties(item) {
-    
-    if(item.offers) {
-        item.properties = item.offers[0].properties
-    }
-    
-    return item
-}
-
 function setFullImages(item) {
     let images, smallImages;
 
-    if(item.offers) {
-        images = item.offers[0].images
-        smallImages = item.offers[0].small_images.split(',')
-    } else {
-        images = item.images
-        smallImages = item.small_images.split(',')
-    }
-
+    images = item.images
+    smallImages = item.small_images.split(',')
+    
     item.images = []
 
     images.forEach((i, inx) => { 
@@ -79,16 +54,46 @@ function setRejectUnnecessaryProps(item) {
     return item
 }
 
+function setOfferData(item, offerId) {
+
+    const offer = item.offers.find(i => i.id === offerId)
+
+    item.price_1 = offer.price_1
+    item.price_2 = offer.price_2
+    item.price_3 = offer.price_3
+    item.properties = offer.properties
+    item.images = offer.images
+    item.smallImages = offer.small_images
+
+    return item
+}
+
+function setData(item) {
+    item = setPriceData(item)
+    item = setFullImages(item)
+    item = setBonusData(item)
+    item = setRejectUnnecessaryProps(item)
+    
+    return item
+}
+
+
 export const getProduct = async(id) => {
 
     let res = await KirguSource.getProduct(id)
-    res = setOfferPrice(res) 
-    res = setOfferProperties(res)
-    res = setPriceData(res)
-    res = setFullImages(res)
-    res = setBonusData(res)
-    res = setRejectUnnecessaryProps(res)
+    
+    if(res.offers) {
+        res = setOfferData(res, res.offers[0].id) 
+    }
+
+    res = setData(res)
     res = await setRatingData(res)
 
     return res
+}
+
+export const changeOffer = (item, offerId) => {
+    item = setOfferData(item, offerId) 
+    item = setData(item)
+    return item
 }

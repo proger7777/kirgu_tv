@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { setImagePath } from "../utils/images";
 import ProductSmalImgItem from "./ProductSmalImgItem";
 
@@ -11,6 +11,11 @@ const ProductImagesBlock = ({smallImages, images}) => {
         setSelectImage(image[0])
         setActiveSmallImg(image[1])
     }
+
+    useEffect(() => {
+        console.log(111555)
+
+    }, [])
 
     return(
         <>

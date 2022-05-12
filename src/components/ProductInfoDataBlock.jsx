@@ -6,11 +6,11 @@ import { ProductContext } from "../context";
 
 const ProductInfoDataBlock = ({item}) => {
 
-    const {changeOffer} = useContext(ProductContext)
+    const {onChangeOffer} = useContext(ProductContext)
 
     let offersOptions = []
 
-    if(item.offers.length > 1) {
+    if(item.offers) {
         item.offers.forEach(i => {
             const label = i.name.match(/\((.+?)\)/)[1]
             offersOptions.push({ value: i.id, label: label })
@@ -59,12 +59,12 @@ const ProductInfoDataBlock = ({item}) => {
                 </div>
             }
 
-            {item.offers.length > 1 &&
+            {item.offers &&
                 <div>
                     <p className='text-[16px]'>Опции</p>
                     <Select
                         options={offersOptions} 
-                        onChange={changeOffer}
+                        onChange={onChangeOffer}
                         defaultValue={offersOptions[0]}
                         className='w-[322px] h-[40px] mt-[10px] mb-[10px] text-[14px] rounded-[4px]' 
                     />
