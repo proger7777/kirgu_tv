@@ -6,7 +6,7 @@ const ProductInfoBlock = ({item, open}) => {
 
     return(
         <div className={`${setHidden(!open)} flex space-x-[30px]`}>
-            <ProductImagesBlock smallImages={item.small_images} images={item.images} />
+            <ProductImagesBlock images={item.images} />
             <ProductInfoDataBlock item={item} />
         </div>
     )

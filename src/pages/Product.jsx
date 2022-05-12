@@ -21,10 +21,7 @@ const Product = () => {
     const [fetchProduct, isProductLoading, productError] = useFetching(async(catId, id) => {
 
         const resultAllCats = await getCategories()
-
         const resProduct = await getProduct(id)
-
-        console.log(resProduct)
 
         if(catId) {
             const res = getCatCrumbs(catId, resultAllCats)

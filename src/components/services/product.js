@@ -63,7 +63,7 @@ function setOfferData(item, offerId) {
     item.price_3 = offer.price_3
     item.properties = offer.properties
     item.images = offer.images
-    item.smallImages = offer.small_images
+    item.small_images = offer.small_images
 
     return item
 }

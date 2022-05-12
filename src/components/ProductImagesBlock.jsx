@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { setImagePath } from "../utils/images";
 import ProductSmalImgItem from "./ProductSmalImgItem";
 
-const ProductImagesBlock = ({smallImages, images}) => {
+const ProductImagesBlock = ({images}) => {
 
     const [activeSmallImg, setActiveSmallImg] = useState(images[0][1])
     const [selectImage, setSelectImage] = useState(images[0][0])
@@ -13,9 +13,8 @@ const ProductImagesBlock = ({smallImages, images}) => {
     }
 
     useEffect(() => {
-        console.log(activeSmallImg)
-
-    }, [])
+        console.log(123)
+    }, [images])
 
     return(
         <>
