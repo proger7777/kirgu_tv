@@ -52,6 +52,7 @@ function App() {
             <Route path='catalog/:cat_id/product/:id' element={<Product />} />
             <Route path='product/:id' element={<Product />} />
             <Route path='search' element={<Search />} />
+            <Route path='search/:query' element={<Search />} />
             <Route path='*' element={<NotFound404 />} />
           </Routes>
         </BrowserRouter>

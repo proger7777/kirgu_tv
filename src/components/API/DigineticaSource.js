@@ -14,7 +14,7 @@ class DigineticaSource {
         const offset = page * size 
 
         let params = {
-            st: 'Телевизор',
+            st: query,
             apiKey: this.digineticaApiKey,
             strategy: 'vectors_extended,zero_queries',
             fullData: true,

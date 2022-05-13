@@ -13,7 +13,8 @@ const ProductImagesBlock = ({images}) => {
     }
 
     useEffect(() => {
-        console.log(123)
+        setSelectImage(images[0][1])
+        setActiveSmallImg(images[0][1])
     }, [images])
 
     return(

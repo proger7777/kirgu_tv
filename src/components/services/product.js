@@ -39,21 +39,6 @@ async function setRatingData(item) {
     return item
 }
 
-function setRejectUnnecessaryProps(item) {
-    if(item.properties) {
-        item.properties['Картинки'] = null
-        item.properties['Характеристики'] = null
-        item.properties['Сумма бонусов для товара с характеристикой'] = null
-        item.properties['Сумма бонусов для товара без характеристики'] = null
-        item.properties['Возм исп начисление бонусы без характеристики'] = null
-        item.properties['Возм исп списывать бонусы без характеристики'] = null
-        item.properties['Возм исп начисление бонусы с характеристикой'] = null
-        item.properties['Возм исп списывать бонусы с характеристикой'] = null
-    }
-
-    return item
-}
-
 function setOfferData(item, offerId) {
 
     const offer = item.offers.find(i => i.id === offerId)
@@ -72,11 +57,47 @@ function setData(item) {
     item = setPriceData(item)
     item = setFullImages(item)
     item = setBonusData(item)
-    item = setRejectUnnecessaryProps(item)
     
     return item
 }
 
+async function setModuleData(item) {
+    let moduleIds = []
+    item.module_elements.forEach(i => moduleIds.push(i))
+    moduleIds = moduleIds.splice(1)
+
+    item.modules = []
+    let modulesPrice = 0
+
+    for (const id of moduleIds) {
+        let res = await KirguSource.getProduct(id)
+        
+        if(res.offers) {
+            res = setOfferData(res, res.offers[0].id) 
+        }
+        
+        res = setData(res)
+        modulesPrice += res.price
+        item.modules.push({ id: id, name: res.name, price: res.price })
+    }
+
+    item.modulesPrice = modulesPrice
+
+    return item
+}
+
+export const setProductUrl = (catalogId, productId, fromAllCats) => {
+
+    let catUrl = ''
+
+    if(catalogId) catUrl += `/catalog/${catalogId}`
+
+    catUrl += `/product/${productId}`
+
+    if(fromAllCats) catUrl += '?from_all_cats=true'
+
+    return catUrl
+}
 
 export const getProduct = async(id) => {
 
@@ -84,6 +105,10 @@ export const getProduct = async(id) => {
     
     if(res.offers) {
         res = setOfferData(res, res.offers[0].id) 
+    }
+
+    if(res.module_elements) {
+        res = await setModuleData(res)
     }
 
     res = setData(res)

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import Icons from "./Icons";
-import Select from 'react-select'
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductContext } from "../context";
+import { setProductUrl } from "./services/product";
 
 const ProductInfoDataBlock = ({item}) => {
 
-    const {onChangeOffer} = useContext(ProductContext)
+    const {onChangeOffer, fromAllCats} = useContext(ProductContext)
 
     let offersOptions = []
 
@@ -17,6 +17,17 @@ const ProductInfoDataBlock = ({item}) => {
         })
     }
 
+    const [activeOffer, setActiveOffer] = useState(offersOptions[0])
+
+    function setOffer(selectOffer) {
+        setActiveOffer(selectOffer)
+        onChangeOffer(selectOffer.value)
+    }
+
+
+
+    const price = item.modulesPrice ? item.modulesPrice : item.price
+
     return(
         <div className='w-[420px] border border-[#e6e6e6] rounded-[5px] p-[50px] pb-0'>
             <p>
@@ -25,7 +36,7 @@ const ProductInfoDataBlock = ({item}) => {
             </p>
 
             <div className='flex items-center mt-[20px]'>
-                <span className='text-[24px] font-semibold mr-[10px]'>{item.price.toLocaleString('ru-RU')} ₽</span>
+                <span className='text-[24px] font-semibold mr-[10px]'>{price.toLocaleString('ru-RU')} ₽</span>
                 {item.old_price > 0 && <span className='text-[14px] text-[#8F8F8F] line-through'>{item.old_price.toLocaleString('ru-RU')} ₽</span>}
             </div>
 
@@ -58,18 +69,24 @@ const ProductInfoDataBlock = ({item}) => {
                     <div className='ml-[12px]'><p className='text-[16px]'>На витрине</p></div>
                 </div>
             }
+       
+            {item.offers && 
+                <>
+                    <p className='text-[16px] font-semibold mt-[30px] mb-[10px]'>Опции</p>
+                    {offersOptions.map(i => 
+                        <button key={i.value} onClick={() => setOffer(i) } className={`${i.value === activeOffer.value && 'border-green'} flex mb-[10px] items-center pl-[12px] pr-[12px] h-[35px] rounded-[4px] border text-[14px] cursor-pointer`}>{i.label}</button>
+                    )}
+                </>
+            }   
 
-            {item.offers &&
-                <div>
-                    <p className='text-[16px]'>Опции</p>
-                    <Select
-                        options={offersOptions} 
-                        onChange={onChangeOffer}
-                        defaultValue={offersOptions[0]}
-                        className='w-[322px] h-[40px] mt-[10px] mb-[10px] text-[14px] rounded-[4px]' 
-                    />
-                </div>
-            }
+            {item.modules && 
+                <>
+                    <p className='text-[16px] font-semibold mt-[30px] mb-[10px]'>Модули</p>
+                    {item.modules.map(i => 
+                        <Link key={i.id} to={setProductUrl(item.section, i.id, fromAllCats)} className='table mb-[10px] pl-[12px] pr-[12px] pt-[6px] pb-[6px] rounded-[4px] border text-[14px]'>{i.name}</Link>
+                    )}
+                </>
+            }   
 
         </div>
     )
