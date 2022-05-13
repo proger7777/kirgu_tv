@@ -19,6 +19,7 @@ import Search from "./pages/Search";
 import NotFound404 from "./pages/NotFound404";
 import Contacts from "./pages/Contacts";
 import PausePrompBlock from "./components/PausePrompBlock";
+import SearchKeyword from "./pages/SearchKeyword";
 
 function App() {
 
@@ -51,7 +52,7 @@ function App() {
             <Route path='catalog/:id' element={<Catalog />} />
             <Route path='catalog/:cat_id/product/:id' element={<Product />} />
             <Route path='product/:id' element={<Product />} />
-            <Route path='search' element={<Search />} />
+            <Route path='search' element={<SearchKeyword />} />
             <Route path='search/:query' element={<Search />} />
             <Route path='*' element={<NotFound404 />} />
           </Routes>
