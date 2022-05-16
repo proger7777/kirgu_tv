@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getTitleFromLinkStock } from '../../utils/str';
+import { getTitleFromLinkStock } from '../services/str';
 
 class KirguSource {
     

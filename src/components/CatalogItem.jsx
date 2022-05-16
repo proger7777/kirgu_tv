@@ -1,7 +1,7 @@
 import React, {  }  from 'react';
 import { Link } from "react-router-dom";
-import { setImagePath } from "../utils/images";
-import { truncate } from "../utils/str";
+import { setImagePath } from "./services/images";
+import { truncate } from "./services/str";
 import Icons from "./Icons";
 import { setProductUrl } from "./services/product";
 

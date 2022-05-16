@@ -1,4 +1,4 @@
-import noPhoto from '../images/no_photo.png';
+import noPhoto from '../../images/no_photo.png';
 
 export const setImagePath = (image, withHost = true) => {
 

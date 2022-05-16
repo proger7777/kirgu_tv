@@ -1,5 +1,5 @@
 import React, {  }  from 'react';
-import { setHidden } from "../utils/classes";
+import { setHidden } from "./services/classes";
 
 const ProductDescBlock = ({item, open}) => {
 

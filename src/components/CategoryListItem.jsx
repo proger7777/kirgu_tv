@@ -1,6 +1,6 @@
 import React, {  }  from 'react';
 import { Link } from "react-router-dom";
-import { setImagePath } from "../utils/images";
+import { setImagePath } from "./services/images";
 import { setCatUrl } from "./services/categories";
 
 const CategoryListItem = ({cat, allCats, fromAllCats}) => {

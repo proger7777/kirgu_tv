@@ -1,7 +1,7 @@
 import React, {  }  from 'react';
 import Carousel from 'nuka-carousel';
 import { Link } from 'react-router-dom';
-import { setImagePath } from '../utils/images';
+import { setImagePath } from './services/images';
 
 const SwiperSl = ({sliders}) => {
 

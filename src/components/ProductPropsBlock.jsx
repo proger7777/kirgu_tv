@@ -1,4 +1,4 @@
-import { setHidden } from "../utils/classes";
+import { setHidden } from "./services/classes";
 
 const ProductPropsBlock = ({item, open}) => {
 
