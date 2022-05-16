@@ -1,0 +1,60 @@
+{
+  "name": "",
+  "homepage": "http://tv.kirgu.ru",
+  "version": "0.1.0",
+  "private": true,
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "^14.2.0",
+    "axios": "^0.27.2",
+    "localforage": "^1.10.0",
+    "npm-check-updates": "^13.0.0",
+    "nuka-carousel": "^5.0.16",
+    "rc-slider": "^10.0.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-idle-timer": "^5.2.0",
+    "react-imask": "^6.4.2",
+    "react-redux": "^8.0.1",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
+    "react-select": "^5.3.2",
+    "react-speech-recognition": "^3.9.1",
+    "react-spinners": "^0.12.0",
+    "react-svg-sprite": "^1.0.8",
+    "reduct": "^3.3.1",
+    "redux": "^4.2.0",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.13",
+    "postcss-import": "^14.1.0",
+    "sass": "^1.51.0",
+    "tailwindcss": "^3.0.24"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

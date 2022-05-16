@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5ed37b1a.css",
+    "main.js": "/static/js/main.41d14ced.js",
+    "static/media/404.svg": "/static/media/404.0d2e41e08a2de8c84f7332c8b06f6285.svg",
+    "static/media/stock.svg": "/static/media/stock.9d81ff79acb834bd4028733cb577ac65.svg",
+    "static/media/delivery.svg": "/static/media/delivery.a30134b9cc8e8854bf20c6972a5ba411.svg",
+    "static/media/bonus_cart.svg": "/static/media/bonus_cart.a1781b9296bf622c1af66685a828c52c.svg",
+    "static/media/usloviya.svg": "/static/media/usloviya.8756f55531a61ba295c92f497ade00ab.svg",
+    "static/media/contacts.svg": "/static/media/contacts.7b40da8dde7260af2f9d530149376e7e.svg",
+    "static/media/icons.svg": "/static/media/icons.85499add4df48bf7ad67779104e96b5e.svg",
+    "static/media/sborka.svg": "/static/media/sborka.44dd764f570562e33c8ecfd7f420e5dc.svg",
+    "static/media/kirgu.svg": "/static/media/kirgu.d0f9d177a1685092eff14f4ce770f31c.svg",
+    "index.html": "/index.html",
+    "main.5ed37b1a.css.map": "/static/css/main.5ed37b1a.css.map",
+    "main.41d14ced.js.map": "/static/js/main.41d14ced.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5ed37b1a.css",
+    "static/js/main.41d14ced.js"
+  ]
+}
