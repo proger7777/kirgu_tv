@@ -5,8 +5,9 @@ import SearchKeywordBlock from "../components/SearchKeywordBlock";
 import Layout from "../layout";
 import { useLocation, useNavigate } from "react-router-dom";
 import Speech from "../components/Speech";
+import SearchBlock from "../components/SearchBlock";
 
-const SearchKeyword = () => {
+const SearchForm = () => {
     
     const navigate = useNavigate()
     const searchUrl = useLocation().search;
@@ -49,7 +50,7 @@ const SearchKeyword = () => {
         clearRef.current.classList.add('hidden')
     }
 
-    function onKeyupSearchInp() {
+    function keyupSearchInp() {
         if(searchInpRef.current.value !== '') {
             clearRef.current.classList.remove('hidden')
         } else {
@@ -70,31 +71,26 @@ const SearchKeyword = () => {
         if(voiceParamPres) setQueryVoiceType(true)
     }, [voiceParamPres])
 
-    console.log(queryVoiceType)
-
     return(
         <Layout crumbs={crumbs} activeMenu='search'>
-            <div className='flex flex-col'>
-                <div className='flex h-[80px] text-[22px] mb-[20px]'>
-                    <div className='relative'>
-                        <input defaultValue={searchText} onKeyUp={onKeyupSearchInp} ref={searchInpRef} type='text' autoFocus className='focus:border-green focus:outline-none w-[1421px] h-full  pl-[30px] pr-[70px] border border-[#e6e6e6] rounded-tl-[5px] rounded-bl-[5px]' placeholder='Поиск' />
-                        
-                        <span ref={clearRef} onClick={clearSearchVal} className='absolute top-[27px] right-[30px] hidden cursor-pointer'>
-                            <Icons name='close' className='w-[24px] h-[24px]' />
-                        </span>
-                    </div>
-                    <button type='button' onClick={submitSearch} className='w-[300px] bg-[#008954] flex justify-center items-center text-white rounded-tr-[5px] rounded-br-[5px]'>Поиск</button>
-                </div>
+            <SearchBlock
+                value={searchText}
+                searchInpRef={searchInpRef}
+                clearRef={clearRef}
+                onSubmitSearch={submitSearch}
+                onClearSearchVal={clearSearchVal}
+                onKeyupSearchInp={keyupSearchInp}
+            >
 
                 { queryVoiceType 
                     ? <Speech onStop={submitSearch} onChange={(val) => setVoiceVal(val) } classes='mt-[150px]' />
                     : <SearchKeywordBlock write={writeLetter} clear={clearLetter} /> 
                 }        
-        </div>
+            </SearchBlock>
         </Layout>
     )
 
 }
 
 
-export default SearchKeyword;
+export default SearchForm;

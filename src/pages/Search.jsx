@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useState } from "react";
 import DigineticaSource from "../components/API/DigineticaSource";
 import CatalogList from "../components/CatalogList";
@@ -10,6 +9,7 @@ import { useFetching } from "../hooks/useFetching";
 import Layout from "../layout";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import SearchBlock from "../components/SearchBlock";
 
 const Search = () => {
     
@@ -63,18 +63,13 @@ const Search = () => {
 
     return(
         <Layout crumbs={crumbs} activeMenu='search'>
-            <div className='flex flex-col'>
-                <div className='flex h-[80px] text-[22px] mb-[20px]'>
-                    <div className='relative'>
-                        <input defaultValue={params.query} onClick={newSearchPage} type='text' autoFocus className='focus:border-green focus:outline-none w-[1421px] h-full  pl-[30px] pr-[70px] border border-[#e6e6e6] rounded-tl-[5px] rounded-bl-[5px]' placeholder='Поиск' />
-                        
-                        <span onClick={() => navigate('/search')} className='absolute top-[27px] right-[30px] cursor-pointer'>
-                            <Icons name='close' className='w-[24px] h-[24px]' />
-                        </span>
-                    </div>
-                    <button type='button' onClick={submitSearch} className='w-[300px] bg-[#008954] flex justify-center items-center text-white rounded-tr-[5px] rounded-br-[5px]'>Поиск</button>
-                </div>
-
+            <SearchBlock
+                value={params.query}
+   
+                onSubmitSearch={submitSearch}
+                onClearSearchVal={() => navigate('/search')}
+                onClickSearchInp={newSearchPage}
+            >
                 <div className='flex justify-between'>
                     {filters && <FiltersCatalog filterData={filters} setFilterProp={setFilterProp} /> }
                     <div className='w-[1363px]'>
@@ -98,7 +93,7 @@ const Search = () => {
                     </div>
                 </div>
                 
-        </div>
+            </SearchBlock>
         </Layout>
     )
 
