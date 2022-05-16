@@ -2,7 +2,6 @@ import { useState } from "react";
 import DigineticaSource from "../components/API/DigineticaSource";
 import CatalogList from "../components/CatalogList";
 import FiltersCatalog from "../components/FiltersCatalog";
-import Icons from "../components/Icons";
 import Loadering from "../components/Loadering";
 import Pagination from "../components/Pagination";
 import { useFetching } from "../hooks/useFetching";
