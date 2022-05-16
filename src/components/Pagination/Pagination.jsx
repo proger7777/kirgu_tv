@@ -27,10 +27,10 @@ const Pagination = ({onPageChange, totalCount, currentPage, pageSize, className 
             
             <div className='flex justify-center items-center space-x-[12px] text-[16px] pl-[20px] pr-[20px] border-r border-l border-[#f5f5f5]'>
                 {paginationRange.map(pageNumber => {
-                    if (pageNumber === DOTS) return <div key={Date.now() + pageNumber}>&#8230;</div>;
+                    if (pageNumber === DOTS) return <div key={Date.now() + Math.random().toFixed(3)}>&#8230;</div>;
                     
                     return (
-                        <div key={Date.now() + pageNumber} className={`${pageNumber === currentPage ? activePageNumCl : '' } cursor-pointer`} onClick={() => onPageChange(pageNumber)}>
+                        <div key={Date.now() + Math.random().toFixed(3)} className={`${pageNumber === currentPage ? activePageNumCl : '' } cursor-pointer`} onClick={() => onPageChange(pageNumber)}>
                             {pageNumber}
                         </div> 
                     );

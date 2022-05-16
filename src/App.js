@@ -36,7 +36,7 @@ function App() {
 
   return (
       <CatContext.Provider value={{homeCategories}}>
-        <BrowserRouter basename='/tv'>
+        <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
             <Route path='info' element={<Info />} />

@@ -1,19 +1,20 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import Icons from "../components/Icons";
 import SearchKeywordBlock from "../components/SearchKeywordBlock";
 import Layout from "../layout";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Speech from "../components/Speech";
 
 const SearchKeyword = () => {
     
-    const params = useParams()
     const navigate = useNavigate()
     const searchUrl = useLocation().search;
-    const voiceParamPres = new URLSearchParams(searchUrl).get('voice') === 'true'
+    const voiceParamPres = new URLSearchParams(searchUrl).get('voice')
 
-    const [queryVoiceType, setQueryVoiceType] = useState(voiceParamPres)
+    const [queryVoiceType, setQueryVoiceType] = useState(false)
+
+    const searchText = new URLSearchParams(searchUrl).get('text')
 
     const searchInpRef = useRef()
     const clearRef = useRef()
@@ -65,12 +66,18 @@ const SearchKeyword = () => {
         clearRef.current.classList.remove('hidden')
     }
 
+    useEffect(() => {
+        if(voiceParamPres) setQueryVoiceType(true)
+    }, [voiceParamPres])
+
+    console.log(queryVoiceType)
+
     return(
         <Layout crumbs={crumbs} activeMenu='search'>
             <div className='flex flex-col'>
                 <div className='flex h-[80px] text-[22px] mb-[20px]'>
                     <div className='relative'>
-                        <input defaultValue={params.query} onKeyUp={onKeyupSearchInp} ref={searchInpRef} type='text' autoFocus className='focus:border-green focus:outline-none w-[1421px] h-full  pl-[30px] pr-[70px] border border-[#e6e6e6] rounded-tl-[5px] rounded-bl-[5px]' placeholder='Поиск' />
+                        <input defaultValue={searchText} onKeyUp={onKeyupSearchInp} ref={searchInpRef} type='text' autoFocus className='focus:border-green focus:outline-none w-[1421px] h-full  pl-[30px] pr-[70px] border border-[#e6e6e6] rounded-tl-[5px] rounded-bl-[5px]' placeholder='Поиск' />
                         
                         <span ref={clearRef} onClick={clearSearchVal} className='absolute top-[27px] right-[30px] hidden cursor-pointer'>
                             <Icons name='close' className='w-[24px] h-[24px]' />
@@ -80,7 +87,7 @@ const SearchKeyword = () => {
                 </div>
 
                 { queryVoiceType 
-                    ? <Speech onChange={(val) => setVoiceVal(val) } classes='mt-[150px]' />
+                    ? <Speech onStop={submitSearch} onChange={(val) => setVoiceVal(val) } classes='mt-[150px]' />
                     : <SearchKeywordBlock write={writeLetter} clear={clearLetter} /> 
                 }        
         </div>

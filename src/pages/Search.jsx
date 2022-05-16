@@ -54,7 +54,7 @@ const Search = () => {
     }
 
     function newSearchPage() {
-        navigate('/search')
+        navigate('/search?text=' + params.query)
     }
 
     useEffect(() => {

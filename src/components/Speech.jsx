@@ -1,7 +1,8 @@
 import { useRef, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import useDebounce from "../hooks/useDebounce";
 
-const Speech = ({onChange, classes}) => {
+const Speech = ({onChange, onStop, classes}) => {
 
     const { transcript } = useSpeechRecognition();
  
@@ -11,13 +12,15 @@ const Speech = ({onChange, classes}) => {
         }  
     }, []);
 
-    let context, requestId, analyser, array, src, timer;
+    let context, requestId, analyser, array, src;
 
     let wrapRef = useRef(null)
 
     let num = 16
 
     let stream = null
+
+    const debouncedSearchTerm = useDebounce(transcript, 1500);
 
     array = new Uint8Array(num * 2)
 
@@ -52,16 +55,15 @@ const Speech = ({onChange, classes}) => {
         }
     }
 
- 
+    useEffect(() => {
+        if(debouncedSearchTerm) onStop()
+    }, [debouncedSearchTerm])
 
     useEffect(() => {
-        
-
+        onChange(transcript)
     }, [transcript])
 
     useEffect(() => {
-      
-
         startVoice()
     }, [])
 
