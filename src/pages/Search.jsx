@@ -57,6 +57,10 @@ const Search = () => {
         navigate('/search?text=' + params.query)
     }
 
+    function clearSearch() {
+        navigate('/search')
+    }
+
     useEffect(() => {
         search()
     }, [currentPage])
@@ -65,9 +69,8 @@ const Search = () => {
         <Layout crumbs={crumbs} activeMenu='search'>
             <SearchBlock
                 value={params.query}
-   
                 onSubmitSearch={submitSearch}
-                onClearSearchVal={() => navigate('/search')}
+                onClearSearchVal={clearSearch}
                 onClickSearchInp={newSearchPage}
             >
                 <div className='flex justify-between'>

@@ -8,7 +8,7 @@ const SearchBlock = ({children, value, searchInpRef, clearRef, onSubmitSearch, o
                 <div className='relative'>
                     <input ref={searchInpRef} defaultValue={value} onClick={onClickSearchInp} onKeyUp={onKeyupSearchInp} type='text' autoFocus className='focus:border-green focus:outline-none w-[1421px] h-full  pl-[30px] pr-[70px] border border-[#e6e6e6] rounded-tl-[5px] rounded-bl-[5px]' placeholder='Поиск' />
                     
-                    <span ref={clearRef} onClick={onClearSearchVal} className='absolute top-[27px] right-[30px] hidden cursor-pointer'>
+                    <span ref={clearRef} onClick={onClearSearchVal} className={`${!value && 'hidden'} absolute top-[27px] right-[30px] cursor-pointer`}>
                         <Icons name='close' className='w-[24px] h-[24px]' />
                     </span>
                 </div>
