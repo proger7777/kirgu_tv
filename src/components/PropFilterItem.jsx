@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import Icons from "./Icons";
 
 const PropFilterItem = ({pr, openData, openAccord, setFilterProp}) => {

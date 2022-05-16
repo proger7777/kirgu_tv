@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { useState } from "react";
 import DigineticaSource from "../components/API/DigineticaSource";
 import CatalogList from "../components/CatalogList";
@@ -16,6 +17,7 @@ const Search = () => {
     const [filters, setFilters] = useState()
     const [totalCount, setTotalCount] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
+
     const navigate = useNavigate()
 
     const params = useParams()
@@ -26,6 +28,7 @@ const Search = () => {
 
     const [search, searchLoading, searchError] = useFetching(async() => {
         const result = await DigineticaSource.search(params.query, currentPage)
+
         const { products, filters, totalCount } = result
 
         setSearchItems(products)
@@ -66,6 +69,7 @@ const Search = () => {
 
     return(
         <Layout crumbs={crumbs} activeMenu='search'>
+
             <SearchBlock
                 value={params.query}
                 onSubmitSearch={submitSearch}

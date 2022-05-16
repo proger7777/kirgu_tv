@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { setHidden } from "../utils/classes";
 import ProductImagesBlock from "./ProductImagesBlock";
 import ProductInfoDataBlock from "./ProductInfoDataBlock";

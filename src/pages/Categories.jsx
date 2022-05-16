@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { useEffect, useState } from "react";
 import { useFetching } from "../hooks/useFetching";
 import { getCategories, getCategoriesById } from "../components/services/categories";

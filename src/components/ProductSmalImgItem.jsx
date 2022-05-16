@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { setImagePath } from "../utils/images";
 
 const ProductSmalImgItem = ({image, activeImg, showImage}) => {

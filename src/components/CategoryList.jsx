@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import CategoryListItem from "./CategoryListItem";
 
 const CategoryList = ({categories, allCats, fromAllCats}) => {

@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { Link } from "react-router-dom";
 import Icons from "./Icons";
 import { useContext, useState } from "react";
@@ -24,8 +25,6 @@ const ProductInfoDataBlock = ({item}) => {
         onChangeOffer(selectOffer.value)
     }
 
-
-
     const price = item.modulesPrice ? item.modulesPrice : item.price
 
     return(
@@ -37,6 +36,7 @@ const ProductInfoDataBlock = ({item}) => {
 
             <div className='flex items-center mt-[20px]'>
                 <span className='text-[24px] font-semibold mr-[10px]'>{price.toLocaleString('ru-RU')} ₽</span>
+
                 {item.old_price > 0 && <span className='text-[14px] text-[#8F8F8F] line-through'>{item.old_price.toLocaleString('ru-RU')} ₽</span>}
             </div>
 

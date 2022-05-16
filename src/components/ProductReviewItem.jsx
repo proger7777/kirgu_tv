@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import Icons from "./Icons";
 import userPhoto from '../images/user.png';
 

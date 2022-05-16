@@ -1,9 +1,8 @@
+import React, {  }  from 'react';
 import PriceFilter from "./PriceRange/PriceFilter";
 import PropFilters from "./PropFilters";
 
 const FiltersCatalog = ({height, filterData, setFilterProp, setPriceFilter}) => {
-
-    console.log(filterData.price)
 
     return (
         <div className='w-[256px] min-h-[765px]'>

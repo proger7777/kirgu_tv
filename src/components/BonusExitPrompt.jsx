@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import BgBlock from "./BgBlock";
 
 const BonusExitPrompt = ({confirm, close}) => {

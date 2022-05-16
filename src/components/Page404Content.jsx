@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { Link } from "react-router-dom";
 import Photo404 from '../images/404.svg';
 

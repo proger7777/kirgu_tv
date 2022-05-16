@@ -99,6 +99,7 @@ export const setProductUrl = (catalogId, productId, fromAllCats) => {
     return catUrl
 }
 
+
 export const getProduct = async(id) => {
 
     let res = await KirguSource.getProduct(id)

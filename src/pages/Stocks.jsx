@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { useEffect, useState } from "react";
 import KirguSource from "../components/API/KirguSource";
 import StockItem from "../components/StockItem";

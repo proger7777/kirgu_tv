@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useFetching } from "../hooks/useFetching";
@@ -18,7 +19,6 @@ const Product = () => {
     const [crumbs, setСrumbs] = useState([])
 
     const [allCats, setAllCats] = useState()
-    
 
     const [mainCatId, setMainCatId] = useState()
 

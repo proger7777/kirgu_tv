@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import stockSvg from '../images/stock.svg'
 import usloviyaSvg from '../images/usloviya.svg'
 import bonusCartSvg from '../images/bonus_cart.svg'  

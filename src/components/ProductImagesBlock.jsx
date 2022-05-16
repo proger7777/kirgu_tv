@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { useEffect, useState } from "react";
 import { setImagePath } from "../utils/images";
 import ProductSmalImgItem from "./ProductSmalImgItem";

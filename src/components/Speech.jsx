@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { useRef, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import useDebounce from "../hooks/useDebounce";
@@ -8,7 +9,7 @@ const Speech = ({onChange, onStop, classes}) => {
  
     useEffect(() => {
         if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-          alert("Упс, ваш браузер не поддерживает!");
+          window.location.href = '/search'
         }  
     }, []);
 

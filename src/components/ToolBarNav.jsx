@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { useContext } from "react";
 import { CatContext } from "../context";
 import { Link } from "react-router-dom";

@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import Layout from "../layout";
 import Page404Content from "../components/Page404Content";
 

@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ProductContext } from "../context";
@@ -30,6 +31,7 @@ const ProductContent = ({item, fromAllCats}) => {
     function openPartFnc(currEl, part) {
         setActivePart(part)
     }
+
 
     function onChangeOffer(val) {
         item = changeOffer(item, val)

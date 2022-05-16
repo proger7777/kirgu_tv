@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import { Link } from "react-router-dom";
 import { setImagePath } from "../utils/images";
 import { truncate } from "../utils/str";

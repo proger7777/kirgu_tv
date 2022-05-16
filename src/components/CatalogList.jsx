@@ -1,3 +1,4 @@
+import React, {  }  from 'react';
 import CatalogItem from "./CatalogItem";
 
 const CatalogList = ({catalog, catalogId, fromAllCats}) => {
