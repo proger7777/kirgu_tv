@@ -1,21 +1,14 @@
 import React, {  }  from 'react';
 import { Link } from "react-router-dom";
-import { setImagePath } from "../utils/images";
-import { truncate } from "../utils/str";
+import { setImagePath } from "./services/images";
+import { truncate } from "./services/str";
 import Icons from "./Icons";
+import { setProductUrl } from "./services/product";
 
 const CatalogItem = ({cat, catalogId, fromAllCats}) => {
 
-    let catUrl = ''
-
-    if(catalogId) catUrl += `/catalog/${catalogId}`
-
-    catUrl += `/product/${cat.id}`
-
-    if(fromAllCats) catUrl += '?from_all_cats=true'
-
     return (
-        <Link to={catUrl} className='product_item flex flex-col items-center w-[322px] h-[350px] border border-[#e6e6e6] pl-[20px] pr-[20px]'>
+        <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[322px] h-[350px] border border-[#e6e6e6] pl-[20px] pr-[20px]'>
             <img src={setImagePath(cat.image_url)} alt='' className='object-contain h-[162px] mt-[20px] mb-[12px]' />
             
             <span className='flex mb-[10px]'>

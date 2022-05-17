@@ -1,5 +1,4 @@
-import React, {  }  from 'react';
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Icons from "./Icons";
 import { CatContext } from "../context";

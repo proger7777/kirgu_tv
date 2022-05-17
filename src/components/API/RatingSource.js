@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class RatingSource {
   
-    static siteUrl = "http://api.mneniya.pro/v2.1/clients/9b28b175-52a6-43b3-b262-a0c14149d22e"
+    static siteUrl = "https://api.mneniya.pro/v2.1/clients/9b28b175-52a6-43b3-b262-a0c14149d22e"
 
     static async get(id) {
         const response = await axios.get(this.siteUrl + `/reviews/Product/Aggregated/${id}`)

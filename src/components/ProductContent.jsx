@@ -10,7 +10,7 @@ import ProductPropsBlock from "./ProductPropsBlock";
 import ProductReviewsBlock from "./ProductReviewsBlock";
 import { changeOffer } from "./services/product";
 
-const ProductContent = ({item}) => {
+const ProductContent = ({item, fromAllCats}) => {
 
     const [product, setProduct] = useState(item)
 
@@ -32,8 +32,9 @@ const ProductContent = ({item}) => {
         setActivePart(part)
     }
 
-    function onChangeOffer(e) {
-        item = changeOffer(item, e.value)
+
+    function onChangeOffer(val) {
+        item = changeOffer(item, val)
         setProduct({...item})
     }
 
@@ -48,7 +49,7 @@ const ProductContent = ({item}) => {
             </nav>
 
             <div className='mt-[100px]'>
-                <ProductContext.Provider value={{onChangeOffer}}>
+                <ProductContext.Provider value={{onChangeOffer, fromAllCats}}>
                     <ProductInfoBlock item={product} open={activePart === 'info'} />
                     {product.description !== product.name && <ProductDescBlock item={product} open={activePart === 'desc'} />}
                     <ProductPropsBlock item={product} open={activePart === 'props'} />

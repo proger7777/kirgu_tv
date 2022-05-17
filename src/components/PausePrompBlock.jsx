@@ -1,5 +1,4 @@
-import React, {  }  from 'react';
-import { useState } from "react";
+import React, { useState } from "react";
 import { useIdleTimer } from 'react-idle-timer' 
 
 const PausePrompBlock = (props) => {
@@ -20,7 +19,7 @@ const PausePrompBlock = (props) => {
         window.location.href = '/'
     }
 
-    const { start, pause } = useIdleTimer({
+    const { start } = useIdleTimer({
         onPrompt,
         onIdle,
         timeout: 1000 * 60 * 3,

@@ -4,28 +4,28 @@ class DigineticaSource {
 
     // Документация: https://docs.google.com/document/d/1SwxX-mbmyg2jmDtT5B5hncx0xbQXtU8OpZMApVaQuDI
   
-    static siteUrl = 'http://sort.diginetica.net/search'
+    static siteUrl = 'https://sort.diginetica.net/search'
     
     static digineticaApiKey = 'Q6D2T78B9Q'
-    
+
     static async search(query, page = 1, filters = []) {
 
         const size = 8
         const offset = page * size 
 
         let params = {
-            st: 'Телевизор',
+            st: query,
             apiKey: this.digineticaApiKey,
             strategy: 'vectors_extended,zero_queries',
             fullData: true,
-            useCategoryPrediction: false,
             withCorrection: true,
             size: size,
             withFacets: true,
             offset: offset,
             showUnavailable: true,
             sort: 'DEFAULT',
-            // filter: 'Операционная система:android',
+            // filter: 'Дисплей:Да'
+            // filter: 'Операционная система:linux',
             // filter: 'price:6189;70000'
         }
 
@@ -38,6 +38,8 @@ class DigineticaSource {
         const parseUrl = this.siteUrl + '?' + params
 
         const response = await axios.get(parseUrl)
+
+        console.log('data', response.data)
         
         let products = response.data.products
         

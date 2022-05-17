@@ -42,5 +42,6 @@ export const setPriceData = (item) => {
     item.price = parseInt(data.price)
     item.old_price = parseInt(data.oldPrice)
     item.skidka = parseInt(data.skidka)
+
     return item
 }

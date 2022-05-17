@@ -1,17 +1,9 @@
-import React, {  }  from 'react';
-import { useState } from "react";
+import React from "react";
 import BgBlock from "./BgBlock";
 import Icons from "./Icons";
 import NumbersBlock from "./NumbersBlock";
 
 const NumbersPriceFilter = ({set, clear, close, onSetup}) => {
-
-    const [price, setPrice] = useState(0)
-
-    function clearPrice() {
-        var newVal = price.substring(0, price.length - 1)
-        setPrice(newVal)
-    }
 
     return(
         <>

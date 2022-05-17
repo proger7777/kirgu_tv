@@ -5,8 +5,8 @@ import KirguSource from "../components/API/KirguSource";
 import Loadering from "../components/Loadering";
 import { useFetching } from "../hooks/useFetching";
 import Layout from "../layout";
-import { setImagePath } from "../utils/images";
-import { truncate } from "../utils/str";
+import { setImagePath } from "../components/services/images";
+import { truncate } from "../components/services/str";
 
 const StockId = () => {
     const params = useParams()

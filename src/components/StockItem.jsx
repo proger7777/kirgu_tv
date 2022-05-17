@@ -1,7 +1,7 @@
 import React, {  }  from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { setImagePath } from "../utils/images";
-import { truncate, getTitleFromLinkStock } from "../utils/str";
+import { setImagePath } from "./services/images";
+import { truncate, getTitleFromLinkStock } from "./services/str";
 
 const StockItem = ({stock}) => {
 

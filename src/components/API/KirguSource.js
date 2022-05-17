@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { getTitleFromLinkStock } from '../../utils/str';
+import { getTitleFromLinkStock } from '../services/str';
 
 class KirguSource {
     
-    static siteUrl = 'http://kirgu.ru/api'
+    static siteUrl = 'https://kirgu.ru/api'
     static siteUrl2 = 'http://api.kirgu.ru/api/1c-proxy?url=http://public.kirgu.ru:81/mobile/hs/exchangemobileapp'
 
     static async getCategories() {
