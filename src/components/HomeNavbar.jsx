@@ -7,27 +7,21 @@ const HomeNavbar = () => {
 
     const {homeCategories} = useContext(CatContext)
 
+    const navs = []
+
+    homeCategories.forEach(i => navs.push([`/category/${i.id}`, i.svg, i.name]))
+    navs.push(['/categories', 'cats', 'Все категории'])
+    navs.push(['/info', 'info', 'Информация'])
+
     return(
         <nav className='home_nav w-full flex justify-between mt-[50px]'>
-
-            {homeCategories && homeCategories.map(i => 
-                <Link key={i.id} to={`/category/${i.id}`} className='relative bg-[#F5F5F5] w-[324px] h-[210px]'>
-                    <Icons name={i.svg} className='w-[157px] h-[112px] m-auto mt-[26px]' />
-                    <span className='text-green absolute bottom-[17px] block w-full text-center font-bold'>{i.name}</span>
+            {navs.map((i, inx) => 
+                <Link key={inx} to={i[0]} className='relative bg-[#F5F5F5] w-[324px] h-[210px]'>
+                    <img src={require(`../images/${i[1]}.svg`)} alt='' className='w-[254px] h-[110px] m-auto mt-[40px]' />
+                    <span className='absolute bottom-[17px] block w-full text-center font-bold'>{i[2]}</span>
                 </Link>
             )}
-
-            <Link to='/categories' className='page_link relative bg-[#F5F5F5] w-[324px] h-[210px]'>
-                <Icons name='cats' className='w-[112px] h-[112px]  m-auto mt-[26px]'/>
-                <span className='text-green absolute bottom-[17px] block w-full text-center font-bold'>Все категории</span>
-            </Link>
-
-            <Link to='/info' className='relative bg-[#F5F5F5] w-[324px] h-[210px]'>
-                <Icons name='info' className='w-[112px] h-[112px] m-auto mt-[26px]'/>
-                <span className='text-green absolute bottom-[17px] block w-full text-center font-bold'>Информация</span>
-            </Link>
-
-    </nav>
+        </nav>
     )
 
 }
