@@ -3,13 +3,18 @@ import Carousel from 'nuka-carousel';
 import { Link } from 'react-router-dom';
 import { setImagePath } from './services/images';
 
-const SwiperSl = ({sliders}) => {
+const MainSlider = ({sliders}) => {
 
     return(
         <Carousel
+            easing='easeInOutElastic'
+            edgeEasing="easeOutCirc"
+            pauseOnHover={true}
             wrapAround={true}
+            dragging={true}
+            swiping={true}
             autoplay={true}
-            autoplayInterval={3000}
+            autoplayInterval={2000}
             renderCenterLeftControls={false}
             renderCenterRightControls={false}
         >
@@ -27,4 +32,4 @@ const SwiperSl = ({sliders}) => {
 }
 
 
-export default SwiperSl;
+export default MainSlider;
