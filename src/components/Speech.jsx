@@ -1,17 +1,14 @@
-import React, {  }  from 'react';
+import React, { useState }  from 'react';
 import { useRef, useEffect } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import useDebounce from "../hooks/useDebounce";
+import NoSupportSpeech from './NoSupportSpeech';
 
 const Speech = ({onChange, onStop, classes}) => {
 
     const { transcript } = useSpeechRecognition();
- 
-    useEffect(() => {
-        if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-          window.location.href = '/search'
-        }  
-    }, []);
+
+    const [noSupport, setNoSupport] = useState(false)
 
     let context, requestId, analyser, array, src;
 
@@ -42,7 +39,12 @@ const Speech = ({onChange, onStop, classes}) => {
             src.connect(analyser);
             loop();
         } catch(err) {
-            alert(err + '\r\n\ Отклонено. Страница будет обновлена!');
+            onStop()
+            setNoSupport(true)
+            setTimeout(function() {
+                window.location.href = '/search'
+            }, 2000)
+            
         }
     } 
 
@@ -77,14 +79,18 @@ const Speech = ({onChange, onStop, classes}) => {
     }, [])
 
     return(
-        <div className={`flex flex-col items-center justify-center ${classes}`}>
-            <h2 className='text-[35px] text-gray'>Говорите...</h2>
-            <div ref={wrapRef} className='flex items-center space-x-[30px] h-[300px]'>
-                {[...Array(num).keys()].map(i =>
-                    <span key={i} style={{height: '9px'}} className='w-[9px] bg-green rounded-[20px]'></span>
-                )} 
-            </div>   
-        </div>
+        <>
+            <div className={`flex flex-col items-center justify-center ${classes}`}>
+                <h2 className='text-[35px] text-gray'>Говорите...</h2>
+                <div ref={wrapRef} className='flex items-center space-x-[30px] h-[300px]'>
+                    {[...Array(num).keys()].map(i =>
+                        <span key={i} style={{height: '9px'}} className='w-[9px] bg-green rounded-[20px]'></span>
+                    )} 
+                </div>   
+            </div>
+
+            {noSupport && <NoSupportSpeech /> }
+        </>
     )
 
 }
