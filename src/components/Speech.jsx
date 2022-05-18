@@ -1,11 +1,13 @@
 import React, { useState }  from 'react';
 import { useRef, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import useDebounce from "../hooks/useDebounce";
 import NoSupportSpeech from './NoSupportSpeech';
 
 const Speech = ({onChange, onStop, classes}) => {
 
+    const naviate = useNavigate()
     const { transcript } = useSpeechRecognition();
 
     const [noSupport, setNoSupport] = useState(false)
@@ -39,12 +41,10 @@ const Speech = ({onChange, onStop, classes}) => {
             src.connect(analyser);
             loop();
         } catch(err) {
-            onStop()
             setNoSupport(true)
             setTimeout(function() {
-                window.location.href = '/search'
+                naviate('/search')
             }, 2000)
-            
         }
     } 
 
@@ -74,7 +74,7 @@ const Speech = ({onChange, onStop, classes}) => {
         return () => { 
             SpeechRecognition.stopListening() 
             window.cancelAnimationFrame(requestId)
-            stream.getTracks().forEach((track) => track.stop())
+            if(stream) stream.getTracks().forEach((track) => track.stop())
         }
     }, [])
 

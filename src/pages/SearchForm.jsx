@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
-import Icons from "../components/Icons";
 import SearchKeywordBlock from "../components/SearchKeywordBlock";
 import Layout from "../layout";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -13,7 +12,7 @@ const SearchForm = () => {
     const searchUrl = useLocation().search;
     const voiceParamPres = new URLSearchParams(searchUrl).get('voice')
 
-    const [queryVoiceType, setQueryVoiceType] = useState(false)
+    const [queryVoiceType, setQueryVoiceType] = useState(voiceParamPres)
 
     const searchText = new URLSearchParams(searchUrl).get('text')
 
@@ -68,7 +67,8 @@ const SearchForm = () => {
     }
 
     useEffect(() => {
-        if(voiceParamPres) setQueryVoiceType(true)
+        if(voiceParamPres) setQueryVoiceType(true) 
+        else setQueryVoiceType(false) 
     }, [voiceParamPres])
 
     return(

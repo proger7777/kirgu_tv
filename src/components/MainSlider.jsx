@@ -14,7 +14,7 @@ const MainSlider = ({sliders}) => {
             dragging={true}
             swiping={true}
             autoplay={true}
-            autoplayInterval={2000}
+            autoplayInterval={6000}
             renderCenterLeftControls={false}
             renderCenterRightControls={false}
         >
