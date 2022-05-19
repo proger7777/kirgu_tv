@@ -21,6 +21,7 @@ import NotFound404 from "./pages/NotFound404";
 import Contacts from "./pages/Contacts";
 import PausePrompBlock from "./components/PausePrompBlock";
 import SearchForm from "./pages/SearchForm";
+import ReloadCron from './components/ReloadCron';
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
           </Routes>
         </BrowserRouter>
 
+        <ReloadCron />
         <PausePrompBlock />
 
       </CatContext.Provider>

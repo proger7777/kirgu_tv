@@ -97,9 +97,7 @@ const Bonus = () => {
             }
             
             if(e.target.href) {
-                let path = ''
-
-                path = e.target.href.split('tv').slice(-1)[0]
+                const path = e.target.href.split('.ru/').slice(-1)[0]
                 showExitPrompt(path)
             }
 
