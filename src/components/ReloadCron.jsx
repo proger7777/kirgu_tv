@@ -8,7 +8,7 @@ const ReloadCron = () => {
 
     useIdleTimer({
         onIdle,
-        timeout: 1000 * 60 * 60
+        timeout: 1000 * 60 * 30
     })
 
 }
