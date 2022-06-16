@@ -6,5 +6,3 @@ export const truncate = (str, maxlength) => {
 export const getTitleFromLinkStock = (link) => {
     return link.split('/').slice(-2)[0]
 }
-
-
