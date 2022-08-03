@@ -74,11 +74,11 @@ class KirguSource {
     static async getBonusData(phone) {
         
         const response = await axios.get(`${this.siteUrl2}/telephonBonusNew/${phone}`, {
-            auth: { username: 'obmen', password: '12345' }
+            //auth: { username: 'obmen', password: '12345' }
         })    
 
         const response2 = await axios.get(`${this.siteUrl2}/historyBonus/${phone}`, {
-            auth: { username: 'obmen', password: '12345' }
+            //auth: { username: 'obmen', password: '12345' }
         })  
         
         let res = null
