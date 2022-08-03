@@ -12,7 +12,7 @@ const Home = () => {
 
     const [fetchSliders, isSlidersLoading, slidersError] = useFetching(async() => {
         const result = await KirguSource.getSliders()
-        setSliders(result)
+        setSliders(result.filter((item) => item.image2))
     })
     
     useEffect(() => {
