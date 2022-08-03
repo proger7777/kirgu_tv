@@ -101,7 +101,15 @@ const CheckBonus = ({setEnableCheckBonus}) => {
     useEffect(()=> {
 
         if(sendCodeError) {
-            phoneFormRef.current.classList.remove('pointer-events-none', 'opacity-25')
+
+            try {
+
+                phoneFormRef.current.classList.remove('pointer-events-none', 'opacity-25')
+
+            } catch (e) {
+
+            }
+
         }
 
     }, [isSendCodeLoading])
