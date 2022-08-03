@@ -8,7 +8,7 @@ const PausePrompBlock = (props) => {
     const onPrompt = () => {
 
         // Если текущая страница Главная, то перезапускает процесс
-        if(window.location.pathname === '/') {
+        if(window.location.pathname === '/tv') {
             start()
         } else {
             setPausePrompt(true)
@@ -16,7 +16,7 @@ const PausePrompBlock = (props) => {
     }
 
     const onIdle = () => {
-        window.location.href = '/'
+        window.location.href = '/tv'
     }
 
     const { start } = useIdleTimer({
