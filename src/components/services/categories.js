@@ -163,9 +163,9 @@ export const getHomeCategories = async() => {
 export const loadCategories = async() => {
     const categories = await getCategories()
 
-    if(!categories) {
+    //if(!categories) {
         await setCategories()
-    }
+    //}
 }
 
 export const getCatalog = async(id, pageNum, sort = 'popular', filter = {}) => {
