@@ -20,7 +20,7 @@ const ProductContent = ({item, fromAllCats}) => {
         ['info', 'Информация о товаре'], 
         ['desc', 'Описание'], 
         ['props', 'Характеристики'],
-        ['reviews', `Отзывы (${item.reviewsData.reviewsCount})`]
+        //['reviews', `Отзывы (${item.reviewsData.reviewsCount})`]
     ]
 
     // Если описание пустое (не берем в расчет, что описание содержит наименование продукта), то удаляет пункт
@@ -53,7 +53,7 @@ const ProductContent = ({item, fromAllCats}) => {
                     <ProductInfoBlock item={product} open={activePart === 'info'} />
                     {product.description !== product.name && <ProductDescBlock item={product} open={activePart === 'desc'} />}
                     <ProductPropsBlock item={product} open={activePart === 'props'} />
-                    <ProductReviewsBlock item={product} open={activePart === 'reviews'} />
+                    {/* <ProductReviewsBlock item={product} open={activePart === 'reviews'} /> */}
                 </ProductContext.Provider>
             </div>
         </div>

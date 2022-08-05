@@ -35,7 +35,7 @@ function setBonusData(item) {
 }
 
 async function setRatingData(item) {
-    item.reviewsData = await RatingSource.get(item.id)
+    //item.reviewsData = await RatingSource.get(item.id)
     return item
 }
 

@@ -3,7 +3,7 @@ import { setHidden } from "./services/classes";
 import ProductReviewItem from "./ProductReviewItem";
 
 const ProductReviewsBlock = ({item, open}) => {
-
+    
     return(
         <div className={`${setHidden(!open)}`}>
         { item.reviewsData.reviews.length

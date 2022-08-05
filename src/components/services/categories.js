@@ -46,7 +46,7 @@ function setPrice(res) {
 async function setRating(res) {
     const ids = res.map(i => i.site_id )
     const ratings = await RatingSource.getCollectRating(ids)
-    res.forEach((i, inx) => i.rating = ratings[inx].TotalScore.toFixed() )
+    //res.forEach((i, inx) => i.rating = ratings[inx].TotalScore.toFixed() )
     return res
 }
 
@@ -176,7 +176,7 @@ export const getCatalog = async(id, pageNum, sort = 'popular', filter = {}) => {
     res.items = setPrice(res.items)
     res.items = setImages(res.items)
 
-    if(res.items.length) res.items = await setRating(res.items)
+    //if(res.items.length) res.items = await setRating(res.items)
 
     return res
 }

@@ -5,7 +5,13 @@ class RatingSource {
     static siteUrl = "https://api.mneniya.pro/v2.1/clients/9b28b175-52a6-43b3-b262-a0c14149d22e"
 
     static async get(id) {
+
         const response = await axios.get(this.siteUrl + `/reviews/Product/Aggregated/${id}`)
+
+        if (response) {
+
+        }
+
         const res = response.data
 
         let data = { rating: 0, reviewsCount: 0, reviews: res.Reviews }
@@ -26,6 +32,7 @@ class RatingSource {
         ids = ids.join('%7C')
 
         const response = await axios.get(this.siteUrl + `/ratings/Product/${ids}`)
+        console.log(response)
         const res = response.data
 
         return res
