@@ -4,10 +4,30 @@ import Icons from "./Icons";
 import { useContext, useState } from "react";
 import { ProductContext } from "../context";
 import { setProductUrl } from "./services/product";
+import { addFavorites } from './AddFavorite';
+import { useEffect } from 'react';
 
 const ProductInfoDataBlock = ({item}) => {
 
     const {onChangeOffer, fromAllCats} = useContext(ProductContext)
+
+    const [inFavorites, setInFavorites] = useState(false)
+
+    const checkInFavorites = () => {
+
+        const favorites = localStorage.favorites ? JSON.parse(localStorage.getItem('favorites')) : []
+
+        const exist = favorites.find((items) => items.xml_id == item.id || items.id == item.id || items.id == item.xml_id)
+        
+        setInFavorites(exist ? true : false)
+
+    }
+
+    useEffect(() => {
+
+        checkInFavorites()
+
+    }, [])
 
     let offersOptions = []
 
@@ -87,6 +107,34 @@ const ProductInfoDataBlock = ({item}) => {
                     )}
                 </>
             }   
+
+            <>
+                {inFavorites ? (
+
+                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
+
+                        <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                            <Icons name={'xclose'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
+                        </div>
+
+                        <p className={`text-[20px] text-white p-[20px]`}>Добавлен</p>
+
+                    </button>
+
+                ) : (
+
+                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
+
+                        <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
+                            <Icons name={'add'} color={'#008954'} className={`w-[30px] h-[30px] `} />
+                        </div>
+
+                        <p className={`text-[20px] text-green p-[20px]`}>В избранное</p>
+
+                    </button>
+
+                )}
+            </>
 
         </div>
     )
