@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 const CatalogItem = ({cat, catalogId, fromAllCats}) => {
 
-    const [inFavorites, setInFavorites] = useState(null)
+    const [inFavorites, setInFavorites] = useState(false)
 
     const checkInFavorites = () => {
 
