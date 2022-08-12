@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/tv/static/css/main.87a1701b.css",
-    "main.js": "/tv/static/js/main.7b3a47bb.js",
-    "static/media/404.svg": "/tv/static/media/404.0d2e41e08a2de8c84f7332c8b06f6285.svg",
-    "static/media/stock.svg": "/tv/static/media/stock.9d81ff79acb834bd4028733cb577ac65.svg",
-    "static/media/info.svg": "/tv/static/media/info.228b4425ee1eebf5c32c.svg",
-    "static/media/delivery.svg": "/tv/static/media/delivery.a30134b9cc8e8854bf20c6972a5ba411.svg",
-    "static/media/bonus_cart.svg": "/tv/static/media/bonus_cart.a1781b9296bf622c1af66685a828c52c.svg",
-    "static/media/usloviya.svg": "/tv/static/media/usloviya.8756f55531a61ba295c92f497ade00ab.svg",
-    "static/media/contacts.svg": "/tv/static/media/contacts.7b40da8dde7260af2f9d530149376e7e.svg",
-    "static/media/dlya_doma.svg": "/tv/static/media/dlya_doma.fee33603b063e6c300c9.svg",
-    "static/media/sprite.svg": "/tv/static/media/sprite.4577f9fd302206c668d1.svg",
-    "static/media/icons.svg": "/tv/static/media/icons.d8ccc26219b80acbbe31ab620686ba60.svg",
-    "static/media/sborka.svg": "/tv/static/media/sborka.44dd764f570562e33c8ecfd7f420e5dc.svg",
-    "static/media/cats.svg": "/tv/static/media/cats.89ac0f0555b45a33ed78.svg",
-    "static/media/mebel.svg": "/tv/static/media/mebel.94d2d13987fbf1aebe55.svg",
-    "static/media/kirgu.svg": "/tv/static/media/kirgu.d0f9d177a1685092eff14f4ce770f31c.svg",
-    "static/media/electronika.svg": "/tv/static/media/electronika.bf7cc320cb3057021fdb.svg",
+    "main.css": "/tv/static/css/main.8652eb39.css",
+    "main.js": "/tv/static/js/main.033404ac.js",
+    "static/media/404.svg": "/tv/static/media/404.9600a218d99e0a9046d95bc85b5a2027.svg",
+    "static/media/stock.svg": "/tv/static/media/stock.810369f2d1802bab770fdf8f71c71df9.svg",
+    "static/media/info.svg": "/tv/static/media/info.e20ded93e0b0b79a1cff.svg",
+    "static/media/delivery.svg": "/tv/static/media/delivery.77c2408371f1a1195b0116ac238745e7.svg",
+    "static/media/bonus_cart.svg": "/tv/static/media/bonus_cart.4a3f03561e1c48b47f9c409b31d2e8ae.svg",
+    "static/media/usloviya.svg": "/tv/static/media/usloviya.6edb4a14a72a8f5ac37c7c0f1473e919.svg",
+    "static/media/contacts.svg": "/tv/static/media/contacts.c1a3c17d33de3c5eb0860d7672f1941a.svg",
+    "static/media/dlya_doma.svg": "/tv/static/media/dlya_doma.631485e1584485a16a01.svg",
+    "static/media/sprite.svg": "/tv/static/media/sprite.471fe867d3bae9b971c5.svg",
+    "static/media/icons.svg": "/tv/static/media/icons.8024e5dbe5074d98649752873dee4a44.svg",
+    "static/media/sborka.svg": "/tv/static/media/sborka.3c97a035013dfe3d854cb79c5a91b574.svg",
+    "static/media/cats.svg": "/tv/static/media/cats.09de4fe74eac068df4b1.svg",
+    "static/media/mebel.svg": "/tv/static/media/mebel.6270966dc9c1a27965ef.svg",
+    "static/media/kirgu.svg": "/tv/static/media/kirgu.f68c57f70b97309671e269a1bc1f2171.svg",
+    "static/media/electronika.svg": "/tv/static/media/electronika.e87162b18079e37f4c12.svg",
     "index.html": "/tv/index.html",
-    "static/media/map_pin.svg": "/tv/static/media/map_pin.b257515597cc54307125.svg",
-    "main.87a1701b.css.map": "/tv/static/css/main.87a1701b.css.map",
-    "main.7b3a47bb.js.map": "/tv/static/js/main.7b3a47bb.js.map"
+    "static/media/map_pin.svg": "/tv/static/media/map_pin.bb48d2dce9229f00373a.svg",
+    "main.8652eb39.css.map": "/tv/static/css/main.8652eb39.css.map",
+    "main.033404ac.js.map": "/tv/static/js/main.033404ac.js.map"
   },
   "entrypoints": [
-    "static/css/main.87a1701b.css",
-    "static/js/main.7b3a47bb.js"
+    "static/css/main.8652eb39.css",
+    "static/js/main.033404ac.js"
   ]
 }
