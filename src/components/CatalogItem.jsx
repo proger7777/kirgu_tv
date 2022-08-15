@@ -36,7 +36,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
     }, [])
 
     return (
-        <div className='flex justify-content-center relative'>
+        <div className='flex justify-content-center relative mr-[10px] mb-[10px]'>
             <div className='border border-[#e6e6e6] items-center flex flex-col'>
 
                 <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[322px] h-[280px]  pl-[20px] pr-[30px]'>

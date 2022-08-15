@@ -28,9 +28,9 @@ const Favorites = () => {
 
     return (
         <Layout crumbs={crumbs} activeMenu='favorites'>
-            <div className='inline-block ml-[auto] mr-[auto]'>
+            <div className='inline-block justify-content-center ml-[auto] mr-[auto]'>
 
-                <div className='flex justify-between items-center'>
+                <div className='flex justify-between items-center mb-[20px]'>
                     <h2 className='text-[24px]'>Избранное</h2>
 
                     <button className="flex justify-between items-center  w-[160px]" onClick={() => {clearFavorites()}}>
@@ -45,7 +45,7 @@ const Favorites = () => {
 
                     {favorites.length ? (
 
-                        <CatalogList catalog={favorites} columns='5' />
+                        <CatalogList catalog={favorites}/>
 
                     ) : (
                         <div className="flex justify-center" >
