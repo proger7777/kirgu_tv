@@ -11,16 +11,28 @@ const Favorites = () => {
 
     useEffect(() => {
 
+        Favor()
+
+        document.body.addEventListener('click', function (event) {
+            if (event.target.classList.contains('favorites')) {
+                Favor()
+            }
+        })
+
+    }, [])
+
+    function Favor() {
+
         const raw = localStorage.getItem('favorites') || []
         if (raw.length) {
             setFavorites(JSON.parse(raw))
         }
 
-    }, [])
+    }
 
     function clearFavorites() {
 
-        localStorage.removeItem("favorites") 
+        localStorage.removeItem("favorites")
         setFavorites([])
 
     }
@@ -28,14 +40,14 @@ const Favorites = () => {
 
     return (
         <Layout crumbs={crumbs} activeMenu='favorites'>
-            <div style={{ width: '100%' }}>
+            <div className="w-full">
 
                 <div className='flex justify-between items-center'>
                     <h2 className='text-[24px]'>Избранное</h2>
 
-                    <button className="flex justify-between items-center  w-[160px]" onClick={() => {clearFavorites()}}>
+                    <button className="flex justify-between items-center  w-[160px]" onClick={() => { clearFavorites() }}>
                         <h1 className='text-[24px] text-green'>Очистить</h1>
-                        <Icons name='delete' className={`w-[40px] h-[40px]`} />
+                        <Icons name='delete' className={`w-[40px] h-[40px] grid-cols-4`} />
                     </button>
 
                 </div>
