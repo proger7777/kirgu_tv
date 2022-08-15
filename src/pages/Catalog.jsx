@@ -44,7 +44,6 @@ const Catalog = () => {
         const result = await getCategoryById(id)
         setCategory(result)
     })
-
     const sortOptions = [
         { value: 'popular', label: 'Сначала популярные' },
         { value: 'desc', label: 'Сначала дорогие' },
