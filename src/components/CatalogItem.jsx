@@ -39,9 +39,9 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
         <div className='flex justify-content-center relative'>
             <div className='border border-[#e6e6e6] items-center flex flex-col'>
 
-                <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[322px] h-[335px]  pl-[20px] pr-[30px]'>
+                <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[322px] h-[280px]  pl-[20px] pr-[30px]'>
 
-                    <img src={setImagePath(image(cat))} alt='' className='object-contain h-[162px] mt-[20px] mb-[10px]' />
+                    <img src={setImagePath(image(cat))} alt='' className='object-contain h-[152px] mt-[10px] mb-[5px]' />
 
                     <span className='flex mb-[10px]'>
                         {[1, 2, 3, 4, 5].map(i =>
@@ -49,8 +49,8 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
                         )}
                     </span>
 
-                    <p className='text-[22px] text-center mb-[5px]'>{truncate(cat.name, 30)}</p>
-                    <p className='text-green text-[28px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>
+                    <p className='text-[18px] text-center mb-[0px]'>{truncate(cat.name, 30)}</p>
+                    <p className='text-green text-[20px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>
 
                 </Link>
 
