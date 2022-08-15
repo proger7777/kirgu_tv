@@ -28,7 +28,7 @@ const Favorites = () => {
 
     return (
         <Layout crumbs={crumbs} activeMenu='favorites'>
-            <div style={{ width: '100%' }}>
+            <div className='inline-block ml-[auto] mr-[auto]'>
 
                 <div className='flex justify-between items-center'>
                     <h2 className='text-[24px]'>Избранное</h2>
