@@ -15,7 +15,12 @@ const PausePrompBlock = (props) => {
         }
     }
 
+    const deleteVariable = () => {
+        localStorage.clear('favorites')
+    }
+
     const onIdle = () => {
+        deleteVariable()
         window.location.href = '/tv'
     }
 
