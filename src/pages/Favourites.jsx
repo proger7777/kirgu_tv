@@ -9,6 +9,8 @@ const Favorites = () => {
 
     const [favorites, setFavorites] = useState([])
 
+    let favoritesPage = JSON.parse(localStorage.getItem('favorites'))
+
     useEffect(() => {
 
         const raw = localStorage.getItem('favorites') || []
@@ -18,9 +20,18 @@ const Favorites = () => {
 
     }, [])
 
+    //Удаление товаров из избранного
+    const removeFavorite = (cat) => {
+
+        setFavorites(favorites.filter(rf => rf.id !== cat.id))
+
+        localStorage.setItem('favorites', JSON.stringify(favoritesPage.filter(rf => rf.id !== cat.id)));
+
+    }
+
     function clearFavorites() {
 
-        localStorage.removeItem("favorites") 
+        localStorage.removeItem("favorites")
         setFavorites([])
 
     }
@@ -33,7 +44,7 @@ const Favorites = () => {
                 <div className='flex justify-between items-center mb-[20px]'>
                     <h2 className='text-[24px]'>Избранное</h2>
 
-                    <button className="flex justify-between items-center  w-[160px]" onClick={() => {clearFavorites()}}>
+                    <button className="flex justify-between items-center  w-[160px]" onClick={() => { clearFavorites() }}>
                         <h1 className='text-[24px] text-green'>Очистить</h1>
                         <Icons name='delete' className={`w-[40px] h-[40px]`} />
                     </button>
@@ -45,7 +56,7 @@ const Favorites = () => {
 
                     {favorites.length ? (
 
-                        <CatalogList catalog={favorites}/>
+                        <CatalogList catalog={favorites} removeFavorite={removeFavorite}/>
 
                     ) : (
                         <div className="flex justify-center" >
