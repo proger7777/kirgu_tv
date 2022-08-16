@@ -4,18 +4,6 @@ import PropFilters from "./PropFilters";
 
 const FiltersCatalog = ({ height, filterData, setFilterProp, setPriceFilter }) => {
 
-    for (let i = 0; i < filterData.props.length; i++) {
-        if (filterData.props[i].name == 'Рассрочка') {
-            if (filterData.props[i].props.length == 1) {
-                if (filterData.props[i].props[0].name == 'пустое значение') {
-                    delete filterData.props[i]
-                }
-            }
-        }
-    }
-
-
-
     return (
         <div className='w-[256px] min-h-[765px]'>
             {filterData.price && parseInt(filterData.price.min) > 1 &&

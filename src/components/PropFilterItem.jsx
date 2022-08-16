@@ -3,6 +3,18 @@ import Icons from "./Icons";
 
 const PropFilterItem = ({ pr, openData, openAccord, setFilterProp }) => {
 
+    let filterPr = pr.props
+    let fff = filterPr
+
+    if ( pr.name == 'Рассрочка' ) {
+        filterPr = filterPr.find(e => e.name == 'пустое значение' )
+        if (filterPr) {
+            fff = fff.findIndex(e => e.name == 'пустое значение' )
+            pr.props.splice(fff, 1)
+        }
+
+    }
+
 
     const hiddenCl = openData.id === pr.id && openData.open ? '' : 'hidden'
 
@@ -11,8 +23,6 @@ const PropFilterItem = ({ pr, openData, openAccord, setFilterProp }) => {
             <div className="accord_title flex min-h-[65px] justify-between items-center cursor-pointer" onClick={() => openAccord(pr)}>
                 <span className="font-bold">{pr.name}</span>
                 <Icons name='pointer_b' className='w-[15px] h-[7px] fill-[#f0a83c]' />
-            
-
             </div>
 
             <div className={`${hiddenCl} pt-[10px]`}>
