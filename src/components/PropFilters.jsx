@@ -4,14 +4,6 @@ import PropFilterItem from "./PropFilterItem"
 
 const PropFilters = ({propsData, setFilterProp}) => {
 
-    for ( let i = 0 ; i < propsData.length ; i++) {
-        if (propsData[i].name == 'Рассрочка') {
-            if (propsData[i].props.length == 1 && propsData[i].props[0].name == 'пустое значение') { 
-                delete propsData[i]
-            }
-        }
-    }
-
     const [openPropFiltId, setOpenPropFiltId] = useState({id: null, open: false})
 
     const openAccord = (pr) => {
