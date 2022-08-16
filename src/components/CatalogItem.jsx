@@ -70,7 +70,7 @@ const CatalogItem = ({cat, catalogId, fromAllCats}) => {
                 <button className={`favorites flex items-start items-center border border-[#008954] h-[30px] w-[150px] mt-[15px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(cat); checkInFavorites() }}>
                     
                     <div className='favorites h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
-                        <Icons name={'add'} color={'#008954'} className={`w-[20px] h-[20px]`} />
+                        <Icons name={'add'} color={'#008954'} className={`favorites w-[20px] h-[20px]`} />
                     </div>
 
                     <p className={`favorites text-[16px] text-green p-[10px]`}>В избранное</p>
