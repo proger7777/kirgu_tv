@@ -1,12 +1,10 @@
-import React, {  }  from 'react';
+import React, { } from 'react';
 import PriceFilter from "./PriceRange/PriceFilter";
 import PropFilters from "./PropFilters";
 
-const FiltersCatalog = ({height, filterData, setFilterProp, setPriceFilter}) => {
+const FiltersCatalog = ({ height, filterData, setFilterProp, setPriceFilter }) => {
 
-    console.log(filterData.props)
-
-        for ( let i = 0 ; i < filterData.props.length ; i++) {
+    for (let i = 0; i < filterData.props.length; i++) {
         if (filterData.props[i].name == 'Рассрочка') {
             if (filterData.props[i].props.length == 1) {
                 if (filterData.props[i].props[0].name == 'пустое значение') {
@@ -16,11 +14,13 @@ const FiltersCatalog = ({height, filterData, setFilterProp, setPriceFilter}) => 
         }
     }
 
+
+
     return (
         <div className='w-[256px] min-h-[765px]'>
             {filterData.price && parseInt(filterData.price.min) > 1 &&
-                <PriceFilter onChange={setPriceFilter} minPrice={filterData.price.min} maxPrice={filterData.price.max} /> 
-            } 
+                <PriceFilter onChange={setPriceFilter} minPrice={filterData.price.min} maxPrice={filterData.price.max} />
+            }
             <PropFilters propsData={filterData.props} setFilterProp={setFilterProp} />
         </div>
     )
