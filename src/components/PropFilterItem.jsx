@@ -3,6 +3,7 @@ import Icons from "./Icons";
 
 const PropFilterItem = ({ pr, openData, openAccord, setFilterProp }) => {
 
+
     const hiddenCl = openData.id === pr.id && openData.open ? '' : 'hidden'
 
     return (
@@ -18,7 +19,7 @@ const PropFilterItem = ({ pr, openData, openAccord, setFilterProp }) => {
                 {pr.props.map((prChild, inx) =>
                     <label className="flex items-center mb-[20px]" key={inx}>
                         <input type="checkbox" onChange={(e) => setFilterProp(e.target.checked, pr.id, prChild.id)} />
-                        <span className="text-[14px] ml-[12px]">{prChild.name.replace(/&quot;/g, '')}</span>
+                        <span className="text-[14px] ml-[12px]" dangerouslySetInnerHTML={{__html: prChild.name}}></span>
                     </label>
                 )}
             </div>
