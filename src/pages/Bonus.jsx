@@ -157,7 +157,7 @@ const Bonus = () => {
                         {bonusData.history ?
                             <table className='w-full text-center text-[22px]'>
                                 <thead>
-                                    <tr className='h-[70px] border-b border-[#e6e6e6]'>
+                                    <tr className='font-semibold h-[70px] border-b border-[#e6e6e6]'>
                                         <td>Дата</td>
                                         <td>Действие</td>
                                         <td>Сумма бонусов</td>
