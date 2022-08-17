@@ -17,7 +17,7 @@ const HomeNavbar = () => {
             {navs.map((i, inx) => 
                 <Link key={inx} to={i[0]} className='relative bg-[#F5F5F5] w-[324px] h-[210px]'>
                     <img src={require(`../images/${i[1]}.svg`)} alt='' className='w-[254px] h-[110px] m-auto mt-[40px]' />
-                    <span className='absolute bottom-[17px] block w-full text-center font-bold'>{i[2]}</span>
+                    <span className='absolute bottom-[17px] block w-full text-center font-semibold'>{i[2]}</span>
                 </Link>
             )}
         </nav>

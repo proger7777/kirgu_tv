@@ -1,12 +1,13 @@
-import React, {  }  from 'react';
+import React, { } from 'react';
 import Icons from "../components/Icons";
 import Layout from "../layout";
+import { YMaps, Map, Placemark, ZoomControl } from "react-yandex-maps";
 
 const Contacts = () => {
 
     const crumbs = [['Информация', 'info'], ['Контакты', 'contacts']]
 
-    return(
+    return (
         <Layout crumbs={crumbs} activeMenu='info'>
             <div className='w-full'>
                 <h2 className='text-[24px] font-semibold'>Наши магазины</h2>
@@ -21,11 +22,11 @@ const Contacts = () => {
                             <Icons className='w-[24px] h-[24px]' name='mail' />
                             <span>info@kirgu.ru</span>
                         </div>
-                        
+
                     </div>
 
                     <div className='w-[620px] pr-[25px]'>
-                        
+
                         <div className='pt-[10px] pb-[10px] border-b border-[#e6e6e6]'>
                             <div className='flex space-x-[10px] mb-[7px]'>
                                 <Icons className='w-[25px] h-[27px]' name='map' />
@@ -43,7 +44,7 @@ const Contacts = () => {
                                 <span>Домашний, г. Каспийск, ул.Ленина 60а</span>
                             </div>
                             <div className='flex space-x-[10px] text-[#505050]'>
-                            <Icons className='w-[24px] h-[24px]' name='clock' />
+                                <Icons className='w-[24px] h-[24px]' name='clock' />
                                 <span>10:00-20:00</span>
                             </div>
                         </div>
@@ -139,12 +140,30 @@ const Contacts = () => {
                     </div>
 
                     <div className='w-[850px] pl-[25px]'>
-                        <script type="text/javascript" charSet="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6d4254cdd59f4d6225c43d7ae9fdb5de52df5979b3f17127bcff41a37d31f74d&amp;width=850&amp;height=809&amp;lang=ru_RU&amp;scroll=true" />
+                        <YMaps>
+                            <Map width='97%' height='97%' defaultState={{
+                                center: [42.983100, 47.504745],
+                                zoom: 8,
+                            }}>
+                                <Placemark geometry={[42.951058320243, 47.562560002307]} options={{ iconColor: '#008954' }} />
+                                <Placemark geometry={[42.981754, 47.46636]} options={{ iconColor: '#008954' }} />
+                                <Placemark geometry={[42.964474139089, 47.399654700754]} options={{ iconColor: '#008954' }} />
+                                <Placemark geometry={[42.965610740186, 47.397924675939]} options={{ iconColor: '#008954' }} />
+                                <Placemark geometry={[42.822150060153, 47.125707933945]} options={{ iconColor: '#008954' }} />
+                                <Placemark geometry={[42.030409969534, 48.296688076057]} options={{ iconColor: '#008954' }} />
+                                <Placemark geometry={[42.89643991125, 47.627467245689]} options={{ iconColor: '#008954' }} />
+                                <Placemark geometry={[43.842820774395, 46.72618240149]} options={{ iconColor: '#008954' }} />
+                                <Placemark geometry={[43.226463309355, 46.613534340765]} options={{ iconColor: '#008954' }} />
+                                <Placemark geometry={[43.245667335432, 46.577247474868]} options={{ iconColor: '#008954' }} />
+
+                                <ZoomControl />
+                            </Map>
+                        </YMaps>
                     </div>
 
                 </div>
             </div>
-        </Layout>
+        </Layout >
     )
 
 }
