@@ -1,19 +1,17 @@
-import React, { } from 'react';
+import React, {useEffect, useState} from 'react';
 import Icons from "./Icons";
 
 const PropFilterItem = ({ pr, openData, openAccord, setFilterProp }) => {
 
-    let filterPr = pr.props
-    let fff = filterPr
+    const [props, setProps] = useState([])
 
-    if ( pr.name == 'Рассрочка' ) {
-        filterPr = filterPr.find(e => e.name == 'пустое значение' )
-        if (filterPr) {
-            fff = fff.findIndex(e => e.name == 'пустое значение' )
-            pr.props.splice(fff, 1)
-        }
+    useEffect(() => {
 
-    }
+        const _props = pr.props.filter((prop) => prop.name !== 'пустое значение')
+
+        setProps(_props)
+
+    }, [])
 
 
     const hiddenCl = openData.id === pr.id && openData.open ? '' : 'hidden'
