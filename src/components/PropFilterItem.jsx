@@ -12,6 +12,7 @@ const PropFilterItem = ({ pr, openData, openAccord, setFilterProp }) => {
         setProps(_props)
 
     }, [])
+    
 
 
     const hiddenCl = openData.id === pr.id && openData.open ? '' : 'hidden'
