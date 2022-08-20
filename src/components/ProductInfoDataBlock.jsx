@@ -2,6 +2,7 @@ import React, {  }  from 'react';
 import { Link } from "react-router-dom";
 import Icons from "./Icons";
 import { useContext, useState } from "react";
+import { getProduct } from './services/product';
 import { ProductContext } from "../context";
 import { setProductUrl } from "./services/product";
 import { addFavorites } from './AddFavorite';
@@ -111,13 +112,11 @@ const ProductInfoDataBlock = ({item}) => {
             }   
 
             <p className='text-[17px] font-semibold mt-[20px] mb-[5px] text-green'>Артикул товара: {item.properties.Артикул}</p>
-            <p className='text-[17px] font-semibold mt-[20px] mb-[5px] text-green'>Код товара: {item.id}</p>
-
-
+            
             <>
                 {inFavorites ? (
 
-                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
+                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites()}}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'xclose'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
@@ -129,7 +128,7 @@ const ProductInfoDataBlock = ({item}) => {
 
                 ) : (
 
-                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
+                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(item); checkInFavorites(); getProduct(item.id)}}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`w-[30px] h-[30px] `} />

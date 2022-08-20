@@ -4,17 +4,22 @@ import { setImagePath } from "./services/images";
 import { truncate } from "./services/str";
 import Icons from "./Icons";
 import { setProductUrl } from "./services/product";
+import { getProduct } from './services/product';
 import { addFavorites } from './AddFavorite';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const CatalogItem = ({ cat, catalogId, fromAllCats, remove }) => {
+const CatalogItem = ({ cat, catalogId, fromAllCats, remove, articleItem }) => {
+
+    if (articleItem !== undefined) articleItem = articleItem.filter(it => it.id == cat.site_id || it.id == cat.id)
+
+    console.log(cat)
+
+    const favorites = localStorage.favorites ? JSON.parse(localStorage.getItem('favorites')) : []
 
     const removClick = (cat) => {
         remove === undefined ? remove = null : remove(cat)
     }
-
-    console.log(cat)
 
     const [inFavorites, setInFavorites] = useState(false)
 
@@ -45,7 +50,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, remove }) => {
         <div className='flex justify-content-center relative mr-[10px] mb-[10px]'>
             <div className='border border-[#e6e6e6] items-center flex flex-col'>
 
-                <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[322px] h-[280px]  pl-[20px] pr-[30px]'>
+                <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[322px] h-[280px]  pl-[20px] pr-[20px]'>
 
                     <img src={setImagePath(image(cat))} alt='' className='object-contain h-[152px] mt-[10px] mb-[5px]' />
 
@@ -60,10 +65,11 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, remove }) => {
 
                 </Link>
 
-                <p className='text-[17px] font-semibold mt-[20px] mb-[5px] text-green'>Артикул товара: {cat.properties.Артикул}</p>
-                <p className='text-[17px] font-semibold mt-[20px] mb-[5px] text-green'>Код товара: {cat.id}</p>
-
-
+                { articleItem !== undefined  ?
+                    articleItem.map((item, index) => <p key={index} className='text-[18px] font-normal font-semibold mb-[20px] text-green'>Артикул товара: {item.properties.Артикул}</p>)
+                :   
+                <p className='text-[17px] font-semibold mb-[5px] text-black'></p>
+                }
 
                 {inFavorites ? (
 
@@ -78,7 +84,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, remove }) => {
 
                 ) : (
 
-                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mt-[15px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(cat); checkInFavorites() }}>
+                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mt-[15px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(cat); checkInFavorites(); getProduct(cat.id) }}>
 
                         <div className='h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`w-[20px] h-[20px]`} />

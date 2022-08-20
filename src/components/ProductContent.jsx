@@ -14,6 +14,8 @@ const ProductContent = ({item, fromAllCats}) => {
 
     const [product, setProduct] = useState(item)
 
+    console.log(item)
+
     const navigate = useNavigate()
 
     const prMenuList = [

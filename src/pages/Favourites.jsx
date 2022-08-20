@@ -11,6 +11,10 @@ const Favorites = () => {
 
     let favoritesPage = JSON.parse(localStorage.getItem('favorites'))
 
+    let articleDelete = JSON.parse(localStorage.getItem('articul'))
+
+    // let atriculToCatalogItem = articleDelete.properties.Артикул
+
     useEffect(() => {
 
         const raw = localStorage.getItem('favorites') || []
@@ -22,6 +26,10 @@ const Favorites = () => {
 
     //Удаление товаров из избранного
     const removeFavorite = (cat) => {
+
+        // console.log(cat.id)
+
+        localStorage.setItem('articul', JSON.stringify(articleDelete.filter(rf => rf.xml_id !== cat.id)));
 
         setFavorites(favorites.filter(rf => rf.id !== cat.id))
 
@@ -56,7 +64,7 @@ const Favorites = () => {
 
                     {favorites.length ? (
 
-                        <CatalogList catalog={favorites} removeFavorite={removeFavorite}/>
+                        <CatalogList catalog={favorites} removeFavorite={removeFavorite} articleDelete={articleDelete} />
 
                     ) : (
                         <div className="flex justify-center" >
