@@ -11,8 +11,10 @@ import { useState } from 'react';
 const CatalogItem = ({ cat, catalogId, fromAllCats, remove }) => {
 
     const removClick = (cat) => {
-        remove === undefined ? remove = null :  remove(cat)
+        remove === undefined ? remove = null : remove(cat)
     }
+
+    console.log(cat)
 
     const [inFavorites, setInFavorites] = useState(false)
 
@@ -57,6 +59,11 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, remove }) => {
                     <p className='text-green text-[20px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>
 
                 </Link>
+
+                <p className='text-[17px] font-semibold mt-[20px] mb-[5px] text-green'>Артикул товара: {cat.properties.Артикул}</p>
+                <p className='text-[17px] font-semibold mt-[20px] mb-[5px] text-green'>Код товара: {cat.id}</p>
+
+
 
                 {inFavorites ? (
 

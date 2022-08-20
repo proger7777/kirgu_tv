@@ -1,7 +1,7 @@
 import React, {  }  from 'react';
 import CatalogItem from "./CatalogItem";
 
-const CatalogList = ({catalog, catalogId, fromAllCats, removeFavorite}) => {
+const CatalogList = ({catalog, catalogId, fromAllCats, removeFavorite, articul}) => {
 
     return(
         <div className={`catalog_content`}>

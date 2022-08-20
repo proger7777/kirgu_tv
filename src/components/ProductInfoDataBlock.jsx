@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 
 const ProductInfoDataBlock = ({item}) => {
 
+    console.log(item)
+
     const {onChangeOffer, fromAllCats} = useContext(ProductContext)
 
     const [inFavorites, setInFavorites] = useState(false)
@@ -107,6 +109,10 @@ const ProductInfoDataBlock = ({item}) => {
                     )}
                 </>
             }   
+
+            <p className='text-[17px] font-semibold mt-[20px] mb-[5px] text-green'>Артикул товара: {item.properties.Артикул}</p>
+            <p className='text-[17px] font-semibold mt-[20px] mb-[5px] text-green'>Код товара: {item.id}</p>
+
 
             <>
                 {inFavorites ? (
