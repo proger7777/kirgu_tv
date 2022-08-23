@@ -1,14 +1,13 @@
-import React, {  }  from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { setImagePath } from "./services/images";
 import { truncate } from "./services/str";
 import Icons from "./Icons";
 import { setProductUrl } from "./services/product";
 import { addFavorites } from './AddFavorite';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
-const CatalogItem = ({cat, catalogId, fromAllCats}) => {
+
+const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
     const [inFavorites, setInFavorites] = useState(false)
 
@@ -58,22 +57,22 @@ const CatalogItem = ({cat, catalogId, fromAllCats}) => {
 
                 <button className={`flex item-start items-center border border-[#008954] h-[30px] w-[150px] mt-[15px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(cat); checkInFavorites() }}>
                 
-                    <div className='h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                    <div className='relative bottom-[7px] h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
                         <Icons name={'xclose'} color={'#ffffff'} className={`w-[20px] h-[20px] `} />
                     </div>
 
-                    <p className={`text-[16px] text-white p-[10px]`}> Добавлено</p>
+                    <p className={`relative bottom-[7px] text-[16px] text-white p-[10px]`}> Добавлено</p>
                 </button>
 
             ) : (
 
                 <button className={`favorites flex items-start items-center border border-[#008954] h-[30px] w-[150px] mt-[15px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(cat); checkInFavorites() }}>
                     
-                    <div className='favorites h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
+                    <div className='relative bottom-[7px] favorites h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
                         <Icons name={'add'} color={'#008954'} className={`favorites w-[20px] h-[20px]`} />
                     </div>
 
-                    <p className={`favorites text-[16px] text-green p-[10px]`}>В избранное</p>
+                    <p className={`relative bottom-[7px] favorites text-[16px] text-green p-[10px]`}>В избранное</p>
 
                 </button>
 

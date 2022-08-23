@@ -113,11 +113,11 @@ const ProductInfoDataBlock = ({item}) => {
 
                     <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
 
-                        <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                        <div className='relative bottom-[7px] h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'xclose'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
                         </div>
 
-                        <p className={`text-[20px] text-white p-[20px]`}>Добавлен</p>
+                        <p className={`relative bottom-[7px] text-[20px] text-white p-[20px]`}>Добавлен</p>
 
                     </button>
 
@@ -125,11 +125,11 @@ const ProductInfoDataBlock = ({item}) => {
 
                     <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
 
-                        <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
+                        <div className='relative bottom-[7px] h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`w-[30px] h-[30px] `} />
                         </div>
 
-                        <p className={`text-[20px] text-green p-[20px]`}>В избранное</p>
+                        <p className={`relative bottom-[7px] text-[20px] text-green p-[20px]`}>В избранное</p>
 
                     </button>
 
