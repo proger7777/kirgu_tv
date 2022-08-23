@@ -17,7 +17,7 @@ const ToolBarNav = ({activeMenu}) => {
     const activeCl = 'border-b border-[#008954] font-semibold'
 
     return (
-        <nav className='space-x-[70px]'>
+        <nav className='space-x-[55px]'>
             {navList.map(i => 
                 <Link key={i[2]} to={i[0]} className={`${activeMenu === i[2] ? activeCl : '' } text-green text-[20px]`}>{i[1]}</Link>
             )}

@@ -22,6 +22,7 @@ import Contacts from "./pages/Contacts";
 import PausePrompBlock from "./components/PausePrompBlock";
 import SearchForm from "./pages/SearchForm";
 import Favorites from './pages/Favourites';
+import Comparison from './pages/Comparison';
 
 function App() {
 
@@ -57,6 +58,7 @@ function App() {
             <Route path='search' element={<SearchForm />} />
             <Route path='search/:query' element={<Search />} />
             <Route path='favorites' element={<Favorites />} />
+            <Route path='comparison' element={<Comparison />} />
             <Route path='*' element={<NotFound404 />} />
           </Routes>
         </BrowserRouter>

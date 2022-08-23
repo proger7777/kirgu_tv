@@ -24,3 +24,10 @@ yarn-error.log*
 =======
 node_modules
 package-lock.json
+src/components/ComparisonList.jsx
+src/App.js
+src/pages/Product.jsx
+src/pages/Comparison.jsx
+src/components/services/propsProduct.js
+src/components/ComparisonItem.jsx
+src/components/AddFavorite.jsx

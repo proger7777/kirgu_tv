@@ -47,6 +47,9 @@ const Product = () => {
 
     return(
         <Layout crumbs={crumbs} activeMenu={mainCatId}>
+            {console.log(crumbs)}
+            {console.log(params.cat_id)}
+            {/* {console.log(resultAllCats)} */}
             {isProductLoading 
                 ? <Loadering />
                 : (product && <ProductContent item={product} fromAllCats={fromAllCats} />)
