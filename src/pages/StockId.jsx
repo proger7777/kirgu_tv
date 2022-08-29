@@ -29,7 +29,7 @@ const StockId = () => {
             {!stock
                 ? <Loadering />
                 : <div className='w-full h-[800px] overflow-y-auto'>
-                    <img src={setImagePath(stock.image)} alt='' className='w-full object-contain h-[620px] mb-[20px]' />
+                    <img src={setImagePath(stock.image)} alt='' className='object-contain h-[620px] mb-[20px] float-left' />
                     <div className='w-1/2'>
                         <h2 className='text-[28px] font-semibold mb-[25px]'>{stock.name}</h2>
                         <div className='text-[#505050]'dangerouslySetInnerHTML={{__html: truncate(stock.description)}}></div>

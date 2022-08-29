@@ -16,8 +16,10 @@ const PausePrompBlock = (props) => {
     }
 
     const deleteVariable = () => {
-        // localStorage.clear('favorites')
-        // localStorage.clear('articul')
+        localStorage.clear('favorites')
+        localStorage.clear('articul')
+        localStorage.clear('compare')
+        localStorage.clear('saveCompare')
     }
 
     const onIdle = () => {
