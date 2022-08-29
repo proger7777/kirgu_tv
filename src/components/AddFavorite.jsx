@@ -4,7 +4,7 @@ export function addFavorites(cat) {
 
   const articul = localStorage.favorites ? JSON.parse(localStorage.getItem('articul')) : []
 
-  //remove favorites
+  //remove favorites and articul
   if (favor.find((item) => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)) {
     let remove = favor.findIndex(item => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)
     favor.splice(remove, 1)
@@ -15,14 +15,6 @@ export function addFavorites(cat) {
     localStorage.setItem('articul', JSON.stringify(articul))
 
   }
-
-  //remove articul
-  // if (articul.find((item) => item.xml_id == cat.id)) {
-
-  //   let remove = articul.findIndex(item => item.xml_id == cat.id)
-  //   articul.splice(remove, 1)
-  //   localStorage.setItem('articul', JSON.stringify(articul))
-  // }
 
   //add favorites
   else if (!favor.find((item) => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)) {

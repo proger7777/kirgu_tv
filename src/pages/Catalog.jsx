@@ -121,10 +121,11 @@ const Catalog = () => {
                                 className='w-[322px] h-[40px] mt-[10px] mb-[10px] text-[14px] rounded-[4px]' 
                             />
 
+
                             {isCatalogLoading
                                 ? <Loadering />
                                 : (catalog.totalCount > 0
-                                    ? <CatalogList catalog={catalog.items} catalogId={params.id} fromAllCats={fromAllCats} />
+                                    ? <CatalogList catalog={catalog.items} category={category} catalogId={params.id} fromAllCats={fromAllCats} />
                                     : <p className='mt-[10px] text-[#e14a4a]'>Данные отсутствуют</p>
                                 )
                             }

@@ -32,7 +32,7 @@ const StockId = () => {
                     <img src={setImagePath(stock.image)} alt='' className='w-full object-contain h-[620px] mb-[20px]' />
                     <div className='w-1/2'>
                         <h2 className='text-[28px] font-semibold mb-[25px]'>{stock.name}</h2>
-                        <div className='text-[#505050]'>{truncate(stock.description)}</div>
+                        <div className='text-[#505050]'dangerouslySetInnerHTML={{__html: truncate(stock.description)}}></div>
                     </div>
                 </div>
             }

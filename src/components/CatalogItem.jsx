@@ -1,25 +1,31 @@
 import React, { } from 'react';
+import localforage from "localforage";
 import { Link } from "react-router-dom";
 import { setImagePath } from "./services/images";
 import { truncate } from "./services/str";
 import Icons from "./Icons";
 import { setProductUrl } from "./services/product";
+import ProductPropsBlock from './ProductPropsBlock';
 import { getProduct } from './services/product';
 import { addFavorites } from './AddFavorite';
+import { addCompare } from './AddCompare';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const CatalogItem = ({ cat, catalogId, fromAllCats, remove, articleItem }) => {
+const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleItem, saveC }) => {
 
     if (articleItem !== undefined) articleItem = articleItem.filter(it => it.id == cat.site_id || it.id == cat.id)
 
-    console.log(cat)
-
-    const favorites = localStorage.favorites ? JSON.parse(localStorage.getItem('favorites')) : []
-
-    const removClick = (cat) => {
-        remove === undefined ? remove = null : remove(cat)
+    const removClickF = (cat) => {
+        removeF === undefined ? removeF = null : removeF(cat)
     }
+
+    const removClickC = (cat) => {
+        removeC === undefined ? removeC = null : removeC(cat)
+    }
+
+
+
 
     const [inFavorites, setInFavorites] = useState(false)
 
@@ -33,6 +39,20 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, remove, articleItem }) => {
 
     }
 
+
+    const [compare, setCompare] = useState(false)
+
+    const checkCompare = () => {
+
+        const compares = localStorage.compare ? JSON.parse(localStorage.getItem('compare')) : []
+
+        const exist = compares.find((item) => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)
+
+        setCompare(exist ? true : false)
+
+    }
+
+
     function image(cat) {
 
         if (cat.image_url) { return cat.image_url }
@@ -40,9 +60,13 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, remove, articleItem }) => {
 
     }
 
+    let activePart = 'props'
+
     useEffect(() => {
 
         checkInFavorites()
+
+        checkCompare()
 
     }, [])
 
@@ -61,19 +85,19 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, remove, articleItem }) => {
                     </span>
 
                     <p className='text-[18px] text-center mb-[0px]'>{truncate(cat.name, 30)}</p>
-                    <p className='text-green text-[20px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>
+                    <p className='text-green text-[20px]'>{parseInt(cat.price || cat.price_1).toLocaleString('ru-RU')} ₽</p>
 
                 </Link>
 
-                { articleItem !== undefined  ?
-                    articleItem.map((item, index) => <p key={index} className='text-[18px] font-normal font-semibold mb-[20px] text-green'>Артикул товара: {item.properties.Артикул}</p>)
-                :   
-                <p className='text-[17px] font-semibold mb-[5px] text-black'></p>
+                {articleItem !== undefined ?
+                    articleItem.map((item, index) => <p key={index} className='text-[18px] font-normal font-semibold mb-[20px] text-[#008954]'>Артикул товара: {item.properties.Артикул}</p>)
+                    :
+                    <p className='text-[17px] font-semibold mb-[5px] text-black'></p>
                 }
 
                 {inFavorites ? (
 
-                    <button className={`flex item-start items-center border border-[#008954] h-[30px] w-[150px] mt-[15px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(cat); checkInFavorites(); removClick(cat) }}>
+                    <button className={`flex item-start items-center border border-[#008954] h-[30px] w-[150px] mb-[5px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(cat); checkInFavorites(); removClickF(cat) }}>
 
                         <div className='h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'xclose'} color={'#ffffff'} className={`w-[20px] h-[20px] `} />
@@ -84,17 +108,46 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, remove, articleItem }) => {
 
                 ) : (
 
-                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mt-[15px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(cat); checkInFavorites(); getProduct(cat.id) }}>
+                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mb-[5px] rounded-[4px]`} onClick={() => { addFavorites(cat); checkInFavorites(); getProduct(cat.id) }}>
 
                         <div className='h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`w-[20px] h-[20px]`} />
                         </div>
 
-                        <p className={`text-[16px] text-green p-[10px]`}>В избранное</p>
+                        <p className={`text-[16px] text-[#008954] p-[10px]`}>В избранное</p>
 
                     </button>
 
                 )}
+
+                {compare ? (
+
+                    <button className={`flex item-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px] bg-[#008954]`} onClick={() => { addCompare(cat); getProduct(cat.id); checkCompare(); removClickC(cat) }}>
+
+                        <div className='h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                            <Icons name={'xclose'} color={'#ffffff'} className={`w-[20px] h-[20px] `} />
+                        </div>
+
+                        <p className={`text-[16px] text-white p-[10px]`}>В сравнении</p>
+                    </button>
+
+                ) : (
+
+                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px]`} onClick={() => { addCompare(cat); getProduct(cat.id); checkCompare() }}>
+
+                        <div className='h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
+                            <Icons name={'check'} color={'#008954'} className={`w-[20px] h-[20px]`} />
+                        </div>
+
+                        <p className={`text-[16px] text-[#008954] p-[10px]`}>Сравнить</p>
+
+                    </button>
+
+                )}
+
+                {/* {saveC.map(it =>
+                    <ProductPropsBlock item={it} open={activePart} />
+                )} */}
 
             </div>
         </div>

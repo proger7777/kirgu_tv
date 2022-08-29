@@ -27,8 +27,6 @@ const Favorites = () => {
     //Удаление товаров из избранного
     const removeFavorite = (cat) => {
 
-        // console.log(cat.id)
-
         localStorage.setItem('articul', JSON.stringify(articleDelete.filter(rf => rf.xml_id !== cat.id)));
 
         setFavorites(favorites.filter(rf => rf.id !== cat.id))
@@ -47,6 +45,7 @@ const Favorites = () => {
 
     return (
         <Layout crumbs={crumbs} activeMenu='favorites'>
+
             <div className='inline-block justify-content-center ml-[auto] mr-[auto]'>
 
                 <div className='flex justify-between items-center mb-[20px]'>
@@ -56,7 +55,6 @@ const Favorites = () => {
                         <h1 className='text-[24px] text-green'>Очистить</h1>
                         <Icons name='delete' className={`w-[40px] h-[40px]`} />
                     </button>
-
                 </div>
 
 

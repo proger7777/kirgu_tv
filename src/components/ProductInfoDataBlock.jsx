@@ -10,8 +10,6 @@ import { useEffect } from 'react';
 
 const ProductInfoDataBlock = ({item}) => {
 
-    console.log(item)
-
     const {onChangeOffer, fromAllCats} = useContext(ProductContext)
 
     const [inFavorites, setInFavorites] = useState(false)
