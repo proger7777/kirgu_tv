@@ -122,7 +122,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleIte
 
                 {compare ? (
 
-                    <button className={`flex item-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px] bg-[#008954]`} onClick={() => { addCompare(cat); getProduct(cat.id); checkCompare(); removClickC(cat) }}>
+                    <button className={`flex item-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px] bg-[#008954]`} onClick={() => { addCompare(cat); getProduct(cat);  checkCompare(); removClickC(cat) }}>
 
                         <div className='h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'xclose'} color={'#ffffff'} className={`w-[20px] h-[20px] `} />
@@ -133,7 +133,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleIte
 
                 ) : (
 
-                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px]`} onClick={() => { addCompare(cat); getProduct(cat.id); checkCompare() }}>
+                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px]`} onClick={() => { addCompare(cat); getProduct(cat); checkCompare() }}>
 
                         <div className='h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'check'} color={'#008954'} className={`w-[20px] h-[20px]`} />

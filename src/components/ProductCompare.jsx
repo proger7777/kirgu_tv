@@ -1,23 +1,31 @@
+import { useState } from "react";
+
 const ProductCompare = ({ compareProperties, itemAllChar }) => {
 
-    const propsBlackList = ['Рассрочка', 'Акции', 'Картинки', 'Характеристики', 'Сумма бонусов для товара с характеристикой',
+    const propsBlackList = ['Рассрочка', 'Артикул', 'Акции', 'Картинки', 'Характеристики', 'Сумма бонусов для товара с характеристикой',
         'Сумма бонусов для товара без характеристики', 'Возм исп начисление бонусы без характеристики',
         'Возм исп списывать бонусы без характеристики', 'Возм исп начисление бонусы с характеристикой',
         'Возм исп списывать бонусы с характеристикой']
 
+    // console.log(compareProperties.some(x => compareProperties.indexOf(x) !== compareProperties.lastIndexOf(x)))
+
     return (
         <div className='w-full'>
-            {itemAllChar ? itemAllChar.map(key =>
+            {itemAllChar ? itemAllChar.map((key, index) =>
                 key && !propsBlackList.includes(key) &&
-                <div>
-                    <div key={key} className='text-[22px] flex p-[5px] text-[16px]'>
-                        <div className='w-full p-[10px] bg-[#E0E0E0] text-[black] font-semibold'>{key}</div>
+                <div key={index}>
+                    <div key={key} className='flex text-[18px]'>
+                        <div className='w-full pt-[10px] pb-[0px] pl-[15px] bg-[#DEDEDE] text-[black] font-semibold'>{key}</div>
                     </div>
-                    <div className='flex text-[20px] flex-wrap justify-between'>
-                        <div className='flex  text-[20px] flex-wrap justify-around w-full'>{compareProperties.map(it => 
-                        <div className='' dangerouslySetInnerHTML={{__html: it[key]}}></div>    
-                        )}</div>
-                    </div>
+                    <div className='flex text-[20px] justify-around'>{compareProperties.map((it, index) =>
+                        <div key={index} className='w-full border bg-[#EAF6EA]'>
+                            {(compareProperties.find(item => item[key] !== it[key])) ?
+                                <div className='pl-[22px] pr-[22px] bg-[#EAF6EA] text-[black] p-[15px] text-center' dangerouslySetInnerHTML={{ __html: it[key]}}></div>
+                                :
+                                <div className='pl-[22px] pr-[22px] bg-[white] text-center p-[15px]' dangerouslySetInnerHTML={{ __html: it[key] }}></div>
+                            }
+                        </div>
+                    )}</div>
 
                 </div>
             )

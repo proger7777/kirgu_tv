@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { getTitleFromLinkStock } from '../services/str';
-import { checkCompare } from '../../components/CatalogItem'
 import { addCompare } from '../AddCompare';
+import { getTitleFromLinkStock } from '../services/str';
 
 class KirguSource {
 
@@ -58,25 +57,31 @@ class KirguSource {
 
     static async getProduct(id) {
 
-        const response = await axios.get(`${this.siteUrl}/element?id=${id}`)
+        let response = await axios.get(`${this.siteUrl}/element?id=${id}`)
 
         const saveArticul = localStorage.articul ? JSON.parse(localStorage.getItem('articul')) : []
 
-        const saveCompare = localStorage.saveCompare ? JSON.parse(localStorage.getItem('saveCompare')) : []
+        let saveCompare = localStorage.saveCompare ? JSON.parse(localStorage.getItem('saveCompare')) : []
 
         if (!saveArticul.find((item) => item.id == response.data.id)) {
             saveArticul.push(response.data)
             localStorage.setItem('articul', JSON.stringify(saveArticul))
         }
 
-        if (saveCompare.find((item) => item.id == response.data.id)) {
-            let removeCompare = saveCompare.findIndex(item => item.id == response.data.id)
-            saveCompare.splice(removeCompare, 1)
-            localStorage.setItem('saveCompare', JSON.stringify(saveCompare))
-        }
-        else if (!saveCompare.find((item) => item.id == response.data.id)) {
-            saveCompare.push(response.data)
-            localStorage.setItem('saveCompare', JSON.stringify(saveCompare))
+        if (id.id !== undefined) {
+
+            response = await axios.get(`${this.siteUrl}/element?id=${id.id}`)
+
+            if (saveCompare.find((item) => item.id == response.data.id)) {
+                let removeCompare = saveCompare.findIndex(item => item.id == response.data.id)
+                saveCompare.splice(removeCompare, 1)
+                localStorage.setItem('saveCompare', JSON.stringify(saveCompare))
+            }
+            else if (!saveCompare.find((item) => item.id == response.data.id)) {
+                saveCompare.push(response.data)
+                localStorage.setItem('saveCompare', JSON.stringify(saveCompare))
+            }
+
         }
 
         return response.data
