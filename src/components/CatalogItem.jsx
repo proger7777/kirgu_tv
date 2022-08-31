@@ -56,7 +56,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleIte
     function image(cat) {
 
         if (cat.image_url) { return cat.image_url }
-        else { return cat.images[0][1] }
+        else { return cat.images[0] }
 
     }
 
@@ -136,7 +136,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleIte
                     <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px]`} onClick={() => { addCompare(cat); getProduct(cat); checkCompare() }}>
 
                         <div className='h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
-                            <Icons name={'check'} color={'#008954'} className={`w-[20px] h-[20px]`} />
+                            <Icons name={'arrow-left-right'} color={'#008954'} className={`w-[20px] h-[20px]`} />
                         </div>
 
                         <p className={`text-[16px] text-[#008954] p-[10px]`}>Сравнить</p>
