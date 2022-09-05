@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const ProductCompare = ({ compareProperties, itemAllChar }) => {
 
     const propsBlackList = ['Рассрочка', 'Артикул', 'Акции', 'Картинки', 'Характеристики', 'Сумма бонусов для товара с характеристикой',
@@ -7,26 +5,25 @@ const ProductCompare = ({ compareProperties, itemAllChar }) => {
         'Возм исп списывать бонусы без характеристики', 'Возм исп начисление бонусы с характеристикой',
         'Возм исп списывать бонусы с характеристикой']
 
-    // console.log(compareProperties.some(x => compareProperties.indexOf(x) !== compareProperties.lastIndexOf(x)))
 
     return (
         <div className='w-full'>
+
             {itemAllChar ? itemAllChar.map((key, index) =>
                 key && !propsBlackList.includes(key) &&
-                <div key={index}>
-                    <div key={key} className='flex text-[18px]'>
-                        <div className='w-full pt-[10px] pb-[0px] pl-[15px] bg-[#DEDEDE] text-[black] font-semibold'>{key}</div>
-                    </div>
-                    <div className='flex text-[20px] justify-around'>{compareProperties.map((it, index) =>
+
+                <div key={index} className='flex text-[20px] justify-around'>
+                    <div className='w-full mr-[15px] sticky left-0 pt-[5px] bg-[white] pl-[5px] text-[18px] font-bold'>{key}</div>
+                    {compareProperties.map((it, index) =>
                         <div key={index} className='w-full border bg-[#EAF6EA]'>
-                            {(compareProperties.find(item => item[key] !== it[key])) ?
-                                <div className='pl-[22px] pr-[22px] bg-[#EAF6EA] text-[black] p-[15px] text-center' dangerouslySetInnerHTML={{ __html: it[key]}}></div>
+
+                            {(compareProperties.find(item => item.properties[key] !== it.properties[key])) ?
+                                <div className='pl-[22px] pr-[22px] bg-[#EAF6EA] text-[black] p-[25px] pt-[45px] pb-[10px] text-center' dangerouslySetInnerHTML={{ __html: it.properties[key] }}></div>
                                 :
-                                <div className='pl-[22px] pr-[22px] bg-[white] text-center p-[15px]' dangerouslySetInnerHTML={{ __html: it[key] }}></div>
+                                <div className='pl-[22px] pr-[22px] bg-[white] text-center p-[25px] pt-[45px] pb-[10px]' dangerouslySetInnerHTML={{ __html: it.properties[key] }}></div>
                             }
                         </div>
-                    )}</div>
-
+                    )}
                 </div>
             )
                 : <p className='text-[18px] text-[#8f8f8f]'>Выберите категорию</p>

@@ -5,6 +5,7 @@ import { getCategories } from './services/categories'
 import { Link } from 'react-router-dom'
 import ProductPropsBlock from './ProductPropsBlock'
 import ProductCompare from './ProductCompare'
+import CompareList from './CompareList'
 
 const CompareMenuList = ({ catalogCompare, activePart, openPartFnc, removeComp, compareWithProperties }) => {
 
@@ -31,7 +32,7 @@ const CompareMenuList = ({ catalogCompare, activePart, openPartFnc, removeComp, 
 
         compareItem = compareWithProperties.map(item => {
 
-            saveCompareProperties.push(item.properties)
+            saveCompareProperties.push(item)
 
             setCompareProperties(saveCompareProperties)
 
@@ -47,8 +48,6 @@ const CompareMenuList = ({ catalogCompare, activePart, openPartFnc, removeComp, 
 
         resultCharacteristic = resultCharacteristic.flat()
 
-        // resultCharacteristic = new Set(resultCharacteristic)
-
         setСharacteristic(resultCharacteristic.filter((x, i) => resultCharacteristic.indexOf(x) === i ))
 
         setCompareItems(resultCatalog)
@@ -56,8 +55,8 @@ const CompareMenuList = ({ catalogCompare, activePart, openPartFnc, removeComp, 
     }
 
     return (
-        <div className="justify-center ml-[20px] mr-[20px] ">
-            <div className='flex space-x-[50px] text-[25px] text-[black] mb-[30px] border-b-[2px]'>
+        <div className=" justify-center ml-[20px] mr-[20px] ">
+            <div className='flex bg-[white] space-x-[50px] text-[25px] text-[black] mt-[30px] mb-[30px] border-b-[2px]'>
                 {
                     catalogCompare.map(cat =>
                         <button
@@ -72,8 +71,9 @@ const CompareMenuList = ({ catalogCompare, activePart, openPartFnc, removeComp, 
                     )}
             </div>
 
-            <div className='block justify-between'>
-                <CatalogList catalog={compareItems} removeCompare={removeComp} save={compareWithProperties} />
+            <div className='justify-between'>
+
+                <CompareList catalog={compareItems} removeCompare={removeComp} save={compareWithProperties}/>
 
                 <div className='text-[27px] text-[#008954] mt-[10px] mb-[10px]'>Общие характеристики</div>
 

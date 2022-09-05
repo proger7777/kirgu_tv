@@ -67,10 +67,10 @@ const Compare = () => {
     return (
         <Layout crumbs={crumbs} activeMenu='compare'>
 
-            <div className='inline-block justify-content-center ml-[auto] mr-[auto]'>
+            <div className='inline-block justify-content-center ml-[auto] mr-[auto] z-50'>
 
                 <div className="flex justify-center mb-[30px]" >
-                    <h2 className='text-[27px] text-[#008954]'>Товары в сравнении</h2>
+                    <h2 className='absolute text-[27px] text-[#008954]'>Товары в сравнении</h2>
                 </div>
 
                 <div>
