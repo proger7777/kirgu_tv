@@ -57,16 +57,13 @@ class KirguSource {
 
     static async getProduct(id) {
 
-        let response = await axios.get(`${this.siteUrl}/element?id=${id}`)
+        // let response = await axios.get(`${this.siteUrl}/element?id=${id}`)
 
-        const saveArticul = localStorage.articul ? JSON.parse(localStorage.getItem('articul')) : []
+        let response
+
+        let saveArticul = localStorage.articul ? JSON.parse(localStorage.getItem('articul')) : []
 
         let saveCompare = localStorage.saveCompare ? JSON.parse(localStorage.getItem('saveCompare')) : []
-
-        if (!saveArticul.find((item) => item.id == response.data.id)) {
-            saveArticul.push(response.data)
-            localStorage.setItem('articul', JSON.stringify(saveArticul))
-        }
 
         if (id.id !== undefined) {
 
@@ -82,6 +79,14 @@ class KirguSource {
                 localStorage.setItem('saveCompare', JSON.stringify(saveCompare))
             }
 
+        }
+        else {
+            response = await axios.get(`${this.siteUrl}/element?id=${id}`)
+
+            if (!saveArticul.find((item) => item.id == response.data.id)) {
+                saveArticul.push(response.data)
+                localStorage.setItem('articul', JSON.stringify(saveArticul))
+            }
         }
 
         return response.data

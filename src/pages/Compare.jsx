@@ -39,20 +39,6 @@ const Compare = () => {
 
     }, [])
 
-    //Удаление товаров из сравнения
-    const removeCompare = (cat) => {
-
-        // console.log(cat)
-
-        // console.log(compares)
-
-        setCompares(compares.filter(rf => rf.site_id !== cat.site_id))
-
-        // localStorage.setItem('saveCompare', JSON.stringify(saveCompare.filter(rf => rf.site_id !== cat.site_id)));
-
-
-    }
-
     //Меню лист
     const [activePart, setActivePart] = useState()
 
@@ -60,7 +46,6 @@ const Compare = () => {
         setActivePart(part)
     }
 
-    // console.log('123')
 
     const crumbs = [['Сравнение', 'compare']]
 
@@ -79,7 +64,7 @@ const Compare = () => {
 
                         <div className="flex justify-center ml-[20px] mr-[20px]">
 
-                            <CompareMenuList catalogCompare={nameCategory} activePart={activePart} openPartFnc={openPartFnc} removeComp={removeCompare} compareWithProperties={saveCompare}/>
+                            <CompareMenuList catalogCompare={nameCategory} activePart={activePart} openPartFnc={openPartFnc} compareWithProperties={saveCompare}/>
 
                         </div>
                         

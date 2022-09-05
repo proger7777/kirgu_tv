@@ -5,27 +5,19 @@ import { setImagePath } from "./services/images";
 import { truncate } from "./services/str";
 import Icons from "./Icons";
 import { setProductUrl } from "./services/product";
-import ProductPropsBlock from './ProductPropsBlock';
-import { getProduct } from './services/product';
+import KirguSource from './API/KirguSource';
 import { addFavorites } from './AddFavorite';
 import { addCompare } from './AddCompare';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleItem, saveC }) => {
+const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, articleItem }) => {
 
     if (articleItem !== undefined) articleItem = articleItem.filter(it => it.id == cat.site_id || it.id == cat.id)
 
     const removClickF = (cat) => {
         removeF === undefined ? removeF = null : removeF(cat)
     }
-
-    const removClickC = (cat) => {
-        removeC === undefined ? removeC = null : removeC(cat)
-    }
-
-
-
 
     const [inFavorites, setInFavorites] = useState(false)
 
@@ -59,8 +51,6 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleIte
         else { return cat.images[0] }
 
     }
-
-    let activePart = 'props'
 
     useEffect(() => {
 
@@ -108,7 +98,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleIte
 
                 ) : (
 
-                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mb-[5px] rounded-[4px]`} onClick={() => { addFavorites(cat); checkInFavorites(); getProduct(cat.id) }}>
+                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mb-[5px] rounded-[4px]`} onClick={() => { addFavorites(cat); checkInFavorites(); KirguSource.getProduct(cat.id) }}>
 
                         <div className='h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`w-[20px] h-[20px]`} />
@@ -122,7 +112,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleIte
 
                 {compare ? (
 
-                    <button className={`flex item-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px] bg-[#008954]`} onClick={() => { addCompare(cat); getProduct(cat);  checkCompare(); removClickC(cat) }}>
+                    <button className={`flex item-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px] bg-[#008954]`} onClick={() => { addCompare(cat); KirguSource.getProduct(cat);  checkCompare() }}>
 
                         <div className='h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'xclose'} color={'#ffffff'} className={`w-[20px] h-[20px] `} />
@@ -133,7 +123,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleIte
 
                 ) : (
 
-                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px]`} onClick={() => { addCompare(cat); getProduct(cat); checkCompare() }}>
+                    <button className={`flex items-start items-center border border-[#008954] h-[30px] w-[150px] mb-[20px] rounded-[4px]`} onClick={() => { addCompare(cat); KirguSource.getProduct(cat); checkCompare() }}>
 
                         <div className='h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'arrow-left-right'} color={'#008954'} className={`w-[20px] h-[20px]`} />
@@ -144,10 +134,6 @@ const CatalogItem = ({ cat, catalogId, fromAllCats, removeF, removeC, articleIte
                     </button>
 
                 )}
-
-                {/* {saveC.map(it =>
-                    <ProductPropsBlock item={it} open={activePart} />
-                )} */}
 
             </div>
         </div>

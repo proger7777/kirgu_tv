@@ -7,7 +7,7 @@ import ProductPropsBlock from './ProductPropsBlock'
 import ProductCompare from './ProductCompare'
 import CompareList from './CompareList'
 
-const CompareMenuList = ({ catalogCompare, activePart, openPartFnc, removeComp, compareWithProperties }) => {
+const CompareMenuList = ({ catalogCompare, activePart, openPartFnc, compareWithProperties }) => {
 
     const activeTabClasses = 'border-b-[1px] border-[#008954] pb-[12px] font-medium text-[#008954]'
 
@@ -73,7 +73,7 @@ const CompareMenuList = ({ catalogCompare, activePart, openPartFnc, removeComp, 
 
             <div className='justify-between'>
 
-                <CompareList catalog={compareItems} removeCompare={removeComp} save={compareWithProperties}/>
+                <CompareList catalog={compareItems} save={compareWithProperties}/>
 
                 <div className='text-[27px] text-[#008954] mt-[10px] mb-[10px]'>Общие характеристики</div>
 
