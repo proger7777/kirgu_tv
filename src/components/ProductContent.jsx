@@ -10,7 +10,7 @@ import ProductPropsBlock from "./ProductPropsBlock";
 import ProductReviewsBlock from "./ProductReviewsBlock";
 import { changeOffer } from "./services/product";
 
-const ProductContent = ({item, fromAllCats}) => {
+const ProductContent = ({item, fromAllCats, catId}) => {
 
     const [product, setProduct] = useState(item)
 
@@ -50,7 +50,7 @@ const ProductContent = ({item, fromAllCats}) => {
 
             <div className='mt-[100px]'>
                 <ProductContext.Provider value={{onChangeOffer, fromAllCats}}>
-                    <ProductInfoBlock item={product} open={activePart === 'info'} />
+                    <ProductInfoBlock item={product} open={activePart === 'info'} catId={catId}/>
                     {product.description !== product.name && <ProductDescBlock item={product} open={activePart === 'desc'} />}
                     <ProductPropsBlock item={product} open={activePart === 'props'} />
                     {/* <ProductReviewsBlock item={product} open={activePart === 'reviews'} /> */}
