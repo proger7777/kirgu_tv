@@ -23,6 +23,7 @@ import PausePrompBlock from "./components/PausePrompBlock";
 import SearchForm from "./pages/SearchForm";
 import Favorites from './pages/Favourites';
 import Comparison from './pages/Comparison';
+import ComparisonItem from './components/ComparisonItem';
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
             <Route path='search/:query' element={<Search />} />
             <Route path='favorites' element={<Favorites />} />
             <Route path='comparison' element={<Comparison />} />
+            <Route path='comparisonItem/:catId/:catName' element={<ComparisonItem />} /> 
             <Route path='*' element={<NotFound404 />} />
           </Routes>
         </BrowserRouter>

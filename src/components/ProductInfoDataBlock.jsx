@@ -1,37 +1,50 @@
-import React, {  }  from 'react';
+import React, { } from 'react';
 import { Link } from "react-router-dom";
 import Icons from "./Icons";
 import { useContext, useState } from "react";
 import { ProductContext } from "../context";
 import { setProductUrl } from "./services/product";
-import { addFavorites } from './AddFavorite';
+import { addComparison, addFavorites } from './AddFavorite';
 import { useEffect } from 'react';
 
-const ProductInfoDataBlock = ({item}) => {
+const ProductInfoDataBlock = ({ item, catId }) => {
 
-    const {onChangeOffer, fromAllCats} = useContext(ProductContext)
+    const { onChangeOffer, fromAllCats } = useContext(ProductContext)
 
     const [inFavorites, setInFavorites] = useState(false)
+
+    const [inComparison, setInComparison] = useState(false)
 
     const checkInFavorites = () => {
 
         const favorites = localStorage.favorites ? JSON.parse(localStorage.getItem('favorites')) : []
 
         const exist = favorites.find((items) => items.xml_id == item.id || items.id == item.id || items.id == item.xml_id)
-        
+
         setInFavorites(exist ? true : false)
+
+    }
+
+    const checkInComparison = () => {
+
+        const comparison = localStorage.comparison ? JSON.parse(localStorage.getItem('comparison')) : []
+
+        const exist = comparison.find((items) => items.xml_id == item.id || items.id == item.id || items.id == item.xml_id)
+
+        setInComparison(exist ? true : false)
 
     }
 
     useEffect(() => {
 
         checkInFavorites()
+        checkInComparison()
 
     }, [])
 
     let offersOptions = []
 
-    if(item.offers) {
+    if (item.offers) {
         item.offers.forEach(i => {
             const label = i.name.match(/\((.+?)\)/)[1]
             offersOptions.push({ value: i.id, label: label })
@@ -47,7 +60,7 @@ const ProductInfoDataBlock = ({item}) => {
 
     const price = item.modulesPrice ? item.modulesPrice : item.price
 
-    return(
+    return (
         <div className='w-[420px] border border-[#e6e6e6] rounded-[5px] p-[50px] pb-0'>
             <p>
                 <span className='text-[28px] mr-[9px]'>{item.name}</span>
@@ -59,10 +72,9 @@ const ProductInfoDataBlock = ({item}) => {
 
                 {item.old_price > 0 && <span className='text-[14px] text-[#8F8F8F] line-through'>{item.old_price.toLocaleString('ru-RU')} ₽</span>}
             </div>
-
             {item.bonus > 0 && <p className='text-green text-[12px] font-semibold'>+{item.bonus.toLocaleString('ru-RU')} бонусов за покупку</p>}
 
-            <div className='mt-[50px] mb-[50px] h-[1px] bg-[#e6e6e6]'></div>
+            <div className=' mt-[50px] mb-[50px] h-[1px] bg-[#e6e6e6]'></div>
 
             <div className='flex mb-[15px]'>
                 <Icons name='check' className='w-[24px] h-[24px]' />
@@ -89,29 +101,29 @@ const ProductInfoDataBlock = ({item}) => {
                     <div className='ml-[12px]'><p className='text-[16px]'>На витрине</p></div>
                 </div>
             }
-       
-            {item.offers && 
+
+            {item.offers &&
                 <>
                     <p className='text-[16px] font-semibold mt-[30px] mb-[10px]'>Опции</p>
-                    {offersOptions.map(i => 
-                        <button key={i.value} onClick={() => setOffer(i) } className={`${i.value === activeOffer.value && 'border-green'} flex mb-[10px] items-center pl-[12px] pr-[12px] h-[35px] rounded-[4px] border text-[14px] cursor-pointer`}>{i.label}</button>
+                    {offersOptions.map(i =>
+                        <button key={i.value} onClick={() => setOffer(i)} className={`${i.value === activeOffer.value && 'border-green'} flex mb-[10px] items-center pl-[12px] pr-[12px] h-[35px] rounded-[4px] border text-[14px] cursor-pointer`}>{i.label}</button>
                     )}
                 </>
-            }   
+            }
 
-            {item.modules && 
+            {item.modules &&
                 <>
                     <p className='text-[16px] font-semibold mt-[30px] mb-[10px]'>Модули</p>
-                    {item.modules.map(i => 
+                    {item.modules.map(i =>
                         <Link key={i.id} to={setProductUrl(item.section, i.id, fromAllCats)} className='table mb-[10px] pl-[12px] pr-[12px] pt-[6px] pb-[6px] rounded-[4px] border text-[14px]'>{i.name}</Link>
                     )}
                 </>
-            }   
+            }
 
             <>
                 {inFavorites ? (
 
-                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
+                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'xclose'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
@@ -123,7 +135,7 @@ const ProductInfoDataBlock = ({item}) => {
 
                 ) : (
 
-                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
+                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px]`} onClick={() => { addFavorites(item, catId); checkInFavorites() }}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`w-[30px] h-[30px] `} />
@@ -131,6 +143,34 @@ const ProductInfoDataBlock = ({item}) => {
 
                         <p className={`text-[20px] text-green pl-[20px]`}>В избранное</p>
 
+                    </button>
+
+                )}
+            </>
+
+            <>
+                {inComparison ? (
+
+                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { addComparison(item, catId); checkInComparison() }}>
+
+                        <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                            <Icons name={'scales'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
+                        </div>
+
+                        <p className={`text-[20px] text-white pl-[20px]`}>Сравнить</p>
+
+                    </button>
+
+                ) : (
+
+                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px]`} onClick={() => { addComparison(item, catId); checkInComparison() }}>
+
+                        <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
+                            <Icons name={'scales'} color={'#008954'} className={`w-[30px] h-[30px] `} />
+                        </div>
+
+                        <p className={`text-[20px] text-green pl-[20px]`}>Сравнить</p>
+                        {/* Добавить в сравнение  */}
                     </button>
 
                 )}
