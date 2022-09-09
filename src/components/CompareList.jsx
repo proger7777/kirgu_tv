@@ -51,38 +51,39 @@ const CompareList = ({ cat, catalogId }) => {
 
             <div className={`flex-col w-[280px] mt-[15px]`}>
 
-                <div className='h-[405px] w-[280px] border-b'>
+                <div className=' flex h-[405px] w-[280px] border-b justify-center items-center'>
 
-                    <h1>Характеристики</h1>
+                    <h1>Характеристики товаров</h1>
 
                 </div>
 
                 <div className='bg-gray-100'>
+
                     {props.map((item, i) => (
+
                         <div className='mb-[7px] h-[50px] p-[5px] text-[16px] border-b' key={i}>
                             <p>{item}</p>
                         </div>
+
                     ))}
+
                 </div>
 
             </div>
 
+            <div className='flex h-full overflow-y-hidden' >
 
-            {(cat.length) ? (
+                {cat.map((item, i) => (
 
-                <div className='flex h-full overflow-y-hidden' >
-                    
-                    {cat.map((item, i) => (
+                    <div className=' catalog_content gap-[25px] mt-[15px] ml-[20px]' key={i}>
 
-                        <div className=' catalog_content gap-[25px] mt-[15px] ml-[20px]' key={i}>
-                            <CompareItem cat={item} catalogId={catalogId} propList={props} />
-                        </div>
+                        <CompareItem cat={item} catalogId={catalogId} propList={props} />
 
-                    ))}
+                    </div>
 
-                </div>
+                ))}
 
-            ) : (<></>)}
+            </div>
 
         </div>
     )

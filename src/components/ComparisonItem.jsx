@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from '../layout';
 import CompareList from './CompareList';
 
@@ -8,13 +8,13 @@ const ComparisonItem = () => {
     const params = useParams()
 
     const [products, setProducts] = useState([])
+    
+    const navigate = useNavigate();
 
     function Compare() {
 
         const raw = JSON.parse(localStorage.getItem('comparison')) || []
-        if (raw.length) {
-            setProducts(raw.filter(item => item.category == params.catId))
-        }
+        setProducts(raw.filter(item => item.category == params.catId))
 
     }
 
@@ -24,7 +24,6 @@ const ComparisonItem = () => {
         document.body.addEventListener('click', function (event) {
             if (event.target.classList.contains('comparisonIt')) {
                 Compare()
-                console.log(111)
             }
         })
 
@@ -53,10 +52,9 @@ const ComparisonItem = () => {
                                 <div>
                                     <CompareList cat={products} catalogId={params.catId}/>
                                 </div>
-                                {console.log(products)}
                         </div>
 
-                    ) : (<></>)}
+                    ) : (navigate(-1))}
                 </div>
 
 
