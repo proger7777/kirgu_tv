@@ -67,6 +67,7 @@ const CompareItem = ({ cat, catalogId, propList }) => {
                 ? <Loadering />
                 : <>
                     <Link to={setProductUrl(cat.category, cat.id)} >
+                        
                         <div className='product_item flex flex-col items-center w-[342px] h-[355px] pl-[20px] pr-[30px]'>
                             <img src={setImagePath(image(cat))} alt='' className='object-contain h-[162px] mt-[20px] mb-[10px]' />
 
@@ -82,24 +83,24 @@ const CompareItem = ({ cat, catalogId, propList }) => {
                         </div>
 
                     </Link>
-                    {/* <div className='border-b w-[342px] flex justify-center'> */}
+
                         <div className='flex w-full justify-center border-b'>
                             {inFavorites ? (
 
-                                <button className={`focus:outline-none favorites flex items-center border border-[#008954] h-[30px] w-[140px]  mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
+                                <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[30px] w-[140px]  mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
 
-                                    <div className='h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
-                                        <Icons name={'xclose'} color={'#ffffff'} className={`w-[20px] h-[20px] `} />
+                                    <div className='favorites h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                                        <Icons name={'xclose'} color={'#ffffff'} className={`favorites w-[20px] h-[20px] `} />
                                     </div>
 
-                                    <p className={`text-[16px] text-white pl-[5px]`}> Добавлено</p>
+                                    <p className={`favorites text-[16px] text-white pl-[5px]`}> Добавлено</p>
 
                                 </button>
 
 
                             ) : (
 
-                                <button className={`focus:outline-none favorites flex items-center border border-[#008954] h-[30px] w-[140px]  mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
+                                <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[30px] w-[140px]  mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
 
                                     <div className='favorites h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
                                         <Icons name={'add'} color={'#008954'} className={`favorites w-[20px] h-[20px]`} />
@@ -120,7 +121,6 @@ const CompareItem = ({ cat, catalogId, propList }) => {
                             </button>
 
                         </div>
-                    {/* </div> */}
 
                     {(propsProduct) ? (
                         propsProduct.properties ? propList.map(key =>

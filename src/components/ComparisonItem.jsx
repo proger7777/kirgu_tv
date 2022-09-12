@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from '../layout';
+import { addComparison } from './AddFavorite';
 import CompareList from './CompareList';
+import Icons from './Icons';
 
 const ComparisonItem = () => {
 
@@ -29,6 +31,15 @@ const ComparisonItem = () => {
 
     }, [])
 
+    function clearComparison() {
+        
+        products.map((item) => (
+            addComparison(item, params.catId)
+        ))
+        
+        navigate(-1)
+    }
+
     const crumbs = [['Сравнение', 'comparison'], ['Товары', 'comparisonItem']]
 
 
@@ -37,12 +48,19 @@ const ComparisonItem = () => {
 
             <div className="w-full">
 
-                <div className='flex items-center'>
-                    <h2 className='text-[24px]'>Сравнивание товара: &nbsp;</h2>
-                    <h2 className='text-[24px] '>{params.catName}</h2>
+                <div className='flex justify-between'>
 
+                    <div className='flex'>
+                        <h2 className='text-[24px] font-semibold'>Сравнение товаров -&nbsp;</h2>
+                        <h2 className='text-[24px] font-semibold'>{params.catName}</h2>
+                    </div>
+
+                    <button className="flex justify-center items-center  w-[370px] h-[50px] border border-[#E6141E] rounded-[4px]" onClick={() => { clearComparison() }}>
+                        <Icons name='deleteV2' className={` w-[20px] h-[20px] grid-cols-4`} />
+                        <h1 className='text-[20px] text-[#E6141E] font-semibold'>&nbsp;Очистить</h1>
+                    </button>
+                    
                 </div>
-
 
                 <div>
 

@@ -26,8 +26,6 @@ export function addComparison(cat, catalogId) {
 
   //remove comparison
   if( comparison.find((item) =>item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id) ) {
-    
-    console.log('remove comparison')
     let remove = comparison.findIndex(item => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)
     comparison.splice(remove, 1)
     localStorage.setItem('comparison', JSON.stringify(comparison))        
@@ -35,7 +33,6 @@ export function addComparison(cat, catalogId) {
 
   //add comparison
   else if( !comparison.find((item) => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)) {
-      console.log('add comparison')
       cat.category = catalogId
       comparison.push(cat)
       localStorage.setItem('comparison', JSON.stringify(comparison))
