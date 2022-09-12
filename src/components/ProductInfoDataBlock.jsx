@@ -3,12 +3,22 @@ import { Link } from "react-router-dom";
 import Icons from "./Icons";
 import { useContext, useState } from "react";
 import { getProduct } from './services/product';
+import KirguSource from './API/KirguSource';
+import { addArticuleAction } from '../store/articuleReducer';
 import { ProductContext } from "../context";
 import { setProductUrl } from "./services/product";
-import { addFavorites } from './AddFavorite';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { addFavoriteItemAction, removeFavoriteItemInInfoBlockAction } from '../store/favoriteReducer';
 
 const ProductInfoDataBlock = ({item}) => {
+
+    console.log(item)
+
+    const dispatch = useDispatch()
+
+    const favorite = useSelector(state => state.favorite.item)
 
     const {onChangeOffer, fromAllCats} = useContext(ProductContext)
 
@@ -16,9 +26,7 @@ const ProductInfoDataBlock = ({item}) => {
 
     const checkInFavorites = () => {
 
-        const favorites = localStorage.favorites ? JSON.parse(localStorage.getItem('favorites')) : []
-
-        const exist = favorites.find((items) => items.xml_id == item.id || items.id == item.id || items.id == item.xml_id)
+        const exist = favorite.find((items) => items.xml_id == item.id || items.id == item.id || items.id == item.xml_id)
         
         setInFavorites(exist ? true : false)
 
@@ -28,7 +36,7 @@ const ProductInfoDataBlock = ({item}) => {
 
         checkInFavorites()
 
-    }, [])
+    }, [favorite])
 
     let offersOptions = []
 
@@ -114,7 +122,7 @@ const ProductInfoDataBlock = ({item}) => {
             <>
                 {inFavorites ? (
 
-                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites()}}>
+                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { dispatch(removeFavoriteItemInInfoBlockAction(item)); checkInFavorites(); }}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'xclose'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
@@ -126,7 +134,7 @@ const ProductInfoDataBlock = ({item}) => {
 
                 ) : (
 
-                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(item); checkInFavorites(); getProduct(item.id)}}>
+                    <button className={`flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[18px] rounded-[4px]`} onClick={() => { dispatch(addFavoriteItemAction(item)); checkInFavorites(); dispatch(addArticuleAction(item))}}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`w-[30px] h-[30px] `} />

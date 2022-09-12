@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { addCompare } from '../AddCompare';
 import { getTitleFromLinkStock } from '../services/str';
+
 
 class KirguSource {
 
@@ -32,8 +32,6 @@ class KirguSource {
     static async getFilters(id) {
         const response = await axios.get(`${this.siteUrl}/section_filter/?id=${id}`)
 
-        console.log(66666, response)
-
         return response.data
     }
 
@@ -57,37 +55,7 @@ class KirguSource {
 
     static async getProduct(id) {
 
-        // let response = await axios.get(`${this.siteUrl}/element?id=${id}`)
-
-        let response
-
-        let saveArticul = localStorage.articul ? JSON.parse(localStorage.getItem('articul')) : []
-
-        let saveCompare = localStorage.saveCompare ? JSON.parse(localStorage.getItem('saveCompare')) : []
-
-        if (id.id !== undefined) {
-
-            response = await axios.get(`${this.siteUrl}/element?id=${id.id}`)
-
-            if (saveCompare.find((item) => item.id == response.data.id)) {
-                let removeCompare = saveCompare.findIndex(item => item.id == response.data.id)
-                saveCompare.splice(removeCompare, 1)
-                localStorage.setItem('saveCompare', JSON.stringify(saveCompare))
-            }
-            else if (!saveCompare.find((item) => item.id == response.data.id)) {
-                saveCompare.push(response.data)
-                localStorage.setItem('saveCompare', JSON.stringify(saveCompare))
-            }
-
-        }
-        else {
-            response = await axios.get(`${this.siteUrl}/element?id=${id}`)
-
-            if (!saveArticul.find((item) => item.id == response.data.id)) {
-                saveArticul.push(response.data)
-                localStorage.setItem('articul', JSON.stringify(saveArticul))
-            }
-        }
+        let response = await axios.get(`${this.siteUrl}/element?id=${id}`)
 
         return response.data
     }

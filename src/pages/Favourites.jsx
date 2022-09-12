@@ -3,42 +3,33 @@ import { useEffect, useState } from "react";
 import CatalogList from "../components/CatalogList";
 import Icons from "../components/Icons";
 import Layout from "../layout";
+import { useSelector } from "react-redux";
 
 
 const Favorites = () => {
 
-    const [favorites, setFavorites] = useState([])
+    const favorites = useSelector(state => state.favorite.favoriteItem)
 
-    let favoritesPage = JSON.parse(localStorage.getItem('favorites'))
+    const articule = useSelector(state => state.articule.articuleItem)
 
-    let articleDelete = JSON.parse(localStorage.getItem('articul'))
-
-    // let atriculToCatalogItem = articleDelete.properties.Артикул
-
-    useEffect(() => {
-
-        const raw = localStorage.getItem('favorites') || []
-        if (raw.length) {
-            setFavorites(JSON.parse(raw))
+    const uniqArticule = articule.reduce((o, i) => {
+        if (!o.find(v => v.id == i.id)) {
+            o.push(i)
         }
+        return o;
+    }, [] )
 
-    }, [])
 
     //Удаление товаров из избранного
     const removeFavorite = (cat) => {
 
-        localStorage.setItem('articul', JSON.stringify(articleDelete.filter(rf => rf.xml_id !== cat.id)));
-
-        setFavorites(favorites.filter(rf => rf.id !== cat.id))
-
-        localStorage.setItem('favorites', JSON.stringify(favoritesPage.filter(rf => rf.id !== cat.id)));
+        favorites.filter(rf => rf.id !== cat.id)
 
     }
 
     function clearFavorites() {
 
-        localStorage.removeItem("favorites")
-        setFavorites([])
+        favorites([])
 
     }
     const crumbs = [['Избранное', 'favorites']]
@@ -62,7 +53,7 @@ const Favorites = () => {
 
                     {favorites.length ? (
 
-                        <CatalogList catalog={favorites} removeFavorite={removeFavorite} articleDelete={articleDelete} />
+                        <CatalogList catalog={favorites} removeFavorite={removeFavorite} articule1={uniqArticule}/>
 
                     ) : (
                         <div className="flex justify-center" >
