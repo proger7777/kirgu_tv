@@ -5,23 +5,23 @@ import Favorites from '../pages/Favourites';
 import ComparisonItem from './ComparisonItem';
 import Icons from './Icons';
 import { getCatCrumbs, getCategories } from './services/categories';
+import { setImagePath } from './services/images';
 
 
 
 
-const ComparisonList = ({ catId, compare }) => {
+const ComparisonList = ({ catId }) => {
+
+    const [catalogItem, setCatalogItem] = useState([])
 
     const [product, setProduct] = useState([])
-
-    const [productLength, setProductLength] = useState([])
 
     const [fetchProduct, isProductLoading, productError] = useFetching(async (catId, id) => {
 
         const resultAllCats = await getCategories()
 
-        const res = await getCatCrumbs(catId, resultAllCats)
-
-        setProduct(res.pop())
+        let cat = resultAllCats.find(i => i.id === catId)
+        setCatalogItem(cat)
     })
 
     useEffect(() => {
@@ -36,56 +36,22 @@ const ComparisonList = ({ catId, compare }) => {
 
         const raw = JSON.parse(localStorage.getItem('comparison')) || []
         if (raw.length) {
-            setProductLength(raw.filter(item => item.category == catId))
+            setProduct(raw.filter(item => item.category == catId))
         }
 
     }
 
     return (
+        <div className='border-[1px] border-[#F5F5F5] w-[324px] h-[276px] pl-[20px] pr-[20px] flex flex-col items-center'>
 
-        <div >
-            <div className='border border-[#e6e6e6] p-[10px] m-[10px] text-[20px]' >
-                {(product.length) ? (
-                    <Link to={`/comparisonItem/${product[1].slice(8)}/${product[0]}`}>
-                        {(productLength.length > 4) ? (
+                <Link to={`/comparisonItem/${catalogItem.id}/${catalogItem.name}`}>
 
-                            <div className='flex justify-between'>
-                                <h1>{product[0]}</h1>
-                                <div className='flex w-[145px] justify-between'>
-                                        <h1 className='text-slate-500'>{productLength.length} товаров</h1>
-                                        <Icons name='page_next' className="ml-[15px] w-[20px] h-[20px] mr-[4px] relative  top-[8px]" />
-                                    </div>
-                            </div>
+                    <img src={setImagePath(catalogItem.image)} alt='' className='object-contain h-[197px] m-auto mt-[20px] mb-[10px]' />
+                    <span className='text-[14px] font-semibold block w-full text-center'>{catalogItem.name} - ({product.length})</span>
 
-                        ) : (productLength.length > 1) ? (
-
-                            <div className='flex justify-between'>
-                                    <h1>{product[0]}</h1>
-                                    <div className='flex w-[145px] justify-between'>
-                                        <h1 className='text-slate-500'>{productLength.length} товара</h1>
-                                        <Icons name='page_next' className="ml-[15px] w-[20px] h-[20px] mr-[4px] relative  top-[8px]" />
-                                    </div>
-                            </div>
-
-                        ) : (
-
-                            <div className='flex justify-between '>
-                                <h1>{product[0]}</h1>
-                                <div className='flex w-[145px] justify-between'>
-                                        <h1 className='text-slate-500'>{productLength.length} товар</h1>
-                                        <Icons name='page_next' className="ml-[15px] w-[20px] h-[20px] mr-[4px] relative  top-[8px]" />
-                                    </div>
-                            </div>
-
-                        )}
-                    </Link>
-                ) : (<></>)}
-
-
-            </div>
+                </Link>
 
         </div>
-
     )
 }
 
