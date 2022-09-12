@@ -42,16 +42,51 @@ const ComparisonList = ({ catId }) => {
     }
 
     return (
-        <div className='border-[1px] border-[#F5F5F5] w-[324px] h-[276px] pl-[20px] pr-[20px] flex flex-col items-center'>
+        <div className='border border-[#e6e6e6] p-[10px] m-[10px] text-[20px]' >
+            
+        {(product.length) ? (
+            <Link to={`/comparisonItem/${catalogItem.id}/${catalogItem.name}`}>
+                {(product.length > 4) ? (
 
-                <Link to={`/comparisonItem/${catalogItem.id}/${catalogItem.name}`}>
+                    <div className='flex justify-between'>
+                        
+                        <div className='flex'>
+                            <h1 className='text-[#008954] text-[18px] font-semibold'>{catalogItem.name}&nbsp;</h1>
+                            <h1 className='mt-[8px] text-slate-500 text-[10px]'>{product.length} товаров</h1>
+                        </div>
+                        
+                        <Icons name='arrowRight' className="ml-[15px] w-[25px] h-[25px] mr-[4px]" />
+                    </div>
 
-                    <img src={setImagePath(catalogItem.image)} alt='' className='object-contain h-[197px] m-auto mt-[20px] mb-[10px]' />
-                    <span className='text-[14px] font-semibold block w-full text-center'>{catalogItem.name} - ({product.length})</span>
+                ) : (product.length > 1) ? (
 
-                </Link>
+                    <div className='flex justify-between'>
+                        
+                            <div className='flex'>
+                                <h1 className='text-[#008954] text-[18px] font-semibold'>{catalogItem.name}&nbsp;</h1>
+                                <h1 className='mt-[8px] text-slate-500 text-[10px]'>{product.length} товара</h1>
+                            </div>
 
-        </div>
+                            <Icons name='arrowRight' className="ml-[15px] w-[25px] h-[25px] mr-[4px]" />
+                    </div>
+
+                ) : (
+
+                    <div className='flex justify-between '>
+                        <div className='flex'>
+                            <h1 className='text-[#008954] text-[18px] font-semibold'>{catalogItem.name}&nbsp;</h1>
+                            <h1 className='mt-[8px] text-slate-500 text-[10px]'>{product.length} товар</h1>
+                        </div>
+                        
+                        <Icons name='arrowRight' className="ml-[15px] w-[25px] h-[25px] mr-[4px]" />
+                    </div>
+
+                )}
+            </Link>
+        ) : (<></>)}
+
+
+    </div>
     )
 }
 

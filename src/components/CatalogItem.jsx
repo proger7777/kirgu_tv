@@ -60,7 +60,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
         <div className='border border-[#e6e6e6] items-center flex flex-col'>
 
-            <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[322px] h-[335px]  pl-[20px] pr-[30px]'>
+            <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[320px] h-[335px]  pl-[20px] pr-[30px]'>
 
                 <img src={setImagePath(image(cat))} alt='' className='object-contain h-[162px] mt-[20px] mb-[10px]' />
 
@@ -70,8 +70,8 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
                     )}
                 </span>
 
-                <p className='text-[22px] text-center mb-[5px]'>{truncate(cat.name, 30)}</p>
-                <p className='text-[12px] text-slate-500'>Артикуль: {article['Артикул']}</p>
+                <p className='text-[22px] text-center mb-[7px] w-[220px] h-[55px]'>{truncate(cat.name, 30)}</p>
+                <p className='text-[12px] text-slate-500'>Артикул: {article['Артикул']}</p>
                 <p className='text-green text-[28px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>
 
             </Link>
@@ -80,20 +80,20 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 {inFavorites ? (
 
-                    <button className={`focus:outline-none favorites flex items-center border border-[#008954] h-[30px] w-[140px] mt-[15px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
+                    <button className={`favorites focus:outline-none  flex items-center border border-[#008954] h-[30px] w-[140px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
 
-                        <div className='h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
-                            <Icons name={'xclose'} color={'#ffffff'} className={`w-[20px] h-[20px] `} />
+                        <div className='favorites h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                            <Icons name={'xclose'} color={'#ffffff'} className={`favorites w-[20px] h-[20px] `} />
                         </div>
 
-                        <p className={`text-[16px] text-white pl-[5px]`}> Добавлено</p>
+                        <p className={`favorites text-[16px] text-white pl-[5px]`}> Добавлено</p>
 
                     </button>
 
 
                 ) : (
 
-                    <button className={`focus:outline-none favorites flex items-center border border-[#008954] h-[30px] w-[140px] mt-[15px] mb-[18px] rounded-[4px]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
+                    <button className={`focus:outline-none favorites flex items-center border border-[#008954] h-[30px] w-[140px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
 
                         <div className='favorites h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`favorites w-[20px] h-[20px]`} />
@@ -107,7 +107,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 {inComparison ? (
 
-                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[30px] mt-[15px] mb-[18px] rounded-[4px] bg-[#008954]`} onClick={() => { addComparison(cat, catalogId); checkInComparison() }}>
+                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[30px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { addComparison(cat, catalogId); checkInComparison() }}>
 
                         <div className='h-[30px] w-[30px] flex justify-center items-center'>
                         <Icons name={'scales'} color={'#ffffff'} className={`w-[20px] h-[20px] `} />
@@ -118,7 +118,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 ) : (
 
-                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[30px] mt-[15px] mb-[18px] rounded-[4px]`} onClick={() => { addComparison(cat, catalogId); checkInComparison() }}>
+                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[30px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { addComparison(cat, catalogId); checkInComparison() }}>
 
                         <div className='favorites h-[30px] w-[30px] flex justify-center items-center'>
                         <Icons name={'scales'} color={'#008954'} className={`w-[20px] h-[20px] `} />

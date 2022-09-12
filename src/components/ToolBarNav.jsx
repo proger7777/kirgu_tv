@@ -11,16 +11,14 @@ const ToolBarNav = ({activeMenu}) => {
     navList.push(['/', 'Главная', 'main'])
     homeCategories.forEach(i => navList.push([`/category/${i.id}`, i.name, i.id]))
     navList.push(['/categories', 'Все категории', 'allcats'])
-    navList.push(['/favorites', 'Избранное', 'favorites'])
-    navList.push(['/comparison', 'Сравнение', 'comparison'])
     navList.push(['/info', 'Информация', 'info'])
 
     const activeCl = 'border-b border-[#008954] font-semibold'
 
     return (
-        <nav className='space-x-[47px]'>
+        <nav className='space-x-[120px]'>
             {navList.map(i => 
-                <Link key={i[2]} to={i[0]} className={`${activeMenu === i[2] ? activeCl : '' } text-green text-[20px]`}>{i[1]}</Link>
+                <Link key={i[2]} to={i[0]} className={`${activeMenu === i[2] ? activeCl : '' } text-green text-[26px]`}>{i[1]}</Link>
             )}
         </nav>
     )
