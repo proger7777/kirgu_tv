@@ -123,25 +123,25 @@ const ProductInfoDataBlock = ({ item, catId }) => {
             <>
                 {inFavorites ? (
 
-                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
+                    <button className={`favorites focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
 
-                        <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
-                            <Icons name={'xclose'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
+                        <div className='favorites h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                            <Icons name={'xclose'} color={'#ffffff'} className={`favorites w-[30px] h-[30px] `} />
                         </div>
 
-                        <p className={`text-[20px] text-white pl-[20px]`}>Добавлен</p>
+                        <p className={`favorites text-[20px] text-white pl-[20px]`}>Добавлен</p>
 
                     </button>
 
                 ) : (
 
-                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px]`} onClick={() => { addFavorites(item, catId); checkInFavorites() }}>
+                    <button className={`favorites focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px]`} onClick={() => { addFavorites(item, catId); checkInFavorites() }}>
 
-                        <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
-                            <Icons name={'add'} color={'#008954'} className={`w-[30px] h-[30px] `} />
+                        <div className='favorites h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
+                            <Icons name={'add'} color={'#008954'} className={`favorites w-[30px] h-[30px] `} />
                         </div>
 
-                        <p className={`text-[20px] text-green pl-[20px]`}>В избранное</p>
+                        <p className={`favorites text-[20px] text-green pl-[20px]`}>В избранное</p>
 
                     </button>
 
