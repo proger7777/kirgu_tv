@@ -25,3 +25,8 @@ yarn-error.log*
 node_modules
 package-lock.json
 src/components/InfoPriceFavorites.jsx
+src/components/CompareListV2.jsx
+src/components/CompareNavBar.jsx
+src/components/CompareNavBarItem.jsx
+src/components/CompareProducts.jsx
+src/components/CompareProps.jsx
