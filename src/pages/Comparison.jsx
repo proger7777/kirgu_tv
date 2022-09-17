@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import CompareItem from "../components/CompareItem";
 import ComparisonList from "../components/ComparisonList";
 import Icons from "../components/Icons";
 import Layout from "../layout";

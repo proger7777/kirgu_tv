@@ -46,7 +46,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
     function image(cat) {
 
         if (cat.image_url) { return cat.image_url }
-        else if (!cat.images) { return cat.images[0][1] }
+        else if (cat.images) { return cat.images[0][1] }
     }
     useEffect(() => {
 
