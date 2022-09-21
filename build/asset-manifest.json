@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/tv/static/css/main.72cf2a54.css",
-    "main.js": "/tv/static/js/main.2f8ca29a.js",
+    "main.css": "/tv/static/css/main.11f68fd2.css",
+    "main.js": "/tv/static/js/main.9370c41b.js",
     "static/media/404.svg": "/tv/static/media/404.9600a218d99e0a9046d95bc85b5a2027.svg",
     "static/media/stock.svg": "/tv/static/media/stock.810369f2d1802bab770fdf8f71c71df9.svg",
     "static/media/info.svg": "/tv/static/media/info.e20ded93e0b0b79a1cff.svg",
@@ -11,7 +11,7 @@
     "static/media/contacts.svg": "/tv/static/media/contacts.c1a3c17d33de3c5eb0860d7672f1941a.svg",
     "static/media/dlya_doma.svg": "/tv/static/media/dlya_doma.631485e1584485a16a01.svg",
     "static/media/sprite.svg": "/tv/static/media/sprite.471fe867d3bae9b971c5.svg",
-    "static/media/icons.svg": "/tv/static/media/icons.4a866fc98b315735a65aca13923d7b0f.svg",
+    "static/media/icons.svg": "/tv/static/media/icons.d34eaa7c7e0066a29abb51feba465a06.svg",
     "static/media/sborka.svg": "/tv/static/media/sborka.3c97a035013dfe3d854cb79c5a91b574.svg",
     "static/media/cats.svg": "/tv/static/media/cats.09de4fe74eac068df4b1.svg",
     "static/media/mebel.svg": "/tv/static/media/mebel.6270966dc9c1a27965ef.svg",
@@ -19,11 +19,11 @@
     "static/media/electronika.svg": "/tv/static/media/electronika.e87162b18079e37f4c12.svg",
     "index.html": "/tv/index.html",
     "static/media/map_pin.svg": "/tv/static/media/map_pin.bb48d2dce9229f00373a.svg",
-    "main.72cf2a54.css.map": "/tv/static/css/main.72cf2a54.css.map",
-    "main.2f8ca29a.js.map": "/tv/static/js/main.2f8ca29a.js.map"
+    "main.11f68fd2.css.map": "/tv/static/css/main.11f68fd2.css.map",
+    "main.9370c41b.js.map": "/tv/static/js/main.9370c41b.js.map"
   },
   "entrypoints": [
-    "static/css/main.72cf2a54.css",
-    "static/js/main.2f8ca29a.js"
+    "static/css/main.11f68fd2.css",
+    "static/js/main.9370c41b.js"
   ]
 }

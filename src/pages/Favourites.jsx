@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CatalogItem from "../components/CatalogItem";
 import Icons from "../components/Icons";
-import InfoPriceFavorites from "../components/InfoPriceFavorites";
 import Pagination from "../components/Pagination";
 import Layout from "../layout";
 

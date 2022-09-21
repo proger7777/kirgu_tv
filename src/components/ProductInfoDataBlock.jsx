@@ -4,7 +4,7 @@ import Icons from "./Icons";
 import { useContext, useState } from "react";
 import { ProductContext } from "../context";
 import { setProductUrl } from "./services/product";
-import { addComparison, addFavorites } from './AddFavorite';
+import { addCart, addComparison, addFavorites } from './AddFavorite';
 import { useEffect } from 'react';
 
 const ProductInfoDataBlock = ({ item, catId }) => {
@@ -12,6 +12,8 @@ const ProductInfoDataBlock = ({ item, catId }) => {
     const { onChangeOffer, fromAllCats } = useContext(ProductContext)
 
     const [inFavorites, setInFavorites] = useState(false)
+
+    const [inCart, setInCart] = useState(false)
 
     const [inComparison, setInComparison] = useState(false)
 
@@ -22,6 +24,16 @@ const ProductInfoDataBlock = ({ item, catId }) => {
         const exist = favorites.find((items) => items.xml_id == item.id || items.id == item.id || items.id == item.xml_id)
 
         setInFavorites(exist ? true : false)
+
+    }
+
+    const checkInCart = () => {
+
+        const cart = localStorage.cart ? JSON.parse(localStorage.getItem('cart')) : []
+
+        const exist = cart.find((items) => items.xml_id == item.id || items.id == item.id || items.id == item.xml_id)
+
+        setInCart(exist ? true : false)
 
     }
 
@@ -38,6 +50,7 @@ const ProductInfoDataBlock = ({ item, catId }) => {
     useEffect(() => {
 
         checkInFavorites()
+        checkInCart()
         checkInComparison()
 
     }, [])
@@ -121,21 +134,49 @@ const ProductInfoDataBlock = ({ item, catId }) => {
             }
 
             <>
-                {inFavorites ? (
+                {inCart ? (
 
-                    <button className={`favorites focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
+                    <button className={`cart focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { addCart(item, catId); checkInCart() }}>
 
-                        <div className='favorites h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
-                            <Icons name={'xclose'} color={'#ffffff'} className={`favorites w-[30px] h-[30px] `} />
+                        <div className='cart h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                            <Icons name={'checkV2'} color={'#ffffff'} className={`cart w-[30px] h-[30px] `} />
                         </div>
 
-                        <p className={`favorites text-[20px] text-white pl-[20px]`}>Добавлен</p>
+                        <p className={`cart text-[20px] text-white pl-[20px]`}>Добавлено</p>
 
                     </button>
 
                 ) : (
 
-                    <button className={`favorites focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px]`} onClick={() => { addFavorites(item, catId); checkInFavorites() }}>
+                    <button className={`cart focus:outline-none flex items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px]`} onClick={() => { addCart(item, catId); checkInCart() }}>
+
+                        <div className='cart h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
+                            <Icons name={'shopCart'} color={'#008954'} className={`cart w-[30px] h-[30px] `} />
+                        </div>
+
+                        <p className={`cart text-[20px] text-green pl-[20px]`}>В корзину</p>
+
+                    </button>
+
+                )}
+            </>
+
+            <>
+                {inFavorites ? (
+
+                    <button className={`favorites focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(item); checkInFavorites() }}>
+
+                        <div className='favorites h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
+                            <Icons name={'heart'} color={'#ffffff'} className={`favorites w-[30px] h-[30px] `} />
+                        </div>
+
+                        <p className={`favorites text-[20px] text-white pl-[20px]`}>Добавлено</p>
+
+                    </button>
+
+                ) : (
+
+                    <button className={`favorites focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px]`} onClick={() => { addFavorites(item, catId); checkInFavorites() }}>
 
                         <div className='favorites h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`favorites w-[30px] h-[30px] `} />
