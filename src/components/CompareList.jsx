@@ -46,7 +46,7 @@ const CompareList = ({ cat, catalogId, params }) => {
         list = []
         cat.map((item) => {
 
-            fetchProduct(item.category, item.id)
+            fetchProduct(item.catId, item.product.id)
         })
         setDownNumber(0)
         setUpNumber(4)

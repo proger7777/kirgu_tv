@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CatalogItem from "../components/CatalogItem";
 import Icons from "../components/Icons";
 import InfoPriceCart from "../components/InfoPriceCart";
 import Pagination from "../components/Pagination";
 import Layout from "../layout";
+import { clearCartAction } from "../store/addCart";
 
 
 const Cart = () => {
-
-    const [cart, setCart] = useState([])
 
     const [currentPage, setCurrentPage] = useState(1)
 
@@ -20,35 +20,21 @@ const Cart = () => {
 
     useEffect(() => {
 
-        Basket()
-
-        document.body.addEventListener('click', function (event) {
-            if (event.target.classList.contains('cart')) {
-                Basket()
-            }
-        })
-
         setDownNumber(0 + 8 * (currentPage - 1))
         setUpNumber((0 + 8 * (currentPage - 1)) + 7)
 
     }, [currentPage])
 
-    function Basket() {
-
-        const raw = localStorage.getItem('cart') || []
-        if (raw.length) {
-            setCart(JSON.parse(raw))
-        }
-
-    }
-
-    function clearCart() {
-
-        localStorage.removeItem("cart")
-        setCart([])
-
-    }
     const crumbs = [['Корзина', 'cart']]
+
+
+
+    const dispatch = useDispatch()
+
+    const clearCart = () => { dispatch(clearCartAction()) }
+
+    const cart = useSelector(state => state.cart.cart)
+
 
     return (
         <Layout crumbs={crumbs} activeMenu='cart'>
@@ -86,7 +72,7 @@ const Cart = () => {
 
                             {cart.map((item, i) =>
                                 (i >= downNumber && i <= upNumber) ? (
-                                    <CatalogItem key={item.id} cat={item} catalogId={item.category} />
+                                    <CatalogItem key={item.product.id} cat={item.product} catalogId={item.product.category} />
                                 ) : (<></>)
                             )}
 

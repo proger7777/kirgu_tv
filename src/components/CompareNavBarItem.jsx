@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useFetching } from '../hooks/useFetching';
 import { getCategories } from './services/categories';
@@ -9,6 +10,8 @@ const CompareNavBarItem = ({ catId, updatePage }) => {
     const [catalogItem, setCatalogItem] = useState([])
 
     const [product, setProduct] = useState([])
+
+    const comparison = useSelector(state => state.comparison.comparison)
 
     const [fetchProduct, isProductLoading, productError] = useFetching(async (catId, id) => {
 
@@ -35,9 +38,8 @@ const CompareNavBarItem = ({ catId, updatePage }) => {
 
     function Compare() {
 
-        const raw = JSON.parse(localStorage.getItem('comparison')) || []
-        if (raw.length) {
-            setProduct(raw.filter(item => item.category == catId))
+        if (comparison) {
+            setProduct(comparison.filter(item => item.catId == catId))
         }
 
     }

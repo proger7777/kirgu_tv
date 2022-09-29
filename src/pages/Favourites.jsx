@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CatalogItem from "../components/CatalogItem";
 import Icons from "../components/Icons";
 import Pagination from "../components/Pagination";
 import Layout from "../layout";
+import { clearFavoritesAction } from "../store/addFavorites";
 
 
 const Favorites = () => {
-
-    const [favorites, setFavorites] = useState([])
 
     const [currentPage, setCurrentPage] = useState(1)
 
@@ -19,35 +19,19 @@ const Favorites = () => {
 
     useEffect(() => {
 
-        Favor()
-
-        document.body.addEventListener('click', function (event) {
-            if (event.target.classList.contains('favorites')) {
-                Favor()
-            }
-        })
-
         setDownNumber(0 + 10 * (currentPage - 1))
         setUpNumber((0 + 10 * (currentPage - 1)) + 9)
 
     }, [currentPage])
 
-    function Favor() {
-
-        const raw = localStorage.getItem('favorites') || []
-        if (raw.length) {
-            setFavorites(JSON.parse(raw))
-        }
-
-    }
-
-    function clearFavorites() {
-
-        localStorage.removeItem("favorites")
-        setFavorites([])
-
-    }
     const crumbs = [['Избранное', 'favorites']]
+
+    const dispatch = useDispatch()
+
+    const clearFavor = () => { dispatch(clearFavoritesAction()) }
+
+    const favorites = useSelector(state => state.favorites.favorites)
+
 
     return (
         <Layout crumbs={crumbs} activeMenu='favorites'>
@@ -64,7 +48,7 @@ const Favorites = () => {
                             onPageChange={page => setCurrentPage(page)}
                         />
 
-                        <button className="clearFavorites flex justify-center items-center ml-[20px] w-[370px] h-[50px] border border-[#E6141E] rounded-[4px]" onClick={() => { clearFavorites() }}>
+                        <button className="clearFavorites flex justify-center items-center ml-[20px] w-[370px] h-[50px] border border-[#E6141E] rounded-[4px]" onClick={() => { clearFavor() }}>
                             <Icons name='deleteV2' className={`clearFavorites w-[20px] h-[20px] grid-cols-4`} />
                             <h1 className='clearFavorites text-[20px] text-[#E6141E] font-semibold'>&nbsp;Очистить</h1>
                         </button>
@@ -73,24 +57,23 @@ const Favorites = () => {
 
                 <div className="flex">
 
-                        {favorites.length ? (
+                    {favorites.length ? (
 
-                            <div className={`catalog_content grid grid-cols-5 w-full gap-[25px] mt-[15px]`}>
-                                {favorites.map((item, i) =>
-                                    (i >= downNumber && i <= upNumber) ? (
-                                        <CatalogItem key={item.id} cat={item} catalogId={item.category} />
-                                    ) : (<></>)
-                                )}
+                        <div className={`catalog_content grid grid-cols-5 w-full gap-[25px] mt-[15px]`}>
+                            {favorites.map((item, i) =>
+                                (i >= downNumber && i <= upNumber) ? (
+                                    <CatalogItem key={item.id} cat={item.product} catalogId={item.catId} />
+                                ) : (<></>)
+                            )}
+                        </div>
 
-                            </div>
+                    ) : (
 
-                        ) : (
-                            
-                            <div className=" w-full flex justify-center text-center" >
-                                <h2 className='text-[27px]'>У вас нет избранных товаров</h2>
-                            </div>
+                        <div className=" w-full flex justify-center text-center" >
+                            <h2 className='text-[27px]'>У вас нет избранных товаров</h2>
+                        </div>
 
-                        )}
+                    )}
 
                 </div>
 
@@ -100,5 +83,4 @@ const Favorites = () => {
 
 }
 
-export default Favorites;
-
+export default Favorites

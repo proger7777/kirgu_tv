@@ -31,21 +31,21 @@ const InfoPriceCart = ({ products }) => {
 
         products.map((item) => {
 
-            price = price + item.price
+            price = price + item.product.price
 
-            if (item.bonusov) {
+            if (item.product.bonusov) {
 
-                bonus = bonus + Number(item.bonusov)
+                bonus = bonus + Number(item.product.bonusov)
 
-            } else if (item.bonus) {
+            } else if (item.product.bonus) {
 
-                bonus = bonus + Number(item.bonus)
+                bonus = bonus + Number(item.product.bonus)
 
             }
 
-            if (item.skidka !== null) {
+            if (item.product.skidka) {
 
-                discount = discount + Number(item.skidka)
+                discount = discount + Number(item.product.skidka)
 
             }
 
@@ -64,18 +64,18 @@ const InfoPriceCart = ({ products }) => {
 
             if (i < products.length - 1) {
 
-                if (item.xml_id) {
-                    basket += item.xml_id + ','
+                if (item.product.xml_id) {
+                    basket += item.product.xml_id + ','
                 } else {
-                    basket += item.id + ','
+                    basket += item.product.id + ','
                 }
             }
             else {
 
-                if (item.xml_id) {
-                    basket += item.xml_id
+                if (item.product.xml_id) {
+                    basket += item.product.xml_id
                 } else {
-                    basket += item.id
+                    basket += item.product.id
                 }
             }
         })
@@ -134,15 +134,30 @@ const InfoPriceCart = ({ products }) => {
 
                 </div>
 
-                <Link to={`/cartBarcode/${cart}`}>
 
-                    <button className="w-full h-[50px] border rounded-[4px] bg-[#008954] mt-[20px]" onClick={() => sendCart()}>
+                {cart.length ? (
 
-                        <p className="text-[18px] text-center text-[#ffffff]">Сохранить корзину</p>
+                    <Link to={`/cartBarcode/${cart}`}>
 
-                    </button>
+                        <button className="w-full h-[50px] border rounded-[4px] bg-[#008954] mt-[20px]" onClick={() => sendCart()}>
 
-                </Link>
+                            <p className="text-[18px] text-center text-[#ffffff]">Сохранить корзину</p>
+
+                        </button>
+
+                    </Link>
+
+                ) : (
+
+                    <div className="w-full h-[50px] flex border rounded-[4px] bg-[#00895430] mt-[20px]">
+
+                        <p className="text-[18px] m-auto text-[#ffffff]">Сохранить корзину</p>
+
+                    </div>
+
+                )
+
+                }
 
             </div>
 

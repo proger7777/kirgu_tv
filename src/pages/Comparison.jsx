@@ -1,31 +1,38 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ComparisonList from "../components/ComparisonList";
 import Icons from "../components/Icons";
 import Layout from "../layout";
+import { clearComparisonAction } from "../store/addComparison";
 
 
 const Comparison = () => {
 
-    const [comparison, setComparison] = useState([])
+    // const [comparison, setComparison] = useState([])
     const [catalogId, setCatalogId] = useState([])
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const raw = localStorage.getItem('comparison') || []
-        if (raw.length) {
-            setComparison(JSON.parse(raw))
-        }
+    //     const raw = localStorage.getItem('comparison') || []
+    //     if (raw.length) {
+    //         setComparison(JSON.parse(raw))
+    //     }
 
-    }, [])
+    // }, [])
+
+    const comparison = useSelector(state => state.comparison.comparison)
+    const dispatch = useDispatch()
+    const clearCompare = () => { dispatch(clearComparisonAction()) }
+
 
 
     //Добавление уникальных CatalogId
 
     comparison.map(cat => {
 
-        if (!catalogId.find((item) => item == cat.category)) {
+        if (!catalogId.find((item) => item == cat.catId)) {
 
-            setCatalogId([cat.category, ...catalogId])
+            setCatalogId([cat.catId, ...catalogId])
 
         }
     })
@@ -33,7 +40,8 @@ const Comparison = () => {
     function clearComparison() {
 
         localStorage.removeItem("comparison")
-        setComparison([])
+        // setComparison([])
+        clearCompare()
         setCatalogId([])
 
     }

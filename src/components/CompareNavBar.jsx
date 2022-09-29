@@ -1,32 +1,34 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import CompareNavBarItem from "./CompareNavBarItem";
 
 
 const CompareNavBar = ({ updatePage, currentId }) => {
 
-    const [comparison, setComparison] = useState([])
+    // const [comparison, setComparison] = useState([])
     const [catalogId, setCatalogId] = useState([])
+    const comparison = useSelector(state => state.comparison.comparison)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        Compare()
+    //     Compare()
 
-    }, [])
+    // }, [])
 
-    function Compare () {
-        const raw = localStorage.getItem('comparison') || []
-        if (raw.length) {
-            setComparison(JSON.parse(raw))
-        }
-    }
+    // function Compare () {
+    //     const raw = localStorage.getItem('comparison') || []
+    //     if (raw.length) {
+    //         setComparison(JSON.parse(raw))
+    //     }
+    // }
 
     //Добавление уникальных CatalogId
 
     comparison.map(cat => {
 
-        if (!catalogId.find((item) => item == cat.category)) {
+        if (!catalogId.find((item) => item == cat.catId)) {
 
-            setCatalogId([cat.category, ...catalogId])
+            setCatalogId([cat.catId, ...catalogId])
 
         }
     })

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from '../layout';
 import { addComparison } from './AddFavorite';
@@ -14,10 +15,11 @@ const ComparisonItem = () => {
 
     const navigate = useNavigate();
 
+    const comparison = useSelector(state => state.comparison.comparison)
+
     function Compare(catalogId) {
 
-        const raw = JSON.parse(localStorage.getItem('comparison')) || []
-        setProducts(raw.filter(item => item.category == catalogId))
+        setProducts(comparison.filter(item => item.catId == catalogId))
 
     }
 

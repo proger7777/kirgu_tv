@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useFetching } from '../hooks/useFetching';
 import Icons from './Icons';
@@ -28,12 +29,12 @@ const ComparisonList = ({ catId }) => {
 
     }, [])
 
+    const comparison = useSelector(state => state.comparison.comparison)
 
     function Compare() {
 
-        const raw = JSON.parse(localStorage.getItem('comparison')) || []
-        if (raw.length) {
-            setProduct(raw.filter(item => item.category == catId))
+        if (comparison) {
+            setProduct(comparison.filter(item => item.catId == catId))
         }
 
     }

@@ -6,6 +6,10 @@ import Icons from "./Icons";
 import { getProduct, setProductUrl } from "./services/product";
 import { addCart, addComparison, addFavorites } from './AddFavorite';
 import { useFetching } from '../hooks/useFetching';
+import { useDispatch, useSelector } from 'react-redux';
+import { favoritesAction } from '../store/addFavorites';
+import { cartAction } from '../store/addCart';
+import { comparisonAction } from '../store/addComparison';
 
 
 const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
@@ -26,9 +30,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
     const checkInFavorites = () => {
 
-        const favorites = localStorage.favorites ? JSON.parse(localStorage.getItem('favorites')) : []
-
-        const exist = favorites.find((item) => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)
+        const exist = favorites.find((item) => item.product.xml_id == cat.id || item.product.id == cat.id || item.product.id == cat.xml_id)
 
         setInFavorites(exist ? true : false)
 
@@ -36,9 +38,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
     const checkInCart = () => {
 
-        const cart = localStorage.cart ? JSON.parse(localStorage.getItem('cart')) : []
-
-        const exist = cart.find((item) => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)
+        const exist = cart.find((item) => item.product.xml_id == cat.id || item.product.id == cat.id || item.product.id == cat.xml_id)
 
         setInCart(exist ? true : false)
 
@@ -46,9 +46,15 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
     const checkInComparison = () => {
 
-        const comparison = localStorage.comparison ? JSON.parse(localStorage.getItem('comparison')) : []
+        const exist = comparison.find((item) => item.product.xml_id == cat.id || item.product.id == cat.id || item.product.id == cat.xml_id)
 
-        const exist = comparison.find((item) => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)
+        setInComparison(exist ? true : false)
+
+    }
+
+    const checkIn = () => {
+
+        const exist = comparison.find((item) => item.product.xml_id == cat.id || item.product.id == cat.id || item.product.id == cat.xml_id)
 
         setInComparison(exist ? true : false)
 
@@ -58,8 +64,15 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
     function image(cat) {
 
         if (cat.image_url) { return cat.image_url }
-        else if (cat.images) { return cat.images[0][1] }
+        else if (!cat.images) { return cat.images[0][1] }
     }
+
+    const cart = useSelector(state => state.cart.cart)
+    const favorites = useSelector(state => state.favorites.favorites)
+    const comparison = useSelector(state => state.comparison.comparison)
+    const dispatch = useDispatch()
+
+
     useEffect(() => {
 
         checkInFavorites()
@@ -67,7 +80,35 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
         checkInComparison()
         fetchProduct(cat.category, cat.id)
 
-    }, [])
+    }, [favorites, cart, comparison])
+
+
+    const addCart = () => {
+        const item = {
+            product: cat,
+            catId: catalogId,
+        }
+        dispatch(cartAction(item))
+    }
+
+    const addFavor = () => {
+        const item = {
+            product: cat,
+            catId: catalogId,
+        }
+        dispatch(favoritesAction(item))
+    }
+
+    const addComparison = () => {
+        const item = {
+            product: cat,
+            catId: catalogId,
+        }
+        dispatch(comparisonAction(item))
+    }
+
+
+
 
     return (
 
@@ -93,7 +134,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 {inCart ? (
 
-                    <button className={`cart focus:outline-none flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { addCart(cat, catalogId); checkInCart() }}>
+                    <button className={`cart focus:outline-none flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { addCart(); checkInCart() }}>
 
                         <p className={`cart text-[16px] text-white pl-[5px]`}> Добавлено</p>
 
@@ -104,7 +145,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 ) : (
 
-                    <button className={`focus:outline-none cart flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { addCart(cat, catalogId); checkInCart() }}>
+                    <button className={`focus:outline-none cart flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { addCart(); checkInCart() }}>
 
                         <Icons name={'shopCart'} color={'#008954'} className={`cart w-[20px] h-[20px]`} />
 
@@ -116,7 +157,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 {inFavorites ? (
 
-                    <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
+                    <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavor(); checkInFavorites() }}>
 
                         <div className='favorites h-[35px] w-[35px] flex justify-center items-center'>
                             <Icons name={'heart'} color={'#ffffff'} className={`favorites w-[25px] h-[25px] `} />
@@ -127,7 +168,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 ) : (
 
-                    <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
+                    <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { addFavor(); checkInFavorites() }}>
 
                         <div className='favorites h-[35px] w-[35px] flex justify-center items-center'>
                             <Icons name={'heart'} color={'#008954'} className={`favorites w-[25px] h-[25px] `} />
@@ -139,7 +180,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 {inComparison ? (
 
-                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { addComparison(cat, catalogId); checkInComparison() }}>
+                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { addComparison(); checkInComparison() }}>
 
                         <div className='h-[35px] w-[35px] flex justify-center items-center'>
                             <Icons name={'scales'} color={'#ffffff'} className={`w-[25px] h-[25px] `} />
@@ -150,7 +191,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 ) : (
 
-                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { addComparison(cat, catalogId); checkInComparison() }}>
+                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { addComparison(); checkInComparison() }}>
 
                         <div className='favorites h-[35px] w-[35px] flex justify-center items-center'>
                             <Icons name={'scales'} color={'#008954'} className={`w-[25px] h-[25px] `} />
@@ -159,6 +200,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
                     </button>
 
                 )}
+
 
             </div>
 

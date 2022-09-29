@@ -9,7 +9,7 @@ import Icons from "./Icons";
 
 const CartBarcode = () => {
 
-    const [cartId, setCartId] = useState('')
+    const [cartId, setCartId] = useState()
 
     const params = useParams()
 
