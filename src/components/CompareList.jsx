@@ -7,7 +7,7 @@ import CompareProducts from './CompareProducts';
 import CompareProps from './CompareProps';
 
 
-const CompareList = ({ cat, catalogId, params }) => {
+const CompareList = ({ cat, catalogId }) => {
 
     const [propsProduct, setPropsProduct] = useState()
 
@@ -29,7 +29,7 @@ const CompareList = ({ cat, catalogId, params }) => {
     let allList = []
     let list = []
 
-    function propsList(prop) {
+    const propsList = (prop) => {
 
         for (let key in prop.properties) {
             if (!list.find((item) => item == key) && !propsBlackList.includes(key)) {
@@ -42,8 +42,10 @@ const CompareList = ({ cat, catalogId, params }) => {
     }
 
     useEffect(() => {
+
         allList = []
         list = []
+
         cat.map((item) => {
 
             fetchProduct(item.catId, item.product.id)
@@ -76,8 +78,9 @@ const CompareList = ({ cat, catalogId, params }) => {
                                 (i >= downNumber && i <= upNumber) ? (
 
                                     <div className='catalog_content mt-[20px] mr-[12px]' key={i}>
-                                        <CompareProducts cat={item} catalogId={catalogId} propList={props} params={id => params(id)}/>
-                                    </div>) : (<></>)
+                                        <CompareProducts cat={item} catalogId={catalogId} propList={props} />
+                                    </div>
+                                ) : (<></>)
 
                             ))}
 

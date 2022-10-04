@@ -4,22 +4,54 @@ import { setImagePath } from "./services/images";
 import { truncate } from "./services/str";
 import Icons from "./Icons";
 import { setProductUrl } from "./services/product";
-import { addComparison, addFavorites } from './AddFavorite';
+import { useDispatch, useSelector } from 'react-redux';
+import { comparisonAction } from '../store/addComparison';
+import { favoritesAction } from '../store/addFavorites';
+import { cartAction } from '../store/addCart';
 
 
-const CompareProducts = ({ cat, catalogId, params }) => {
 
+const CompareProducts = ({ cat, catalogId }) => {
+
+    const [inCart, setInCart] = useState(false)
     const [inFavorites, setInFavorites] = useState(false)
 
-    const checkInFavorites = () => {
+    const favorites = useSelector(state => state.favorites.favorites)
+    const cart = useSelector(state => state.cart.cart)
+    const comparison = useSelector(state => state.comparison.comparison)
+    const dispatch = useDispatch()
 
-        const favorites = localStorage.favorites ? JSON.parse(localStorage.getItem('favorites')) : []
+    const add = (type) => {
+        const item = {
+            product: cat,
+            catId: catalogId,
+        }
 
-        const exist = favorites.find((item) => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)
-
-        setInFavorites(exist ? true : false)
+        if (type == 'cart') { dispatch(cartAction(item)) }
+        if (type == 'favorites') { dispatch(favoritesAction(item)) }
+        if (type == 'comparison') { dispatch(comparisonAction(item)) }
 
     }
+
+    const checkIn = (type) => {
+
+        const exist = type.find((item) => item.product.xml_id == cat.id || item.product.id == cat.id || item.product.id == cat.xml_id)
+
+        if (type == cart) { setInCart(exist ? true : false) }
+        if (type == favorites) { setInFavorites(exist ? true : false) }
+
+    }
+
+    useEffect(() => {
+
+        [cart, favorites].map((item) => {
+
+            checkIn(item)
+
+        })
+
+    }, [favorites, cart])
+
 
     function image(cat) {
 
@@ -27,12 +59,6 @@ const CompareProducts = ({ cat, catalogId, params }) => {
         else if (cat.images) { return cat.images[0][1] }
 
     }
-
-    useEffect(() => {
-
-        checkInFavorites()
-
-    }, [])
 
     return (
 
@@ -50,42 +76,56 @@ const CompareProducts = ({ cat, catalogId, params }) => {
 
                 <div className='flex w-full justify-start mt-[10px] ml-[10px]'>
 
-                    {inFavorites ? (
+                    {inCart ? (
 
-                        <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[30px] w-[120px] rounded-[4px] bg-[#008954]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
+                        <button className={`focus:outline-none flex items-center justify-center border border-[#008954] h-[30px] w-[120px] rounded-[4px] bg-[#008954]`} onClick={() => { add('cart'); checkIn(cart) }}>
 
-                            <div className='favorites h-[30px] w-[30px] border-r border-[#e6e6e6] flex justify-center items-center'>
-
-                                <Icons name={'xclose'} color={'#ffffff'} className={`favorites w-[18px] h-[18px]`} />
-
-                            </div>
-
-                            <p className={`favorites text-[10px] text-white pl-[5px]`}> Добавлено</p>
+                            <p className={`text-[10px] text-white pl-[5px]`}> Добавлено</p>
+                            <Icons name={'checkV2'} color={'#ffffff'} className={`cart w-[18px] h-[18px]`} />
 
                         </button>
 
 
                     ) : (
 
-                        <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[30px] w-[120px] rounded-[4px]`} onClick={() => { addFavorites(cat, catalogId); checkInFavorites() }}>
+                        <button className={`focus:outline-none flex items-center justify-center border border-[#008954] h-[30px] w-[120px] rounded-[4px]`} onClick={() => { add('cart'); checkIn(cart) }}>
 
-                            <div className='favorites h-[30px] w-[30px] border-r border-[#008954] flex justify-center items-center'>
-
-                                <Icons name={'add'} color={'#008954'} className={`favorites w-[18px] h-[18px]`} />
-
-                            </div>
-
-                            <p className={`favorites text-[10px] text-green pl-[5px]`}>В избранное</p>
+                            <Icons name={'shopCart'} color={'#008954'} className={`cart w-[18px] h-[18px]`} />
+                            <p className={`text-[10px] text-green pl-[5px]`}>В корзину</p>
 
                         </button>
 
                     )}
 
-                    <button className={`compareIt focus:outline-none flex items-center border border-[#e6e6e6] w-[30px] h-[30px] ml-[10px] rounded-[4px]`} onClick={() => { addComparison(cat, catalogId); params(catalogId) }}>
+                    {inFavorites ? (
 
-                        <div className='compareIt h-[30px] w-[30px] flex justify-center items-center'>
+                        <button className={`focus:outline-none flex items-center border border-[#008954] h-[30px] ml-[5px] rounded-[4px] bg-[#008954]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
 
-                            <Icons name={'deleteV2'} color={'#ffffff'} className={`compareIt w-[16px] h-[16px] `} />
+                            <div className='h-[30px] w-[30px] flex justify-center items-center'>
+                                <Icons name={'heart'} color={'#ffffff'} className={`w-[25px] h-[25px] `} />
+                            </div>
+
+                        </button>
+
+
+                    ) : (
+
+                        <button className={`focus:outline-none flex items-center border border-[#008954] h-[30px] ml-[5px] rounded-[4px]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
+
+                            <div className='h-[30px] w-[30px] flex justify-center items-center'>
+                                <Icons name={'heart'} color={'#008954'} className={`w-[25px] h-[25px] `} />
+                            </div>
+
+                        </button>
+
+                    )}
+
+
+                    <button className={`focus:outline-none flex items-center border border-[#e6e6e6] w-[30px] h-[30px] ml-[5px] rounded-[4px]`} onClick={() => { add('comparison') }}>
+
+                        <div className='h-[30px] w-[30px] flex justify-center items-center'>
+
+                            <Icons name={'deleteV2'} color={'#ffffff'} className={`w-[16px] h-[16px] `} />
 
                         </div>
 

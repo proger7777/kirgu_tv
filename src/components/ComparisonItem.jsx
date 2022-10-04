@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from '../layout';
-import { addComparison } from './AddFavorite';
+import { comparisonAction } from '../store/addComparison';
 import CompareList from './CompareList';
 import CompareNavBar from './CompareNavBar';
 import Icons from './Icons';
@@ -10,29 +10,23 @@ import Icons from './Icons';
 const ComparisonItem = () => {
 
     const params = useParams()
-
-    const [products, setProducts] = useState([])
-
+    const dispatch = useDispatch()
     const navigate = useNavigate();
 
-    const comparison = useSelector(state => state.comparison.comparison)
+    const comparison = useSelector(state => state.comparison.comparison).filter(item => item.catId == params.catId)
 
-    function Compare(catalogId) {
-
-        setProducts(comparison.filter(item => item.catId == catalogId))
-
+    const addComparison = (prod) => {
+        const item = {
+            product: prod,
+            catId: params.catId,
+        }
+        dispatch(comparisonAction(item))
     }
 
-    useEffect(() => {
+    const clearComparison = () => {
 
-        Compare(params.catId)
-
-    }, [])
-
-    function clearComparison() {
-
-        products.map((item) => (
-            addComparison(item, params.catId)
+        comparison.map((item) => (
+            addComparison(item.product)
         ))
 
         navigate('/comparison')
@@ -54,18 +48,20 @@ const ComparisonItem = () => {
                     </div>
 
                     <button className="flex justify-center items-center  w-[370px] h-[50px] border border-[#E6141E] rounded-[4px]" onClick={() => { clearComparison() }}>
+
                         <Icons name='deleteV2' className={` w-[20px] h-[20px] grid-cols-4`} />
                         <h1 className='text-[20px] text-[#E6141E] font-semibold'>&nbsp;Очистить</h1>
+
                     </button>
 
                 </div>
 
-                <CompareNavBar updatePage={id => Compare(id)} currentId={params.catId} />
+                <CompareNavBar currentId={params.catId} />
 
-                {products.length ? (
+                {comparison.length ? (
 
                     <div className='flex'>
-                        <CompareList cat={products} catalogId={params.catId} params={id => Compare(id)} />
+                        <CompareList cat={comparison} catalogId={params.catId} />
                     </div>
 
                 ) : (navigate('/comparison'))}
