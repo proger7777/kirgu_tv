@@ -20,6 +20,28 @@ export function addFavorites(cat, catalogId) {
   }
 }
 
+export function addCart(cat, catalogId) {
+    
+  const allCart = localStorage.cart ? JSON.parse( localStorage.getItem('cart')) : []
+
+  //remove cart
+  if( allCart.find((item) =>item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id) ) {
+
+      let remove = allCart.findIndex(item => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)
+      allCart.splice(remove, 1)
+      localStorage.setItem('cart', JSON.stringify(allCart))        
+
+  }
+
+  //add cart
+  else if( !allCart.find((item) => item.xml_id == cat.id || item.id == cat.id || item.id == cat.xml_id)) {
+      cat.category = catalogId
+      allCart.push(cat)
+      localStorage.setItem('cart', JSON.stringify(allCart))
+     
+  }
+}
+
 export function addComparison(cat, catalogId) {
     
   const comparison = localStorage.comparison ? JSON.parse( localStorage.getItem('comparison')) : []

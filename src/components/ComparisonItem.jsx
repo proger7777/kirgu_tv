@@ -1,43 +1,35 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from '../layout';
-import { addComparison } from './AddFavorite';
+import { comparisonAction } from '../store/addComparison';
 import CompareList from './CompareList';
+import CompareNavBar from './CompareNavBar';
 import Icons from './Icons';
 
 const ComparisonItem = () => {
 
     const params = useParams()
-
-    const [products, setProducts] = useState([])
-    
+    const dispatch = useDispatch()
     const navigate = useNavigate();
 
-    function Compare() {
+    const comparison = useSelector(state => state.comparison.comparison).filter(item => item.catId == params.catId)
 
-        const raw = JSON.parse(localStorage.getItem('comparison')) || []
-        setProducts(raw.filter(item => item.category == params.catId))
-
+    const addComparison = (prod) => {
+        const item = {
+            product: prod,
+            catId: params.catId,
+        }
+        dispatch(comparisonAction(item))
     }
 
-    useEffect(() => {
-        Compare()
+    const clearComparison = () => {
 
-        document.body.addEventListener('click', function (event) {
-            if (event.target.classList.contains('comparisonIt')) {
-                Compare()
-            }
-        })
-
-    }, [])
-
-    function clearComparison() {
-        
-        products.map((item) => (
-            addComparison(item, params.catId)
+        comparison.map((item) => (
+            addComparison(item.product)
         ))
-        
-        navigate(-1)
+
+        navigate('/comparison')
     }
 
     const crumbs = [['Сравнение', 'comparison'], ['Товары', 'comparisonItem']]
@@ -46,7 +38,7 @@ const ComparisonItem = () => {
     return (
         <Layout crumbs={crumbs} activeMenu='comparisonItem'>
 
-            <div className="w-full">
+            <div className="w-full h-[882px] overflow-y-hidden">
 
                 <div className='flex justify-between'>
 
@@ -56,29 +48,27 @@ const ComparisonItem = () => {
                     </div>
 
                     <button className="flex justify-center items-center  w-[370px] h-[50px] border border-[#E6141E] rounded-[4px]" onClick={() => { clearComparison() }}>
+
                         <Icons name='deleteV2' className={` w-[20px] h-[20px] grid-cols-4`} />
                         <h1 className='text-[20px] text-[#E6141E] font-semibold'>&nbsp;Очистить</h1>
+
                     </button>
-                    
+
                 </div>
 
-                <div>
+                <CompareNavBar currentId={params.catId} />
 
-                    {products.length ? (
+                {comparison.length ? (
 
-                        <div className='flex'>
-                                <div>
-                                    <CompareList cat={products} catalogId={params.catId}/>
-                                </div>
-                        </div>
+                    <div className='flex'>
+                        <CompareList cat={comparison} catalogId={params.catId} />
+                    </div>
 
-                    ) : (navigate(-1))}
-                </div>
-
+                ) : (navigate('/comparison'))}
 
             </div>
-        </Layout>
 
+        </Layout>
     )
 }
 

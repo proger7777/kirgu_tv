@@ -24,6 +24,8 @@ import SearchForm from "./pages/SearchForm";
 import Favorites from './pages/Favourites';
 import Comparison from './pages/Comparison';
 import ComparisonItem from './components/ComparisonItem';
+import Cart from './pages/Cart';
+import CartBarcode from './components/CartBarcode';
 
 function App() {
 
@@ -60,6 +62,8 @@ function App() {
             <Route path='search/:query' element={<Search />} />
             <Route path='favorites' element={<Favorites />} />
             <Route path='comparison' element={<Comparison />} />
+            <Route path='cart' element={<Cart />} />
+            <Route path='cartBarcode/:cart' element={<CartBarcode />} />
             <Route path='comparisonItem/:catId/:catName' element={<ComparisonItem />} /> 
             <Route path='*' element={<NotFound404 />} />
           </Routes>
