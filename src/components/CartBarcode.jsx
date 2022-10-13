@@ -23,9 +23,9 @@ const CartBarcode = () => {
 
     const getCart = async (cart) => {
 
-        const response = await axios.get(`http://192.168.200.110/proxy.php?url=http://192.168.150.22/mobile/HS/exchangemobileapp/cart_shopping_entry/${cart}`)
+        const response = await axios.get(`https://kirgu.ru/proxy/?url=http://public.kirgu.ru:81/mobile/HS/exchangemobileapp/cart_shopping_entry/${cart}`)
+        
         setCartId(response.data.НомерКорзины)
-
     }
 
 
