@@ -17,8 +17,6 @@ const PausePrompBlock = (props) => {
 
     const onIdle = () => {
         window.location.href = '/tv'
-        localStorage.removeItem("favorites")
-        localStorage.removeItem("comparison")
     }
 
     const { start } = useIdleTimer({
