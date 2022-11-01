@@ -59,28 +59,19 @@ const InfoPriceCart = ({ products }) => {
 
     function sendCart() {
 
-        let basket = ''
-        products.map((item, i) => {
-
-            if (i < products.length - 1) {
-
-                if (item.product.xml_id) {
-                    basket += item.product.xml_id + ','
-                } else {
-                    basket += item.product.id + ','
-                }
+        let basket = []
+        
+        const check = (item) => {
+            
+            if (item.product.xml_id) {
+                return item.product.xml_id
+            } else {
+                return item.product.id
             }
-            else {
-
-                if (item.product.xml_id) {
-                    basket += item.product.xml_id
-                } else {
-                    basket += item.product.id
-                }
-            }
-        })
-
-        setCart(basket)
+        }
+        
+        products.map((item) => basket.push(check(item)))
+        setCart(JSON.stringify(basket))
 
     }
 
@@ -135,7 +126,7 @@ const InfoPriceCart = ({ products }) => {
                 </div>
 
 
-                {cart.length ? (
+                {products.length ? (
 
                     <Link to={`/cartBarcode/${cart}`}>
 
