@@ -60,16 +60,27 @@ const InfoPriceCart = ({ products }) => {
     function sendCart() {
 
         let basket = []
-        
+
         const check = (item) => {
-            
+
             if (item.product.xml_id) {
-                return item.product.xml_id
+
+                return {
+                    id: item.product.xml_id,
+                    price: item.product.price,
+                    count: 1
+                }
+                
             } else {
-                return item.product.id
+                
+                return {
+                    id: item.product.id,
+                    price: item.product.price,
+                    count: 1
+                }
             }
         }
-        
+
         products.map((item) => basket.push(check(item)))
         setCart(JSON.stringify(basket))
 

@@ -80,15 +80,15 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
         <div className='border border-[#e6e6e6] items-center flex flex-col'>
 
-            <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[320px] h-[335px]  pl-[20px] pr-[30px]'>
+            <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[320px] h-[310px]  pl-[20px] pr-[30px]'>
 
                 <img src={setImagePath(image(cat))} alt='' className='object-contain h-[162px] mt-[20px] mb-[10px]' />
 
-                <span className='flex mb-[10px]'>
+                {/* <span className='flex mb-[10px]'>
                     {[1, 2, 3, 4, 5].map(i =>
                         <Icons key={i} name='star' className={`w-[16px] h-[16px] ${cat.rating >= i ? 'fill-[#f0a83c]' : 'fill-[#e6e6e6]'}`} />
                     )}
-                </span>
+                </span> */}
 
                 <p className='text-[22px] text-center mb-[7px] w-[220px] h-[55px]'>{truncate(cat.name, 30)}</p>
                 <p className='text-[12px] text-slate-500'>Артикул: {article['Артикул']}</p>
