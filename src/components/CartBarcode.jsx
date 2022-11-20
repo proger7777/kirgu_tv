@@ -67,19 +67,19 @@ const CartBarcode = () => {
                         <p className="text-[26px]">Узнать более подробную информацию и оформить </p>
                         <p className="text-[26px]">заказ можно по номерам:</p>
 
-                        <div className="flex mt-[40px] w-[850px] justify-between">
+                        <div className="flex mt-[40px] w-[870px] justify-between">
 
                             <div>
 
                                 <p className="text-[18px]">консультация в Whatsapp</p>
-                                <p className="text-[50px] text-green font-semibold">8-988-204-21-01</p>
+                                <p className="text-[45px] text-green font-semibold">8-988-204-21-01</p>
 
                             </div>
 
                             <div className="ml-[]">
 
                                 <p className="text-[18px]">консультация по телефону</p>
-                                <p className="text-[50px] text-green font-semibold">8-800-770-30-03</p>
+                                <p className="text-[45px] text-green font-semibold">8-800-770-30-03</p>
 
                             </div>
 
