@@ -68,7 +68,7 @@ const InfoPriceCart = ({ products }) => {
                 return {
                     id: item.product.xml_id,
                     price: item.product.price,
-                    count: 1
+                    count: item.product.count
                 }
                 
             } else {
@@ -76,7 +76,7 @@ const InfoPriceCart = ({ products }) => {
                 return {
                     id: item.product.id,
                     price: item.product.price,
-                    count: 1
+                    count: item.product.count
                 }
             }
         }
@@ -107,7 +107,7 @@ const InfoPriceCart = ({ products }) => {
 
                     </div>
 
-                    {(allDiscount > 0) ? (
+                    {/* {(allDiscount > 0) ? (
 
                         <div className="flex justify-between">
 
@@ -117,7 +117,7 @@ const InfoPriceCart = ({ products }) => {
 
                         </div>
 
-                    ) : (<></>)}
+                    ) : (<></>)} */}
 
                     <div className="flex justify-between">
 
@@ -132,7 +132,7 @@ const InfoPriceCart = ({ products }) => {
                 <div className="flex justify-between font-semibold">
 
                     <p className="text-[22px] ">Итого :</p>
-                    <p> {parseInt(allPrice - allDiscount).toLocaleString('ru-RU')} ₽</p>
+                    <p> {parseInt(allPrice).toLocaleString('ru-RU')} ₽</p>
 
                 </div>
 

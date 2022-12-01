@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CatalogItem from "../components/CatalogItem";
+import CartItem from "../components/CartItem";
 import Icons from "../components/Icons";
 import InfoPriceCart from "../components/InfoPriceCart";
 import Pagination from "../components/Pagination";
@@ -72,7 +72,7 @@ const Cart = () => {
 
                             {cart.map((item, i) =>
                                 (i >= downNumber && i <= upNumber) ? (
-                                    <CatalogItem key={item.product.id} cat={item.product} catalogId={item.product.category} />
+                                    <CartItem key={item.product.id} cat={item.product} catalogId={item.catId} />
                                 ) : (<></>)
                             )}
 
