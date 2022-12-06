@@ -7,16 +7,18 @@ import { getProduct, setProductUrl } from "./services/product";
 import { useFetching } from '../hooks/useFetching';
 import { useDispatch, useSelector } from 'react-redux';
 import { favoritesAction } from '../store/addFavorites';
-import { cartAction } from '../store/addCart';
+import { cartAction, updateCartItemAction } from '../store/addCart';
 import { comparisonAction } from '../store/addComparison';
 
 
 
-const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
+const CartItem = ({ cat, catalogId, fromAllCats }) => {
 
     const [inFavorites, setInFavorites] = useState(false)
 
     const [inCart, setInCart] = useState(false)
+
+    const [count, setCount] = useState(cat.count);
 
     const [inComparison, setInComparison] = useState(false)
 
@@ -27,9 +29,11 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
     const comparison = useSelector(state => state.comparison.comparison)
 
     const dispatch = useDispatch()
-
+    console.log(catalogId)
     const add = (type) => {
+
         cat.count = 1
+
         const item = {
             product: cat,
             catId: catalogId,
@@ -39,6 +43,27 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
         if (type == 'favorites') { dispatch(favoritesAction(item)) }
         if (type == 'comparison') { dispatch(comparisonAction(item)) }
 
+    }
+
+
+    const addCart = (action) => {
+
+        let it = count
+
+        action == '+' ? it += 1 : it -= 1
+
+        if (it == 0) { add('cart'); checkIn(cart); console.log('first') }
+
+        setCount(it)
+
+        cat.count = it
+
+        const item = {
+            product: cat,
+            catId: catalogId,
+        }
+
+        dispatch(updateCartItemAction(item))
     }
 
     const checkIn = (item) => {
@@ -97,22 +122,33 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
             </Link>
 
-            <div className='flex w-[255px] justify-between '>
+            <div className='flex w-[205px] justify-between '>
 
                 {inCart ? (
 
-                    <button className={`cart focus:outline-none flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { add('cart'); checkIn(cart) }}>
+                    <div className='flex items-center justify-between border border-[#008954] h-[35px] w-[120px] mt-[10px] mb-[12px] rounded-[4px] bg-[#f6f6f6]'>
 
-                        <p className={`cart text-[16px] text-white pl-[5px]`}> Добавлено</p>
+                        <button className={`cart focus:outline-none flex items-center justify-center w-[30px] h-[30px] border rounded-[4px] bg-[#fff]`} onClick={() => addCart('-')}>
 
-                        <Icons name={'checkV2'} color={'#ffffff'} className={`cart w-[20px] h-[20px]`} />
+                            <p className={`cart text-[16px] text-[#9b9b9b]`}>-</p>
 
-                    </button>
+                        </button>
+
+                        <div className=' flex items-center justify-center h-[30px] w-[30px] rounded-[4px] bg-[#fff]'>
+                            <p>{count}</p>
+                        </div>
+
+                        <button className={`cart focus:outline-none flex items-center justify-center w-[30px] h-[30px] border rounded-[4px] bg-[#fff]`} onClick={() => addCart('+')}>
+
+                            <p className={`cart text-[16px] text-[#9b9b9b]`}>+</p>
+
+                        </button>
+                    </div>
 
 
                 ) : (
 
-                    <button className={`focus:outline-none cart flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { add('cart'); checkIn(cart) }}>
+                    <button className={`focus:outline-none cart flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { add('cart'); addCart('+'); checkIn(cart) }}>
 
                         <Icons name={'shopCart'} color={'#008954'} className={`cart w-[20px] h-[20px]`} />
 
@@ -176,4 +212,4 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
 }
 
-export default CatalogItem;
+export default CartItem;

@@ -62,7 +62,7 @@ const Favorites = () => {
                         <div className={`catalog_content grid grid-cols-5 w-full gap-[25px] mt-[15px]`}>
                             {favorites.map((item, i) =>
                                 (i >= downNumber && i <= upNumber) ? (
-                                    <CatalogItem key={item.id} cat={item.product} catalogId={item.catId} />
+                                    <CatalogItem key={item.product.id} cat={item.product} catalogId={item.catId} />
                                 ) : (<></>)
                             )}
                         </div>

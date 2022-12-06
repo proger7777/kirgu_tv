@@ -25,14 +25,15 @@ const ProductInfoDataBlock = ({ item, catId }) => {
     const dispatch = useDispatch()
 
     const add = (type) => {
+        item.count = 1
         const items = {
             product: item,
             catId: catId,
         }
 
-        if (type == cart) { dispatch(cartAction(items)) }
-        if (type == favorites) { dispatch(favoritesAction(items)) }
-        if (type == comparison) { dispatch(comparisonAction(items)) }
+        if (type == 'cart') { dispatch(cartAction(items)) }
+        if (type == 'favorites') { dispatch(favoritesAction(items)) }
+        if (type == 'comparison') { dispatch(comparisonAction(items)) }
 
     }
 
@@ -138,7 +139,7 @@ const ProductInfoDataBlock = ({ item, catId }) => {
             <>
                 {inCart ? (
 
-                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { add(cart); checkIn(cart) }}>
+                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { add('cart'); checkIn(cart) }}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'checkV2'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
@@ -150,7 +151,7 @@ const ProductInfoDataBlock = ({ item, catId }) => {
 
                 ) : (
 
-                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px]`} onClick={() => { add(cart); checkIn(cart) }}>
+                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[60px] w-[330px] mt-[35px] mb-[10px] rounded-[4px]`} onClick={() => { add('cart'); checkIn(cart) }}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'shopCart'} color={'#008954'} className={`w-[30px] h-[30px] `} />
@@ -166,7 +167,7 @@ const ProductInfoDataBlock = ({ item, catId }) => {
             <>
                 {inFavorites ? (
 
-                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { add(favorites); checkIn(favorites) }}>
+                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'heart'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
@@ -178,7 +179,7 @@ const ProductInfoDataBlock = ({ item, catId }) => {
 
                 ) : (
 
-                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px]`} onClick={() => { add(favorites); checkIn(favorites) }}>
+                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'add'} color={'#008954'} className={`w-[30px] h-[30px] `} />
@@ -194,7 +195,7 @@ const ProductInfoDataBlock = ({ item, catId }) => {
             <>
                 {inComparison ? (
 
-                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { add(comparison); checkIn(comparison) }}>
+                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { add('comparison'); checkIn(comparison) }}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#e6e6e6] flex justify-center items-center'>
                             <Icons name={'scales'} color={'#ffffff'} className={`w-[30px] h-[30px] `} />
@@ -206,7 +207,7 @@ const ProductInfoDataBlock = ({ item, catId }) => {
 
                 ) : (
 
-                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px]`} onClick={() => { add(comparison); checkIn(comparison) }}>
+                    <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px]`} onClick={() => { add('comparison'); checkIn(comparison) }}>
 
                         <div className='h-[60px] w-[60px] border-r border-[#008954] flex justify-center items-center'>
                             <Icons name={'scales'} color={'#008954'} className={`w-[30px] h-[30px] `} />
