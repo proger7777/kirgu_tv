@@ -79,11 +79,11 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
     return (
 
-        <div className='border border-[#e6e6e6] items-center flex flex-col'>
+        <div className='border border-[#e6e6e6] rounded items-center flex flex-col relative'>
 
-            <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[320px] h-[310px]  pl-[20px] pr-[30px]'>
+            <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[320px] h-[285px]  pl-[20px] pr-[30px]'>
 
-                <img src={setImagePath(image(cat))} alt='' className='object-contain h-[162px] mt-[20px] mb-[10px]' />
+                <img src={setImagePath(image(cat))} alt='' className='object-contain h-[137px] mt-[20px] mb-[10px]' />
 
                 {/* <span className='flex mb-[10px]'>
                     {[1, 2, 3, 4, 5].map(i =>
@@ -93,15 +93,44 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 <p className='text-[20px] text-center mb-[7px] w-[220px] h-[55px] truncateText'>{cat.name}</p>
                 <p className='text-[12px] text-slate-500'>Артикул: {article['Артикул']}</p>
-                <p className='text-green text-[28px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>
+
+                {cat.skidka ? (
+
+                    <div className='flex'>
+
+                        <p className='text-green text-[22px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>
+                        
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        <p className='text-[#b1b1b1] text-[18px] whitespace-pre relative inline-block lineDiagonal'>{parseInt(cat.old_price).toLocaleString('ru-RU')} ₽</p>
+                    
+                    </div>
+
+                ) : <p className='text-green text-[28px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>}
 
             </Link>
+
+            {cat.skidka ? (
+
+                <>
+
+                    <div className='absolute top-[320px] bg-[red] w-full rounded h-[23px] grid items-center text-center text-white text-[12px]'>
+                        <p>{cat.action[1]}</p>
+                    </div>
+
+                    <div className='absolute left-[5px] top-[5px] bg-[red] w-[55px] rounded h-[33px] grid items-center text-center text-white'>
+                        <p>{cat.skidka}%</p>
+                    </div>
+
+                </>
+
+            ) : <></>}
 
             <div className='flex w-[255px] justify-between '>
 
                 {inCart ? (
 
-                    <button className={`cart focus:outline-none flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { add('cart'); checkIn(cart) }}>
+                    <button className={`cart focus:outline-none flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mb-[22px] rounded-[4px] bg-[#008954]`} onClick={() => { add('cart'); checkIn(cart) }}>
 
                         <p className={`cart text-[16px] text-white pl-[5px]`}> Добавлено</p>
 
@@ -112,7 +141,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 ) : (
 
-                    <button className={`focus:outline-none cart flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { add('cart'); checkIn(cart) }}>
+                    <button className={`focus:outline-none cart flex items-center justify-center border border-[#008954] h-[35px] w-[170px] mb-[22px] rounded-[4px]`} onClick={() => { add('cart'); checkIn(cart) }}>
 
                         <Icons name={'shopCart'} color={'#008954'} className={`cart w-[20px] h-[20px]`} />
 
@@ -124,7 +153,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 {inFavorites ? (
 
-                    <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
+                    <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[35px] mb-[22px] rounded-[4px] bg-[#008954]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
 
                         <div className='favorites h-[35px] w-[35px] flex justify-center items-center'>
                             <Icons name={'heart'} color={'#ffffff'} className={`favorites w-[25px] h-[25px] `} />
@@ -135,7 +164,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 ) : (
 
-                    <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
+                    <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[35px] mb-[22px] rounded-[4px]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
 
                         <div className='favorites h-[35px] w-[35px] flex justify-center items-center'>
                             <Icons name={'heart'} color={'#008954'} className={`favorites w-[25px] h-[25px] `} />
@@ -147,7 +176,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 {inComparison ? (
 
-                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px] bg-[#008954]`} onClick={() => { add('comparison'); checkIn(comparison) }}>
+                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[35px] mb-[22px] rounded-[4px] bg-[#008954]`} onClick={() => { add('comparison'); checkIn(comparison) }}>
 
                         <div className='h-[35px] w-[35px] flex justify-center items-center'>
                             <Icons name={'scales'} color={'#ffffff'} className={`w-[25px] h-[25px] `} />
@@ -158,7 +187,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 ) : (
 
-                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[35px] mt-[10px] mb-[12px] rounded-[4px]`} onClick={() => { add('comparison'); checkIn(comparison) }}>
+                    <button className={`focus:outline-none flex items-center border border-[#008954] h-[35px] mb-[22px] rounded-[4px]`} onClick={() => { add('comparison'); checkIn(comparison) }}>
 
                         <div className='favorites h-[35px] w-[35px] flex justify-center items-center'>
                             <Icons name={'scales'} color={'#008954'} className={`w-[25px] h-[25px] `} />
