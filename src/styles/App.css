@@ -71,3 +71,10 @@ select {
   background-position: right 12px top 50%;
 }
 
+.truncateText {
+  margin: 0;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
