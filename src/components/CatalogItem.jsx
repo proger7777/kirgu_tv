@@ -91,7 +91,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
                     )}
                 </span> */}
 
-                <p className='text-[22px] text-center mb-[7px] w-[220px] h-[55px]'>{truncate(cat.name, 30)}</p>
+                <p className='text-[20px] text-center mb-[7px] w-[220px] h-[55px] truncateText'>{cat.name}</p>
                 <p className='text-[12px] text-slate-500'>Артикул: {article['Артикул']}</p>
                 <p className='text-green text-[28px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>
 
