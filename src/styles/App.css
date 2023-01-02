@@ -78,3 +78,16 @@ select {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.lineDiagonal:after {
+  content:"";
+	display:block;
+	position:absolute;
+	left:0;
+  top:40%;
+	color:#b5b5b5;
+	width:100%;
+	height:0;
+	border-bottom:2px solid #b5b5b5;
+	transform:rotate(-8deg);
+}
