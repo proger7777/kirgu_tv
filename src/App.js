@@ -23,9 +23,10 @@ import PausePrompBlock from "./components/PausePrompBlock";
 import SearchForm from "./pages/SearchForm";
 import Favorites from './pages/Favourites';
 import Comparison from './pages/Comparison';
-import ComparisonItem from './components/ComparisonItem';
+import ComparisonItem from './components/Compare/ComparisonItem';
 import Cart from './pages/Cart';
-import CartBarcode from './components/CartBarcode';
+import CartBarcode from './components/Cart/CartBarcode';
+import BuildingMap from './pages/BuildingMap';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
         <BrowserRouter basename='/tv'>
           <Routes>
             <Route index roo element={<Home />} />
+            <Route path="buildingMap" element={<BuildingMap />} />
             <Route path='info' element={<Info />} />
             <Route path='info/stocks' element={<Stocks />} />
             <Route path='info/stocks/:title' element={<StockId />} />

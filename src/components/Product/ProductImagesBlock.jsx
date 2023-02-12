@@ -1,6 +1,6 @@
 import React, {  }  from 'react';
 import { useEffect, useState } from "react";
-import { setImagePath } from "./services/images";
+import { setImagePath } from "../services/images";
 import ProductSmalImgItem from "./ProductSmalImgItem";
 
 const ProductImagesBlock = ({images}) => {

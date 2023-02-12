@@ -1,14 +1,14 @@
 import React, {  }  from 'react';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ProductContext } from "../context";
-import Icons from "./Icons";
+import { ProductContext } from "../../context";
+import Icons from "../Icons";
 import ProductDescBlock from "./ProductDescBlock";
 import ProductInfoBlock from "./ProductInfoBlock";
 import ProductMenuList from "./ProductMenuList";
 import ProductPropsBlock from "./ProductPropsBlock";
 import ProductReviewsBlock from "./ProductReviewsBlock";
-import { changeOffer } from "./services/product";
+import { changeOffer } from "../services/product";
 
 const ProductContent = ({item, fromAllCats, catId}) => {
 

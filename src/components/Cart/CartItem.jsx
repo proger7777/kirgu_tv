@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import { setImagePath } from "./services/images";
-import { truncate } from "./services/str";
-import Icons from "./Icons";
-import { getProduct, setProductUrl } from "./services/product";
-import { useFetching } from '../hooks/useFetching';
+import { setImagePath } from "../services/images";
+import { truncate } from "../services/str";
+import Icons from "../Icons";
+import { getProduct, setProductUrl } from "../services/product";
+import { useFetching } from '../../hooks/useFetching';
 import { useDispatch, useSelector } from 'react-redux';
-import { favoritesAction } from '../store/addFavorites';
-import { cartAction, updateCartItemAction } from '../store/addCart';
-import { comparisonAction } from '../store/addComparison';
+import { favoritesAction } from '../../store/addFavorites';
+import { cartAction, updateCartItemAction } from '../../store/addCart';
+import { comparisonAction } from '../../store/addComparison';
 
 
 

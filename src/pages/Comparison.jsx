@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ComparisonList from "../components/ComparisonList";
+import ComparisonList from "../components/Compare/ComparisonList";
 import Icons from "../components/Icons";
 import Layout from "../layout";
 import { clearComparisonAction } from "../store/addComparison";

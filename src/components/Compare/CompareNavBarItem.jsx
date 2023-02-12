@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useFetching } from '../hooks/useFetching';
-import { getCategories } from './services/categories';
+import { useFetching } from '../../hooks/useFetching';
+import { getCategories } from '../services/categories';
 
 
 const CompareNavBarItem = ({ catId }) => {

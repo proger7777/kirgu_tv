@@ -76,7 +76,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
         fetchProduct(cat.category, cat.id)
 
     }, [cart, favorites, comparison])
-
+    console.log(cat)
     return (
 
         <div className='border border-[#e6e6e6] rounded items-center flex flex-col relative'>

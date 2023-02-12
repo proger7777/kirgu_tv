@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
-import Layout from '../layout';
-import { comparisonAction } from '../store/addComparison';
+import Layout from '../../layout';
+import { comparisonAction } from '../../store/addComparison';
 import CompareList from './CompareList';
 import CompareNavBar from './CompareNavBar';
-import Icons from './Icons';
+import Icons from '../Icons';
 
 const ComparisonItem = () => {
 

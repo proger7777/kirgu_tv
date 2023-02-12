@@ -1,5 +1,5 @@
 import React, {  }  from 'react';
-import { setHidden } from "./services/classes";
+import { setHidden } from "../services/classes";
 import ProductImagesBlock from "./ProductImagesBlock";
 import ProductInfoDataBlock from "./ProductInfoDataBlock";
 

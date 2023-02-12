@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getProduct } from "./services/product";
-import { useFetching } from '../hooks/useFetching';
-import Loadering from './Loadering';
-import Icons from './Icons';
+import { getProduct } from "../services/product";
+import { useFetching } from '../../hooks/useFetching';
+import Loadering from '../Loadering';
+import Icons from '../Icons';
 import CompareProducts from './CompareProducts';
 import CompareProps from './CompareProps';
 

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import Icons from "./Icons";
-import { ProductContext } from "../context";
-import { setProductUrl } from "./services/product";
+import Icons from "../Icons";
+import { ProductContext } from "../../context";
+import { setProductUrl } from "../services/product";
 import { useDispatch, useSelector } from 'react-redux';
-import { favoritesAction } from '../store/addFavorites';
-import { cartAction } from '../store/addCart';
-import { comparisonAction } from '../store/addComparison';
+import { favoritesAction } from '../../store/addFavorites';
+import { cartAction } from '../../store/addCart';
+import { comparisonAction } from '../../store/addComparison';
 
 const ProductInfoDataBlock = ({ item, catId }) => {
 

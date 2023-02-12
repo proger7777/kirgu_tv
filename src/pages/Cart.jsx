@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CartItem from "../components/CartItem";
+import CartItem from "../components/Cart/CartItem";
 import Icons from "../components/Icons";
-import InfoPriceCart from "../components/InfoPriceCart";
+import CartInfoPrice from "../components/Cart/CartInfoPrice";
 import Pagination from "../components/Pagination";
 import Layout from "../layout";
 import { clearCartAction } from "../store/addCart";
@@ -87,7 +87,7 @@ const Cart = () => {
                     )}
 
                     <div>
-                        <InfoPriceCart products={cart} />
+                        <CartInfoPrice products={cart} />
                     </div>
 
                 </div>

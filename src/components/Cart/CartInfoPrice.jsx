@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 
-const InfoPriceCart = ({ products }) => {
+const CartInfoPrice = ({ products }) => {
 
     const [allPrice, setAllPrice] = useState(0)
 
@@ -169,4 +169,4 @@ const InfoPriceCart = ({ products }) => {
     )
 }
 
-export default InfoPriceCart
+export default CartInfoPrice

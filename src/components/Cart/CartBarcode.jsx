@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Barcode from 'react-barcode';
 import { useNavigate, useParams } from "react-router-dom";
-import Layout from "../layout";
-import Icons from "./Icons";
+import Layout from "../../layout";
+import Icons from "../Icons";
 
 const CartBarcode = () => {
 

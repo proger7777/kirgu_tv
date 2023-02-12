@@ -1,5 +1,5 @@
 import React, {  }  from 'react';
-import { setImagePath } from "./services/images";
+import { setImagePath } from "../services/images";
 
 const ProductSmalImgItem = ({image, activeImg, showImage}) => {
 
