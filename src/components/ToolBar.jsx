@@ -27,7 +27,7 @@ const ToolBar = ({ crumbs, activeMenu }) => {
                         <Icons name='shopCart' className='w-[28px] h-[28px]  right-[2px]' />
                     </button>
 
-                    <button onClick={() => navigate('/favorites')} className='focus:outline-none w-[50px] h-[50px] flex justify-center items-center rounded-[4px] bg-[#00895420]'>
+                    <button onClick={() => navigate('/buildingMap')} className='focus:outline-none w-[50px] h-[50px] flex justify-center items-center rounded-[4px] bg-[#00895420]'>
                         <Icons name='heart' className='w-[28px] h-[28px] right-[2px]' color={'#008954'} />
                     </button>
 

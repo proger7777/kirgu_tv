@@ -12,6 +12,8 @@ const BuildingMap = () => {
 
     const [allCats, setAllCats] = useState([])
     const [categories, setCategories] = useState([])
+    const buildingData = useSelector(state => state.buildingMap.building)
+    const [building, setBuilding] = useState(buildingData.tech);
 
     const [fetchCategories, isCatsLoading, catsError] = useFetching(async () => {
         const resultAllCats = await getCategories()
@@ -19,15 +21,17 @@ const BuildingMap = () => {
 
         const result = await getCategoriesById(null)
         setCategories(result)
-        console.log(result)
-        console.log(resultAllCats)
     })
 
     useEffect(() => {
         fetchCategories()
     }, [])
 
-    const buildingData = useSelector(state => state.buildingMap.building)
+    useEffect(() => {
+        console.log(building)
+    }, [building]);
+
+    // console.log(building)
 
     const crumbs = [['MKH', 'categories']]
 
@@ -41,7 +45,7 @@ const BuildingMap = () => {
 
 
                 <div className='w-[270px] bg-[redsd] overflow-x-scroll'>
-                    <ListCategory list={categories} sublist={allCats}/>
+                    <ListCategory list={categories} sublist={allCats} />
                 </div>
 
 
@@ -51,40 +55,35 @@ const BuildingMap = () => {
 
 
 
-                <div className='w-full h-full bg-[greensd]'>
-                    Map
-                    <MapProject/>
+                <div className='w-full h-[879px] bg-[greensd] p-[10px]'>
+
+                    <div className='w-full bg-[redsd]'>
+                        {Object.keys(buildingData).map(item => (
+                            // <button key={item} onClick={() => { setBuilding(buildingData[item]) ;console.log(buildingData[item])}} className="w-[200px] ml-[10px]">
+                            <button key={item} onClick={() => setBuilding(buildingData[item]) } className="w-[200px] ml-[10px]">
+                                <p>{item}</p>
+                            </button>
+                           
+                        ))}
+                    </div>
+
+                    <MapProject buildingData={building}/>
                 </div>
 
 
-
-
-
-
-
-
-
+                {/* 
                 <div className='w-[200px] h-[879px] grid items-center justify-center bg-[#f025ffsd]'>
                     <div className=''>
-                        <div className='h-[50px] w-[50px] bg-[yellow]'></div>
-                        <div className='h-[50px] w-[50px] bg-[yellow] mt-[10px]'></div>
-                        <div className='h-[50px] w-[50px] bg-[yellow] mt-[10px]'></div>
-                        <div className='h-[50px] w-[50px] bg-[yellow] mt-[10px]'></div>
-                        <div className='h-[50px] w-[50px] bg-[yellow] mt-[10px]'></div>
-                        <div className='h-[50px] w-[50px] bg-[yellow] mt-[10px]'></div>
-                        <div className='h-[50px] w-[50px] bg-[yellow] mt-[10px]'></div>
-                        <div className='h-[50px] w-[50px] bg-[yellow] mt-[10px]'></div>
-                        <div className='h-[50px] w-[50px] bg-[yellow] mt-[10px]'></div>
+                        {buildingData.tech.map((item) => (
+                            <div>
+                                <button className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mb-[10px] justify-center items-center'>{item.floor}</button>
+                            </div>
+                        ))}
+                        <button className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mt-[30px] mb-[10px] justify-center items-center'>+</button>
+                        <button className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mb-[10px] justify-center items-center'>-</button>
+
                     </div>
-                </div>
-
-
-
-
-
-
-
-
+                </div> */}
 
 
 

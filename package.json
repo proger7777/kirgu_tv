@@ -16,6 +16,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@pixi/react": "^7.0.1",
     "@redux-devtools/extension": "^3.2.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/user-event": "^14.1.1",
@@ -23,6 +24,7 @@
     "localforage": "^1.10.0",
     "npm-check-updates": "^12.5.9",
     "nuka-carousel": "^5.0.13",
+    "pixi.js": "^7.1.2",
     "rc-slider": "^10.0.0",
     "react": "^18.0.0",
     "react-barcode": "^1.4.5",
