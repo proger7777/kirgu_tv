@@ -27,6 +27,7 @@ import ComparisonItem from './components/Compare/ComparisonItem';
 import Cart from './pages/Cart';
 import CartBarcode from './components/Cart/CartBarcode';
 import BuildingMap from './pages/BuildingMap';
+import SettingBuildingMap from './pages/SettingBuildingMap';
 
 function App() {
 
@@ -46,7 +47,8 @@ function App() {
         <BrowserRouter basename='/tv'>
           <Routes>
             <Route index roo element={<Home />} />
-            <Route path="buildingMap" element={<BuildingMap />} />
+            {/* <Route path="buildingMap" element={<BuildingMap />} /> */}
+            <Route path="buildingMap" element={<SettingBuildingMap />} />
             <Route path='info' element={<Info />} />
             <Route path='info/stocks' element={<Stocks />} />
             <Route path='info/stocks/:title' element={<StockId />} />

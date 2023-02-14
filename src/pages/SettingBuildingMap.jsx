@@ -9,11 +9,13 @@ import { useSelector } from 'react-redux';
 import { SelectCity } from '../components/BuildingMap/SelectCity';
 
 
-const BuildingMap = () => {
+const SettingBuildingMap = () => {
+
 
     // Get city and put active city
     const city = useSelector(state => state.buildingMap)
     const [activeCity, setActiveCity] = useState(Object.keys(city)[0]);
+
 
     // Get building map and put active building
     const buildingData = useSelector(state => state.buildingMap[activeCity])
@@ -21,28 +23,41 @@ const BuildingMap = () => {
     const [activeBuilding, setActiveBuilding] = useState(0);
 
 
+    // Set properties position terminal
+    const [positionTerminal, setPositionTerminal] = useState(false);
+    const [ClickMkh, setClickMkh] = useState(1);
+    const saveSetting = () => {
+        const setting = {
+            city: activeCity,
+            buildingIndex: activeBuilding,
+            floorIndex: positionTerminal[0],
+            position: positionTerminal[1]
+        }
 
-    // Get info product for left bar
-    const [allCats, setAllCats] = useState([])
-    const [categories, setCategories] = useState([])
+        // localStorage.favorites ? JSON.parse(localStorage.getItem('favorites')) : []
+        localStorage.removeItem('settingsTerminal')
+        localStorage.setItem('settingsTerminal', JSON.stringify(setting))
+    }
 
-    const [fetchCategories, isCatsLoading, catsError] = useFetching(async () => {
-        const resultAllCats = await getCategories()
-        setAllCats(resultAllCats)
+    // ⚜️⚜️⚜️MKH-PRODUCTION⚜️⚜️⚜️
+    const MKH = () => {
+        setClickMkh(ClickMkh + 1)
 
-        const result = await getCategoriesById(null)
-        setCategories(result)
-    })
+        if (ClickMkh == 5) {
+            if (window.confirm("⚜️⚜️⚜️MKH-PRODUCTION⚜️⚜️⚜️")) {
+                window.open('https://mkh-production.ru/', '_blank');
+            };
+        }
 
-    useEffect(() => {
-        fetchCategories()
-    }, [])
+        ClickMkh == 5 && setClickMkh(1)
+    }
 
 
     // Update building map when change building
     useEffect(() => {
         setActiveBuilding(0)
         setBuilding(Object.values(buildingData)[0])
+        setPositionTerminal(false)
     }, [activeCity]);
 
 
@@ -50,19 +65,21 @@ const BuildingMap = () => {
 
     return (
         <Layout crumbs={crumbs} >
-            <div className='w-full h-full flex justify-between bg-[bluesd]'>
+            <div className='w-full h-full flex-col justify-between bg-[bluesd]'>
 
 
-                {/* Left bar */}
-                <div className='w-[270px] bg-[redsd] overflow-x-scroll'>
-                    <ListCategory list={categories} sublist={allCats} />
+
+                <div className='w-full h-[30px] flex justify-center text-[30px] '>
+                    <button onClick={() => MKH()}>Установка местоположения для терминала!</button>
                 </div>
 
 
+
                 {/* Other element */}
-                <div className='w-full h-[879px] bg-[greensd] p-[10px] '>
+                <div className='w-full h-[849px] bg-[greensd] p-[10px] '>
 
                     <div className='flex justify-between h-[50px]'>
+
 
                         {/* Select building */}
                         <div className='w-[1170px] h-[60px] ml-[8px] flex items-center bg-[redsd] overflow-y-scroll'>
@@ -74,15 +91,27 @@ const BuildingMap = () => {
                             ))}
                         </div>
 
+
+                        {/* Save setting Terminal */}
+                        <div>
+                            <button disabled={!positionTerminal && true} onClick={() => saveSetting()} className={`border rounded p-[10px] ${positionTerminal ? `bg-[#008954]` : `bg-[#9f9f9f]`}`}>
+                                Сохранить настройки
+                            </button>
+                        </div>
+
+
                         {/* Select city */}
                         <div className='flex items-center border border-[#dbdbdb] rounded'>
                             <SelectCity city={city} setActiveCity={setActiveCity} />
                         </div>
 
+
                     </div>
 
+
                     {/* Display building map */}
-                    <MapProject width={1375} height={805} buildingData={building} />
+                    <MapProject width={1620} height={775} buildingData={building} settingsTerm={setPositionTerminal} />
+
                 </div>
 
 
@@ -93,4 +122,4 @@ const BuildingMap = () => {
 }
 
 
-export default BuildingMap;
+export default SettingBuildingMap;
