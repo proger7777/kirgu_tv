@@ -11,24 +11,29 @@ const MapProject = ({ buildingData }) => {
 
     const bunny = "https://pixijs.io/pixi-react/img/bunny.png"
 
+    const [activeFlour, setActiveFlour] = useState(0);
 
+    // Set active project and active floor
     useEffect(() => {
         setProject(getBuilding(buildingData[0].name, buildingData[0].floor))
+        setActiveFlour(0)
+        setScale(1)
+        setPosition({ x: width / 2, y: height / 2 })
     }, [buildingData]);
-    
-    
-// Variables Sprite map and scale Sprite
+
+
+    // Variables Sprite map and scale Sprite
     const [project, setProject] = useState(Tech(2));
     const [scale, setScale] = useState(1);
-    
-// Create canvas
-    const width = 1375
-    const height = 859
 
-// Create collision border for canvas
+    // Create canvas
+    const width = 1375
+    const height = 812
+
+    // Create collision border for canvas
     const border = new Rectangle(0, 0, width, height)
 
-// Realization moving mouse
+    // Realization moving mouse
     const isDragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
     const [position, setPosition] = useState({ x: width / 2, y: height / 2 });
@@ -67,10 +72,12 @@ const MapProject = ({ buildingData }) => {
                 width={width}
                 height={height}
                 options={{ backgroundColor: 0xffffff }}>
+                {/* Create container for use collision */}
                 <Container
                     position={[0, 0]}
                     hitArea={border}>
 
+                    {/* Create container for moving group sprite */}
                     <Container
                         interactive={true}
                         position={position}
@@ -78,15 +85,17 @@ const MapProject = ({ buildingData }) => {
                         pointerdown={onStart}
                         pointerup={onEnd}
                         pointerupoutside={onEnd}
-                        pointermove={onMove}
-                    >
+                        pointermove={onMove}>
+
+                        {/* Sprite building map */}
                         <Sprite
                             alpha={alpha}
                             // position={position}
                             anchor={0.5}
                             // scale={scale}
-                            image={project}
-                        />
+                            image={project} />
+
+                        {/* Sprite marker position terminal */}
                         <Sprite
                             x={0}
                             y={0}
@@ -94,26 +103,29 @@ const MapProject = ({ buildingData }) => {
                             anchor={[0.5, 0.5]}
                             cursor={"pointer"}
                             // scale={scale}
-                            image={marker}
-                        />
+                            image={marker} />
+
                     </Container>
 
                 </Container>
 
             </Stage>
 
-            <div className='w-[80px] h-[879px] flex flex-col items-center justify-center bg-[yellowsd]'>
+            <div className='w-[80px] h-[812px] flex flex-col items-center justify-center bg-[yellowsd]'>
 
-                {buildingData.map((item) => (
+                {/* Block for move around map floor */}
+                {buildingData.map((item, index) => (
                     <div key={item.id}>
-                        <button onClick={() => setProject(getBuilding(item.name, item.floor))} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mb-[10px] justify-center items-center'>{item.floor}</button>
+                        <button onClick={() => { setProject(getBuilding(item.name, item.floor)); setActiveFlour(index) }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${index == activeFlour ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
                     </div>
                 ))}
 
+                {/* Button for scale */}
                 <button onClick={() => scale != 2.5 && setScale(scale + 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mt-[30px] mb-[10px] justify-center items-center'>+</button>
                 <button onClick={() => scale != 1 && setScale(scale - 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mb-[10px] justify-center items-center'>-</button>
 
             </div>
+
         </div>
     )
 }

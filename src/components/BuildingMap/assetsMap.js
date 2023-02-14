@@ -36,14 +36,6 @@ export const getBuilding = (name, floor) => {
 
 
 
-
-
-
-
-
-
-
-
 export const Tech = (flour) => {
   switch (flour) {
     case 0:

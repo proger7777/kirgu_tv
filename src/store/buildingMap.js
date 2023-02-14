@@ -1,6 +1,6 @@
 const defaultState = {
-  building: {
-    tech: [
+  Махачкала: {
+    Синий_корпус: [
       {
         name: "tech",
         floor: 0,
@@ -23,23 +23,23 @@ const defaultState = {
       },
     ].reverse(),
 
-    kids: [
+    Детский_отдел: [
       {
         name: "kids",
         floor: 1,
         id: "777-555-333-111",
-      }
+      },
     ].reverse(),
-    
-    discount: [
+
+    Дисконт_Офисная_мебель: [
       {
         name: "discount",
         floor: 1,
         id: "777-555-333-111",
-      }
+      },
     ].reverse(),
 
-    mebel: [
+    Мебельный_корпус: [
       {
         name: "mebel",
         floor: 0,
@@ -72,6 +72,36 @@ const defaultState = {
       },
     ].reverse(),
   },
+
+  Буйнакск: {
+    Детский_отдел: [
+      {
+        name: "kids",
+        floor: 1,
+        id: "777-555-333-111",
+      },
+    ].reverse(),
+
+    Дисконт_Офисная_мебель: [
+      {
+        name: "discount",
+        floor: 1,
+        id: "777-555-333-111",
+      },
+    ].reverse(),
+  },
+
+  // city: [
+  //   "Буйнакск",
+  //   "Каспийск",
+  //   "Кизляр",
+  //   "Махачкала",
+  //   // "Махачкала",
+  //   // "Махачкала",
+  //   "Хасавюрт",
+  //   // "Хасавюрт",
+  //   "Дербент",
+  // ],
 };
 
 const BUILDING = "BUILDING";
@@ -82,5 +112,3 @@ export const buildingMapReducer = (state = defaultState, action) => {
       return state;
   }
 };
-
-export const buildingMapAction = (payload) => ({ type: BUILDING, payload });
