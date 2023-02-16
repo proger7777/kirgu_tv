@@ -47,8 +47,8 @@ function App() {
         <BrowserRouter basename='/tv'>
           <Routes>
             <Route index roo element={<Home />} />
-            {/* <Route path="buildingMap" element={<BuildingMap />} /> */}
-            <Route path="buildingMap" element={<SettingBuildingMap />} />
+            <Route path="buildingMap" element={<BuildingMap />} />
+            <Route path="settingBuildingMap" element={<SettingBuildingMap />} />
             <Route path='info' element={<Info />} />
             <Route path='info/stocks' element={<Stocks />} />
             <Route path='info/stocks/:title' element={<StockId />} />

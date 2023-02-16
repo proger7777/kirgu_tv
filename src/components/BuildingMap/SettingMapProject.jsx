@@ -1,64 +1,47 @@
-import { Container, Sprite, Stage } from "@pixi/react";
-import { Rectangle, SCALE_MODES, settings } from "pixi.js";
-import { useEffect, useRef, useState } from "react";
-import { getBuilding, Tech } from "./assetsMap";
+import { Container, Graphics, Sprite, Stage } from "@pixi/react";
+import { Rectangle, SCALE_MODES, settings, Texture } from "pixi.js";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { Garden, getBuilding, Tech } from "./assetsMap";
 import marker from "../../images/iconTV.png"
 
 settings.SCALE_MODE = SCALE_MODES.NEAREST;
 
-const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
+const SettingMapProject = ({ width, height, city, buildingData, settingsTerm }) => {
 
     const bunny = "https://pixijs.io/pixi-react/img/bunny.png"
 
-    // Variables Sprite map and scale Sprite
-    const [activeFlour, setActiveFlour] = useState(0);
+    // Variables Sprite map and scale Sprite, set values random in order to avoid error 
+    const [activeFlour, setActiveFlour] = useState([3, 0]);
     const [project, setProject] = useState(getBuilding(city, buildingData[0].name, buildingData[0].floor));
-    const [scale, setScale] = useState(1);
-
 
     // Create collision border for canvas
     const border = new Rectangle(0, 0, width, height)
 
     // Variable for moving mouse
+    const [click, setClick] = useState(false);
     const [terminal, setTerminal] = useState(false);
     const [positionTerminal, setPositionTerminal] = useState({ x: 0, y: 0 });
 
-    // Set active project and active floor 
-    useEffect(() => {
 
-        // Default setting terminal of building map
+    // Set active project and active floor and refresh data after change projectMap, floor and city
+    useEffect(() => {
         setProject(getBuilding(city, buildingData[0].name, buildingData[0].floor))
-        setActiveFlour(0)
-        setScale(1)
+        setActiveFlour([buildingData[0].floor, 0])
         setPosition({ x: width / 2, y: height / 2 })
         setTerminal(false)
-
-        // If terminal on this city, set building map and floor of setting
-        if (activeTerminal) {
-            setProject(getBuilding(city, buildingData[0].name, activeTerminal.floor))
-            setActiveFlour(activeTerminal.floorIndex)
-            setTerminal(true)
-            setPositionTerminal(activeTerminal.position)
-        }
     }, [buildingData]);
 
-    // Refresh setting after change projectMap, floor
     useEffect(() => {
         setPosition({ x: width / 2, y: height / 2 })
-        setScale(1)
-
-        if (activeFlour !== activeTerminal.floorIndex) {
-            setTerminal(false)
-        } else {
-            setTerminal(true)
-        }
-    }, [activeFlour]);
+        settingsTerm(false)
+    }, [project]);
 
 
     // Realization moving mouse
     const isDragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
-    const [position, setPosition] = useState({ x: width / 2, y: height / 2 });
+    const [position, setPosition] = useState(0);
     const [alpha, setAlpha] = useState(1);
 
     function onStart(e) {
@@ -68,6 +51,7 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
             y: e.data.global.y - position.y,
         };
         setAlpha(0.5);
+        setPositionTerminal({ x: offset.current.x, y: offset.current.y })
     }
 
     function onEnd(e) {
@@ -81,6 +65,7 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
                 x: e.data.global.x - offset.current.x,
                 y: e.data.global.y - offset.current.y,
             });
+            setClick(true)
         }
     }
 
@@ -101,11 +86,34 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
                         <Container
                             interactive={true}
                             position={position}
-                            scale={scale}
+                            scale={1}
                             pointerdown={onStart}
                             pointerup={onEnd}
                             pointerupoutside={onEnd}
                             pointermove={onMove}
+
+                            // Option setting! Put position terminal
+                            ontap={() => {
+                                // Check Tap or Dragging
+                                if (click) {
+                                    setClick(false)
+                                } else {
+                                    setTerminal(true)
+                                    console.log(activeFlour)
+                                    settingsTerm([activeFlour[0], activeFlour[1], { x: positionTerminal.x, y: positionTerminal.y }])
+                                }
+                            }}
+                            onclick={() => {
+                                // Check Tap or Dragging
+                                if (click) {
+                                    // console.log("DRAGGING", click)
+                                    setClick(false)
+                                } else {
+                                    // console.log("TAP", click)
+                                    setTerminal(true)
+                                    settingsTerm([activeFlour, { x: positionTerminal.x, y: positionTerminal.y }])
+                                }
+                            }}
                         >
 
                             {/* Sprite building map */}
@@ -138,15 +146,9 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
                 {/* Block for move around map floor */}
                 {buildingData.map((item, index) => (
                     <div key={item.name+item.floor}>
-                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour(index); }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${index == activeFlour ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
+                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour([item.floor, index]); setTerminal(false); settingsTerm(false) }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${index == activeFlour[1] ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
                     </div>
                 ))}
-
-                {/* Button for scale */}
-                <div>
-                    <button onClick={() => scale != 2.5 && setScale(scale + 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mt-[30px] mb-[10px] justify-center items-center'>+</button>
-                    <button onClick={() => scale != 1 && setScale(scale - 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mb-[10px] justify-center items-center'>-</button>
-                </div>
 
             </div>
 
@@ -154,4 +156,4 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
     )
 }
 
-export default MapProject;
+export default SettingMapProject;

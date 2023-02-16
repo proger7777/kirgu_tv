@@ -1,107 +1,143 @@
 const defaultState = {
-  Махачкала: {
-    Синий_корпус: [
-      {
-        name: "tech",
-        floor: 0,
-        id: "777-555-333-111",
-      },
-      {
-        name: "tech",
-        floor: 1,
-        id: "tech_id1",
-      },
-      {
-        name: "tech",
-        floor: 2,
-        id: "tech_id2",
-      },
-      {
-        name: "tech",
-        floor: 3,
-        id: "tech_id3x",
-      },
-    ].reverse(),
+  map: {
 
-    Детский_отдел: [
-      {
-        name: "kids",
-        floor: 1,
-        id: "777-555-333-111",
-      },
-    ].reverse(),
+    Махачкала: {
+      Общая_Схема_КИРГУ: [
+        {
+          name: "kirgu",
+          floor: 0,
+        },
+        {
+          name: "kirgu",
+          floor: 1,
+        },
+        {
+          name: "kirgu",
+          floor: 2,
+        },
+        {
+          name: "kirgu",
+          floor: 3,
+        },
+        {
+          name: "kirgu",
+          floor: 4,
+        },
+        {
+          name: "kirgu",
+          floor: 5,
+        },
+      ].reverse(),
 
-    Дисконт_Офисная_мебель: [
-      {
-        name: "discount",
-        floor: 1,
-        id: "777-555-333-111",
-      },
-    ].reverse(),
+      Синий_корпус: [
+        {
+          name: "tech",
+          floor: 0,
+        },
+        {
+          name: "tech",
+          floor: 1,
+        },
+        {
+          name: "tech",
+          floor: 2,
+        },
+        {
+          name: "tech",
+          floor: 3,
+        },
+      ].reverse(),
 
-    Мебельный_корпус: [
-      {
-        name: "mebel",
-        floor: 0,
-        id: "mebel_777-555-333-111",
-      },
-      {
-        name: "mebel",
-        floor: 1,
-        id: "mebel_id1",
-      },
-      {
-        name: "mebel",
-        floor: 2,
-        id: "mebel_id2",
-      },
-      {
-        name: "mebel",
-        floor: 3,
-        id: "imebel_d3x",
-      },
-      {
-        name: "mebel",
-        floor: 4,
-        id: "imebel_d4x",
-      },
-      {
-        name: "mebel",
-        floor: 5,
-        id: "imebel_d5x",
-      },
-    ].reverse(),
+      Детский_отдел: [
+        {
+          name: "kids",
+          floor: 1,
+        },
+      ].reverse(),
+
+      Дисконт_и_офисная_мебель: [
+        {
+          name: "discount",
+          floor: 1,
+        },
+      ].reverse(),
+
+      Мебельный_корпус: [
+        {
+          name: "mebel",
+          floor: 0,
+        },
+        {
+          name: "mebel",
+          floor: 1,
+        },
+        {
+          name: "mebel",
+          floor: 2,
+        },
+        {
+          name: "mebel",
+          floor: 3,
+        },
+        {
+          name: "mebel",
+          floor: 4,
+        },
+        {
+          name: "mebel",
+          floor: 5,
+        },
+      ].reverse(),
+    },
+
+    Дербент: {
+      Дербент: [
+        {
+          name: "derbent",
+          floor: 0,
+        },
+        {
+          name: "derbent",
+          floor: 1,
+        },
+        {
+          name: "derbent",
+          floor: 2,
+        },
+        {
+          name: "derbent",
+          floor: 3,
+        },
+      ].reverse(),
+    },
+
+    Каспийск: {
+      Капийск_КИРГУ: [
+        {
+          name: "kaspiyskKirgu",
+          floor: 1,
+        },
+      ].reverse(),
+
+      Каспийск_Домашний: [
+        {
+          name: "kaspiyskHome",
+          floor: 1,
+        },
+      ].reverse(),
+    },
+
+    Махачкала_2: {
+      Махачкала_2: [
+        {
+          name: "makhachkalaDigital",
+          floor: 1,
+        },
+      ].reverse(),
+    },
+
   },
 
-  Буйнакск: {
-    Детский_отдел: [
-      {
-        name: "kids",
-        floor: 1,
-        id: "777-555-333-111",
-      },
-    ].reverse(),
-
-    Дисконт_Офисная_мебель: [
-      {
-        name: "discount",
-        floor: 1,
-        id: "777-555-333-111",
-      },
-    ].reverse(),
-  },
-
-  // city: [
-  //   "Буйнакск",
-  //   "Каспийск",
-  //   "Кизляр",
-  //   "Махачкала",
-  //   // "Махачкала",
-  //   // "Махачкала",
-  //   "Хасавюрт",
-  //   // "Хасавюрт",
-  //   "Дербент",
-  // ],
 };
 
 const BUILDING = "BUILDING";

@@ -1,42 +1,43 @@
 import React, { } from 'react';
 import { useEffect, useState } from "react";
-import { useFetching } from "../hooks/useFetching";
-import ListCategory from '../components/BuildingMap/ListCategory';
 import Layout from '../layout';
-import { getCategories, getCategoriesById } from '../components/services/categories';
-import MapProject from '../components/BuildingMap/MapProject';
 import { useSelector } from 'react-redux';
 import { SelectCity } from '../components/BuildingMap/SelectCity';
+import SettingMapProject from '../components/BuildingMap/SettingMapProject';
+import { useNavigate } from 'react-router-dom';
 
 
 const SettingBuildingMap = () => {
 
 
     // Get city and put active city
-    const city = useSelector(state => state.buildingMap)
+    const city = useSelector(state => state.buildingMap.map)
     const [activeCity, setActiveCity] = useState(Object.keys(city)[0]);
 
 
     // Get building map and put active building
-    const buildingData = useSelector(state => state.buildingMap[activeCity])
+    const buildingData = useSelector(state => state.buildingMap.map[activeCity])
     const [building, setBuilding] = useState(Object.values(buildingData)[0]);
     const [activeBuilding, setActiveBuilding] = useState(0);
 
 
     // Set properties position terminal
+    const navigate = useNavigate()
     const [positionTerminal, setPositionTerminal] = useState(false);
     const [ClickMkh, setClickMkh] = useState(1);
     const saveSetting = () => {
+
         const setting = {
             city: activeCity,
             buildingIndex: activeBuilding,
-            floorIndex: positionTerminal[0],
-            position: positionTerminal[1]
+            floor: positionTerminal[0],
+            floorIndex: positionTerminal[1],
+            position: positionTerminal[2]
         }
 
-        // localStorage.favorites ? JSON.parse(localStorage.getItem('favorites')) : []
-        localStorage.removeItem('settingsTerminal')
         localStorage.setItem('settingsTerminal', JSON.stringify(setting))
+        alert("Вы успешно сохранили данные!")
+        navigate("/buildingMap" , {replace: true})
     }
 
     // ⚜️⚜️⚜️MKH-PRODUCTION⚜️⚜️⚜️
@@ -61,7 +62,7 @@ const SettingBuildingMap = () => {
     }, [activeCity]);
 
 
-    const crumbs = [['MKH', 'categories']]
+    const crumbs = [['Схема зданий', 'buildingMap'], ['Настройка положения терминала', 'settingBuildingMap']]
 
     return (
         <Layout crumbs={crumbs} >
@@ -110,7 +111,7 @@ const SettingBuildingMap = () => {
 
 
                     {/* Display building map */}
-                    <MapProject width={1620} height={775} buildingData={building} settingsTerm={setPositionTerminal} />
+                    <SettingMapProject width={1620} height={775} city={activeCity} buildingData={building} settingsTerm={setPositionTerminal} />
 
                 </div>
 
