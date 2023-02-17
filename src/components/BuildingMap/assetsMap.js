@@ -4,9 +4,9 @@ import Tech_1 from "../../images/textureBuildingMap/makhachkala/tech_1.png";
 import Tech_2 from "../../images/textureBuildingMap/makhachkala/tech_2.png";
 import Tech_3 from "../../images/textureBuildingMap/makhachkala/tech_3.png";
 
-import Discount_1 from "../../images/textureBuildingMap/makhachkala/discount.png";
 
-import Kids_1 from "../../images/textureBuildingMap/makhachkala/kids.png";
+import Kids_1 from "../../images/textureBuildingMap/makhachkala/kids_1.png";
+import Kids_0 from "../../images/textureBuildingMap/makhachkala/kids_0.png";
 
 import Garden_0 from "../../images/textureBuildingMap/makhachkala/garden_0.png";
 import Garden_1 from "../../images/textureBuildingMap/makhachkala/garden_1.png";
@@ -64,8 +64,6 @@ const getMakhachkala = (name, floor) => {
       return Mebel(floor);
     case "kids":
       return Kids(floor);
-    case "discount":
-      return Discount(floor);
     case "garden":
       return Garden(floor);
   }
@@ -141,12 +139,14 @@ const Mebel = (flour = 1) => {
   }
 };
 
-const Discount = () => {
-  return Discount_1;
-};
+const Kids = (floor) => {
 
-const Kids = () => {
-  return Kids_1;
+  switch (floor) {
+    case 0:
+      return Kids_0;
+    case 1:
+      return Kids_1;
+  }
 };
 
 // Derbent

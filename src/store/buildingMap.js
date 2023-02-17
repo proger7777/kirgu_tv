@@ -51,13 +51,10 @@ const defaultState = {
       Детский_отдел: [
         {
           name: "kids",
-          floor: 1,
+          floor: 0,
         },
-      ].reverse(),
-
-      Дисконт_и_офисная_мебель: [
         {
-          name: "discount",
+          name: "kids",
           floor: 1,
         },
       ].reverse(),

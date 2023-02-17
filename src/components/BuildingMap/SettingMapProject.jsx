@@ -100,7 +100,7 @@ const SettingMapProject = ({ width, height, city, buildingData, settingsTerm }) 
                                 } else {
                                     setTerminal(true)
                                     console.log(activeFlour)
-                                    settingsTerm([activeFlour[0], activeFlour[1], { x: positionTerminal.x, y: positionTerminal.y }])
+                                    settingsTerm([activeFlour, { x: positionTerminal.x, y: positionTerminal.y }])
                                 }
                             }}
                             onclick={() => {
@@ -146,7 +146,7 @@ const SettingMapProject = ({ width, height, city, buildingData, settingsTerm }) 
                 {/* Block for move around map floor */}
                 {buildingData.map((item, index) => (
                     <div key={item.name+item.floor}>
-                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour([item.floor, index]); setTerminal(false); settingsTerm(false) }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${index == activeFlour[1] ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
+                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour(item.floor); setTerminal(false); settingsTerm(false) }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${index == activeFlour[1] ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
                     </div>
                 ))}
 
