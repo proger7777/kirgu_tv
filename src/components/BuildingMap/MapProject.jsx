@@ -2,7 +2,8 @@ import { Container, Sprite, Stage } from "@pixi/react";
 import { Rectangle, SCALE_MODES, settings } from "pixi.js";
 import { useEffect, useRef, useState } from "react";
 import { getBuilding, Tech } from "./assetsMap";
-import marker from "../../images/iconTV.png"
+import marker from "../../images/markKirgu.png"
+// import marker from "../../images/iconTV.png"
 
 settings.SCALE_MODE = SCALE_MODES.NEAREST;
 
@@ -11,7 +12,7 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
     const bunny = "https://pixijs.io/pixi-react/img/bunny.png"
 
     // Variables Sprite map and scale Sprite
-    const [activeFlour, setActiveFlour] = useState(0);
+    const [activeFlour, setActiveFlour] = useState(1);
     const [project, setProject] = useState(getBuilding(city, buildingData[0].name, buildingData[0].floor));
     const [scale, setScale] = useState(1);
 
@@ -27,8 +28,8 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
     useEffect(() => {
 
         // Default setting terminal of building map
-        setProject(getBuilding(city, buildingData[0].name, buildingData[0].floor))
-        setActiveFlour(0)
+        setProject(getBuilding(city, buildingData[0].name, 1))
+        setActiveFlour(1)
         setScale(1)
         setPosition({ x: width / 2, y: height / 2 })
         setTerminal(false)
@@ -36,7 +37,7 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
         // If terminal on this city, set building map and floor of setting
         if (activeTerminal) {
             setProject(getBuilding(city, buildingData[0].name, activeTerminal.floor))
-            setActiveFlour(activeTerminal.floorIndex)
+            setActiveFlour(activeTerminal.floor)
             setTerminal(true)
             setPositionTerminal(activeTerminal.position)
         }
@@ -47,7 +48,7 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
         setPosition({ x: width / 2, y: height / 2 })
         setScale(1)
 
-        if (activeFlour !== activeTerminal.floorIndex) {
+        if (activeFlour !== activeTerminal.floor) {
             setTerminal(false)
         } else {
             setTerminal(true)
@@ -138,7 +139,7 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
                 {/* Block for move around map floor */}
                 {buildingData.map((item, index) => (
                     <div key={item.name+item.floor}>
-                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour(index); }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${index == activeFlour ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
+                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour(item.floor); }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${ item.floor == activeFlour ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
                     </div>
                 ))}
 
