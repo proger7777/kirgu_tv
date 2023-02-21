@@ -1,13 +1,12 @@
 import { Container, Sprite, Stage } from "@pixi/react";
-import { Rectangle, SCALE_MODES, settings } from "pixi.js";
+import { BaseTexture, Rectangle, SCALE_MODES } from "pixi.js";
 import { useEffect, useRef, useState } from "react";
-import { getBuilding, Tech } from "./assetsMap";
-import marker from "../../images/markKirgu.png"
-// import marker from "../../images/iconTV.png"
+import { getBuilding } from "./assetsMap";
+import marker from "../../images/iconTV.png"
 
-settings.SCALE_MODE = SCALE_MODES.NEAREST;
+BaseTexture.defaultOptions.scaleMode = SCALE_MODES.LINEAR
 
-const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
+const MapProject = ({ buildingData, city, activeTerminal, setFloor }) => {
 
     const bunny = "https://pixijs.io/pixi-react/img/bunny.png"
 
@@ -15,10 +14,6 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
     const [activeFlour, setActiveFlour] = useState(1);
     const [project, setProject] = useState(getBuilding(city, buildingData[0].name, buildingData[0].floor));
     const [scale, setScale] = useState(1);
-
-
-    // Create collision border for canvas
-    const border = new Rectangle(0, 0, width, height)
 
     // Variable for moving mouse
     const [terminal, setTerminal] = useState(false);
@@ -31,13 +26,15 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
         setProject(getBuilding(city, buildingData[0].name, 1))
         setActiveFlour(1)
         setScale(1)
-        setPosition({ x: width / 2, y: height / 2 })
+        setPosition({ x: 1375 / 2, y: 805 / 2 })
         setTerminal(false)
+        setFloor(1)
 
         // If terminal on this city, set building map and floor of setting
         if (activeTerminal) {
             setProject(getBuilding(city, buildingData[0].name, activeTerminal.floor))
             setActiveFlour(activeTerminal.floor)
+            setFloor(activeTerminal.floor)
             setTerminal(true)
             setPositionTerminal(activeTerminal.position)
         }
@@ -45,7 +42,7 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
 
     // Refresh setting after change projectMap, floor
     useEffect(() => {
-        setPosition({ x: width / 2, y: height / 2 })
+        setPosition({ x: 1375 / 2, y: 805 / 2 })
         setScale(1)
 
         if (activeFlour !== activeTerminal.floor) {
@@ -59,7 +56,7 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
     // Realization moving mouse
     const isDragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
-    const [position, setPosition] = useState({ x: width / 2, y: height / 2 });
+    const [position, setPosition] = useState({ x: 1375 / 2, y: 805 / 2 });
     const [alpha, setAlpha] = useState(1);
 
     function onStart(e) {
@@ -90,13 +87,13 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
 
             <div className="border border-[#dbdbdb] rounded">
                 <Stage
-                    width={width}
-                    height={height}
+                    width={1375}
+                    height={805}
                     options={{ backgroundColor: 0xffffff }}>
                     {/* Create container for use collision */}
                     <Container
                         position={[0, 0]}
-                        hitArea={border}>
+                        hitArea={new Rectangle(0, 0, 1375, 805)}>
 
                         {/* Create container for moving group sprite */}
                         <Container
@@ -139,7 +136,7 @@ const MapProject = ({ width, height, buildingData, city, activeTerminal }) => {
                 {/* Block for move around map floor */}
                 {buildingData.map((item, index) => (
                     <div key={item.name+item.floor}>
-                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour(item.floor); }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${ item.floor == activeFlour ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
+                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour(item.floor); setFloor(item.floor); }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${item.floor == activeFlour ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
                     </div>
                 ))}
 

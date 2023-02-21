@@ -4,7 +4,6 @@ import Tech_1 from "../../images/textureBuildingMap/makhachkala/tech_1.png";
 import Tech_2 from "../../images/textureBuildingMap/makhachkala/tech_2.png";
 import Tech_3 from "../../images/textureBuildingMap/makhachkala/tech_3.png";
 
-
 import Kids_1 from "../../images/textureBuildingMap/makhachkala/kids_1.png";
 import Kids_0 from "../../images/textureBuildingMap/makhachkala/kids_0.png";
 
@@ -37,8 +36,6 @@ import Makhachkala_Digital from "../../images/textureBuildingMap/makhachkala/mak
 // Kaspiysk
 import Kaspiysk_Kirgu from "../../images/textureBuildingMap/kaspiysk/kaspiysk_kirgu.png";
 import Kaspiysk_Home from "../../images/textureBuildingMap/kaspiysk/kaspiysk_home.png";
-
-
 
 export const getBuilding = (city, name, floor) => {
   switch (city) {
@@ -140,7 +137,6 @@ const Mebel = (flour = 1) => {
 };
 
 const Kids = (floor) => {
-
   switch (floor) {
     case 0:
       return Kids_0;

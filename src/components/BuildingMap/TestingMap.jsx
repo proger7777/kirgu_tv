@@ -3,8 +3,7 @@ import { Rectangle, SCALE_MODES, settings, Texture } from "pixi.js";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Garden, getBuilding, Tech } from "./assetsMap";
-import marker from "../../images/markKirgu.png"
-// import marker from "../../images/iconTV.png"
+import marker from "../../images/iconTV.png"
 
 settings.SCALE_MODE = SCALE_MODES.NEAREST;
 

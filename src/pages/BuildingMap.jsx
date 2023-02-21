@@ -8,6 +8,7 @@ import MapProject from '../components/BuildingMap/MapProject';
 import { useSelector } from 'react-redux';
 import { SelectCity } from '../components/BuildingMap/SelectCity';
 import { useNavigate } from 'react-router-dom';
+import StartMapProject from '../components/BuildingMap/StartMapProject';
 
 
 const BuildingMap = () => {
@@ -35,8 +36,8 @@ const BuildingMap = () => {
 
     // Get building map and put active building
     const buildingData = useSelector(state => state.buildingMap.map[activeCity])
-    const [building, setBuilding] = useState(Object.values(buildingData)[0]);
-    const [activeBuilding, setActiveBuilding] = useState(0);
+    const [building, setBuilding] = useState(Object.values(buildingData)[positionTerminal.buildingIndex]);
+    const [activeBuilding, setActiveBuilding] = useState(positionTerminal.buildingIndex);
 
 
     // Set position terminal 
@@ -51,6 +52,7 @@ const BuildingMap = () => {
 
     // Update building map when change building
     useEffect(() => {
+        setFloor(1)
         setActiveBuilding(0)
         setBuilding(Object.values(buildingData)[0])
     }, [activeCity]);
@@ -64,6 +66,8 @@ const BuildingMap = () => {
         const resultAllCats = await getCategories()
         setAllCats(resultAllCats)
 
+        getListProductFloor(resultAllCats)
+
         const result = await getCategoriesById(null)
         setCategories(result)
     })
@@ -74,6 +78,39 @@ const BuildingMap = () => {
         setBuilding(Object.values(buildingData)[positionTerminal.buildingIndex])
     }, [])
 
+    const goBuilding = (item) => {
+        setActiveBuilding(item[1])
+        setBuilding(buildingData[item[0]])
+    }
+
+
+    const [floor, setFloor] = useState(positionTerminal.floor);
+    const [propsList, setPropsList] = useState(false);
+
+    const getListProductFloor = (allCats) => {
+        const list = []
+
+        if (allCats.length) {
+            const filterList = building.filter(item => item.floor == floor)
+
+            filterList[0].id.map((it) => {
+
+                const nameList = (allCats.filter(item => item.id == it))[0]
+                const ls = allCats.filter(item => item.parent_id == it)
+                if (nameList && ls) {
+                    list.push([
+                        nameList, ls
+                    ])
+                }
+            })
+        }
+
+        setPropsList(list[0] ? list : false)
+    }
+
+    useEffect(() => {
+        getListProductFloor(allCats)
+    }, [floor, building]);
 
     const crumbs = [['Схема зданий', 'buildingMap']]
 
@@ -83,8 +120,9 @@ const BuildingMap = () => {
 
 
                 {/* Left bar */}
-                <div className='w-[270px] bg-[redsd] overflow-x-scroll'>
-                    <ListCategory list={categories} sublist={allCats} />
+                <div className='w-[270px] h-full bg-[redsd] overflow-y-scroll'>
+                    <h1 className='text-[22px] font-bold mt-[30px] pb-[8px] border-[#dbdbdb] border-b'>Каталог товаров</h1>
+                    <ListCategory list={categories} sublist={allCats} itemList={propsList} />
                 </div>
 
 
@@ -97,7 +135,7 @@ const BuildingMap = () => {
                         <div className='w-[1170px] h-[60px] ml-[8px] flex items-center bg-[redsd] overflow-y-scroll'>
 
                             {Object.keys(buildingData).map((item, index) => (
-                                <button key={item} onClick={() => { setBuilding(buildingData[item]); setActiveBuilding(index) }} className={`mr-[10px] border-[2px] p-[5px] whitespace-nowrap rounded ${index == activeBuilding ? `border-[#008954]` : `border-[#dbdbdb]`} `}>
+                                <button key={item} onClick={() => { setBuilding(buildingData[item]); setActiveBuilding(index); setFloor(1) }} className={`mr-[10px] border-[2px] p-[5px] whitespace-nowrap rounded ${index == activeBuilding ? `border-[#008954]` : `border-[#dbdbdb]`} `}>
                                     <p>{item.replaceAll("_", " ")}</p>
                                 </button>
 
@@ -117,7 +155,15 @@ const BuildingMap = () => {
                     </div>
 
                     {/* Display building map */}
-                    <MapProject width={1375} height={805} buildingData={building} city={activeCity} activeTerminal={activeTerminal()} />
+                    {(building[0].name == "kirgu") ? (
+
+                        <StartMapProject buildingData={building} activeBuilding={activeBuilding} city={activeCity} activeTerminal={positionTerminal} goBuilding={goBuilding} />
+
+                    ) : (
+
+                        <MapProject buildingData={building} city={activeCity} activeTerminal={activeTerminal()} setFloor={setFloor} />
+
+                    )}
                 </div>
 
 

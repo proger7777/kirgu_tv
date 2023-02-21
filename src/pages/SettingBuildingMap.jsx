@@ -31,7 +31,8 @@ const SettingBuildingMap = () => {
             city: activeCity,
             buildingIndex: activeBuilding,
             floor: positionTerminal[0],
-            position: positionTerminal[1]
+            floorIndex: positionTerminal[1],
+            position: positionTerminal[2]
         }
 
         localStorage.setItem('settingsTerminal', JSON.stringify(setting))
