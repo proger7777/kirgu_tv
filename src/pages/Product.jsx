@@ -5,7 +5,7 @@ import { useFetching } from "../hooks/useFetching";
 import { getCategories, getCatCrumbs } from "../components/services/categories";
 import Layout from "../layout";
 import { getProduct } from "../components/services/product";
-import ProductContent from "../components/ProductContent";
+import ProductContent from "../components/Product/ProductContent";
 import { activeMenu } from "../components/services/menu";
 import Loadering from "../components/Loadering";
 

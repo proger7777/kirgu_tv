@@ -11,6 +11,7 @@ const ToolBar = ({ crumbs, activeMenu }) => {
 
     const cart = useSelector(state => state.cart.cart)
     const favorites = useSelector(state => state.favorites.favorites)
+    const comparison = useSelector(state => state.comparison.comparison)
 
 
     return (
@@ -51,6 +52,14 @@ const ToolBar = ({ crumbs, activeMenu }) => {
 
                         <div className='absolute left-[1618px] bottom-[52px] bg-red-600 rounded-[10px] w-[18px] h-[18px] flex justify-center items-center '>
                             <p className='text-[12px] text-white'>{cart.length}</p>
+                        </div>
+
+                    ) : (<></>)}
+
+                    {(comparison.length > 0) ? (
+
+                        <div className='absolute left-[1738px] bottom-[52px] bg-red-600 rounded-[10px] w-[18px] h-[18px] flex justify-center items-center '>
+                            <p className='text-[12px] text-white'>{comparison.length}</p>
                         </div>
 
                     ) : (<></>)}
