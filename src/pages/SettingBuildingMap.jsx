@@ -111,7 +111,7 @@ const SettingBuildingMap = () => {
 
 
                     {/* Display building map */}
-                    <SettingMapProject width={1620} height={775} city={activeCity} buildingData={building} settingsTerm={setPositionTerminal} />
+                    <SettingMapProject city={activeCity} buildingData={building} settingsTerm={setPositionTerminal} />
 
                 </div>
 

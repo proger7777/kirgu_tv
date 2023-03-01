@@ -1,22 +1,21 @@
-import { Container, Graphics, Sprite, Stage } from "@pixi/react";
-import { BaseTexture, Rectangle, SCALE_MODES, settings, Texture } from "pixi.js";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { Garden, getBuilding, Tech } from "./assetsMap";
-import marker from "../../images/iconTV.png"
+import { Container, Sprite, Stage } from "@pixi/react";
+import { BaseTexture, Rectangle, SCALE_MODES } from "pixi.js";
+import { useEffect, useRef, useState } from "react";
+import { getBuilding } from "./assetsMap";
+import marker from "../../images/textureBuildingMap/markTerminal.png"
 
 BaseTexture.defaultOptions.scaleMode = SCALE_MODES.NEAREST
 
-const SettingMapProject = ({ width, height, city, buildingData, settingsTerm }) => {
+const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
 
     const bunny = "https://pixijs.io/pixi-react/img/bunny.png"
 
     // Variables Sprite map and scale Sprite, set values random in order to avoid error 
-    const [activeFlour, setActiveFlour] = useState([3, 0]);
-    const [project, setProject] = useState(getBuilding(city, buildingData[0].name, buildingData[0].floor));
+    const [activeFlour, setActiveFlour] = useState([1, 0]);
+    const [project, setProject] = useState(getBuilding(city,( buildingData[0].name == "kirgu" ?  `set-${buildingData[0].name}` : buildingData[0].name ), 1));
 
     // Create collision border for canvas
-    const border = new Rectangle(0, 0, width, height)
+    const border = new Rectangle(0, 0, 1620, 775)
 
     // Variable for moving mouse
     const [click, setClick] = useState(false);
@@ -26,17 +25,20 @@ const SettingMapProject = ({ width, height, city, buildingData, settingsTerm }) 
 
     // Set active project and active floor and refresh data after change projectMap, floor and city
     useEffect(() => {
-        setProject(getBuilding(city, buildingData[0].name, buildingData[0].floor))
-        setActiveFlour([buildingData[0].floor, 0])
-        setPosition({ x: width / 2, y: height / 2 })
+        setProject(getBuilding(city, ( buildingData[0].name == "kirgu" ?  `set-${buildingData[0].name}` : buildingData[0].name ) , 1))
+        setActiveFlour([1, 0])
+        setPosition({ x: 1620 / 2, y: 775 / 2 })
         setTerminal(false)
     }, [buildingData]);
 
     useEffect(() => {
-        setPosition({ x: width / 2, y: height / 2 })
+        setPosition({ x: 1620 / 2, y: 775 / 2 })
         settingsTerm(false)
     }, [project]);
 
+    useEffect(() => {
+        console.log(buildingData)
+    }, [buildingData]);
 
     // Realization moving mouse
     const isDragging = useRef(false);
@@ -74,8 +76,8 @@ const SettingMapProject = ({ width, height, city, buildingData, settingsTerm }) 
 
             <div className="border border-[#dbdbdb] rounded">
                 <Stage
-                    width={width}
-                    height={height}
+                    width={1620}
+                    height={775}
                     options={{ backgroundColor: 0xffffff }}>
                     {/* Create container for use collision */}
                     <Container
@@ -146,7 +148,7 @@ const SettingMapProject = ({ width, height, city, buildingData, settingsTerm }) 
                 {/* Block for move around map floor */}
                 {buildingData.map((item, index) => (
                     <div key={item.name+item.floor}>
-                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour([item.floor, index]); setTerminal(false); settingsTerm(false) }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${index == activeFlour[1] ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
+                        <button onClick={() => { setProject(getBuilding(city,( item.name == "kirgu" ? `set-${item.name}` : item.name ), item.floor)); setActiveFlour([item.floor, index]); setTerminal(false); settingsTerm(false) }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${item.floor == activeFlour[0] ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
                     </div>
                 ))}
 

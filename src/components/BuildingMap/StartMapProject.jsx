@@ -1,17 +1,14 @@
 import { Container, Sprite, Stage } from "@pixi/react";
-import { BaseTexture, Rectangle, SCALE_MODES, settings } from "pixi.js";
+import { BaseTexture, Rectangle, SCALE_MODES, Texture } from "pixi.js";
 import { useEffect, useRef, useState } from "react";
-import { getBuilding, Tech } from "./assetsMap";
-import marker from "../../images/markKirgu.png"
+import { getBuilding } from "./assetsMap";
+import marker from "../../images/textureBuildingMap/markTerminal.png"
 import skelet from "../../images/textureBuildingMap/makhachkala/start/skelet.png"
-import mtv from "../../images/textureBuildingMap/makhachkala/tech_3.png"
-import mebel from "../../images/textureBuildingMap/makhachkala/mebel_2.png"
-import kids from "../../images/textureBuildingMap/makhachkala/kids_0.png"
-import garden from "../../images/textureBuildingMap/makhachkala/start/garden_0.png"
+import { useNavigate } from "react-router-dom";
 
 BaseTexture.defaultOptions.scaleMode = SCALE_MODES.NEAREST
 
-const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, goBuilding }) => {
+const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, goBuilding, setFloor, activeZone, setActiveZone }) => {
 
     // console.log(buildingData)
     const [activeFlour, setActiveFlour] = useState(1);
@@ -39,21 +36,23 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
             setActiveFlour(activeTerminal.floor)
             setTerminal(true)
             setPositionTerminal(activeTerminal.position)
-            
+            setFloor(activeTerminal.floor)
+
         } else {
             // Default setting terminal of building map
             setProject(getBuilding(city, buildingData[0].name, 1))
             setActiveFlour(1)
             setScale(0.95)
-            setPosition({ x: 1375 / 2, y: 805 / 2 })
+            setPosition({ x: 1365 / 2, y: 805 / 2 })
             setTerminal(false)
-            
+            setFloor(1)
+
         }
     }, [buildingData]);
 
     // Refresh setting after change projectMap, floor
     useEffect(() => {
-        setPosition({ x: 1375 / 2, y: 805 / 2 })
+        setPosition({ x: 1365 / 2, y: 805 / 2 })
         setScale(0.95)
 
         if (checkTerminal(true)) {
@@ -67,7 +66,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
     // Realization moving mouse
     const isDragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
-    const [position, setPosition] = useState({ x: 1375 / 2, y: 805 / 2 });
+    const [position, setPosition] = useState({ x: 1365 / 2, y: 805 / 2 });
     const [alpha, setAlpha] = useState(1);
 
     function onStart(e) {
@@ -76,8 +75,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
             x: e.data.global.x - position.x,
             y: e.data.global.y - position.y,
         };
-        setAlpha(0.5);
-        // console.log(offset.current)
+        setAlpha(0.7);
     }
 
     function onEnd(e) {
@@ -95,18 +93,20 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
         }
     }
 
+    const navigate = useNavigate();
+
     return (
         <div className="flex justify-between mt-[7px]">
 
             <div className="border border-[#dbdbdb] rounded">
                 <Stage
-                    width={1375}
+                    width={1365}
                     height={805}
                     options={{ backgroundColor: 0xffffff }}>
                     {/* Create container for use collision */}
                     <Container
                         position={[0, 0]}
-                        hitArea={new Rectangle(0, 0, 1375, 805)}>
+                        hitArea={new Rectangle(0, 0, 1365, 805)}>
 
                         {/* Create container for moving group sprite */}
                         <Container
@@ -125,85 +125,125 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                 anchor={0.5}
                                 image={skelet}
                             />
+
+                            <Sprite
+                                interactive={true}
+                                position={{ x: -400, y: -148 }}
+                                scale={0.4}
+                                anchor={0.5}
+                                image={project[0]}
+                                ontap={() => {
+                                    if (click) {
+                                        // console.log("DRAGGING", click)
+                                        setClick(false)
+                                    } else {
+                                        // console.log("TAP", click)
+                                        goBuilding(["Детский_отдел", 2, activeFlour])
+                                    }
+                                }
+
+                                }
+                                onclick={() => {
+                                    if (click) {
+                                        // console.log("DRAGGING", click)
+                                        setClick(false)
+                                    } else {
+                                        // console.log("TAP", click)
+                                        goBuilding(["Детский_отдел", 2, activeFlour])
+                                    }
+                                }
+
+                                } />
+
+                            <Sprite
+                                interactive={true}
+                                position={{ x: -50, y: -81 }}
+                                scale={0.9}
+                                anchor={0.5}
+                                image={project[1]}
+                                ontap={() => {
+                                    if (click) {
+                                        // console.log("DRAGGING", click)
+                                        setClick(false)
+                                    } else {
+                                        // console.log("TAP", click)
+                                        goBuilding(["Садовый_центр", 4, activeFlour])
+                                    }
+                                }
+
+                                }
+                                onclick={() => {
+                                    if (click) {
+                                        // console.log("DRAGGING", click)
+                                        setClick(false)
+                                    } else {
+                                        // console.log("TAP", click)
+                                        goBuilding(["Садовый_центр", 4, activeFlour])
+                                    }
+                                }
+
+                                } />
+
                             <Sprite
                                 interactive={true}
                                 position={{ x: -372, y: 138 }}
                                 scale={0.4}
                                 anchor={0.5}
-                                image={mtv}
-                                // ontap={() => goBuilding(["MTV", 1])}
+                                image={project[2]}
                                 ontap={() => {
                                     if (click) {
                                         // console.log("DRAGGING", click)
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["MTV", 1])}
+                                        goBuilding(["MTV", 1, activeFlour])
                                     }
+                                }
 
-                            }
-
-                            />
-                            <Sprite
-                                interactive={true}
-                                position={{ x: -410, y: -146 }}
-                                scale={0.4}
-                                anchor={0.5}
-                                image={kids}
-                                // ontap={() => goBuilding(["Детский_отдел", 2])}
-                                ontap={() => {
+                                }
+                                onclick={() => {
                                     if (click) {
                                         // console.log("DRAGGING", click)
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["Детский_отдел", 2])}
+                                        goBuilding(["MTV", 1, activeFlour])
                                     }
+                                }
 
-                            }
+                                } />
 
-                            />
                             <Sprite
                                 interactive={true}
                                 position={{ x: 430, y: 150 }}
                                 scale={0.4}
                                 anchor={0.5}
-                                image={mebel}
-                                // ontap={() => goBuilding(["Мебельный_корпус", 3])}
+                                image={project[3]}
                                 ontap={() => {
                                     if (click) {
                                         // console.log("DRAGGING", click)
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["Мебельный_корпус", 3])}
+                                        goBuilding(["Мебельный_корпус", 3, activeFlour])
                                     }
+                                }
 
-                            }
-
-                            />
-                            <Sprite
-                                interactive={true}
-                                position={{ x: -50, y: -80 }}
-                                scale={0.9}
-                                anchor={0.5}
-                                image={garden}
-                                // ontap={() => goBuilding(["Садовый_центр", 4])}
-                                ontap={() => {
+                                }
+                                onclick={() => {
                                     if (click) {
                                         // console.log("DRAGGING", click)
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["Садовый_центр", 4])}
+                                        goBuilding(["Мебельный_корпус", 3, activeFlour])
                                     }
+                                }
 
-                            }
-
-                            />
+                                } />
 
                             {/* Sprite marker position terminal */}
-                            {/* {terminal && (
+                            {terminal && (
 
                                 <Sprite
                                     position={positionTerminal}
@@ -211,7 +251,56 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                     cursor={"pointer"}
                                     image={marker} />
 
-                            )} */}
+                            )}
+
+
+                            <Sprite
+                                width={86}
+                                height={30}
+                                position={{ x: 430, y: 240 }}
+                                anchor={0.5}
+                                alpha={0.4}
+                                texture={Texture.WHITE}
+                                tint={0xffa500}
+                            />
+
+                            {/* This sections of code show active zone in building map*/}
+                            {activeZone?.props &&
+                                activeZone.props.map((item, index) =>
+
+                                    <Sprite
+                                        key={index}
+                                        position={item.position}
+                                        anchor={0.5}
+                                        alpha={0.4}
+                                        texture={Texture.WHITE}
+                                        width={item.width}
+                                        height={item.height}
+                                        tint={0xffa500}
+                                        interactive={true}
+                                        ontap={() => {
+                                            if (click) {
+                                                // console.log("DRAGGING", click)
+                                                setClick(false)
+                                            } else {
+                                                // console.log("TAP", click)
+                                                console.log(activeZone)
+                                                goBuilding([activeZone.build[0], activeZone.build[1], activeFlour])
+                                            }
+                                        }}
+                                        onclick={() => {
+                                            if (click) {
+                                                // console.log("DRAGGING", click)
+                                                setClick(false)
+                                            } else {
+                                                // console.log("TAP", click)
+                                                goBuilding([activeZone.build[0], activeZone.build[1], activeFlour])
+                                            }
+                                        }}
+                                    />
+
+                                )}
+
 
                         </Container>
 
@@ -225,14 +314,14 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                 {/* Block for move around map floor */}
                 {buildingData.map((item, index) => (
                     <div key={item.name + item.floor}>
-                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour(item.floor); }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${item.floor == activeFlour ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
+                        <button onClick={() => { setProject(getBuilding(city, item.name, item.floor)); setActiveFlour(item.floor); setFloor(item.floor) }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${item.floor == activeFlour ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
                     </div>
                 ))}
 
                 {/* Button for scale */}
                 <div>
-                    <button onClick={() => scale != 2.5 && setScale(scale + 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mt-[30px] mb-[10px] justify-center items-center'>+</button>
-                    <button onClick={() => scale != 0.2 && setScale(scale - 0.1)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mb-[10px] justify-center items-center'>-</button>
+                    <button onClick={() => scale < 2.15 && setScale(scale + 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mt-[30px] mb-[10px] justify-center items-center'>+</button>
+                    <button onClick={() => scale > 0.95 && setScale(scale - 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mb-[10px] justify-center items-center'>-</button>
                 </div>
 
             </div>

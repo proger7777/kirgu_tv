@@ -1,7 +1,6 @@
 import React, { } from 'react';
 import { useEffect, useState } from "react";
 import { useFetching } from "../hooks/useFetching";
-import ListCategory from '../components/BuildingMap/ListCategory';
 import Layout from '../layout';
 import { getCategories, getCategoriesById } from '../components/services/categories';
 import MapProject from '../components/BuildingMap/MapProject';
@@ -9,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { SelectCity } from '../components/BuildingMap/SelectCity';
 import { useNavigate } from 'react-router-dom';
 import StartMapProject from '../components/BuildingMap/StartMapProject';
+import NavList from '../components/BuildingMap/NavList';
 
 
 const BuildingMap = () => {
@@ -17,21 +17,17 @@ const BuildingMap = () => {
 
     // If not selected position terminal
     if (!positionTerminal) {
-        window.location.href = "/tv/settingBuildingMap"
+        window.location.href = "/tv/setBuildingMap"
     }
 
 
     // Refresh data position terminal
     const navigate = useNavigate();
 
-    const updatePosition = () => {
-        navigate("/settingBuildingMap")
-    }
-
-
     // Get city and put active city
     const city = useSelector(state => state.buildingMap.map)
     const [activeCity, setActiveCity] = useState(positionTerminal.city);
+    const [checker, setChecker] = useState(false);
 
 
     // Get building map and put active building
@@ -49,67 +45,59 @@ const BuildingMap = () => {
         }
     }
 
+    const goSetBuildingMap = () => {
+        const password = prompt("Введите пароль")
+
+        if ( password == "777555333" ) {
+            navigate("/setBuildingMap")
+        }
+    }
 
     // Update building map when change building
     useEffect(() => {
-        setFloor(1)
-        setActiveBuilding(0)
-        setBuilding(Object.values(buildingData)[0])
+        if (checker) {
+
+            setFloor(1)
+            setActiveBuilding(0)
+            setBuilding(Object.values(buildingData)[0])
+
+        }
     }, [activeCity]);
 
-
-    // Get info product for left bar
-    const [allCats, setAllCats] = useState([])
-    const [categories, setCategories] = useState([])
-
-    const [fetchCategories, isCatsLoading, catsError] = useFetching(async () => {
-        const resultAllCats = await getCategories()
-        setAllCats(resultAllCats)
-
-        getListProductFloor(resultAllCats)
-
-        const result = await getCategoriesById(null)
-        setCategories(result)
-    })
-
     useEffect(() => {
-        fetchCategories()
-        setActiveBuilding(positionTerminal.buildingIndex)
-        setBuilding(Object.values(buildingData)[positionTerminal.buildingIndex])
+        setChecker(true)
     }, [])
 
+    // Function for switching to main buildingMap
     const goBuilding = (item) => {
-        setActiveBuilding(item[1])
-        setBuilding(buildingData[item[0]])
+        if (buildingData[item[0]].length > item[2]) {
+            setBuilding(buildingData[item[0]])
+            setActiveBuilding(item[1])
+        } else {
+            setBuilding(buildingData[item[0]])
+            setActiveBuilding(item[1])
+            setFloor(1)
+        }
     }
 
 
     const [floor, setFloor] = useState(positionTerminal.floor);
-    const [propsList, setPropsList] = useState(false);
 
-    const getListProductFloor = (allCats) => {
-        const list = []
+    const [navigationList, setNavigationList] = useState();
+    const [activeZone, setActiveZone] = useState();
+    const [activeCategory, setActiveCategory] = useState();
 
-        if (allCats.length) {
-            const filterList = building.filter(item => item.floor == floor)
+    const getNavigationData = (optionFloor) => {
 
-            filterList[0].id.map((it) => {
+        const filterList = building.filter(item => item.floor == (optionFloor ? optionFloor : floor))
+        const data = filterList[0]?.zone
 
-                const nameList = (allCats.filter(item => item.id == it))[0]
-                const ls = allCats.filter(item => item.parent_id == it)
-                if (nameList && ls) {
-                    list.push([
-                        nameList, ls
-                    ])
-                }
-            })
-        }
-
-        setPropsList(list[0] ? list : false)
+        setNavigationList(data)
     }
 
     useEffect(() => {
-        getListProductFloor(allCats)
+        setActiveZone()
+        getNavigationData()
     }, [floor, building]);
 
     const crumbs = [['Схема зданий', 'buildingMap']]
@@ -118,12 +106,54 @@ const BuildingMap = () => {
         <Layout crumbs={crumbs} >
             <div className='w-full h-full flex justify-between bg-[bluesd]'>
 
-
                 {/* Left bar */}
-                <div className='w-[270px] h-full bg-[redsd] overflow-y-scroll'>
-                    <h1 className='text-[22px] font-bold mt-[30px] pb-[8px] border-[#dbdbdb] border-b'>Каталог товаров</h1>
-                    <ListCategory list={categories} sublist={allCats} itemList={propsList} />
+                <div className='w-full h-full bg-[redsd] flex flex-col justify-between'>
+
+                    <div className='max-h-[500px]'>
+                        <h1 className='text-[22px] font-bold mt-[30px] mb-[10px] pb-[8px] border-[#dbdbdb] border-b'>Каталог товаров</h1>
+                        <NavList list={navigationList} activeZone={activeZone} setActiveZone={setActiveZone}/>
+                    </div>
+
+
+
+
+
+
+                    {activeZone && (
+                        <div className=''>
+                            <p className='text-[20px] font-semibold mb-[10px]'>{activeZone.allCategory && "Категории:"}</p>
+
+                            {activeZone.allCategory?.map((item) => (
+                                <button key={item.id} onClick={() => setActiveCategory(item)} className='grid text-[18px]  font-semibold pl-[15px] mb-[10px]'>
+                                    <p className={`border-b-4 truncate ${activeCategory?.id == item.id && 'border-[#008954]'}`}>-{item.name}</p>
+                                </button>
+                            ))}
+
+                            {activeZone.build ? (
+
+                                <button onClick={() => goBuilding( [activeZone.build[0], activeZone.build[1] , floor] ) } className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white bg-[#008954]`}>
+                                    <p>Перейти к зданию</p>
+                                </button>
+
+                             ) : activeZone.allCategory ? (
+
+                                <button onClick={() => navigate(`/catalog/${activeCategory ? activeCategory.id : activeZone.id}`)} className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white bg-[#008954]`}>
+                                    <p>Перейти к каталогу</p>
+                                </button>
+
+                            ) : (
+                                
+                                <button disabled={!activeZone.id && true } onClick={() => navigate(`/catalog/${activeZone.id}`)} className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white ${activeZone.id ? 'bg-[#008954]' : 'bg-[#00895450]'}`}>
+                                    <p>Перейти к каталогу</p>
+                                </button>
+                            )}
+                        </div>
+                    )}
                 </div>
+
+
+
+
 
 
                 {/* Other element */}
@@ -144,7 +174,10 @@ const BuildingMap = () => {
                         </div>
 
                         <div className='flex items-center border border-[#dbdbdb] rounded'>
-                            <button onClick={() => updatePosition()} className="m-[7px]" >Настройки</button>
+                            {/* <button onClick={() => navigate("/setBuildingMap")} className="m-[7px]" > */}
+                            <button onClick={() => goSetBuildingMap() } className="m-[7px]" >
+                                Настройки
+                            </button>
                         </div>
 
                         {/* Select city */}
@@ -157,11 +190,11 @@ const BuildingMap = () => {
                     {/* Display building map */}
                     {(building[0].name == "kirgu") ? (
 
-                        <StartMapProject buildingData={building} activeBuilding={activeBuilding} city={activeCity} activeTerminal={positionTerminal} goBuilding={goBuilding} />
+                        <StartMapProject buildingData={building} activeBuilding={activeBuilding} city={activeCity} activeTerminal={positionTerminal} goBuilding={goBuilding} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone}/>
 
                     ) : (
 
-                        <MapProject buildingData={building} city={activeCity} activeTerminal={activeTerminal()} setFloor={setFloor} />
+                        <MapProject buildingData={building} city={activeCity} activeTerminal={activeTerminal()} floor={floor} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone}/>
 
                     )}
                 </div>

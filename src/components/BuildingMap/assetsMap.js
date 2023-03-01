@@ -10,6 +10,13 @@ import Kids_0 from "../../images/textureBuildingMap/makhachkala/kids_0.png";
 import Garden_0 from "../../images/textureBuildingMap/makhachkala/garden_0.png";
 import Garden_1 from "../../images/textureBuildingMap/makhachkala/garden_1.png";
 
+import Garden_none from "../../images/textureBuildingMap/makhachkala/start/garden_none.png"
+import Kids_none from "../../images/textureBuildingMap/makhachkala/start/kids_none.png"
+import Tech_none from "../../images/textureBuildingMap/makhachkala/start/tech_none.png"
+
+import GardenStart_0 from "../../images/textureBuildingMap/makhachkala/start/garden_0.png"
+import GardenStart_1 from "../../images/textureBuildingMap/makhachkala/start/garden_1.png"
+
 import Mebel_0 from "../../images/textureBuildingMap/makhachkala/mebel_0.png";
 import Mebel_1 from "../../images/textureBuildingMap/makhachkala/mebel_1.png";
 import Mebel_2 from "../../images/textureBuildingMap/makhachkala/mebel_2.png";
@@ -41,7 +48,7 @@ export const getBuilding = (city, name, floor) => {
   switch (city) {
     case "Махачкала":
       return getMakhachkala(name, floor);
-    case "Махачкала_2":
+    case "Махачкала_":
       return getMakhachkalaDigital(name, floor);
     case "Дербент":
       return getDerbent(name, floor);
@@ -52,7 +59,10 @@ export const getBuilding = (city, name, floor) => {
 
 // Makhachkala
 const getMakhachkala = (name, floor) => {
+  // console.log(name)
   switch (name) {
+    case "set-kirgu":
+      return SetKirgu(floor);
     case "kirgu":
       return Kirgu(floor);
     case "tech":
@@ -66,7 +76,7 @@ const getMakhachkala = (name, floor) => {
   }
 };
 
-const Kirgu = (flour = 1) => {
+const SetKirgu = (flour = 1) => {
   switch (flour) {
     case 0:
       return Kirgu_0;
@@ -85,6 +95,58 @@ const Kirgu = (flour = 1) => {
 
     case 5:
       return Kirgu_5;
+  }
+};
+
+const Kirgu = (flour = 1) => {
+  switch (flour) {
+    case 0:
+      return [
+        Kids_0,
+        GardenStart_0,
+        Tech_0,
+        Mebel_0,
+      ]
+
+    case 1:
+      return [
+        Kids_1,
+        GardenStart_1,
+        Tech_1,
+        Mebel_1,
+      ]
+
+    case 2:
+      return [
+        Kids_none,
+        Garden_none,
+        Tech_2,
+        Mebel_2,
+      ]
+
+    case 3:
+      return [
+        Kids_none,
+        Garden_none,
+        Tech_3,
+        Mebel_3,
+      ]
+
+    case 4:
+      return [
+        Kids_none,
+        Garden_none,
+        Tech_none,
+        Mebel_4,
+      ]
+
+    case 5:
+      return [
+        Kids_none,
+        Garden_none,
+        Tech_none,
+        Mebel_5,
+      ]
   }
 };
 
