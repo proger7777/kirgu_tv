@@ -13,16 +13,28 @@ import NavList from '../components/BuildingMap/NavList';
 
 const BuildingMap = () => {
 
-    const positionTerminal = localStorage.settingsTerminal ? JSON.parse(localStorage.getItem('settingsTerminal')) : false
+    // Refresh data position terminal
+    const navigate = useNavigate();
+
+    // Test data for avoid problem render
+    const testData = {
+        test: true,
+        buildingIndex: 0,
+        city: "Махачкала",
+        floor: 1,
+        floorIndex: 4,
+        position: { x: 447.1171875, y: 142.65625 }
+    }
+
+    const positionTerminal = localStorage.settingsTerminal ? JSON.parse(localStorage.getItem('settingsTerminal')) : testData
 
     // If not selected position terminal
-    if (!positionTerminal) {
-        window.location.href = "/tv/setBuildingMap"
+    if (positionTerminal.test) {
+
+        navigate("/setBuildingMap", { replace: true })
     }
 
 
-    // Refresh data position terminal
-    const navigate = useNavigate();
 
     // Get city and put active city
     const city = useSelector(state => state.buildingMap.map)
@@ -48,7 +60,7 @@ const BuildingMap = () => {
     const goSetBuildingMap = () => {
         const password = prompt("Введите пароль")
 
-        if ( password == "777555333" ) {
+        if (password == "777555333") {
             navigate("/setBuildingMap")
         }
     }
@@ -111,7 +123,7 @@ const BuildingMap = () => {
 
                     <div className='max-h-[500px]'>
                         <h1 className='text-[22px] font-bold mt-[30px] mb-[10px] pb-[8px] border-[#dbdbdb] border-b'>Каталог товаров</h1>
-                        <NavList list={navigationList} activeZone={activeZone} setActiveZone={setActiveZone}/>
+                        <NavList list={navigationList} activeZone={activeZone} setActiveZone={setActiveZone} />
                     </div>
 
 
@@ -131,19 +143,19 @@ const BuildingMap = () => {
 
                             {activeZone.build ? (
 
-                                <button onClick={() => goBuilding( [activeZone.build[0], activeZone.build[1] , floor] ) } className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white bg-[#008954]`}>
+                                <button onClick={() => goBuilding([activeZone.build[0], activeZone.build[1], floor])} className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white bg-[#008954]`}>
                                     <p>Перейти к зданию</p>
                                 </button>
 
-                             ) : activeZone.allCategory ? (
+                            ) : activeZone.allCategory ? (
 
                                 <button onClick={() => navigate(`/catalog/${activeCategory ? activeCategory.id : activeZone.id}`)} className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white bg-[#008954]`}>
                                     <p>Перейти к каталогу</p>
                                 </button>
 
                             ) : (
-                                
-                                <button disabled={!activeZone.id && true } onClick={() => navigate(`/catalog/${activeZone.id}`)} className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white ${activeZone.id ? 'bg-[#008954]' : 'bg-[#00895450]'}`}>
+
+                                <button disabled={!activeZone.id && true} onClick={() => navigate(`/catalog/${activeZone.id}`)} className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white ${activeZone.id ? 'bg-[#008954]' : 'bg-[#00895450]'}`}>
                                     <p>Перейти к каталогу</p>
                                 </button>
                             )}
@@ -175,7 +187,7 @@ const BuildingMap = () => {
 
                         <div className='flex items-center border border-[#dbdbdb] rounded'>
                             {/* <button onClick={() => navigate("/setBuildingMap")} className="m-[7px]" > */}
-                            <button onClick={() => goSetBuildingMap() } className="m-[7px]" >
+                            <button onClick={() => goSetBuildingMap()} className="m-[7px]" >
                                 Настройки
                             </button>
                         </div>
@@ -190,11 +202,11 @@ const BuildingMap = () => {
                     {/* Display building map */}
                     {(building[0].name == "kirgu") ? (
 
-                        <StartMapProject buildingData={building} activeBuilding={activeBuilding} city={activeCity} activeTerminal={positionTerminal} goBuilding={goBuilding} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone}/>
+                        <StartMapProject buildingData={building} activeBuilding={activeBuilding} city={activeCity} activeTerminal={positionTerminal} goBuilding={goBuilding} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} />
 
                     ) : (
 
-                        <MapProject buildingData={building} city={activeCity} activeTerminal={activeTerminal()} floor={floor} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone}/>
+                        <MapProject buildingData={building} city={activeCity} activeTerminal={activeTerminal()} floor={floor} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} />
 
                     )}
                 </div>
