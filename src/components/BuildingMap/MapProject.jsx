@@ -3,18 +3,22 @@ import { BaseTexture, Rectangle, SCALE_MODES, Texture } from "pixi.js";
 import { useEffect, useRef, useState } from "react";
 import { getBuilding } from "./assetsMap";
 import marker from "../../images/textureBuildingMap/markTerminal.png"
+// import marker from "../../images/textureBuildingMap/mkh.svg"
 import { useNavigate } from "react-router-dom";
 
-BaseTexture.defaultOptions.scaleMode = SCALE_MODES.LINEAR
+BaseTexture.defaultOptions.scaleMode = SCALE_MODES.NEAREST
 
 const MapProject = ({ buildingData, city, activeTerminal, floor, setFloor, activeZone, setActiveZone }) => {
 
     const bunny = "https://pixijs.io/pixi-react/img/bunny.png"
-
+    
     // Variables Sprite map and scale Sprite
     const [activeFlour, setActiveFlour] = useState(1);
+    // console.log(buildingData)
     const [project, setProject] = useState(getBuilding(city, buildingData[0].name, floor));
     const [scale, setScale] = useState(1);
+    // const texture = Texture.from(marker, undefined, undefined, 5)
+    // const texture = Texture.from(marker, { resourceOptions: 5 })
 
     // This variable for filter click and move mouse
     const [click, setClick] = useState(false);
@@ -75,7 +79,7 @@ const MapProject = ({ buildingData, city, activeTerminal, floor, setFloor, activ
             y: e.data.global.y - position.y,
         };
         setAlpha(0.7);
-        console.log(offset.current)
+        // console.log(offset.current)
     }
 
     function onEnd(e) {
@@ -133,8 +137,9 @@ const MapProject = ({ buildingData, city, activeTerminal, floor, setFloor, activ
                                 <Sprite
                                     position={positionTerminal}
                                     anchor={[0.5, 0.5]}
-                                    cursor={"pointer"}
-                                    image={marker} />
+                                    image={marker} 
+                                    // texture={texture}
+                                    />
 
                             )}
 
@@ -286,8 +291,8 @@ const MapProject = ({ buildingData, city, activeTerminal, floor, setFloor, activ
                                                     setClick(false)
                                                 } else {
                                                     // console.log("TAP", click)
-                                                    console.log(item)
-                                                    // navigate(`/catalog/${activeZone.id}`)
+                                                    // console.log(item)
+                                                    navigate(`/catalog/${activeZone.id}`)
                                                 }
                                             }}
                                             onclick={() => {
@@ -322,7 +327,7 @@ const MapProject = ({ buildingData, city, activeTerminal, floor, setFloor, activ
 
                 {/* Button for scale */}
                 <div>
-                    <button onClick={() => scale != 2.5 && setScale(scale + 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mt-[30px] mb-[10px] justify-center items-center'>+</button>
+                    <button onClick={() => scale != 2.3 && setScale(scale + 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mt-[30px] mb-[10px] justify-center items-center'>+</button>
                     <button onClick={() => scale != 1 && setScale(scale - 0.3)} className='h-[50px] w-[50px] flex border border-[#dbdbdb] rounded mb-[10px] justify-center items-center'>-</button>
                 </div>
 

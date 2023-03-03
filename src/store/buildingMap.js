@@ -1,7 +1,9 @@
 const defaultState = {
   map: {
-    Махачкала: {
-      Общая_Схема_КИРГУ: [
+    Махачкала: [
+      {
+      name: "Общая Схема КИРГУ",
+      floors: [
         {
           name: "kirgu",
           floor: 0,
@@ -9,7 +11,7 @@ const defaultState = {
             {
               name: "Садовый центр",
               id: "c43c9185-0b40-4b8c-8d57-6bf41a79b2d4",
-              build: ["Садовый_центр", 4],
+              build: ["Садовый центр", 4],
               allCategory: [
                 {
                   name: "Садовая мебель",
@@ -59,7 +61,7 @@ const defaultState = {
             {
               name: "Детский отдел, Дисконт и офисная мебель",
               id: "31b73b4b-f098-4f96-a967-233760a0e426",
-              build: ["Детский_отдел", 2],
+              build: ["Детский отдел", 2],
               allCategory: [
                 {
                   name: "Одежда",
@@ -164,7 +166,7 @@ const defaultState = {
             {
               name: "Мебельный корпус",
               id: "4f8e20ab-8776-4807-b22f-64b398ab9272",
-              build: ["Мебельный_корпус", 3],
+              build: ["Мебельный корпус", 3],
               allCategory: [
                 {
                   name: "Спальни",
@@ -233,7 +235,7 @@ const defaultState = {
             {
               name: "Садовый центр",
               id: "c43c9185-0b40-4b8c-8d57-6bf41a79b2d4",
-              build: ["Садовый_центр", 4],
+              build: ["Садовый центр", 4],
               allCategory: [
                 {
                   name: "Садовая мебель",
@@ -283,7 +285,7 @@ const defaultState = {
             {
               name: "Детский отдел, Дисконт и офисная мебель",
               id: "31b73b4b-f098-4f96-a967-233760a0e426",
-              build: ["Детский_отдел", 2],
+              build: ["Детский отдел", 2],
               allCategory: [
                 {
                   name: "Одежда",
@@ -388,7 +390,7 @@ const defaultState = {
             {
               name: "Мебельный корпус",
               id: "4f8e20ab-8776-4807-b22f-64b398ab9272",
-              build: ["Мебельный_корпус", 3],
+              build: ["Мебельный корпус", 3],
               allCategory: [
                 {
                   name: "Спальни",
@@ -457,7 +459,7 @@ const defaultState = {
             {
               name: "Садовый центр",
               id: "c43c9185-0b40-4b8c-8d57-6bf41a79b2d4",
-              build: ["Садовый_центр", 4],
+              build: ["Садовый центр", 4],
               allCategory: [
                 {
                   name: "Садовая мебель",
@@ -507,7 +509,7 @@ const defaultState = {
             {
               name: "Детский отдел, Дисконт и офисная мебель",
               id: "31b73b4b-f098-4f96-a967-233760a0e426",
-              build: ["Детский_отдел", 2],
+              build: ["Детский отдел", 2],
               allCategory: [
                 {
                   name: "Одежда",
@@ -612,7 +614,7 @@ const defaultState = {
             {
               name: "Мебельный корпус",
               id: "4f8e20ab-8776-4807-b22f-64b398ab9272",
-              build: ["Мебельный_корпус", 3],
+              build: ["Мебельный корпус", 3],
               allCategory: [
                 {
                   name: "Спальни",
@@ -681,7 +683,7 @@ const defaultState = {
             {
               name: "Садовый центр",
               id: "c43c9185-0b40-4b8c-8d57-6bf41a79b2d4",
-              build: ["Садовый_центр", 4],
+              build: ["Садовый центр", 4],
               allCategory: [
                 {
                   name: "Садовая мебель",
@@ -731,7 +733,7 @@ const defaultState = {
             {
               name: "Детский отдел, Дисконт и офисная мебель",
               id: "31b73b4b-f098-4f96-a967-233760a0e426",
-              build: ["Детский_отдел", 2],
+              build: ["Детский отдел", 2],
               allCategory: [
                 {
                   name: "Одежда",
@@ -836,7 +838,7 @@ const defaultState = {
             {
               name: "Мебельный корпус",
               id: "4f8e20ab-8776-4807-b22f-64b398ab9272",
-              build: ["Мебельный_корпус", 3],
+              build: ["Мебельный корпус", 3],
               allCategory: [
                 {
                   name: "Спальни",
@@ -905,7 +907,7 @@ const defaultState = {
             {
               name: "Садовый центр",
               id: "c43c9185-0b40-4b8c-8d57-6bf41a79b2d4",
-              build: ["Садовый_центр", 4],
+              build: ["Садовый центр", 4],
               allCategory: [
                 {
                   name: "Садовая мебель",
@@ -955,7 +957,7 @@ const defaultState = {
             {
               name: "Детский отдел, Дисконт и офисная мебель",
               id: "31b73b4b-f098-4f96-a967-233760a0e426",
-              build: ["Детский_отдел", 2],
+              build: ["Детский отдел", 2],
               allCategory: [
                 {
                   name: "Одежда",
@@ -1060,7 +1062,7 @@ const defaultState = {
             {
               name: "Мебельный корпус",
               id: "4f8e20ab-8776-4807-b22f-64b398ab9272",
-              build: ["Мебельный_корпус", 3],
+              build: ["Мебельный корпус", 3],
               allCategory: [
                 {
                   name: "Спальни",
@@ -1129,7 +1131,7 @@ const defaultState = {
             {
               name: "Садовый центр",
               id: "c43c9185-0b40-4b8c-8d57-6bf41a79b2d4",
-              build: ["Садовый_центр", 4],
+              build: ["Садовый центр", 4],
               allCategory: [
                 {
                   name: "Садовая мебель",
@@ -1179,7 +1181,7 @@ const defaultState = {
             {
               name: "Детский отдел, Дисконт и офисная мебель",
               id: "31b73b4b-f098-4f96-a967-233760a0e426",
-              build: ["Детский_отдел", 2],
+              build: ["Детский отдел", 2],
               allCategory: [
                 {
                   name: "Одежда",
@@ -1284,7 +1286,7 @@ const defaultState = {
             {
               name: "Мебельный корпус",
               id: "4f8e20ab-8776-4807-b22f-64b398ab9272",
-              build: ["Мебельный_корпус", 3],
+              build: ["Мебельный корпус", 3],
               allCategory: [
                 {
                   name: "Спальни",
@@ -1347,1536 +1349,1559 @@ const defaultState = {
           ],
         },
       ].reverse(),
-
-      MTV: [
-        {
-          name: "tech",
-          floor: 0,
-
-          zone: [
-            {
-              name: "Телевизоры",
-              id: "35367728-8121-483e-9318-65e700d9edd1",
-              props: [
-                {
-                  width: 780,
-                  height: 186,
-                  position: { x: 154, y: 41 },
-                },
-              ],
-            },
-            {
-              name: "Игровая зона приставки музыкальные центры ",
-              id: "e49d0da4-8da4-4670-a602-c8ece6a4f936",
-              allCategory: [
-                {
-                  name: "Акустика и аудиосистемы",
-                  id: "e49d0da4-8da4-4670-a602-c8ece6a4f936",
-                },
-                {
-                  name: "Проекторы",
-                  id: "207d0640-c35e-43a1-8981-da1065d62b39",
-                },
-                {
-                  name: "Игры",
-                  id: "1fbcb707-debf-4c69-934b-2657782402f5",
-                },
-              ],
-              props: [
-                {
-                  width: 302,
-                  height: 186,
-                  position: { x: -390, y: 41 },
-                },
-                {
-                  width: 90,
-                  height: 106,
-                  position: { x: -495, y: 187 },
-                },
-              ],
-            },
-            {
-              name: "REAL2",
-              id: "",
-              props: [
-                {
-                  width: 200,
-                  height: 103,
-                  position: { x: 130, y: 188 },
-                },
-              ],
-            },
-            {
-              name: "Ноутбуки мониторы моноблоки принтеры",
-              id: "eb14daf9-cb58-41f9-9a2d-4fb12a7d20e1",
-              allCategory: [
-                {
-                  name: "Мониторы",
-                  id: "edb61935-a615-44c1-a03c-14cc03df1fcd",
-                },
-                {
-                  name: "Ноутбуки",
-                  id: "3f54293d-89aa-4d35-97da-2825d2caeb15",
-                },
-                {
-                  name: "Принтеры, сканеры, МФУ",
-                  id: "57f43d42-8ca8-4fae-93ef-5e55d0c064fa",
-                },
-                {
-                  name: "Системные блоки",
-                  id: "b0339bed-ef37-4de5-b070-06a047a6129f",
-                },
-              ],
-              props: [
-                {
-                  width: 262,
-                  height: 103,
-                  position: { x: -104, y: 188 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "tech",
-          floor: 1,
-          zone: [],
-        },
-        {
-          name: "tech",
-          floor: 2,
-
-          zone: [
-            {
-              name: "Малая бытовая техника",
-              id: "5b14ae51-59f1-4174-9194-06abf6416bfa",
-              props: [
-                {
-                  width: 466,
-                  height: 294,
-                  position: { x: -4, y: 96 },
-                },
-              ],
-            },
-            {
-              name: "Встраиваемая техника",
-              id: "d1638c7d-fc5e-4897-95fa-0e333bb7cc22",
-              props: [
-                {
-                  width: 306,
-                  height: 186,
-                  position: { x: -392, y: 41 },
-                },
-                {
-                  width: 96,
-                  height: 112,
-                  position: { x: -495, y: 190 },
-                },
-              ],
-            },
-            {
-              name: "Пылесосы товары для уборки",
-              id: "946e5e91-5bf7-49b3-bcf3-712868f08dce",
-              props: [
-                {
-                  width: 308,
-                  height: 186,
-                  position: { x: 388, y: 41 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "tech",
-          floor: 3,
-          zone: [
-            {
-              name: "Холодильники лари морозильники",
-              id: "423f396b-f7d0-41c5-ad3f-aa5bc7980337",
-              props: [
-                {
-                  width: 780,
-                  height: 186,
-                  position: { x: 154, y: 41 },
-                },
-              ],
-            },
-            {
-              name: "Климатическое оборудование",
-              id: "b6a9659a-32b0-4bd8-b3d1-add9e17d5c9d",
-              props: [
-                {
-                  width: 302,
-                  height: 186,
-                  position: { x: -390, y: 41 },
-                },
-                {
-                  width: 90,
-                  height: 106,
-                  position: { x: -495, y: 187 },
-                },
-              ],
-            },
-            {
-              name: "Стиральные и сушильные машины",
-              id: "933dff91-d9bb-452f-a71e-c3b716c4a96f",
-              props: [
-                {
-                  width: 468,
-                  height: 102,
-                  position: { x: -1, y: 190 },
-                },
-              ],
-            },
-          ],
-        },
-      ].reverse(),
-
-      Детский_отдел: [
-        {
-          name: "kids",
-          floor: 0,
-
-          zone: [
-            {
-              name: "Дисконт центр",
-              id: "",
-              props: [
-                {
-                  width: 632,
-                  height: 264,
-                  position: { x: -318, y: -123 },
-                },
-                {
-                  width: 192,
-                  height: 43,
-                  position: { x: -538, y: 30 },
-                },
-                {
-                  width: 296,
-                  height: 160,
-                  position: { x: -149, y: 89 },
-                },
-              ],
-            },
-            {
-              name: "Офисная мебель",
-              id: "58889bd9-f77d-4d78-80bc-82c9746168d0",
-              props: [
-                {
-                  width: 632,
-                  height: 264,
-                  position: { x: 318, y: -123 },
-                },
-                {
-                  width: 192,
-                  height: 43,
-                  position: { x: 538, y: 30 },
-                },
-                {
-                  width: 296,
-                  height: 160,
-                  position: { x: 149, y: 89 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "kids",
-          floor: 1,
-          zone: [
-            {
-              name: "Одежда для девочек",
-              id: "715bd8d0-58c0-4e62-ac80-19eae22d768e",
-              props: [
-                {
-                  width: 250,
-                  height: 94,
-                  position: { x: -313, y: -210 },
-                },
-              ],
-            },
-            {
-              name: "Обувь",
-              id: "7e2f41ff-d54e-4254-a50c-061dbb68e6cc",
-              props: [
-                {
-                  width: 197,
-                  height: 313,
-                  position: { x: -539, y: -101 },
-                },
-              ],
-            },
-            {
-              name: "Промо Зона",
-              id: "",
-              props: [
-                {
-                  width: 872,
-                  height: 114,
-                  position: { x: -1, y: -103 },
-                },
-              ],
-            },
-            {
-              name: "Одежда для мальчиков",
-              id: "715bd8d0-58c0-4e62-ac80-19eae22d768e",
-              props: [
-                {
-                  width: 250,
-                  height: 94,
-                  position: { x: 310, y: -210 },
-                },
-              ],
-            },
-            {
-              name: "Игрушки для мальчиков",
-              id: "68dccf2a-eb96-4ebd-8108-3c710a7d6ab6",
-              props: [
-                {
-                  width: 250,
-                  height: 97,
-                  position: { x: 177, y: 6 },
-                },
-              ],
-            },
-            {
-              name: "Игрушки для девочек",
-              id: "68dccf2a-eb96-4ebd-8108-3c710a7d6ab6",
-              props: [
-                {
-                  width: 250,
-                  height: 97,
-                  position: { x: -177, y: 6 },
-                },
-              ],
-            },
-            {
-              name: "Одежда и обувь для новорожденных",
-              id: "59b884f9-f518-463d-aef2-bafbcd08d281",
-              props: [
-                {
-                  width: 250,
-                  height: 117,
-                  position: { x: -177, y: 116 },
-                },
-              ],
-            },
-            {
-              name: "Концтовары",
-              id: "3ae21c55-f9cc-4820-9189-dc7292c4158b",
-              props: [
-                {
-                  width: 250,
-                  height: 117,
-                  position: { x: 177, y: 116 },
-                },
-              ],
-            },
-            {
-              name: "Коляски и автокресла спорт и активный отдых",
-              id: "285b7347-7415-4b99-b786-78d68c21dea8",
-              allCategory: [
-                {
-                  name: "Коляски и автокресла",
-                  id: "285b7347-7415-4b99-b786-78d68c21dea8",
-                },
-                {
-                  name: "Спорт и активный отдых",
-                  id: "c0c717f1-6288-4d37-8252-b32cdce681d9",
-                },
-                {
-                  name: "Игрушки",
-                  id: "68dccf2a-eb96-4ebd-8108-3c710a7d6ab6",
-                },
-              ],
-              props: [
-                {
-                  width: 200,
-                  height: 311,
-                  position: { x: 538, y: -102 },
-                },
-              ],
-            },
-            {
-              name: "Mayoral",
-              id: "",
-              props: [
-                {
-                  width: 368,
-                  height: 94,
-                  position: { x: -1, y: -210 },
-                },
-              ],
-            },
-          ],
-        },
-      ].reverse(),
-
-      Мебельный_корпус: [
-        {
-          name: "mebel",
-          floor: 0,
-          zone: [],
-        },
-        {
-          name: "mebel",
-          floor: 1,
-
-          zone: [
-            {
-              name: "Текстиль",
-              id: "97c06658-eab4-450c-8502-b4391fa2f359",
-              props: [
-                {
-                  width: 244,
-                  height: 210,
-                  position: { x: -510, y: -32 },
-                },
-                {
-                  width: 152,
-                  height: 90,
-                  position: { x: -558, y: 118 },
-                },
-              ],
-            },
-            {
-              name: "Клеенки корзины сушилки пластик",
-              id: "0686859a-c54a-46a3-aa4e-f0b8784ececf",
-              props: [
-                {
-                  width: 270,
-                  height: 260,
-                  position: { x: -250, y: -101 },
-                },
-              ],
-            },
-            {
-              name: "Бытовая химия",
-              id: "360e746a-10d6-412a-a022-d2fd8b8c1e80",
-              props: [
-                {
-                  width: 210,
-                  height: 90,
-                  position: { x: -226, y: 118 },
-                },
-              ],
-            },
-            {
-              name: "Арома",
-              id: "790b0b5a-c584-4b0b-a718-66b45d317b41",
-              props: [
-                {
-                  width: 70,
-                  height: 90,
-                  position: { x: -516, y: -185 },
-                },
-              ],
-            },
-            {
-              name: "Сувенир",
-              id: "e3d1154f-3756-4348-a7a0-999b90c56929",
-              props: [
-                {
-                  width: 90,
-                  height: 90,
-                  position: { x: -432, y: -185 },
-                },
-              ],
-            },
-            {
-              name: "Сковородки",
-              id: "ee318362-ad72-468a-92b9-66de67bc741f",
-              props: [
-                {
-                  width: 230,
-                  height: 28,
-                  position: { x: 0, y: -126 },
-                },
-              ],
-            },
-            {
-              name: "Кастрюли посуда для сервировки",
-              id: "67168837-3e29-4fab-8a13-51bb45eefe35",
-              allCategory: [
-                {
-                  name: "Кастрюли",
-                  id: "97e76780-3323-4c30-95c6-0c1b36f8c0d0",
-                },
-                {
-                  name: "Посуда для сервировки",
-                  id: "67168837-3e29-4fab-8a13-51bb45eefe35",
-                },
-              ],
-              props: [
-                {
-                  width: 365,
-                  height: 90,
-                  position: { x: 298, y: -186 },
-                },
-              ],
-            },
-            {
-              name: "Кухонная утварь тарелки кастрюли чайники",
-              id: "531e96d5-9c30-4b4c-823d-e91792a37f07",
-              allCategory: [
-                {
-                  name: "Посуда для приготовления пищи",
-                  id: "e1e1b734-1fd4-4d63-b34d-f894b5837ad0",
-                },
-                {
-                  name: "Столовая посуда",
-                  id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
-                },
-                {
-                  name: "Чайники",
-                  id: "fef45bb6-2b0a-41f4-b8a4-ad6cb4d1281a",
-                },
-              ],
-              props: [
-                {
-                  width: 364,
-                  height: 168,
-                  position: { x: 298, y: -55 },
-                },
-              ],
-            },
-            {
-              name: "Хрусталь",
-              id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
-              props: [
-                {
-                  width: 147,
-                  height: 174,
-                  position: { x: 557, y: -143 },
-                },
-              ],
-            },
-            {
-              name: "Фарфор",
-              id: "",
-              props: [
-                {
-                  width: 147,
-                  height: 212,
-                  position: { x: 557, y: 54 },
-                },
-              ],
-            },
-            {
-              name: "Премиальный бутик",
-              id: "",
-              props: [
-                {
-                  width: 126,
-                  height: 86,
-                  position: { x: 264, y: 118 },
-                },
-              ],
-            },
-            {
-              name: "Аптека",
-              id: "",
-              props: [
-                {
-                  width: 76,
-                  height: 86,
-                  position: { x: 160, y: 118 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "mebel",
-          floor: 2,
-
-          zone: [
-            {
-              name: "Мягкая мебель журнальные столики спальни",
-              id: "8b335087-354d-4f7b-9223-1956b2088a5b",
-              allCategory: [
-                {
-                  name: "Мягкая мебель",
-                  id: "8b335087-354d-4f7b-9223-1956b2088a5b",
-                },
-                {
-                  name: "Спальни",
-                  id: "874ec115-a252-4b86-a881-d334a9cbcf25",
-                },
-                {
-                  name: "Журнальные столики",
-                  id: "61e91c57-ceea-428b-bdcd-eda54d6b3c92",
-                },
-              ],
-              props: [
-                {
-                  width: 1264,
-                  height: 210,
-                  position: { x: 0, y: -12 },
-                },
-                {
-                  width: 516,
-                  height: 92,
-                  position: { x: 373, y: -163 },
-                },
-                {
-                  width: 516,
-                  height: 92,
-                  position: { x: -373, y: -163 },
-                },
-                {
-                  width: 655,
-                  height: 90,
-                  position: { x: 0, y: 138 },
-                },
-                {
-                  width: 148,
-                  height: 90,
-                  position: { x: -557, y: 138 },
-                },
-                {
-                  width: 148,
-                  height: 90,
-                  position: { x: 557, y: 138 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "mebel",
-          floor: 3,
-
-          zone: [
-            {
-              name: "Мягкая мебель, осветительные приборы",
-              id: "8b335087-354d-4f7b-9223-1956b2088a5b",
-              allCategory: [
-                {
-                  name: "Мягкая мебель",
-                  id: "8b335087-354d-4f7b-9223-1956b2088a5b",
-                },
-                {
-                  name: "Осветительные приборы",
-                  id: "d8ba24a4-b3f1-42b8-a2bd-ee6c88237d0a",
-                },
-              ],
-              props: [
-                {
-                  width: 888,
-                  height: 208,
-                  position: { x: 40, y: 14 },
-                },
-              ],
-            },
-            {
-              name: "Ковры",
-              id: "",
-              props: [
-                {
-                  width: 220,
-                  height: 208,
-                  position: { x: -516, y: 14 },
-                },
-              ],
-            },
-            {
-              name: "Шторы",
-              id: "",
-              props: [
-                {
-                  width: 220,
-                  height: 88,
-                  position: { x: -516, y: -138 },
-                },
-              ],
-            },
-            {
-              name: "Картины часы зеркала",
-              id: "fed4d9b1-89d9-46b4-92c5-05e2095561ae",
-              allCategory: [
-                {
-                  name: "Картины",
-                  id: "c25a3f2b-b519-4e46-b3c9-049152235eea",
-                },
-                {
-                  name: "Часы",
-                  id: "bcfbcc67-975a-4a9c-97e2-7a1eaff86760",
-                },
-                {
-                  name: "Зеркала",
-                  id: "bf274d1d-3ed1-4621-8d9f-3a2c6d9af49c",
-                },
-              ],
-              props: [
-                {
-                  width: 294,
-                  height: 88,
-                  position: { x: -258, y: -138 },
-                },
-              ],
-            },
-            {
-              name: "Шкафы",
-              id: "af89a980-30a1-43dc-87e3-dbb1ccce8b09",
-              props: [
-                {
-                  width: 364,
-                  height: 88,
-                  position: { x: 302, y: -138 },
-                },
-              ],
-            },
-            {
-              name: "Кровати",
-              id: "324dba8c-431e-44b4-87b5-831543844040",
-              props: [
-                {
-                  width: 148,
-                  height: 150,
-                  position: { x: 562, y: -106 },
-                },
-              ],
-            },
-            {
-              name: "Прихожие",
-              id: "ac76f3d3-fe9c-4db5-93f9-6c23786f52b3",
-              props: [
-                {
-                  width: 148,
-                  height: 150,
-                  position: { x: 562, y: 45 },
-                },
-              ],
-            },
-            {
-              name: "Комоды",
-              id: "8c5e0ae3-13e2-4163-a77c-413b18ca8149",
-              props: [
-                {
-                  width: 148,
-                  height: 90,
-                  position: { x: 562, y: 166 },
-                },
-              ],
-            },
-            {
-              name: "Кресла прихожие",
-              id: "6ce154d3-b975-40c5-8940-625d80e8c388",
-              allCategory: [
-                {
-                  name: "Кресла прихожие",
-                  id: "6ce154d3-b975-40c5-8940-625d80e8c388",
-                },
-                {
-                  name: "Прихожие",
-                  id: "ac76f3d3-fe9c-4db5-93f9-6c23786f52b3",
-                },
-              ],
-              props: [
-                {
-                  width: 290,
-                  height: 88,
-                  position: { x: 185, y: 164 },
-                },
-              ],
-            },
-            {
-              name: "Часы, камины, бра",
-              id: "fed4d9b1-89d9-46b4-92c5-05e2095561ae",
-              allCategory: [
-                {
-                  name: "Часы",
-                  id: "bcfbcc67-975a-4a9c-97e2-7a1eaff86760",
-                },
-                {
-                  name: "Камины",
-                  id: "62c23491-421d-432b-919e-ffadf566793e",
-                },
-                {
-                  name: "Бра	",
-                  id: "90995a16-99da-4f85-901c-1d09f352ec45",
-                },
-              ],
-              props: [
-                {
-                  width: 235,
-                  height: 88,
-                  position: { x: -204, y: 164 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "mebel",
-          floor: 4,
-          zone: [
-            {
-              name: "Кухонная мебель столы и стулья",
-              id: "b3133753-8df7-4d84-b72c-25140dd903c7",
-              allCategory: [
-                {
-                  name: "Кухонная мебель",
-                  id: "b3133753-8df7-4d84-b72c-25140dd903c7",
-                },
-                {
-                  name: "Столы и стулья",
-                  id: "9d3c3502-4fba-436f-9997-7e4df3adecfe",
-                },
-              ],
-              props: [
-                {
-                  width: 958,
-                  height: 208,
-                  position: { x: -152, y: -12 },
-                },
-                {
-                  width: 514,
-                  height: 92,
-                  position: { x: -374, y: -162 },
-                },
-                {
-                  width: 210,
-                  height: 92,
-                  position: { x: 222, y: -162 },
-                },
-                {
-                  width: 146,
-                  height: 92,
-                  position: { x: -558, y: 138 },
-                },
-              ],
-            },
-            {
-              name: "Детская мебель",
-              id: "2842fb99-2467-40b3-afdb-52130ec79b2c",
-              props: [
-                {
-                  width: 302,
-                  height: 300,
-                  position: { x: 481, y: -58 },
-                },
-                {
-                  width: 148,
-                  height: 92,
-                  position: { x: 556, y: 138 },
-                },
-              ],
-            },
-            {
-              name: "Кухни",
-              id: "834e7a61-560f-4a09-8e29-ed725cdd3e61",
-              props: [
-                {
-                  width: 174,
-                  height: 92,
-                  position: { x: -174, y: 138 },
-                },
-              ],
-            },
-            {
-              name: "Кухни столы",
-              id: "fd5412c8-947a-4c11-bd75-317d3ec33713",
-              props: [
-                {
-                  width: 290,
-                  height: 92,
-                  position: { x: 182, y: 138 },
-                },
-              ],
-            },
-            {
-              name: "Акссесуары для кухни",
-              id: "64457d00-db85-4a84-aed7-1bb435acdcdf",
-              props: [
-                {
-                  width: 64,
-                  height: 92,
-                  position: { x: -294, y: 138 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "mebel",
-          floor: 5,
-
-          zone: [
-            {
-              name: "Импортная мебель",
-              id: "",
-              props: [
-                {
-                  width: 1264,
-                  height: 210,
-                  position: { x: 0, y: -12 },
-                },
-                {
-                  width: 516,
-                  height: 92,
-                  position: { x: 373, y: -163 },
-                },
-                {
-                  width: 516,
-                  height: 92,
-                  position: { x: -373, y: -163 },
-                },
-                {
-                  width: 655,
-                  height: 90,
-                  position: { x: 0, y: 138 },
-                },
-                {
-                  width: 148,
-                  height: 90,
-                  position: { x: -557, y: 138 },
-                },
-                {
-                  width: 148,
-                  height: 90,
-                  position: { x: 557, y: 138 },
-                },
-              ],
-            },
-          ],
-        },
-      ].reverse(),
-
-      Садовый_центр: [
-        {
-          name: "garden",
-          floor: 0,
-          id: ["ef66b2f0-d8aa-4b73-b6e1-9ae4e8c2cbf0"],
-          zone: [
-            {
-              name: "Садовая мебель",
-              id: "",
-              props: [
-                {
-                  width: 777,
-                  height: 430,
-                  position: { x: 0, y: 20 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "garden",
-          floor: 1,
-          zone: [
-            {
-              name: "Всё для растений товары для отдыха и полива ландшафт",
-              id: "5f794cd1-33f8-448b-9bab-6da2e89a19aa",
-              allCategory: [
-                {
-                  name: "Всё для растений",
-                  id: "5f794cd1-33f8-448b-9bab-6da2e89a19aa",
-                },
-                {
-                  name: "Товары для отдыха",
-                  id: "a59be78c-b332-4e20-888b-3eaa02d40bc6",
-                },
-                {
-                  name: "Товары для полива",
-                  id: "2af2d71c-41a1-4b45-a5a6-10f6b0e5af17",
-                },
-                {
-                  name: "Ландшафт и садовый декор",
-                  id: "77cb9871-127d-4ee3-933f-d0f08000e295",
-                },
-                {
-                  name: "Садовая техника",
-                  id: "0d5e8ec5-1a34-4ae1-a088-54be396e37e2",
-                },
-                {
-                  name: "Садовый инструмент",
-                  id: "3cb746b9-6ed9-4364-8db9-e650e91adea8",
-                },
-                {
-                  name: "Садовый инвентарь",
-                  id: "ea0a2c1a-5f5c-4d4f-add6-caa8941bfc82",
-                },
-              ],
-              props: [
-                {
-                  width: 386,
-                  height: 427,
-                  position: { x: -196, y: -27 },
-                },
-              ],
-            },
-            {
-              name: "Удобрение газон семена земляцветы горшоки",
-              id: "ba427b61-5c73-4e9e-aad5-58f83b26a821",
-              props: [
-                {
-                  width: 392,
-                  height: 427,
-                  position: { x: 196, y: -27 },
-                },
-              ],
-            },
-          ],
-        },
-      ].reverse(),
     },
+      {
+        name: "MTV",
+        floors: [
+          {
+            name: "tech",
+            floor: 0,
 
-    Дербент: {
-      Дербент: [
-        {
-          name: "derbent",
-          floor: 0,
-          zone: [
-            {
-              name: "Печи",
-              id: "",
-              props: [
-                {
-                  width: 146,
-                  height: 84,
-                  position: { x: -88, y: 0 },
-                },
-              ],
-            },
-            {
-              name: "Малая бытовая техника",
-              id: "5b14ae51-59f1-4174-9194-06abf6416bfa",
-              props: [
-                {
-                  width: 146,
-                  height: 84,
-                  position: { x: 60, y: 0 },
-                },
-              ],
-            },
-            {
-              name: "Встраиваемая техника",
-              id: "d1638c7d-fc5e-4897-95fa-0e333bb7cc22",
-              props: [
-                {
-                  width: 126,
-                  height: 74,
-                  position: { x: 72, y: -82 },
-                },
-              ],
-            },
-            {
-              name: "Климатическое оборудование",
-              id: "b6a9659a-32b0-4bd8-b3d1-add9e17d5c9d",
-              props: [
-                {
-                  width: 126,
-                  height: 74,
-                  position: { x: -58, y: -82 },
-                },
-              ],
-            },
-            {
-              name: "Стиральные и сушильные машины",
-              id: "933dff91-d9bb-452f-a71e-c3b716c4a96f",
-              props: [
-                {
-                  width: 126,
-                  height: 74,
-                  position: { x: -180, y: -82 },
-                },
-                {
-                  width: 78,
-                  height: 48,
-                  position: { x: -205, y: -21 },
-                },
-              ],
-            },
-            {
-              name: "Холодильники лари морозильники",
-              id: "423f396b-f7d0-41c5-ad3f-aa5bc7980337",
-              props: [
-                {
-                  width: 172,
-                  height: 74,
-                  position: { x: -158, y: 82 },
-                },
-                {
-                  width: 78,
-                  height: 44,
-                  position: { x: -205, y: 23 },
-                },
-              ],
-            },
-            {
-              name: "Электроника",
-              id: "7e59ab9a-9932-4535-b780-860c8a6d325e",
-              props: [
-                {
-                  width: 108,
-                  height: 166,
-                  position: { x: 192, y: -38 },
-                },
-                {
-                  width: 160,
-                  height: 74,
-                  position: { x: 166, y: 82 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "derbent",
-          floor: 1,
-          zone: [
-            {
-              name: "Детский отдел",
-              id: "31b73b4b-f098-4f96-a967-233760a0e426",
-              props: [
-                {
-                  width: 616,
-                  height: 120,
-                  position: { x: -7, y: -268 },
-                },
-                {
-                  width: 148,
-                  height: 40,
-                  position: { x: 224, y: -188 },
-                },
-              ],
-            },
-            {
-              name: "Текстиль",
-              id: "97c06658-eab4-450c-8502-b4391fa2f359",
-              props: [
-                {
-                  graphics: true,
-                  startPoint: [153, -164],
-                  point: [
-                    [ 291 , -164 ],
-                    [ 270 , 170 ],
-                    [ 85 , 169 ],
-                    [ 85 , 95 ],
-                    [ 153 , 94 ],
+            zone: [
+              {
+                name: "Телевизоры",
+                id: "35367728-8121-483e-9318-65e700d9edd1",
+                props: [
+                  {
+                    width: 780,
+                    height: 186,
+                    position: { x: 154, y: 41 },
+                  },
+                ],
+              },
+              {
+                name: "Игровая зона приставки музыкальные центры ",
+                id: "e49d0da4-8da4-4670-a602-c8ece6a4f936",
+                allCategory: [
+                  {
+                    name: "Акустика и аудиосистемы",
+                    id: "e49d0da4-8da4-4670-a602-c8ece6a4f936",
+                  },
+                  {
+                    name: "Проекторы",
+                    id: "207d0640-c35e-43a1-8981-da1065d62b39",
+                  },
+                  {
+                    name: "Игры",
+                    id: "1fbcb707-debf-4c69-934b-2657782402f5",
+                  },
+                ],
+                props: [
+                  {
+                    width: 302,
+                    height: 186,
+                    position: { x: -390, y: 41 },
+                  },
+                  {
+                    width: 90,
+                    height: 106,
+                    position: { x: -495, y: 187 },
+                  },
+                ],
+              },
+              {
+                name: "REAL2",
+                id: "",
+                props: [
+                  {
+                    width: 200,
+                    height: 103,
+                    position: { x: 130, y: 188 },
+                  },
+                ],
+              },
+              {
+                name: "Ноутбуки мониторы моноблоки принтеры",
+                id: "eb14daf9-cb58-41f9-9a2d-4fb12a7d20e1",
+                allCategory: [
+                  {
+                    name: "Мониторы",
+                    id: "edb61935-a615-44c1-a03c-14cc03df1fcd",
+                  },
+                  {
+                    name: "Ноутбуки",
+                    id: "3f54293d-89aa-4d35-97da-2825d2caeb15",
+                  },
+                  {
+                    name: "Принтеры, сканеры, МФУ",
+                    id: "57f43d42-8ca8-4fae-93ef-5e55d0c064fa",
+                  },
+                  {
+                    name: "Системные блоки",
+                    id: "b0339bed-ef37-4de5-b070-06a047a6129f",
+                  },
+                ],
+                props: [
+                  {
+                    width: 262,
+                    height: 103,
+                    position: { x: -104, y: 188 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "tech",
+            floor: 1,
+            zone: [],
+          },
+          {
+            name: "tech",
+            floor: 2,
 
-                  ],
-                },
-              ],
-            },
-            {
-              name: "Красота и здоровье",
-              id: "7cc46fb9-f575-4e80-b434-c93b4bb81fac",
-              props: [
-                {
-                  width: 50,
-                  height: 90,
-                  position: { x: 242, y: 217 },
-                },
-                {
-                  width: 124,
-                  height: 72,
-                  position: { x: 200, y: 298 },
-                },
-              ],
-            },
-            {
-              name: "Лабиринт",
-              id: "",
-              props: [
-                {
-                  width: 124,
-                  height: 114,
-                  position: { x: -382, y: -268 },
-                },
-              ],
-            },
-            {
-              name: "Сервис-сити",
-              id: "",
-              props: [
-                {
-                  width: 90,
-                  height: 240,
-                  position: { x: -397, y: 215 },
-                },
-              ],
-            },
-            {
-              name: "Сковородки",
-              id: "ee318362-ad72-468a-92b9-66de67bc741f",
-              props: [
-                {
-                  width: 126,
-                  height: 74,
-                  position: { x: -105, y: 132 },
-                },
-              ],
-            },
-            {
-              name: "Нержавейка",
-              id: "e1e1b734-1fd4-4d63-b34d-f894b5837ad0",
-              props: [
-                {
-                  width: 124,
-                  height: 74,
-                  position: { x: 20, y: 132 },
-                },
-              ],
-            },
-            {
-              name: "Хрусталь, стекло",
-              id: "",
-              props: [
-                {
-                  width: 174,
-                  height: 74,
-                  position: { x: -256, y: 132 },
-                },
-                {
-                  width: 78,
-                  height: 48,
-                  position: { x: -304, y: 193 },
-                },
-              ],
-            },
-            {
-              name: "Фарфор",
-              id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
-              props: [
-                {
-                  width: 174,
-                  height: 74,
-                  position: { x: -256, y: 296 },
-                },
-                {
-                  width: 78,
-                  height: 40,
-                  position: { x: -304, y: 239 },
-                },
-              ],
-            },
-            {
-              name: "Цветы, сувенирка",
-              id: "e3d1154f-3756-4348-a7a0-999b90c56929",
-              props: [
-                {
-                  width: 154,
-                  height: 74,
-                  position: { x: 61, y: 296 },
-                },
-              ],
-            },
-            {
-              name: "Эмаль, пластик, керамика",
-              id: "",
-              props: [
-                {
-                  width: 474,
-                  height: 84,
-                  position: { x: -24, y: 214 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "derbent",
-          floor: 2,
-          zone: [
-            {
-              name: "Мягкая мебель, журнальные столики, спальни ...",
-              id: "8b335087-354d-4f7b-9223-1956b2088a5b",
-              allCategory: [
-                {
-                  name: "Мягкая мебель",
-                  id: "8b335087-354d-4f7b-9223-1956b2088a5b",
-                },
-                {
-                  name: "Журнальные столики",
-                  id: "61e91c57-ceea-428b-bdcd-eda54d6b3c92",
-                },
-                {
-                  name: "Спальни",
-                  id: "874ec115-a252-4b86-a881-d334a9cbcf25",
-                },
-                {
-                  name: "Осветительные приборы",
-                  id: "d8ba24a4-b3f1-42b8-a2bd-ee6c88237d0a",
-                },
-              ],
-              props: [
-                {
-                  width: 490,
-                  height: 164,
-                  position: { x: -30, y: 172 },
-                },
-                {
-                  width: 176,
-                  height: 76,
-                  position: { x: -186, y: 292 },
-                },
-                {
-                  width: 158,
-                  height: 76,
-                  position: { x: 136, y: 292 },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          name: "derbent",
-          floor: 3,
-          zone: [
-            {
-              name: "Столовые группы, кухни",
-              id: "9d3c3502-4fba-436f-9997-7e4df3adecfe",
-              allCategory: [
-                {
-                  name: "Столовые группы",
-                  id: "9d3c3502-4fba-436f-9997-7e4df3adecfe",
-                },
-                {
-                  name: "Кухни",
-                  id: "834e7a61-560f-4a09-8e29-ed725cdd3e61",
-                },
-              ],
-              props: [
-                {
-                  width: 490,
-                  height: 164,
-                  position: { x: -30, y: 192 },
-                },
-                {
-                  width: 176,
-                  height: 78,
-                  position: { x: -186, y: 312 },
-                },
-                {
-                  width: 158,
-                  height: 78,
-                  position: { x: 136, y: 312 },
-                },
-              ],
-            },
-          ],
-        },
-      ].reverse(),
-    },
+            zone: [
+              {
+                name: "Малая бытовая техника",
+                id: "5b14ae51-59f1-4174-9194-06abf6416bfa",
+                props: [
+                  {
+                    width: 466,
+                    height: 294,
+                    position: { x: -4, y: 96 },
+                  },
+                ],
+              },
+              {
+                name: "Встраиваемая техника",
+                id: "d1638c7d-fc5e-4897-95fa-0e333bb7cc22",
+                props: [
+                  {
+                    width: 306,
+                    height: 186,
+                    position: { x: -392, y: 41 },
+                  },
+                  {
+                    width: 96,
+                    height: 112,
+                    position: { x: -495, y: 190 },
+                  },
+                ],
+              },
+              {
+                name: "Пылесосы товары для уборки",
+                id: "946e5e91-5bf7-49b3-bcf3-712868f08dce",
+                props: [
+                  {
+                    width: 308,
+                    height: 186,
+                    position: { x: 388, y: 41 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "tech",
+            floor: 3,
+            zone: [
+              {
+                name: "Холодильники лари морозильники",
+                id: "423f396b-f7d0-41c5-ad3f-aa5bc7980337",
+                props: [
+                  {
+                    width: 780,
+                    height: 186,
+                    position: { x: 154, y: 41 },
+                  },
+                ],
+              },
+              {
+                name: "Климатическое оборудование",
+                id: "b6a9659a-32b0-4bd8-b3d1-add9e17d5c9d",
+                props: [
+                  {
+                    width: 302,
+                    height: 186,
+                    position: { x: -390, y: 41 },
+                  },
+                  {
+                    width: 90,
+                    height: 106,
+                    position: { x: -495, y: 187 },
+                  },
+                ],
+              },
+              {
+                name: "Стиральные и сушильные машины",
+                id: "933dff91-d9bb-452f-a71e-c3b716c4a96f",
+                props: [
+                  {
+                    width: 468,
+                    height: 102,
+                    position: { x: -1, y: 190 },
+                  },
+                ],
+              },
+            ],
+          },
+        ].reverse(),
+      },
 
-    Каспийск: {
-      Капийск_КИРГУ: [
-        {
-          name: "kaspiyskKirgu",
-          floor: 1,
-          zone: [
-            {
-              name: "Товары для дома, столовая посуда ...",
-              id: "97c06658-eab4-450c-8502-b4391fa2f359",
-              props: [
-                {
-                  width: 626,
-                  height: 184,
-                  position: { x: 320, y: -2 },
-                },
-              ],
-            },
-            {
-              name: "Крупная и малая бытовая техника",
-              id: "423f396b-f7d0-41c5-ad3f-aa5bc7980337",
-              allCategory: [
-                {
-                  name: "Крупная бытовая техника",
-                  id: "423f396b-f7d0-41c5-ad3f-aa5bc7980337",
-                },
-                {
-                  name: "Малая бытовая техника",
-                  id: "5b14ae51-59f1-4174-9194-06abf6416bfa",
-                },
-              ],
-              props: [
-                {
-                  width: 330,
-                  height: 184,
-                  position: { x: -262, y: -2 },
-                },
-              ],
-            },
-            {
-              name: "Товары для ухода за одеждой и домом",
-              id: "360e746a-10d6-412a-a022-d2fd8b8c1e80",
-              props: [
-                {
-                  width: 144,
-                  height: 56,
-                  position: { x: -502, y: 62 },
-                },
-              ],
-            },
-            {
-              name: "Электоника, климатическое оборудование",
-              id: "7e59ab9a-9932-4535-b780-860c8a6d325e",
-              allCategory: [
-                {
-                  name: "Электоника",
-                  id: "7e59ab9a-9932-4535-b780-860c8a6d325e",
-                },
-                {
-                  name: "Климатическое оборудование",
-                  id: "b6a9659a-32b0-4bd8-b3d1-add9e17d5c9d",
-                },
-              ],
-              props: [
-                {
-                  width: 202,
-                  height: 126,
-                  position: { x: -532, y: -32 },
-                },
-                {
-                  width: 54,
-                  height: 58,
-                  position: { x: -606, y: 60 },
-                },
-              ],
-            },
-          ],
-        },
-      ].reverse(),
+      {
+        name: "Детский отдел",
+        floors: [
+          {
+            name: "kids",
+            floor: 0,
 
-      Каспийск_Домашний: [
-        {
-          name: "kaspiyskHome",
-          floor: 1,
-          zone: [
-            {
-              name: "Хрусталь, стекло, химия, текстиль, пластика",
-              id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
-              allCategory: [
-                {
-                  name: "Хрусталь",
-                  id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
-                },
-                {
-                  name: "Химия",
-                  id: "360e746a-10d6-412a-a022-d2fd8b8c1e80",
-                },
-                {
-                  name: "Текстиль",
-                  id: "97c06658-eab4-450c-8502-b4391fa2f359",
-                },
-                {
-                  name: "Пластика",
-                  id: "9d65bc7ef-55ab-4a1b-bf47-9106a1e11f7f",
-                },
-              ],
-              props: [
-                {
-                  graphics: true,
-                  startPoint: [17, -94],
-                  point: [
-                    [222, -98],
-                    [220, 102],
-                    [388, 102],
-                    [389, -98],
-                    [483, -98],
-                    [482, 195],
-                    [300, 197],
-                    [300, 297],
-                    [-91, 297],
-                    [-93, 260],
-                    [-202, 260],
-                    [-202, 130],
-                    [-78, 131],
-                    [-78, 44],
-                    [14, -36],
-                  ],
-                },
-              ],
-            },
-            {
-              name: "Хрусталь, фарфор, текстиль, пластика",
-              id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
-              allCategory: [
-                {
-                  name: "Фарфор",
-                  id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
-                },
-                {
-                  name: "Эмаль",
-                  id: "97c06658-eab4-450c-8502-b4391fa2f359",
-                },
-                {
-                  name: "Нержавейка",
-                  id: "e1e1b734-1fd4-4d63-b34d-f894b5837ad0",
-                },
-              ],
-              props: [
-                {
-                  graphics: true,
-                  startPoint: [-83, -300],
-                  point: [
-                    [-482, -298],
-                    [-482, -89],
-                    [-444, -89],
-                    [-444, 26],
-                    [-482, 27],
-                    [-482, 130],
-                    [-317, 298],
-                    [-209, 297],
-                    [-210, 124],
-                    [-85, 124],
-                    [-84, 42],
-                    [10, -42],
-                    [10, -96],
-                    [-84, -190],
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ].reverse(),
-    },
+            zone: [
+              {
+                name: "Дисконт центр",
+                id: "",
+                props: [
+                  {
+                    width: 632,
+                    height: 264,
+                    position: { x: -318, y: -123 },
+                  },
+                  {
+                    width: 192,
+                    height: 43,
+                    position: { x: -538, y: 30 },
+                  },
+                  {
+                    width: 296,
+                    height: 160,
+                    position: { x: -149, y: 89 },
+                  },
+                ],
+              },
+              {
+                name: "Офисная мебель",
+                id: "58889bd9-f77d-4d78-80bc-82c9746168d0",
+                props: [
+                  {
+                    width: 632,
+                    height: 264,
+                    position: { x: 318, y: -123 },
+                  },
+                  {
+                    width: 192,
+                    height: 43,
+                    position: { x: 538, y: 30 },
+                  },
+                  {
+                    width: 296,
+                    height: 160,
+                    position: { x: 149, y: 89 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "kids",
+            floor: 1,
+            zone: [
+              {
+                name: "Одежда для девочек",
+                id: "715bd8d0-58c0-4e62-ac80-19eae22d768e",
+                props: [
+                  {
+                    width: 250,
+                    height: 94,
+                    position: { x: -313, y: -210 },
+                  },
+                ],
+              },
+              {
+                name: "Обувь",
+                id: "7e2f41ff-d54e-4254-a50c-061dbb68e6cc",
+                props: [
+                  {
+                    width: 197,
+                    height: 313,
+                    position: { x: -539, y: -101 },
+                  },
+                ],
+              },
+              {
+                name: "Промо Зона",
+                id: "",
+                props: [
+                  {
+                    width: 872,
+                    height: 114,
+                    position: { x: -1, y: -103 },
+                  },
+                ],
+              },
+              {
+                name: "Одежда для мальчиков",
+                id: "715bd8d0-58c0-4e62-ac80-19eae22d768e",
+                props: [
+                  {
+                    width: 250,
+                    height: 94,
+                    position: { x: 310, y: -210 },
+                  },
+                ],
+              },
+              {
+                name: "Игрушки для мальчиков",
+                id: "68dccf2a-eb96-4ebd-8108-3c710a7d6ab6",
+                props: [
+                  {
+                    width: 250,
+                    height: 97,
+                    position: { x: 177, y: 6 },
+                  },
+                ],
+              },
+              {
+                name: "Игрушки для девочек",
+                id: "68dccf2a-eb96-4ebd-8108-3c710a7d6ab6",
+                props: [
+                  {
+                    width: 250,
+                    height: 97,
+                    position: { x: -177, y: 6 },
+                  },
+                ],
+              },
+              {
+                name: "Одежда и обувь для новорожденных",
+                id: "59b884f9-f518-463d-aef2-bafbcd08d281",
+                props: [
+                  {
+                    width: 250,
+                    height: 117,
+                    position: { x: -177, y: 116 },
+                  },
+                ],
+              },
+              {
+                name: "Концтовары",
+                id: "3ae21c55-f9cc-4820-9189-dc7292c4158b",
+                props: [
+                  {
+                    width: 250,
+                    height: 117,
+                    position: { x: 177, y: 116 },
+                  },
+                ],
+              },
+              {
+                name: "Коляски и автокресла спорт и активный отдых",
+                id: "285b7347-7415-4b99-b786-78d68c21dea8",
+                allCategory: [
+                  {
+                    name: "Коляски и автокресла",
+                    id: "285b7347-7415-4b99-b786-78d68c21dea8",
+                  },
+                  {
+                    name: "Спорт и активный отдых",
+                    id: "c0c717f1-6288-4d37-8252-b32cdce681d9",
+                  },
+                  {
+                    name: "Игрушки",
+                    id: "68dccf2a-eb96-4ebd-8108-3c710a7d6ab6",
+                  },
+                ],
+                props: [
+                  {
+                    width: 200,
+                    height: 311,
+                    position: { x: 538, y: -102 },
+                  },
+                ],
+              },
+              {
+                name: "Mayoral",
+                id: "",
+                props: [
+                  {
+                    width: 368,
+                    height: 94,
+                    position: { x: -1, y: -210 },
+                  },
+                ],
+              },
+            ],
+          },
+        ].reverse(),
+      },
 
-    Махачкала_: {
-      Махачкала_Диджитал: [
+      {
+        name: "Мебельный корпус",
+        floors: [
+          {
+            name: "mebel",
+            floor: 0,
+            zone: [],
+          },
+          {
+            name: "mebel",
+            floor: 1,
+
+            zone: [
+              {
+                name: "Текстиль",
+                id: "97c06658-eab4-450c-8502-b4391fa2f359",
+                props: [
+                  {
+                    width: 244,
+                    height: 210,
+                    position: { x: -510, y: -32 },
+                  },
+                  {
+                    width: 152,
+                    height: 90,
+                    position: { x: -558, y: 118 },
+                  },
+                ],
+              },
+              {
+                name: "Клеенки корзины сушилки пластик",
+                id: "0686859a-c54a-46a3-aa4e-f0b8784ececf",
+                props: [
+                  {
+                    width: 270,
+                    height: 260,
+                    position: { x: -250, y: -101 },
+                  },
+                ],
+              },
+              {
+                name: "Бытовая химия",
+                id: "360e746a-10d6-412a-a022-d2fd8b8c1e80",
+                props: [
+                  {
+                    width: 210,
+                    height: 90,
+                    position: { x: -226, y: 118 },
+                  },
+                ],
+              },
+              {
+                name: "Арома",
+                id: "790b0b5a-c584-4b0b-a718-66b45d317b41",
+                props: [
+                  {
+                    width: 70,
+                    height: 90,
+                    position: { x: -516, y: -185 },
+                  },
+                ],
+              },
+              {
+                name: "Сувенир",
+                id: "e3d1154f-3756-4348-a7a0-999b90c56929",
+                props: [
+                  {
+                    width: 90,
+                    height: 90,
+                    position: { x: -432, y: -185 },
+                  },
+                ],
+              },
+              {
+                name: "Сковородки",
+                id: "ee318362-ad72-468a-92b9-66de67bc741f",
+                props: [
+                  {
+                    width: 230,
+                    height: 28,
+                    position: { x: 0, y: -126 },
+                  },
+                ],
+              },
+              {
+                name: "Кастрюли посуда для сервировки",
+                id: "67168837-3e29-4fab-8a13-51bb45eefe35",
+                allCategory: [
+                  {
+                    name: "Кастрюли",
+                    id: "97e76780-3323-4c30-95c6-0c1b36f8c0d0",
+                  },
+                  {
+                    name: "Посуда для сервировки",
+                    id: "67168837-3e29-4fab-8a13-51bb45eefe35",
+                  },
+                ],
+                props: [
+                  {
+                    width: 365,
+                    height: 90,
+                    position: { x: 298, y: -186 },
+                  },
+                ],
+              },
+              {
+                name: "Кухонная утварь тарелки кастрюли чайники",
+                id: "531e96d5-9c30-4b4c-823d-e91792a37f07",
+                allCategory: [
+                  {
+                    name: "Посуда для приготовления пищи",
+                    id: "e1e1b734-1fd4-4d63-b34d-f894b5837ad0",
+                  },
+                  {
+                    name: "Столовая посуда",
+                    id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
+                  },
+                  {
+                    name: "Чайники",
+                    id: "fef45bb6-2b0a-41f4-b8a4-ad6cb4d1281a",
+                  },
+                ],
+                props: [
+                  {
+                    width: 364,
+                    height: 168,
+                    position: { x: 298, y: -55 },
+                  },
+                ],
+              },
+              {
+                name: "Хрусталь",
+                id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
+                props: [
+                  {
+                    width: 147,
+                    height: 174,
+                    position: { x: 557, y: -143 },
+                  },
+                ],
+              },
+              {
+                name: "Фарфор",
+                id: "",
+                props: [
+                  {
+                    width: 147,
+                    height: 212,
+                    position: { x: 557, y: 54 },
+                  },
+                ],
+              },
+              {
+                name: "Премиальный бутик",
+                id: "",
+                props: [
+                  {
+                    width: 126,
+                    height: 86,
+                    position: { x: 264, y: 118 },
+                  },
+                ],
+              },
+              {
+                name: "Аптека",
+                id: "",
+                props: [
+                  {
+                    width: 76,
+                    height: 86,
+                    position: { x: 160, y: 118 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "mebel",
+            floor: 2,
+
+            zone: [
+              {
+                name: "Мягкая мебель журнальные столики спальни",
+                id: "8b335087-354d-4f7b-9223-1956b2088a5b",
+                allCategory: [
+                  {
+                    name: "Мягкая мебель",
+                    id: "8b335087-354d-4f7b-9223-1956b2088a5b",
+                  },
+                  {
+                    name: "Спальни",
+                    id: "874ec115-a252-4b86-a881-d334a9cbcf25",
+                  },
+                  {
+                    name: "Журнальные столики",
+                    id: "61e91c57-ceea-428b-bdcd-eda54d6b3c92",
+                  },
+                ],
+                props: [
+                  {
+                    width: 1264,
+                    height: 210,
+                    position: { x: 0, y: -12 },
+                  },
+                  {
+                    width: 516,
+                    height: 92,
+                    position: { x: 373, y: -163 },
+                  },
+                  {
+                    width: 516,
+                    height: 92,
+                    position: { x: -373, y: -163 },
+                  },
+                  {
+                    width: 655,
+                    height: 90,
+                    position: { x: 0, y: 138 },
+                  },
+                  {
+                    width: 148,
+                    height: 90,
+                    position: { x: -557, y: 138 },
+                  },
+                  {
+                    width: 148,
+                    height: 90,
+                    position: { x: 557, y: 138 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "mebel",
+            floor: 3,
+
+            zone: [
+              {
+                name: "Мягкая мебель, осветительные приборы",
+                id: "8b335087-354d-4f7b-9223-1956b2088a5b",
+                allCategory: [
+                  {
+                    name: "Мягкая мебель",
+                    id: "8b335087-354d-4f7b-9223-1956b2088a5b",
+                  },
+                  {
+                    name: "Осветительные приборы",
+                    id: "d8ba24a4-b3f1-42b8-a2bd-ee6c88237d0a",
+                  },
+                ],
+                props: [
+                  {
+                    width: 888,
+                    height: 208,
+                    position: { x: 40, y: 14 },
+                  },
+                ],
+              },
+              {
+                name: "Ковры",
+                id: "",
+                props: [
+                  {
+                    width: 220,
+                    height: 208,
+                    position: { x: -516, y: 14 },
+                  },
+                ],
+              },
+              {
+                name: "Шторы",
+                id: "",
+                props: [
+                  {
+                    width: 220,
+                    height: 88,
+                    position: { x: -516, y: -138 },
+                  },
+                ],
+              },
+              {
+                name: "Картины часы зеркала",
+                id: "fed4d9b1-89d9-46b4-92c5-05e2095561ae",
+                allCategory: [
+                  {
+                    name: "Картины",
+                    id: "c25a3f2b-b519-4e46-b3c9-049152235eea",
+                  },
+                  {
+                    name: "Часы",
+                    id: "bcfbcc67-975a-4a9c-97e2-7a1eaff86760",
+                  },
+                  {
+                    name: "Зеркала",
+                    id: "bf274d1d-3ed1-4621-8d9f-3a2c6d9af49c",
+                  },
+                ],
+                props: [
+                  {
+                    width: 294,
+                    height: 88,
+                    position: { x: -258, y: -138 },
+                  },
+                ],
+              },
+              {
+                name: "Шкафы",
+                id: "af89a980-30a1-43dc-87e3-dbb1ccce8b09",
+                props: [
+                  {
+                    width: 364,
+                    height: 88,
+                    position: { x: 302, y: -138 },
+                  },
+                ],
+              },
+              {
+                name: "Кровати",
+                id: "324dba8c-431e-44b4-87b5-831543844040",
+                props: [
+                  {
+                    width: 148,
+                    height: 150,
+                    position: { x: 562, y: -106 },
+                  },
+                ],
+              },
+              {
+                name: "Прихожие",
+                id: "ac76f3d3-fe9c-4db5-93f9-6c23786f52b3",
+                props: [
+                  {
+                    width: 148,
+                    height: 150,
+                    position: { x: 562, y: 45 },
+                  },
+                ],
+              },
+              {
+                name: "Комоды",
+                id: "8c5e0ae3-13e2-4163-a77c-413b18ca8149",
+                props: [
+                  {
+                    width: 148,
+                    height: 90,
+                    position: { x: 562, y: 166 },
+                  },
+                ],
+              },
+              {
+                name: "Кресла прихожие",
+                id: "6ce154d3-b975-40c5-8940-625d80e8c388",
+                allCategory: [
+                  {
+                    name: "Кресла прихожие",
+                    id: "6ce154d3-b975-40c5-8940-625d80e8c388",
+                  },
+                  {
+                    name: "Прихожие",
+                    id: "ac76f3d3-fe9c-4db5-93f9-6c23786f52b3",
+                  },
+                ],
+                props: [
+                  {
+                    width: 290,
+                    height: 88,
+                    position: { x: 185, y: 164 },
+                  },
+                ],
+              },
+              {
+                name: "Часы, камины, бра",
+                id: "fed4d9b1-89d9-46b4-92c5-05e2095561ae",
+                allCategory: [
+                  {
+                    name: "Часы",
+                    id: "bcfbcc67-975a-4a9c-97e2-7a1eaff86760",
+                  },
+                  {
+                    name: "Камины",
+                    id: "62c23491-421d-432b-919e-ffadf566793e",
+                  },
+                  {
+                    name: "Бра	",
+                    id: "90995a16-99da-4f85-901c-1d09f352ec45",
+                  },
+                ],
+                props: [
+                  {
+                    width: 235,
+                    height: 88,
+                    position: { x: -204, y: 164 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "mebel",
+            floor: 4,
+            zone: [
+              {
+                name: "Кухонная мебель столы и стулья",
+                id: "b3133753-8df7-4d84-b72c-25140dd903c7",
+                allCategory: [
+                  {
+                    name: "Кухонная мебель",
+                    id: "b3133753-8df7-4d84-b72c-25140dd903c7",
+                  },
+                  {
+                    name: "Столы и стулья",
+                    id: "9d3c3502-4fba-436f-9997-7e4df3adecfe",
+                  },
+                ],
+                props: [
+                  {
+                    width: 958,
+                    height: 208,
+                    position: { x: -152, y: -12 },
+                  },
+                  {
+                    width: 514,
+                    height: 92,
+                    position: { x: -374, y: -162 },
+                  },
+                  {
+                    width: 210,
+                    height: 92,
+                    position: { x: 222, y: -162 },
+                  },
+                  {
+                    width: 146,
+                    height: 92,
+                    position: { x: -558, y: 138 },
+                  },
+                ],
+              },
+              {
+                name: "Детская мебель",
+                id: "2842fb99-2467-40b3-afdb-52130ec79b2c",
+                props: [
+                  {
+                    width: 302,
+                    height: 300,
+                    position: { x: 481, y: -58 },
+                  },
+                  {
+                    width: 148,
+                    height: 92,
+                    position: { x: 556, y: 138 },
+                  },
+                ],
+              },
+              {
+                name: "Кухни",
+                id: "834e7a61-560f-4a09-8e29-ed725cdd3e61",
+                props: [
+                  {
+                    width: 174,
+                    height: 92,
+                    position: { x: -174, y: 138 },
+                  },
+                ],
+              },
+              {
+                name: "Кухни столы",
+                id: "fd5412c8-947a-4c11-bd75-317d3ec33713",
+                props: [
+                  {
+                    width: 290,
+                    height: 92,
+                    position: { x: 182, y: 138 },
+                  },
+                ],
+              },
+              {
+                name: "Акссесуары для кухни",
+                id: "64457d00-db85-4a84-aed7-1bb435acdcdf",
+                props: [
+                  {
+                    width: 64,
+                    height: 92,
+                    position: { x: -294, y: 138 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "mebel",
+            floor: 5,
+
+            zone: [
+              {
+                name: "Импортная мебель",
+                id: "",
+                props: [
+                  {
+                    width: 1264,
+                    height: 210,
+                    position: { x: 0, y: -12 },
+                  },
+                  {
+                    width: 516,
+                    height: 92,
+                    position: { x: 373, y: -163 },
+                  },
+                  {
+                    width: 516,
+                    height: 92,
+                    position: { x: -373, y: -163 },
+                  },
+                  {
+                    width: 655,
+                    height: 90,
+                    position: { x: 0, y: 138 },
+                  },
+                  {
+                    width: 148,
+                    height: 90,
+                    position: { x: -557, y: 138 },
+                  },
+                  {
+                    width: 148,
+                    height: 90,
+                    position: { x: 557, y: 138 },
+                  },
+                ],
+              },
+            ],
+          },
+        ].reverse(),
+      },
+
+      {
+        name: "Садовый центр",
+        floors: [
+          {
+            name: "garden",
+            floor: 0,
+            id: ["ef66b2f0-d8aa-4b73-b6e1-9ae4e8c2cbf0"],
+            zone: [
+              {
+                name: "Садовая мебель",
+                id: "",
+                props: [
+                  {
+                    width: 777,
+                    height: 430,
+                    position: { x: 0, y: 20 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "garden",
+            floor: 1,
+            zone: [
+              {
+                name: "Всё для растений товары для отдыха и полива ландшафт",
+                id: "5f794cd1-33f8-448b-9bab-6da2e89a19aa",
+                allCategory: [
+                  {
+                    name: "Всё для растений",
+                    id: "5f794cd1-33f8-448b-9bab-6da2e89a19aa",
+                  },
+                  {
+                    name: "Товары для отдыха",
+                    id: "a59be78c-b332-4e20-888b-3eaa02d40bc6",
+                  },
+                  {
+                    name: "Товары для полива",
+                    id: "2af2d71c-41a1-4b45-a5a6-10f6b0e5af17",
+                  },
+                  {
+                    name: "Ландшафт и садовый декор",
+                    id: "77cb9871-127d-4ee3-933f-d0f08000e295",
+                  },
+                  {
+                    name: "Садовая техника",
+                    id: "0d5e8ec5-1a34-4ae1-a088-54be396e37e2",
+                  },
+                  {
+                    name: "Садовый инструмент",
+                    id: "3cb746b9-6ed9-4364-8db9-e650e91adea8",
+                  },
+                  {
+                    name: "Садовый инвентарь",
+                    id: "ea0a2c1a-5f5c-4d4f-add6-caa8941bfc82",
+                  },
+                ],
+                props: [
+                  {
+                    width: 386,
+                    height: 427,
+                    position: { x: -196, y: -27 },
+                  },
+                ],
+              },
+              {
+                name: "Удобрение газон семена земляцветы горшоки",
+                id: "ba427b61-5c73-4e9e-aad5-58f83b26a821",
+                props: [
+                  {
+                    width: 392,
+                    height: 427,
+                    position: { x: 196, y: -27 },
+                  },
+                ],
+              },
+            ],
+          },
+        ].reverse(),
+      },
+    ],
+
+    Дербент: [
+      {
+        name: "Дербент",
+        floors: [
+          {
+            name: "derbent",
+            floor: 0,
+            zone: [
+              {
+                name: "Печи",
+                id: "",
+                props: [
+                  {
+                    width: 146,
+                    height: 84,
+                    position: { x: -88, y: 0 },
+                  },
+                ],
+              },
+              {
+                name: "Малая бытовая техника",
+                id: "5b14ae51-59f1-4174-9194-06abf6416bfa",
+                props: [
+                  {
+                    width: 146,
+                    height: 84,
+                    position: { x: 60, y: 0 },
+                  },
+                ],
+              },
+              {
+                name: "Встраиваемая техника",
+                id: "d1638c7d-fc5e-4897-95fa-0e333bb7cc22",
+                props: [
+                  {
+                    width: 126,
+                    height: 74,
+                    position: { x: 72, y: -82 },
+                  },
+                ],
+              },
+              {
+                name: "Климатическое оборудование",
+                id: "b6a9659a-32b0-4bd8-b3d1-add9e17d5c9d",
+                props: [
+                  {
+                    width: 126,
+                    height: 74,
+                    position: { x: -58, y: -82 },
+                  },
+                ],
+              },
+              {
+                name: "Стиральные и сушильные машины",
+                id: "933dff91-d9bb-452f-a71e-c3b716c4a96f",
+                props: [
+                  {
+                    width: 126,
+                    height: 74,
+                    position: { x: -180, y: -82 },
+                  },
+                  {
+                    width: 78,
+                    height: 48,
+                    position: { x: -205, y: -21 },
+                  },
+                ],
+              },
+              {
+                name: "Холодильники лари морозильники",
+                id: "423f396b-f7d0-41c5-ad3f-aa5bc7980337",
+                props: [
+                  {
+                    width: 172,
+                    height: 74,
+                    position: { x: -158, y: 82 },
+                  },
+                  {
+                    width: 78,
+                    height: 44,
+                    position: { x: -205, y: 23 },
+                  },
+                ],
+              },
+              {
+                name: "Электроника",
+                id: "7e59ab9a-9932-4535-b780-860c8a6d325e",
+                props: [
+                  {
+                    width: 108,
+                    height: 166,
+                    position: { x: 192, y: -38 },
+                  },
+                  {
+                    width: 160,
+                    height: 74,
+                    position: { x: 166, y: 82 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "derbent",
+            floor: 1,
+            zone: [
+              {
+                name: "Детский отдел",
+                id: "31b73b4b-f098-4f96-a967-233760a0e426",
+                props: [
+                  {
+                    width: 616,
+                    height: 120,
+                    position: { x: -7, y: -268 },
+                  },
+                  {
+                    width: 148,
+                    height: 40,
+                    position: { x: 224, y: -188 },
+                  },
+                ],
+              },
+              {
+                name: "Текстиль",
+                id: "97c06658-eab4-450c-8502-b4391fa2f359",
+                props: [
+                  {
+                    graphics: true,
+                    startPoint: [153, -164],
+                    point: [
+                      [ 291 , -164 ],
+                      [ 270 , 170 ],
+                      [ 85 , 169 ],
+                      [ 85 , 95 ],
+                      [ 153 , 94 ],
+
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "Красота и здоровье",
+                id: "7cc46fb9-f575-4e80-b434-c93b4bb81fac",
+                props: [
+                  {
+                    width: 50,
+                    height: 90,
+                    position: { x: 242, y: 217 },
+                  },
+                  {
+                    width: 124,
+                    height: 72,
+                    position: { x: 200, y: 298 },
+                  },
+                ],
+              },
+              {
+                name: "Лабиринт",
+                id: "",
+                props: [
+                  {
+                    width: 124,
+                    height: 114,
+                    position: { x: -382, y: -268 },
+                  },
+                ],
+              },
+              {
+                name: "Сервис-сити",
+                id: "",
+                props: [
+                  {
+                    width: 90,
+                    height: 240,
+                    position: { x: -397, y: 215 },
+                  },
+                ],
+              },
+              {
+                name: "Сковородки",
+                id: "ee318362-ad72-468a-92b9-66de67bc741f",
+                props: [
+                  {
+                    width: 126,
+                    height: 74,
+                    position: { x: -105, y: 132 },
+                  },
+                ],
+              },
+              {
+                name: "Нержавейка",
+                id: "e1e1b734-1fd4-4d63-b34d-f894b5837ad0",
+                props: [
+                  {
+                    width: 124,
+                    height: 74,
+                    position: { x: 20, y: 132 },
+                  },
+                ],
+              },
+              {
+                name: "Хрусталь, стекло",
+                id: "",
+                props: [
+                  {
+                    width: 174,
+                    height: 74,
+                    position: { x: -256, y: 132 },
+                  },
+                  {
+                    width: 78,
+                    height: 48,
+                    position: { x: -304, y: 193 },
+                  },
+                ],
+              },
+              {
+                name: "Фарфор",
+                id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
+                props: [
+                  {
+                    width: 174,
+                    height: 74,
+                    position: { x: -256, y: 296 },
+                  },
+                  {
+                    width: 78,
+                    height: 40,
+                    position: { x: -304, y: 239 },
+                  },
+                ],
+              },
+              {
+                name: "Цветы, сувенирка",
+                id: "e3d1154f-3756-4348-a7a0-999b90c56929",
+                props: [
+                  {
+                    width: 154,
+                    height: 74,
+                    position: { x: 61, y: 296 },
+                  },
+                ],
+              },
+              {
+                name: "Эмаль, пластик, керамика",
+                id: "",
+                props: [
+                  {
+                    width: 474,
+                    height: 84,
+                    position: { x: -24, y: 214 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "derbent",
+            floor: 2,
+            zone: [
+              {
+                name: "Мягкая мебель, журнальные столики, спальни ...",
+                id: "8b335087-354d-4f7b-9223-1956b2088a5b",
+                allCategory: [
+                  {
+                    name: "Мягкая мебель",
+                    id: "8b335087-354d-4f7b-9223-1956b2088a5b",
+                  },
+                  {
+                    name: "Журнальные столики",
+                    id: "61e91c57-ceea-428b-bdcd-eda54d6b3c92",
+                  },
+                  {
+                    name: "Спальни",
+                    id: "874ec115-a252-4b86-a881-d334a9cbcf25",
+                  },
+                  {
+                    name: "Осветительные приборы",
+                    id: "d8ba24a4-b3f1-42b8-a2bd-ee6c88237d0a",
+                  },
+                ],
+                props: [
+                  {
+                    width: 490,
+                    height: 164,
+                    position: { x: -30, y: 172 },
+                  },
+                  {
+                    width: 176,
+                    height: 76,
+                    position: { x: -186, y: 292 },
+                  },
+                  {
+                    width: 158,
+                    height: 76,
+                    position: { x: 136, y: 292 },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "derbent",
+            floor: 3,
+            zone: [
+              {
+                name: "Столовые группы, кухни",
+                id: "9d3c3502-4fba-436f-9997-7e4df3adecfe",
+                allCategory: [
+                  {
+                    name: "Столовые группы",
+                    id: "9d3c3502-4fba-436f-9997-7e4df3adecfe",
+                  },
+                  {
+                    name: "Кухни",
+                    id: "834e7a61-560f-4a09-8e29-ed725cdd3e61",
+                  },
+                ],
+                props: [
+                  {
+                    width: 490,
+                    height: 164,
+                    position: { x: -30, y: 192 },
+                  },
+                  {
+                    width: 176,
+                    height: 78,
+                    position: { x: -186, y: 312 },
+                  },
+                  {
+                    width: 158,
+                    height: 78,
+                    position: { x: 136, y: 312 },
+                  },
+                ],
+              },
+            ],
+          },
+        ].reverse(),
+    }
+  ],
+
+      Каспийск: [
         {
-          name: "makhachkalaDigital",
-          floor: 1,
-          zone: [
-            {
-              name: "Бытовая химия, столовые приборы, нержавейка ...",
-              id: "97c06658-eab4-450c-8502-b4391fa2f359",
-              props: [
-                {
-                  width: 254,
-                  height: 226,
-                  position: { x: -66, y: -91 },
-                },
-              ],
-            },
-            {
-              name: "Пластмасса, хрусталь",
-              id: "97c06658-eab4-450c-8502-b4391fa2f359",
-              props: [
-                {
-                  graphics: true,
-                  startPoint: [-194, 22],
-                  point: [
-                    [62, 24],
-                    [68, 165],
-                    [-94, 168],
-                    [-193, 125],
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ].reverse(),
-    },
+        name: "Капийск КИРГУ",
+        floors: [
+          {
+            name: "kaspiyskKirgu",
+            floor: 1,
+            zone: [
+              {
+                name: "Товары для дома, столовая посуда ...",
+                id: "97c06658-eab4-450c-8502-b4391fa2f359",
+                props: [
+                  {
+                    width: 626,
+                    height: 184,
+                    position: { x: 320, y: -2 },
+                  },
+                ],
+              },
+              {
+                name: "Крупная и малая бытовая техника",
+                id: "423f396b-f7d0-41c5-ad3f-aa5bc7980337",
+                allCategory: [
+                  {
+                    name: "Крупная бытовая техника",
+                    id: "423f396b-f7d0-41c5-ad3f-aa5bc7980337",
+                  },
+                  {
+                    name: "Малая бытовая техника",
+                    id: "5b14ae51-59f1-4174-9194-06abf6416bfa",
+                  },
+                ],
+                props: [
+                  {
+                    width: 330,
+                    height: 184,
+                    position: { x: -262, y: -2 },
+                  },
+                ],
+              },
+              {
+                name: "Товары для ухода за одеждой и домом",
+                id: "360e746a-10d6-412a-a022-d2fd8b8c1e80",
+                props: [
+                  {
+                    width: 144,
+                    height: 56,
+                    position: { x: -502, y: 62 },
+                  },
+                ],
+              },
+              {
+                name: "Электоника, климатическое оборудование",
+                id: "7e59ab9a-9932-4535-b780-860c8a6d325e",
+                allCategory: [
+                  {
+                    name: "Электоника",
+                    id: "7e59ab9a-9932-4535-b780-860c8a6d325e",
+                  },
+                  {
+                    name: "Климатическое оборудование",
+                    id: "b6a9659a-32b0-4bd8-b3d1-add9e17d5c9d",
+                  },
+                ],
+                props: [
+                  {
+                    width: 202,
+                    height: 126,
+                    position: { x: -532, y: -32 },
+                  },
+                  {
+                    width: 54,
+                    height: 58,
+                    position: { x: -606, y: 60 },
+                  },
+                ],
+              },
+            ],
+          },
+        ].reverse(),
+      },
+      {
+        name: "Каспийск Домашний",
+        floors: [
+          {
+            name: "kaspiyskHome",
+            floor: 1,
+            zone: [
+              {
+                name: "Хрусталь, стекло, химия, текстиль, пластика",
+                id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
+                allCategory: [
+                  {
+                    name: "Хрусталь",
+                    id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
+                  },
+                  {
+                    name: "Химия",
+                    id: "360e746a-10d6-412a-a022-d2fd8b8c1e80",
+                  },
+                  {
+                    name: "Текстиль",
+                    id: "97c06658-eab4-450c-8502-b4391fa2f359",
+                  },
+                  {
+                    name: "Пластика",
+                    id: "9d65bc7ef-55ab-4a1b-bf47-9106a1e11f7f",
+                  },
+                ],
+                props: [
+                  {
+                    graphics: true,
+                    startPoint: [17, -94],
+                    point: [
+                      [222, -98],
+                      [220, 102],
+                      [388, 102],
+                      [389, -98],
+                      [483, -98],
+                      [482, 195],
+                      [300, 197],
+                      [300, 297],
+                      [-91, 297],
+                      [-93, 260],
+                      [-202, 260],
+                      [-202, 130],
+                      [-78, 131],
+                      [-78, 44],
+                      [14, -36],
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "Хрусталь, фарфор, текстиль, пластика",
+                id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
+                allCategory: [
+                  {
+                    name: "Фарфор",
+                    id: "33775e33-b557-47af-96a6-7c94df6d1ad5",
+                  },
+                  {
+                    name: "Эмаль",
+                    id: "97c06658-eab4-450c-8502-b4391fa2f359",
+                  },
+                  {
+                    name: "Нержавейка",
+                    id: "e1e1b734-1fd4-4d63-b34d-f894b5837ad0",
+                  },
+                ],
+                props: [
+                  {
+                    graphics: true,
+                    startPoint: [-83, -300],
+                    point: [
+                      [-482, -298],
+                      [-482, -89],
+                      [-444, -89],
+                      [-444, 26],
+                      [-482, 27],
+                      [-482, 130],
+                      [-317, 298],
+                      [-209, 297],
+                      [-210, 124],
+                      [-85, 124],
+                      [-84, 42],
+                      [10, -42],
+                      [10, -96],
+                      [-84, -190],
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ].reverse(),
+      }
+      ],
+
+    Махачкала_: [
+      {
+        name: "Махачкала_Диджитал",
+        floors: [
+          {
+            name: "makhachkalaDigital",
+            floor: 1,
+            zone: [
+              {
+                name: "Бытовая химия, столовые приборы, нержавейка ...",
+                id: "97c06658-eab4-450c-8502-b4391fa2f359",
+                props: [
+                  {
+                    width: 254,
+                    height: 226,
+                    position: { x: -66, y: -91 },
+                  },
+                ],
+              },
+              {
+                name: "Пластмасса, хрусталь",
+                id: "97c06658-eab4-450c-8502-b4391fa2f359",
+                props: [
+                  {
+                    graphics: true,
+                    startPoint: [-194, 22],
+                    point: [
+                      [62, 24],
+                      [68, 165],
+                      [-94, 168],
+                      [-193, 125],
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ].reverse(),
+      },
+    ],
   },
 };
 

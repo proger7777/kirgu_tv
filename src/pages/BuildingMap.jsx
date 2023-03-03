@@ -19,11 +19,11 @@ const BuildingMap = () => {
     // Test data for avoid problem render
     const testData = {
         test: true,
-        buildingIndex: 0,
+        buildingName: "Мебельный корпус",
         city: "Махачкала",
         floor: 1,
-        floorIndex: 4,
-        position: { x: 447.1171875, y: 142.65625 }
+        floorIndex: 0,
+        position: { x: 10, y: 14 }
     }
 
     const positionTerminal = localStorage.settingsTerminal ? JSON.parse(localStorage.getItem('settingsTerminal')) : testData
@@ -44,13 +44,13 @@ const BuildingMap = () => {
 
     // Get building map and put active building
     const buildingData = useSelector(state => state.buildingMap.map[activeCity])
-    const [building, setBuilding] = useState(Object.values(buildingData)[positionTerminal.buildingIndex]);
-    const [activeBuilding, setActiveBuilding] = useState(positionTerminal.buildingIndex);
+    const [building, setBuilding] = useState( buildingData.filter(item => item.name == positionTerminal.buildingName) );
+    const [activeBuilding, setActiveBuilding] = useState(positionTerminal.buildingName);
 
 
     // Set position terminal 
     const activeTerminal = () => {
-        if (activeCity == positionTerminal.city && activeBuilding == positionTerminal.buildingIndex) {
+        if (activeCity == positionTerminal.city && activeBuilding == positionTerminal.buildingName) {
             return positionTerminal
         } else {
             return false
@@ -71,7 +71,7 @@ const BuildingMap = () => {
 
             setFloor(1)
             setActiveBuilding(0)
-            setBuilding(Object.values(buildingData)[0])
+            setBuilding([buildingData[0]])
 
         }
     }, [activeCity]);
@@ -81,13 +81,15 @@ const BuildingMap = () => {
     }, [])
 
     // Function for switching to main buildingMap
-    const goBuilding = (item) => {
-        if (buildingData[item[0]].length > item[2]) {
-            setBuilding(buildingData[item[0]])
-            setActiveBuilding(item[1])
+    const goBuilding = (elem) => {
+        const frost = buildingData.filter(item => item.name == elem[0])
+
+        if ( frost.length > elem[2] ) {
+            setBuilding( frost )
+            setActiveBuilding(elem[1])
         } else {
-            setBuilding(buildingData[item[0]])
-            setActiveBuilding(item[1])
+            setBuilding( frost )
+            setActiveBuilding(elem[1])
             setFloor(1)
         }
     }
@@ -101,7 +103,7 @@ const BuildingMap = () => {
 
     const getNavigationData = (optionFloor) => {
 
-        const filterList = building.filter(item => item.floor == (optionFloor ? optionFloor : floor))
+        const filterList = building[0].floors.filter(item => item.floor == (optionFloor ? optionFloor : floor))
         const data = filterList[0]?.zone
 
         setNavigationList(data)
@@ -110,6 +112,7 @@ const BuildingMap = () => {
     useEffect(() => {
         setActiveZone()
         getNavigationData()
+
     }, [floor, building]);
 
     const crumbs = [['Схема зданий', 'buildingMap']]
@@ -119,17 +122,12 @@ const BuildingMap = () => {
             <div className='w-full h-full flex justify-between bg-[bluesd]'>
 
                 {/* Left bar */}
-                <div className='w-full h-full bg-[redsd] flex flex-col justify-between'>
+                <div className='w-full h-[875px] bg-[redsd] flex flex-col justify-between'>
 
                     <div className='max-h-[500px]'>
                         <h1 className='text-[22px] font-bold mt-[30px] mb-[10px] pb-[8px] border-[#dbdbdb] border-b'>Каталог товаров</h1>
                         <NavList list={navigationList} activeZone={activeZone} setActiveZone={setActiveZone} />
                     </div>
-
-
-
-
-
 
                     {activeZone && (
                         <div className=''>
@@ -176,9 +174,9 @@ const BuildingMap = () => {
                         {/* Select building */}
                         <div className='w-[1170px] h-[60px] ml-[8px] flex items-center bg-[redsd] overflow-y-scroll'>
 
-                            {Object.keys(buildingData).map((item, index) => (
-                                <button key={item} onClick={() => { setBuilding(buildingData[item]); setActiveBuilding(index); setFloor(1) }} className={`mr-[10px] border-[2px] p-[5px] whitespace-nowrap rounded ${index == activeBuilding ? `border-[#008954]` : `border-[#dbdbdb]`} `}>
-                                    <p>{item.replaceAll("_", " ")}</p>
+                            {buildingData.map((item, index) => (
+                                <button key={item+index} onClick={() => { setBuilding( buildingData.filter(it => it.name == item.name) ); setActiveBuilding(item.name); setFloor(1) }} className={`mr-[10px] border-[2px] p-[5px] whitespace-nowrap rounded ${item.name == activeBuilding ? `border-[#008954]` : `border-[#dbdbdb]`} `}>
+                                    <p>{item.name}</p>
                                 </button>
 
                             ))}
@@ -200,15 +198,15 @@ const BuildingMap = () => {
                     </div>
 
                     {/* Display building map */}
-                    {(building[0].name == "kirgu") ? (
+                    {(building[0].name == "Общая Схема КИРГУ") ? (
 
-                        <StartMapProject buildingData={building} activeBuilding={activeBuilding} city={activeCity} activeTerminal={positionTerminal} goBuilding={goBuilding} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} />
+                        <StartMapProject buildingData={building[0]?.floors} activeBuilding={activeBuilding} city={activeCity} activeTerminal={positionTerminal} goBuilding={goBuilding} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} />
 
                     ) : (
 
-                        <MapProject buildingData={building} city={activeCity} activeTerminal={activeTerminal()} floor={floor} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} />
+                        <MapProject buildingData={building[0]?.floors} city={activeCity} activeTerminal={activeTerminal()} floor={floor} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} />
 
-                    )}
+                    )} 
                 </div>
 
 
