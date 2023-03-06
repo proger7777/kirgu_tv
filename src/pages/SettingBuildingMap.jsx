@@ -17,7 +17,7 @@ const SettingBuildingMap = () => {
 
     // Get building map and put active building
     const buildingData = useSelector(state => state.buildingMap.map[activeCity])
-    const [building, setBuilding] = useState(Object.values(buildingData)[0]);
+    const [building, setBuilding] = useState(buildingData[0]);
     const [activeBuilding, setActiveBuilding] = useState(0);
 
 
@@ -29,12 +29,13 @@ const SettingBuildingMap = () => {
 
         const setting = {
             city: activeCity,
-            buildingIndex: activeBuilding,
+            buildingName: building.name,
             floor: positionTerminal[0],
             floorIndex: positionTerminal[1],
             position: positionTerminal[2]
         }
 
+        console.log(building)
         localStorage.setItem('settingsTerminal', JSON.stringify(setting))
         alert("Вы успешно сохранили данные!")
         navigate("/buildingMap" , {replace: true})
@@ -84,10 +85,10 @@ const SettingBuildingMap = () => {
 
                         {/* Select building */}
                         <div className='w-[1170px] h-[60px] ml-[8px] flex items-center bg-[redsd] overflow-y-scroll'>
-                            {Object.keys(buildingData).map((item, index) => (
-                                <button key={item} onClick={() => { setBuilding(buildingData[item]); setActiveBuilding(index) }} className={`mr-[10px] border-[2px] p-[5px] whitespace-nowrap rounded ${index == activeBuilding ? `border-[#008954]` : `border-[#dbdbdb]`} `}>
-                                    <p>{item.replaceAll("_", " ")}</p>
-                                </button>
+                            {buildingData.map((item, index) => (
+                                    <button key={item+index} onClick={() => { setBuilding( buildingData.filter(it => it.name == item.name)[0] ); setActiveBuilding(item.name); }} className={`mr-[10px] border-[2px] p-[5px] whitespace-nowrap rounded ${item.name == activeBuilding ? `border-[#008954]` : `border-[#dbdbdb]`} `}>
+                                        <p>{item.name}</p>
+                                    </button>
 
                             ))}
                         </div>
@@ -111,7 +112,8 @@ const SettingBuildingMap = () => {
 
 
                     {/* Display building map */}
-                    <SettingMapProject city={activeCity} buildingData={building} settingsTerm={setPositionTerminal} />
+                    {console.log(building)}
+                    <SettingMapProject city={activeCity} buildingData={building.floors} settingsTerm={setPositionTerminal} />
 
                 </div>
 

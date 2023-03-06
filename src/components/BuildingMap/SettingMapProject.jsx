@@ -36,10 +36,6 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
         settingsTerm(false)
     }, [project]);
 
-    useEffect(() => {
-        console.log(buildingData)
-    }, [buildingData]);
-
     // Realization moving mouse
     const isDragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
@@ -101,7 +97,6 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
                                     setClick(false)
                                 } else {
                                     setTerminal(true)
-                                    console.log(activeFlour)
                                     settingsTerm([activeFlour[0], activeFlour[1], { x: positionTerminal.x, y: positionTerminal.y }])
                                 }
                             }}

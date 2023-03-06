@@ -138,7 +138,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["Детский_отдел", 2, activeFlour])
+                                        goBuilding(["Детский отдел", 2, activeFlour])
                                     }
                                 }
 
@@ -149,7 +149,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["Детский_отдел", 2, activeFlour])
+                                        goBuilding(["Детский отдел", 2, activeFlour])
                                     }
                                 }
 
@@ -167,7 +167,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["Садовый_центр", 4, activeFlour])
+                                        goBuilding(["Садовый центр", 4, activeFlour])
                                     }
                                 }
 
@@ -178,7 +178,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["Садовый_центр", 4, activeFlour])
+                                        goBuilding(["Садовый центр", 4, activeFlour])
                                     }
                                 }
 
@@ -225,7 +225,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["Мебельный_корпус", 3, activeFlour])
+                                        goBuilding(["Мебельный корпус", 3, activeFlour])
                                     }
                                 }
 
@@ -236,7 +236,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                         setClick(false)
                                     } else {
                                         // console.log("TAP", click)
-                                        goBuilding(["Мебельный_корпус", 3, activeFlour])
+                                        goBuilding(["Мебельный корпус", 3, activeFlour])
                                     }
                                 }
 
@@ -252,17 +252,6 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                     image={marker} />
 
                             )}
-
-
-                            <Sprite
-                                width={86}
-                                height={30}
-                                position={{ x: 430, y: 240 }}
-                                anchor={0.5}
-                                alpha={0.4}
-                                texture={Texture.WHITE}
-                                tint={0xffa500}
-                            />
 
                             {/* This sections of code show active zone in building map*/}
                             {activeZone?.props &&
@@ -294,7 +283,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                                                 setClick(false)
                                             } else {
                                                 // console.log("TAP", click)
-                                                goBuilding([activeZone.build[0], activeZone.build[1], activeFlour])
+                                                goBuilding([activeZone.name, activeZone.build[1], activeFlour])
                                             }
                                         }}
                                     />
