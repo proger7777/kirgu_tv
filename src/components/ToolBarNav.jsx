@@ -8,7 +8,7 @@ const ToolBarNav = ({activeMenu}) => {
     const {homeCategories} = useContext(CatContext)
 
     const navList = []
-    navList.push(['/', 'Главная', 'main'])
+    navList.push(['/main', 'Главная', 'main'])
     homeCategories.forEach(i => navList.push([`/category/${i.id}`, i.name, i.id]))
     navList.push(['/categories', 'Все категории', 'allcats'])
     navList.push(['/info', 'Информация', 'info'])

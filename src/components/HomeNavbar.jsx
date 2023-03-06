@@ -10,7 +10,7 @@ const HomeNavbar = () => {
 
     homeCategories.forEach(i => navs.push([`/category/${i.id}`, i.svg, i.name]))
     navs.push(['/categories', 'cats', 'Все категории'])
-    navs.push(['/buildingMap', 'buildingMap', 'Схема торгового центра'])
+    navs.push(['/', 'buildingMap', 'Схема торгового центра'])
     navs.push(['/info', 'info', 'Информация'])
 
     return(
