@@ -129,7 +129,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                             <Sprite
                                 interactive={true}
                                 position={{ x: -400, y: -148 }}
-                                scale={0.4}
+                                scale={0.2}
                                 anchor={0.5}
                                 image={project[0]}
                                 ontap={() => {
@@ -158,7 +158,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                             <Sprite
                                 interactive={true}
                                 position={{ x: -50, y: -81 }}
-                                scale={0.9}
+                                scale={0.2}
                                 anchor={0.5}
                                 image={project[1]}
                                 ontap={() => {
@@ -187,7 +187,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                             <Sprite
                                 interactive={true}
                                 position={{ x: -372, y: 138 }}
-                                scale={0.4}
+                                scale={0.1}
                                 anchor={0.5}
                                 image={project[2]}
                                 ontap={() => {
@@ -216,7 +216,7 @@ const StartMapProject = ({ buildingData, activeBuilding, city, activeTerminal, g
                             <Sprite
                                 interactive={true}
                                 position={{ x: 430, y: 150 }}
-                                scale={0.4}
+                                scale={0.1}
                                 anchor={0.5}
                                 image={project[3]}
                                 ontap={() => {
