@@ -97,6 +97,7 @@ const BuildingMap = () => {
             setActiveBuilding(elem[1])
             setFloor(prop ? elem[2] : 1)
         }
+        prop && toggleVisible() 
     }
 
 
@@ -133,7 +134,7 @@ const BuildingMap = () => {
     return (
         <Layout crumbs={crumbs} >
 
-            <FindDialog data={city[activeCity]} goBuilding={goBuilding} setActiveZone={setActiveZone} />
+            <FindDialog data={city[activeCity]} goBuilding={goBuilding} setActiveZone={setActiveZone} toggleVisible={toggleVisible}/>
 
             <div id="buildingMap" className='w-full h-full flex justify-between bg-[bluesd]'>
 
