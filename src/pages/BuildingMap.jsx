@@ -139,13 +139,13 @@ const BuildingMap = () => {
                                 </button>
                             ))}
 
-                            {activeZone.build ? (
+                            {activeZone?.build ? (
 
                                 <button onClick={() => goBuilding([activeZone.build[0], activeZone.build[1], floor])} className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white bg-[#008954]`}>
                                     <p>Перейти к зданию</p>
                                 </button>
 
-                            ) : activeZone.allCategory ? (
+                            ) : activeZone?.allCategory ? (
 
                                 <button onClick={() => navigate(`/catalog/${activeCategory ? activeCategory.id : activeZone.id}`)} className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white bg-[#008954]`}>
                                     <p>Перейти к каталогу</p>
@@ -174,7 +174,7 @@ const BuildingMap = () => {
                         {/* Select building */}
                         <div className='w-[1170px] h-[60px] ml-[8px] flex items-center bg-[redsd] overflow-y-scroll'>
 
-                            {buildingData.map((item, index) => (
+                            {buildingData?.map((item, index) => (
                                 <button key={item+index} onClick={() => { setBuilding( buildingData.filter(it => it.name == item.name) ); setActiveBuilding(item.name); setFloor(1) }} className={`mr-[10px] border-[2px] p-[5px] whitespace-nowrap rounded ${item.name == activeBuilding ? `border-[#008954]` : `border-[#dbdbdb]`} `}>
                                     <p>{item.name}</p>
                                 </button>
@@ -198,7 +198,7 @@ const BuildingMap = () => {
                     </div>
 
                     {/* Display building map */}
-                    {(building[0].name == "Общая Схема КИРГУ") ? (
+                    {(building[0]?.name == "Общая Схема КИРГУ") ? (
 
                         <StartMapProject buildingData={building[0]?.floors} activeBuilding={activeBuilding} city={activeCity} activeTerminal={positionTerminal} goBuilding={goBuilding} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} />
 
