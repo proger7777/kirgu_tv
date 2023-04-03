@@ -77,6 +77,10 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
     }, [cart, favorites, comparison])
 
+    useEffect(() => {
+        console.log(cat)
+    }, [cat]);
+
     return (
 
         <div className='border border-[#e6e6e6] rounded items-center flex flex-col relative'>
@@ -113,10 +117,11 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
             {cat.skidka ? (
 
                 <>
-
+                    { cat.action[1] !== null && cat.action[1] !=='пустое значение' && 
                     <div className='absolute top-[320px] bg-[red] w-full rounded h-[23px] grid items-center text-center text-white text-[12px]'>
                         <p>{cat.action[1]}</p>
                     </div>
+                    }
 
                     <div className='absolute left-[5px] top-[5px] bg-[red] w-[55px] rounded h-[33px] grid items-center text-center text-white'>
                         <p>{cat.skidka}%</p>

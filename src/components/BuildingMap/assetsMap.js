@@ -64,7 +64,7 @@ const getMakhachkala = (name, floor) => {
     case "set-kirgu":
       return SetKirgu(floor);
     case "kirgu":
-      return SetKirgu(floor);
+      return Kirgu(floor);
     case "tech":
       return Tech(floor);
     case "mebel":

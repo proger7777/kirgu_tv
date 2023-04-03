@@ -49,7 +49,7 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
             y: e.data.global.y - position.y,
         };
         setAlpha(0.5);
-        setPositionTerminal({ x: offset.current.x * 4, y: offset.current.y * 4 })
+        setPositionTerminal({ x: offset.current.x, y: offset.current.y })
     }
 
     function onEnd(e) {
@@ -84,7 +84,7 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
                         <Container
                             interactive={true}
                             position={position}
-                            scale={0.25}
+                            scale={1}
                             pointerdown={onStart}
                             pointerup={onEnd}
                             pointerupoutside={onEnd}
@@ -108,7 +108,7 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
                                 } else {
                                     // console.log("TAP", click)
                                     setTerminal(true)
-                                    settingsTerm([activeFlour[0], activeFlour[1], { x: positionTerminal.x, y: positionTerminal.y }])
+                                    settingsTerm([activeFlour, { x: positionTerminal.x, y: positionTerminal.y }])
                                 }
                             }}
                         >

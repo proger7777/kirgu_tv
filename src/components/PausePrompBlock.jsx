@@ -16,7 +16,7 @@ const PausePrompBlock = (props) => {
     }
 
     const onIdle = () => {
-        // window.location.href = '/tv'
+        window.location.href = '/tv'
     }
 
     const { start } = useIdleTimer({
