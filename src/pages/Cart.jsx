@@ -27,14 +27,11 @@ const Cart = () => {
 
     const crumbs = [['Корзина', 'cart']]
 
-
-
     const dispatch = useDispatch()
 
     const clearCart = () => { dispatch(clearCartAction()) }
 
     const cart = useSelector(state => state.cart.cart)
-
 
     return (
         <Layout crumbs={crumbs} activeMenu='cart'>

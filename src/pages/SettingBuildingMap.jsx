@@ -35,10 +35,10 @@ const SettingBuildingMap = () => {
             position: positionTerminal[2]
         }
 
-        console.log(building)
+        console.log(positionTerminal)
         localStorage.setItem('settingsTerminal', JSON.stringify(setting))
         alert("Вы успешно сохранили данные!")
-        navigate("/buildingMap" , {replace: true})
+        navigate("/" , {replace: true})
     }
 
     // ⚜️⚜️⚜️MKH-PRODUCTION⚜️⚜️⚜️
@@ -112,7 +112,7 @@ const SettingBuildingMap = () => {
 
 
                     {/* Display building map */}
-                    {console.log(building)}
+                    
                     <SettingMapProject city={activeCity} buildingData={building.floors} settingsTerm={setPositionTerminal} />
 
                 </div>
