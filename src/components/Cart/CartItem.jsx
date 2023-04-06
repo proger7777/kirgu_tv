@@ -29,7 +29,7 @@ const CartItem = ({ cat, catalogId, fromAllCats }) => {
     const comparison = useSelector(state => state.comparison.comparison)
 
     const dispatch = useDispatch()
-    console.log(catalogId)
+
     const add = (type) => {
 
         cat.count = 1
@@ -137,17 +137,18 @@ const CartItem = ({ cat, catalogId, fromAllCats }) => {
 
             {cat.skidka ? (
 
-                <>
-
-                    <div className='absolute top-[320px] bg-[red] w-full rounded h-[23px] grid items-center text-center text-white text-[12px]'>
-                        <p>{cat.action[1]}</p>
-                    </div>
+                <div>
+                    {cat.action[1] !== null && cat.action[1] !== 'пустое значение' &&
+                        <div className='absolute top-[320px] bg-[red] w-full rounded h-[23px] grid items-center text-center text-white text-[12px]'>
+                            <p>{cat.action[1]}</p>
+                        </div>
+                    }
 
                     <div className='absolute left-[5px] top-[5px] bg-[red] w-[55px] rounded h-[33px] grid items-center text-center text-white'>
                         <p>{cat.skidka}%</p>
                     </div>
 
-                </>
+                </div>
 
             ) : <></>}
             <div className='flex w-[205px] justify-between '>

@@ -25,7 +25,7 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
 
     // Set active project and active floor and refresh data after change projectMap, floor and city
     useEffect(() => {
-        setProject(getBuilding(city, ( buildingData[0].name == "kirgu" ?  `set-${buildingData[0].name}` : buildingData[0].name ) , 1))
+        setProject(getBuilding(city, ( buildingData[0].name ) , 1))
         setActiveFlour([1, 0])
         setPosition({ x: 1620 / 2, y: 775 / 2 })
         setTerminal(false)
@@ -49,7 +49,7 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
             y: e.data.global.y - position.y,
         };
         setAlpha(0.5);
-        setPositionTerminal({ x: offset.current.x, y: offset.current.y })
+        setPositionTerminal({ x: offset.current.x * 4, y: offset.current.y * 4 })
     }
 
     function onEnd(e) {
@@ -84,7 +84,7 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
                         <Container
                             interactive={true}
                             position={position}
-                            scale={1}
+                            scale={0.25}
                             pointerdown={onStart}
                             pointerup={onEnd}
                             pointerupoutside={onEnd}
@@ -108,7 +108,7 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
                                 } else {
                                     // console.log("TAP", click)
                                     setTerminal(true)
-                                    settingsTerm([activeFlour, { x: positionTerminal.x, y: positionTerminal.y }])
+                                    settingsTerm([activeFlour[0], activeFlour[1], { x: positionTerminal.x, y: positionTerminal.y }])
                                 }
                             }}
                         >
@@ -143,7 +143,7 @@ const SettingMapProject = ({ city, buildingData, settingsTerm }) => {
                 {/* Block for move around map floor */}
                 {buildingData.map((item, index) => (
                     <div key={item.name+item.floor}>
-                        <button onClick={() => { setProject(getBuilding(city,( item.name == "kirgu" ? `set-${item.name}` : item.name ), item.floor)); setActiveFlour([item.floor, index]); setTerminal(false); settingsTerm(false) }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${item.floor == activeFlour[0] ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
+                        <button onClick={() => { setProject(getBuilding(city,( item.name ), item.floor)); setActiveFlour([item.floor, index]); setTerminal(false); settingsTerm(false) }} className={`h-[50px] w-[50px] flex border rounded mb-[10px] justify-center items-center ${item.floor == activeFlour[0] ? `border-[#008954]` : `border-[#dbdbdb]`}`}>{item.floor}</button>
                     </div>
                 ))}
 

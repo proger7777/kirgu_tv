@@ -69,7 +69,7 @@ const CompareProps = ({ allProps, props, upNumber, downNumber }) => {
 
                                 <div className="flex items-center" key={i}>
 
-                                    <p className=' text-[14px] w-[332px] mr-[5px] ml-[5px]'>{item.properties[pr]}</p>
+                                    <p className=' text-[14px] w-[332px] mr-[5px] ml-[5px]' dangerouslySetInnerHTML={{__html: item.properties[pr]}}></p>
 
                                 </div>
 

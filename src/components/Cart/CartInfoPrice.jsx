@@ -31,21 +31,21 @@ const CartInfoPrice = ({ products }) => {
 
         products.map((item) => {
 
-            price = price + item.product.price
+            price = price + item.product.price * item.product.count
 
             if (item.product.bonusov) {
 
-                bonus = bonus + Number(item.product.bonusov)
+                bonus = bonus + Number(item.product.bonusov) * item.product.count
 
             } else if (item.product.bonus) {
 
-                bonus = bonus + Number(item.product.bonus)
+                bonus = bonus + Number(item.product.bonus) * item.product.count
 
             }
 
             if (item.product.skidka) {
 
-                discount = discount + Number(item.product.skidka)
+                discount = discount + Number(item.product.skidka) * item.product.count
 
             }
 
@@ -86,9 +86,6 @@ const CartInfoPrice = ({ products }) => {
 
     }
 
-
-
-
     return (
 
         <div className="w-[370px] h-[260px] mt-[15px] bg-[#FAFAFA] ml-[22px]">
@@ -102,7 +99,7 @@ const CartInfoPrice = ({ products }) => {
                     <div className="flex justify-between">
 
                         <p>Товары x{products.length}&nbsp;&nbsp;</p>
-                        <p className="text-[#E6E6E6]">_ _ _ _ _ _ _ _ _ _ _ _ </p>
+                        <p className="text-[#E6E6E6]">_ _ _ _ _ _ _ _ _ _ _ </p>
                         <p> {parseInt(allPrice).toLocaleString('ru-RU')} </p>
 
                     </div>
@@ -122,7 +119,7 @@ const CartInfoPrice = ({ products }) => {
                     <div className="flex justify-between">
 
                         <p>Бонусы за покупку</p>
-                        <p className="text-[#E6E6E6]"> _ _ _ _ _ _ _ </p>
+                        <p className="text-[#E6E6E6]"> _ _ _ _ _ _ </p>
                         <p className="text-[#008954]">+  {parseInt(allBonus).toLocaleString('ru-RU')} </p>
 
                     </div>
