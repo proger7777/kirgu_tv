@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const PopUpCatalog = ({ activeZone, setActiveZone, activeCategory, setActiveCategory }) => {
+const PopUpCatalog = ({ activeZone, setActiveZone, activeCategory, setActiveCategory, goBuilding }) => {
 
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const PopUpCatalog = ({ activeZone, setActiveZone, activeCategory, setActiveCate
                         </button>
 
                     ) : activeZone.build ? (
-                        <button disabled={!activeZone.id && true} onClick={() => navigate(`/catalog/${activeZone.id}`)} className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white ${activeZone.id ? 'bg-[#008954]' : 'bg-[#00895450]'}`}>
+                        <button disabled={!activeZone.id && true} onClick={() => goBuilding([activeZone.build[0], activeZone.build[1], 1], true) } className={`w-full h-[50px] border rounded text-[20px] font-semibold text-white ${activeZone.id ? 'bg-[#008954]' : 'bg-[#00895450]'}`}>
                             <p>Перейти к зданию</p>
                         </button>
                     ) : (
