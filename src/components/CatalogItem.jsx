@@ -127,7 +127,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
             ) : <></>}
 
-            <div className='flex w-[255px] justify-between '>
+            <div className='flex w-[215px] justify-between '>
 
                 {inCart ? (
 
@@ -152,7 +152,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 )}
 
-                {inFavorites ? (
+                {/* {inFavorites ? (
 
                     <button className={`favorites focus:outline-none flex items-center border border-[#008954] h-[35px] mb-[22px] rounded-[4px] bg-[#008954]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
 
@@ -173,7 +173,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                     </button>
 
-                )}
+                )} */}
 
                 {inComparison ? (
 

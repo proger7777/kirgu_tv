@@ -248,8 +248,7 @@ const MapProject = ({ buildingData, city, activeTerminal, floor, setFloor, activ
                 </Stage>
             </div>
 
-            <div className='w-[80px] h-[775px] flex flex-col items-center justify-center bg-[yellowsd]'>
-
+            <div className='w-[80px] h-[775px] flex flex-col items-center justify-center focus:outline-none'>
                 {/* Block for move around map floor */}
                 {!buildingData[0].allBuild && buildingData.map((item, index) => (
                     <div key={item.name + item.floor}>

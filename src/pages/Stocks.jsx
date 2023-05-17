@@ -26,9 +26,9 @@ const Stocks = () => {
 
                 <h2 className='text-[28px] font-semibold'>Акции</h2>
 
-                <div className='stocks_content'>
+                <div className='stocks_content w-full flex flex-wrap '>
                     {stocks.map(stock => 
-                        <StockItem key={stock.id} stock={stock} />    
+                      <StockItem key={stock.id} stock={stock} />    
                     )}
                 </div>
             </div>

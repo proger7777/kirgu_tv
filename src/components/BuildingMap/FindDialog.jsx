@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import svg from "../../images/cats.svg"
-const FindDialog = ({ data, goBuilding, setActiveZone, toggleVisible, city }) => {
+const FindDialog = ({ data, goBuilding, toggleVisible, city }) => {
 
     const [selectBuild, setSelectBuild] = useState();
     const aData =
@@ -292,7 +292,7 @@ const FindDialog = ({ data, goBuilding, setActiveZone, toggleVisible, city }) =>
                                 <div className=''>
 
                                     {elem.zone.map((zone, index) => (
-                                        <button onClick={() => { goBuilding([selectBuild.name, index, elem.floor], 'find'); setActiveZone(zone); setSelectBuild() }} className="w-[350px] truncate ml-[15px] flex" key={index}>
+                                        <button onClick={() => { goBuilding([selectBuild.name, index, elem.floor], 'find', zone); setSelectBuild() }} className="w-[350px] truncate ml-[15px] flex" key={index}>
                                             <p className='text-[20px] font-serif'>{zone.name}</p>
                                         </button>
                                     ))}

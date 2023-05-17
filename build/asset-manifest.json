@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/tv/static/css/main.349dd959.css",
-    "main.js": "/tv/static/js/main.74a1437c.js",
+    "main.css": "/tv/static/css/main.cbd15649.css",
+    "main.js": "/tv/static/js/main.009a1105.js",
     "static/media/makhachkala_digital.png": "/tv/static/media/makhachkala_digital.b482f26d109f16444afc.png",
     "static/media/mebel_1.png": "/tv/static/media/mebel_1.387254aed27533b98a9a.png",
     "static/media/kids_1.png": "/tv/static/media/kids_1.445caf962392351f474a.png",
@@ -42,11 +42,11 @@
     "static/media/electronika.svg": "/tv/static/media/electronika.bf7cc320cb3057021fdb.svg",
     "index.html": "/tv/index.html",
     "static/media/map_pin.svg": "/tv/static/media/map_pin.b257515597cc54307125.svg",
-    "main.349dd959.css.map": "/tv/static/css/main.349dd959.css.map",
-    "main.74a1437c.js.map": "/tv/static/js/main.74a1437c.js.map"
+    "main.cbd15649.css.map": "/tv/static/css/main.cbd15649.css.map",
+    "main.009a1105.js.map": "/tv/static/js/main.009a1105.js.map"
   },
   "entrypoints": [
-    "static/css/main.349dd959.css",
-    "static/js/main.74a1437c.js"
+    "static/css/main.cbd15649.css",
+    "static/js/main.009a1105.js"
   ]
 }

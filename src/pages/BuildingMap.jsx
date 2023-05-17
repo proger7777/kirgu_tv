@@ -80,20 +80,27 @@ const BuildingMap = () => {
     }, [])
 
     // Function for switching to main buildingMap
-    const goBuilding = (elem, prop) => {
+    const goBuilding = (elem, prop, zone) => {
+
         const frost = buildingData.filter(item => item.name == elem[0])
 
         if (frost.length > elem[2]) {
+            setActiveZone()
             setBuilding(frost)
             setActiveBuilding(elem[1])
             prop && setFloor(elem[2])
         } else {
+            setActiveZone()
             setBuilding(frost)
             setActiveBuilding(elem[1])
             setFloor(prop ? elem[2] : 1)
         }
         setActiveBuilding(elem[0])
         prop == "find" && toggleVisible()
+
+        if (zone) {
+            setActiveZone(zone)
+        }
     }
 
 
@@ -117,21 +124,19 @@ const BuildingMap = () => {
     return (
         <Layout crumbs={crumbs} activeMenu="navigation">
 
-            <FindDialog data={city[activeCity]} goBuilding={goBuilding} setActiveZone={setActiveZone} toggleVisible={toggleVisible} city={activeCity}/>
+            <FindDialog data={city[activeCity]} goBuilding={goBuilding} toggleVisible={toggleVisible} city={activeCity} />
 
-            <div id="buildingMap" className='w-full h-full flex justify-between bg-[bluesd]'>
+            <div id="buildingMap" className='w-full h-full flex justify-between focus:outline-none'>
 
-
-                <PopUpCatalog activeZone={activeZone} setActiveZone={setActiveZone} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
-
+                <PopUpCatalog activeZone={activeZone} setActiveZone={setActiveZone} activeCategory={activeCategory} setActiveCategory={setActiveCategory} goBuilding={goBuilding} />
 
                 {/* Other element */}
-                <div className='w-full h-[879px] bg-[greensd] p-[10px] '>
+                <div className='w-full h-[879px] p-[10px] '>
 
                     <div className='w-[1700px] flex justify-between h-[50px]'>
 
                         {/* Select building */}
-                        <div className='w-[1000px] h-[60px] flex items-center bg-[redsd] overflow-y-scroll'>
+                        <div className='w-[1000px] h-[60px] flex items-center overflow-y-scroll'>
 
                             {buildingData?.map((item, index) => (
                                 <button key={item + index} onClick={() => { setBuilding(buildingData.filter(it => it.name == item.name)); setActiveBuilding(item.name); setFloor(1); setActiveZone() }} className={`mr-[10px] border-[2px] p-[5px] whitespace-nowrap rounded ${item.name == activeBuilding ? `border-[#008954]` : `border-[#dbdbdb]`} `}>
@@ -142,14 +147,14 @@ const BuildingMap = () => {
 
                         </div>
 
-                        <div className='flex gap-2'>
+                        <div className='flex'>
 
-                            <button onClick={() => toggleVisible()} className="p-[7px] border border-[#dbdbdb] rounded">
+                            <button onClick={() => toggleVisible()} className="p-[7px] border mr-[10px] border-[#dbdbdb] rounded ">
                                 <p>Поиск по каталогам</p>
                                 {/* <Icons name="search" className="w-[15px] h-[15px] mt-[5px]" /> */}
                             </button>
 
-                            <button onClick={() => goSetBuildingMap()} className="p-[7px] border border-[#dbdbdb] rounded" >
+                            <button onClick={() => goSetBuildingMap()} className="p-[7px] border mr-[10px] border-[#dbdbdb] rounded" >
                                 <p>Настройки</p>
                             </button>
 

@@ -164,7 +164,7 @@ const ProductInfoDataBlock = ({ item, catId }) => {
                 )}
             </>
 
-            <>
+            {/* <>
                 {inFavorites ? (
 
                     <button className={`focus:outline-none flex item-start items-center border border-[#008954] h-[60px] w-[330px] mt-[15px] mb-[10px] rounded-[4px] bg-[#008954]`} onClick={() => { add('favorites'); checkIn(favorites) }}>
@@ -190,7 +190,7 @@ const ProductInfoDataBlock = ({ item, catId }) => {
                     </button>
 
                 )}
-            </>
+            </> */}
 
             <>
                 {inComparison ? (

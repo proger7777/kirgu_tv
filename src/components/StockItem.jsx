@@ -1,21 +1,22 @@
-import React, {  }  from 'react';
+import React, { } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { setImagePath } from "./services/images";
 import { truncate, getTitleFromLinkStock } from "./services/str";
+import Icons from './Icons';
 
-const StockItem = ({stock}) => {
+const StockItem = ({ stock }) => {
 
     const navigate = useNavigate()
 
     const url = `/info/stocks/${getTitleFromLinkStock(stock.link)}`
 
-    return(
-        <div onClick={() => navigate(url) } className='flex mt-[50px] w-[70%] cursor-pointer'>
-            <img src={setImagePath(stock.image)} alt='' className='object-contain min-w-[333px] h-[250px]' />
-            <span className='ml-[50px]'>
-                <h3 className='text-[28px] font-600 mb-[15px]'>{stock.name}</h3>
-                <div className='block text-[#505050] mb-[20px]' dangerouslySetInnerHTML={{__html: truncate(stock.description, 370)}}></div>
-                <Link to={url} className='text-[#11A9FF] text-[24px] underline underline-offset-2'>Подробнее...</Link>
+    return (
+        <div onClick={() => navigate(url)} className=' flex-col mt-[20px] w-[400px] cursor-pointer mr-[30px]'>
+            <img src={setImagePath(stock.image)} alt='' className=' w-[390px] h-[300px]' />
+            
+            <span className='flex mt-[5px]'>
+                <h3 className='max-w-[390px] text-[20px] font-600 mb-[15px] truncate'>{stock.name}</h3>
+                <Icons name={'right'} color={'black'} className={`w-[35px] h-[35px]`} />
             </span>
         </div>
     )
