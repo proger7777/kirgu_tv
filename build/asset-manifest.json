@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tv/static/css/main.cbd15649.css",
-    "main.js": "/tv/static/js/main.44322d05.js",
+    "main.js": "/tv/static/js/main.4b37bc2b.js",
     "static/media/makhachkala_digital.png": "/tv/static/media/makhachkala_digital.b482f26d109f16444afc.png",
     "static/media/mebel_1.png": "/tv/static/media/mebel_1.387254aed27533b98a9a.png",
     "static/media/kids_1.png": "/tv/static/media/kids_1.445caf962392351f474a.png",
@@ -16,10 +16,10 @@
     "static/media/tech_2.png": "/tv/static/media/tech_2.58110f0d3f1c452bea78.png",
     "static/media/tech_0.png": "/tv/static/media/tech_0.c38e37daf7297277fc02.png",
     "static/media/delivery.svg": "/tv/static/media/delivery.a30134b9cc8e8854bf20c6972a5ba411.svg",
-    "static/media/tech_1.png": "/tv/static/media/tech_1.7dc4dbba192ddbc948a6.png",
     "static/media/garden_1.png": "/tv/static/media/garden_1.558b210a62708d43fa0c.png",
     "static/media/bonus_cart.svg": "/tv/static/media/bonus_cart.a1781b9296bf622c1af66685a828c52c.svg",
     "static/media/kaspiysk_kirgu.png": "/tv/static/media/kaspiysk_kirgu.438777767081e66cd922.png",
+    "static/media/tech_1.png": "/tv/static/media/tech_1.2d033d6c558159327fd2.png",
     "static/media/mebel_2.png": "/tv/static/media/mebel_2.6ac87a4012500dd44663.png",
     "static/media/derbent_2.png": "/tv/static/media/derbent_2.d185b18cefcbe3677651.png",
     "static/media/usloviya.svg": "/tv/static/media/usloviya.8756f55531a61ba295c92f497ade00ab.svg",
@@ -43,10 +43,10 @@
     "index.html": "/tv/index.html",
     "static/media/map_pin.svg": "/tv/static/media/map_pin.b257515597cc54307125.svg",
     "main.cbd15649.css.map": "/tv/static/css/main.cbd15649.css.map",
-    "main.44322d05.js.map": "/tv/static/js/main.44322d05.js.map"
+    "main.4b37bc2b.js.map": "/tv/static/js/main.4b37bc2b.js.map"
   },
   "entrypoints": [
     "static/css/main.cbd15649.css",
-    "static/js/main.44322d05.js"
+    "static/js/main.4b37bc2b.js"
   ]
 }
