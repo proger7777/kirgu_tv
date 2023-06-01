@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tv/static/css/main.cbd15649.css",
-    "main.js": "/tv/static/js/main.009a1105.js",
+    "main.js": "/tv/static/js/main.44322d05.js",
     "static/media/makhachkala_digital.png": "/tv/static/media/makhachkala_digital.b482f26d109f16444afc.png",
     "static/media/mebel_1.png": "/tv/static/media/mebel_1.387254aed27533b98a9a.png",
     "static/media/kids_1.png": "/tv/static/media/kids_1.445caf962392351f474a.png",
@@ -13,14 +13,14 @@
     "static/media/stock.svg": "/tv/static/media/stock.9d81ff79acb834bd4028733cb577ac65.svg",
     "static/media/mebel_4.png": "/tv/static/media/mebel_4.761ec4c41b60c4d07ddd.png",
     "static/media/info.svg": "/tv/static/media/info.228b4425ee1eebf5c32c.svg",
-    "static/media/tech_2.png": "/tv/static/media/tech_2.d64084f9088c959e63c8.png",
+    "static/media/tech_2.png": "/tv/static/media/tech_2.58110f0d3f1c452bea78.png",
     "static/media/tech_0.png": "/tv/static/media/tech_0.c38e37daf7297277fc02.png",
     "static/media/delivery.svg": "/tv/static/media/delivery.a30134b9cc8e8854bf20c6972a5ba411.svg",
+    "static/media/tech_1.png": "/tv/static/media/tech_1.7dc4dbba192ddbc948a6.png",
     "static/media/garden_1.png": "/tv/static/media/garden_1.558b210a62708d43fa0c.png",
     "static/media/bonus_cart.svg": "/tv/static/media/bonus_cart.a1781b9296bf622c1af66685a828c52c.svg",
     "static/media/kaspiysk_kirgu.png": "/tv/static/media/kaspiysk_kirgu.438777767081e66cd922.png",
     "static/media/mebel_2.png": "/tv/static/media/mebel_2.6ac87a4012500dd44663.png",
-    "static/media/tech_3.png": "/tv/static/media/tech_3.b05f2337aacb35de5fea.png",
     "static/media/derbent_2.png": "/tv/static/media/derbent_2.d185b18cefcbe3677651.png",
     "static/media/usloviya.svg": "/tv/static/media/usloviya.8756f55531a61ba295c92f497ade00ab.svg",
     "static/media/mebel_0.png": "/tv/static/media/mebel_0.b8c7e59e06f9590085d7.png",
@@ -28,7 +28,7 @@
     "static/media/kids_0.png": "/tv/static/media/kids_0.f6046fca55f919a1966e.png",
     "static/media/buildingMap.svg": "/tv/static/media/buildingMap.652e1de6447b1c58444b.svg",
     "static/media/derbent_3.png": "/tv/static/media/derbent_3.10a3c2ed5177e1f3dd66.png",
-    "static/media/tech_1.png": "/tv/static/media/tech_1.53d4e7def050f4052813.png",
+    "static/media/tech_3.png": "/tv/static/media/tech_3.df5deacc5ac159564589.png",
     "static/media/contacts.svg": "/tv/static/media/contacts.7b40da8dde7260af2f9d530149376e7e.svg",
     "static/media/derbent_0.png": "/tv/static/media/derbent_0.a8c94502a4a9c96a52cf.png",
     "static/media/garden_0.png": "/tv/static/media/garden_0.81b3fc6934ab016b37a7.png",
@@ -43,10 +43,10 @@
     "index.html": "/tv/index.html",
     "static/media/map_pin.svg": "/tv/static/media/map_pin.b257515597cc54307125.svg",
     "main.cbd15649.css.map": "/tv/static/css/main.cbd15649.css.map",
-    "main.009a1105.js.map": "/tv/static/js/main.009a1105.js.map"
+    "main.44322d05.js.map": "/tv/static/js/main.44322d05.js.map"
   },
   "entrypoints": [
     "static/css/main.cbd15649.css",
-    "static/js/main.009a1105.js"
+    "static/js/main.44322d05.js"
   ]
 }
