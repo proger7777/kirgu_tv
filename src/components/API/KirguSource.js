@@ -4,7 +4,7 @@ import { getTitleFromLinkStock } from '../services/str';
 class KirguSource {
     
     static siteUrl = 'https://kirgu.ru/api'
-    static siteUrl2 = 'https://vkuss-zdorovya.ru/proxy.php?url=http://public.kirgu.ru:81/mobile/hs/exchangemobileapp'
+    static siteUrl2 = 'http://nodejs.kirgu.ru:3006/http://public.kirgu.ru:81/mobile/hs/exchangemobileapp'
     //static siteUrl2 = 'http://api.kirgu.ru/api/1c-proxy?url=http://public.kirgu.ru:81/mobile/hs/exchangemobileapp'
 
     static async getCategories() {
@@ -60,7 +60,9 @@ class KirguSource {
     }
 
     static async sendCode(phone) {
-        const response = await axios.get(`${this.siteUrl2}/client_smscode/${phone}`)   
+        const response = await axios.get(`${this.siteUrl2}/client_smscode/${phone}`, {
+                        auth: { username: 'obmen', password: '12345' }
+        })   
 
         const res = response.data[0] 
 
@@ -74,11 +76,11 @@ class KirguSource {
     static async getBonusData(phone) {
         
         const response = await axios.get(`${this.siteUrl2}/telephonBonusNew/${phone}`, {
-            //auth: { username: 'obmen', password: '12345' }
+            auth: { username: 'obmen', password: '12345' }
         })    
 
         const response2 = await axios.get(`${this.siteUrl2}/historyBonus/${phone}`, {
-            //auth: { username: 'obmen', password: '12345' }
+            auth: { username: 'obmen', password: '12345' }
         })  
         
         let res = null
