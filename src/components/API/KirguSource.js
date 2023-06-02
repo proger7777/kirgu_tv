@@ -4,7 +4,7 @@ import { getTitleFromLinkStock } from '../services/str';
 class KirguSource {
     
     static siteUrl = 'https://kirgu.ru/api'
-    static siteUrl2 = 'http://nodejs.kirgu.ru:3006/http://public.kirgu.ru:81/mobile/hs/exchangemobileapp'
+    static siteUrl2 = 'https://nodejs.kirgu.ru:3007/http://public.kirgu.ru:81/mobile/hs/exchangemobileapp'
     //static siteUrl2 = 'http://api.kirgu.ru/api/1c-proxy?url=http://public.kirgu.ru:81/mobile/hs/exchangemobileapp'
 
     static async getCategories() {
