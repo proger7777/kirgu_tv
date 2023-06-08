@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/tv/static/css/main.cbd15649.css",
-    "main.js": "/tv/static/js/main.3bfc91c6.js",
+    "main.css": "/tv/static/css/main.2393765d.css",
+    "main.js": "/tv/static/js/main.4dc98b0b.js",
     "static/media/makhachkala_digital.png": "/tv/static/media/makhachkala_digital.b482f26d109f16444afc.png",
     "static/media/mebel_1.png": "/tv/static/media/mebel_1.387254aed27533b98a9a.png",
     "static/media/kids_1.png": "/tv/static/media/kids_1.445caf962392351f474a.png",
@@ -37,16 +37,17 @@
     "static/media/icons.svg": "/tv/static/media/icons.7915e54f12020e1274cfcbfaaa26413a.svg",
     "static/media/sborka.svg": "/tv/static/media/sborka.44dd764f570562e33c8ecfd7f420e5dc.svg",
     "static/media/cats.svg": "/tv/static/media/cats.89ac0f0555b45a33ed78f534220fdd4f.svg",
+    "static/media/term.svg": "/tv/static/media/term.a48bed8448dd8fb638e3abb3b2cd9549.svg",
     "static/media/mebel.svg": "/tv/static/media/mebel.94d2d13987fbf1aebe55.svg",
     "static/media/kirgu.svg": "/tv/static/media/kirgu.d0f9d177a1685092eff14f4ce770f31c.svg",
     "static/media/electronika.svg": "/tv/static/media/electronika.bf7cc320cb3057021fdb.svg",
     "index.html": "/tv/index.html",
     "static/media/map_pin.svg": "/tv/static/media/map_pin.b257515597cc54307125.svg",
-    "main.cbd15649.css.map": "/tv/static/css/main.cbd15649.css.map",
-    "main.3bfc91c6.js.map": "/tv/static/js/main.3bfc91c6.js.map"
+    "main.2393765d.css.map": "/tv/static/css/main.2393765d.css.map",
+    "main.4dc98b0b.js.map": "/tv/static/js/main.4dc98b0b.js.map"
   },
   "entrypoints": [
-    "static/css/main.cbd15649.css",
-    "static/js/main.3bfc91c6.js"
+    "static/css/main.2393765d.css",
+    "static/js/main.4dc98b0b.js"
   ]
 }
