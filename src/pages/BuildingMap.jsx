@@ -1,12 +1,13 @@
 import React, { } from 'react';
 import { useEffect, useState } from "react";
 import Layout from '../layout';
-import MapProject from '../components/BuildingMap/MapProject';
+import MapProject from '../components/BuildingMap/MapProjectPIXI';
 import { useSelector } from 'react-redux';
 import { SelectCity } from '../components/BuildingMap/SelectCity';
 import { useNavigate } from 'react-router-dom';
 import FindDialog from '../components/BuildingMap/FindDialog';
 import PopUpCatalog from '../components/BuildingMap/PopUpCatalog';
+import MapProjectTWO from '../components/BuildingMap/MapProject';
 
 
 const BuildingMap = () => {
@@ -149,10 +150,10 @@ const BuildingMap = () => {
 
                         <div className='flex'>
 
-                            <button onClick={() => toggleVisible()} className="p-[7px] border mr-[10px] border-[#dbdbdb] rounded ">
+                            {/* <button onClick={() => toggleVisible()} className="p-[7px] border mr-[10px] border-[#dbdbdb] rounded ">
                                 <p>Поиск по каталогам</p>
-                                {/* <Icons name="search" className="w-[15px] h-[15px] mt-[5px]" /> */}
-                            </button>
+                                <Icons name="search" className="w-[15px] h-[15px] mt-[5px]" />
+                            </button> */}
 
                             <button onClick={() => goSetBuildingMap()} className="p-[7px] border mr-[10px] border-[#dbdbdb] rounded" >
                                 <p>Настройки</p>
@@ -168,8 +169,8 @@ const BuildingMap = () => {
                     </div>
 
                     {/* Display building map */}
-                    <MapProject buildingData={building[0]?.floors} city={activeCity} activeTerminal={activeTerminal()} floor={floor} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} goBuilding={goBuilding} />
-
+                    {/* <MapProject buildingData={building[0]?.floors} city={activeCity} activeTerminal={activeTerminal()} floor={floor} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} goBuilding={goBuilding} /> */}
+                    <MapProjectTWO buildingData={building[0]?.floors} city={activeCity} activeTerminal={activeTerminal()} floor={floor} setFloor={setFloor} activeZone={activeZone} setActiveZone={setActiveZone} goBuilding={goBuilding} />
                 </div>
 
             </div>
