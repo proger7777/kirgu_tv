@@ -11,7 +11,7 @@ import Garden_0 from "../../images/textureBuildingMap/makhachkala/garden_0.png";
 import Garden_1 from "../../images/textureBuildingMap/makhachkala/garden_1.png";
 
 import Mebel_0 from "../../images/textureBuildingMap/makhachkala/mebel_0.png";
-import Mebel_1 from "../../images/textureBuildingMap/makhachkala/mebel_1.png";
+import Mebel_1 from "../../images/textureBuildingMap/makhachkala/mebel_1.svg";
 import Mebel_2 from "../../images/textureBuildingMap/makhachkala/mebel_2.png";
 import Mebel_3 from "../../images/textureBuildingMap/makhachkala/mebel_3.png";
 import Mebel_4 from "../../images/textureBuildingMap/makhachkala/mebel_4.png";

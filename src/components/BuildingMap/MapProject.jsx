@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import mebel_1 from '../../images/textureBuildingMap/makhachkala/mebel_1.png';
+import mebel_1 from '../../images/textureBuildingMap/makhachkala/mebel_1.svg';
 import termSvg from '../../images/textureBuildingMap/term.svg';
 import { getBuilding } from './assetsMap';
 
