@@ -114,7 +114,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 <div>
                     { cat.action[1] !== null && cat.action[1] !=='пустое значение' && 
-                    <div className='absolute top-[320px] bg-[red] w-full rounded h-[23px] grid items-center text-center text-white text-[12px]'>
+                    <div className='absolute top-[320px] left-[0px] bg-[red] w-full rounded h-[23px] grid items-center text-center text-white text-[12px]'>
                         <p>{cat.action[1]}</p>
                     </div>
                     }
