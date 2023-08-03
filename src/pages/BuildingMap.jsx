@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import FindDialog from '../components/BuildingMap/FindDialog';
 import PopUpCatalog from '../components/BuildingMap/PopUpCatalog';
 import MapProjectTWO from '../components/BuildingMap/MapProject';
+import Icons from '../components/Icons';
 
 
 const BuildingMap = () => {
@@ -28,12 +29,11 @@ const BuildingMap = () => {
     const positionTerminal = localStorage.settingsTerminal ? JSON.parse(localStorage.getItem('settingsTerminal')) : testData
 
     // If not selected position terminal
-    if (positionTerminal.test) {
-
-        navigate("/setBuildingMap", { replace: true })
-    }
-
-
+    useEffect(() => {
+        if (positionTerminal.test) {
+            navigate("/setBuildingMap", { replace: true });
+        }
+    }, []);
 
     // Get city and put active city
     const city = useSelector(state => state.buildingMap.map)
@@ -150,19 +150,18 @@ const BuildingMap = () => {
 
                         <div className='flex'>
 
-                            {/* <button onClick={() => toggleVisible()} className="p-[7px] border mr-[10px] border-[#dbdbdb] rounded ">
+                            <button onClick={() => toggleVisible()} className="p-[7px] border mr-[10px] border-[#dbdbdb] rounded ">
                                 <p>Поиск по каталогам</p>
-                                <Icons name="search" className="w-[15px] h-[15px] mt-[5px]" />
-                            </button> */}
-
-                            <button onClick={() => goSetBuildingMap()} className="p-[7px] border mr-[10px] border-[#dbdbdb] rounded" >
-                                <p>Настройки</p>
                             </button>
 
                             {/* Select city */}
-                            <div className='flex items-center border border-[#dbdbdb] rounded'>
+                            <div className='flex items-center border border-[#dbdbdb] rounded mr-[10px]'>
                                 <SelectCity city={city} setActiveCity={setActiveCity} activeCity={positionTerminal.city} />
                             </div>
+
+                            <button onClick={() => goSetBuildingMap()} className="p-[7px] border border-[#dbdbdb] rounded" >
+                                <Icons name="settings" className="w-[30px] h-[30px] mt-[5px]" />
+                            </button>
 
                         </div>
 
