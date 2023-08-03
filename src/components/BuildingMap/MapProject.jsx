@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import mebel_1 from '../../images/textureBuildingMap/makhachkala/mebel_1.svg';
+import mebel_1 from '../../images/textureBuildingMap/makhachkala/mebel_1.png';
 import termSvg from '../../images/textureBuildingMap/term.svg';
 import { getBuilding } from './assetsMap';
+import { useNavigate } from 'react-router-dom';
 
-const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor }) => {
+const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor, activeZone, setActiveZone }) => {
 
     const defaultScale = 0.7
     const [positionTerminal, setPositionTerminal] = useState({ x: 395, y: 170 });
     const [project, setProject] = useState(mebel_1);
     const centerCoordinate = { x: (1620 - (1920 * defaultScale)) / 2, y: (805 - (1090 * defaultScale)) / 2 }
-    
+    const [area, setArea] = useState();
+
     const [isDragging, setIsDragging] = useState(false);
     const [scale, setScale] = useState(defaultScale);
     const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -17,6 +19,8 @@ const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor }) 
 
     const [terminal, setTerminal] = useState(false);
     const [toggle, setToggle] = useState(false);
+
+    const navigate = useNavigate()
 
     const startDrag = (e) => {
         setIsDragging(true);
@@ -79,9 +83,8 @@ const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor }) 
         const clickedX = (e.clientX - svgRect.left - position.x) / scale;
         const clickedY = (e.clientY - svgRect.top - position.y) / scale;
 
-        console.log([e.clientX, e.clientY])
+        console.log([Math.ceil(clickedX), Math.ceil(clickedY)])
 
-        // setPositionTerminal({ x: clickedX, y: clickedY });
     };
 
     // Set active project and active floor 
@@ -89,7 +92,7 @@ const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor }) 
 
         setToggle(true)
         setProject(getBuilding(city, buildingData[0].name, floor))
-        // setArea(buildingData.filter(item => item.floor == floor))
+        setArea(buildingData.filter(item => item.floor == floor)[0].zone)
 
         // If terminal on this city, set building map and floor of setting
         if (activeTerminal) {
@@ -110,7 +113,7 @@ const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor }) 
         setProject(getBuilding(city, buildingData[0].name, floor));
         setPosition({ x: centerCoordinate.x, y: centerCoordinate.y })
         setScale(defaultScale)
-        // setArea(buildingData.filter(item => item.floor == floor))
+        setArea(buildingData.filter(item => item.floor == floor)[0].zone)
 
         if (toggle) {
             if (floor !== activeTerminal.floor) {
@@ -121,19 +124,10 @@ const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor }) 
         }
     }, [floor]);
 
-    const coordinates = [
-        [308, 158],
-        [629, 158],
-        [629, 470],
-        [308, 470]
-    ];
-    const points = "308,162 627,161 629,469 308,471";
-
-    const pathData = "M100,50 C150,0 200,0 250,50";
     return (
         <div className="flex justify-between ">
 
-            <div className="border border-[#dbdbdb] rounded" >
+            <div>
                 <svg
                     id="map-svg"
                     width={1620}
@@ -165,7 +159,15 @@ const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor }) 
                             />
                         }
 
-                        {/* <polygon points={coordinates.join(" ")} opacity={0.3} onClick={() => console.log("Block Click")} /> */}
+                        {area &&
+                            area.map((elem, index) =>
+                                <polygon points={elem.point.join(" ")} opacity={0} onClick={() => setActiveZone(elem)} key={index} />
+                            )
+                        }
+
+                        {activeZone &&
+                            <polygon fill='#ffa500' points={activeZone.point.join(" ")} opacity={0.3} onClick={() => activeZone.id && navigate(`/catalog/${activeZone.id}`)} />
+                        }
 
                     </g>
                 </svg>

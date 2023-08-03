@@ -4,14 +4,15 @@ import Tech_1 from "../../images/textureBuildingMap/makhachkala/tech_1.png";
 import Tech_2 from "../../images/textureBuildingMap/makhachkala/tech_2.png";
 import Tech_3 from "../../images/textureBuildingMap/makhachkala/tech_3.png";
 
-import Kids_1 from "../../images/textureBuildingMap/makhachkala/kids_1.png";
 import Kids_0 from "../../images/textureBuildingMap/makhachkala/kids_0.png";
+import Kids_1 from "../../images/textureBuildingMap/makhachkala/kids_1.png";
+import Kids_2 from "../../images/textureBuildingMap/makhachkala/kids_2.png";
 
 import Garden_0 from "../../images/textureBuildingMap/makhachkala/garden_0.png";
 import Garden_1 from "../../images/textureBuildingMap/makhachkala/garden_1.png";
 
 import Mebel_0 from "../../images/textureBuildingMap/makhachkala/mebel_0.png";
-import Mebel_1 from "../../images/textureBuildingMap/makhachkala/mebel_1.svg";
+import Mebel_1 from "../../images/textureBuildingMap/makhachkala/mebel_1.png";
 import Mebel_2 from "../../images/textureBuildingMap/makhachkala/mebel_2.png";
 import Mebel_3 from "../../images/textureBuildingMap/makhachkala/mebel_3.png";
 import Mebel_4 from "../../images/textureBuildingMap/makhachkala/mebel_4.png";
@@ -120,6 +121,8 @@ const Kids = (floor) => {
       return Kids_0;
     case 1:
       return Kids_1;
+    case 2:
+      return Kids_2;
   }
 };
 
