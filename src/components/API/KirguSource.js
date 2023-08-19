@@ -38,7 +38,7 @@ class KirguSource {
 
     static async getCatalog(id, pageNum, sort = 'popular', filter = {}) {
 
-        const response = await axios.get(this.siteUrl + '/section_elements', {
+        const response = await axios.get(this.siteUrl + '/section_elements2', {
             params: {
                 id: id, 
                 count: 8, 
