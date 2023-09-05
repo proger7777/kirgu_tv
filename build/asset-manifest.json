@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/tv/static/css/main.423014a2.css",
-    "main.js": "/tv/static/js/main.51581f23.js",
+    "main.css": "/tv/static/css/main.cbab1b7e.css",
+    "main.js": "/tv/static/js/main.d66b499e.js",
     "static/media/makhachkala_digital.png": "/tv/static/media/makhachkala_digital.b482f26d109f16444afc.png",
     "static/media/mebel_1.png": "/tv/static/media/mebel_1.4f82b270986fa30363ae.png",
     "static/media/kids_1.png": "/tv/static/media/kids_1.82e8da713397c29557ad.png",
@@ -35,7 +35,7 @@
     "static/media/derbent_0.png": "/tv/static/media/derbent_0.a8c94502a4a9c96a52cf.png",
     "static/media/dlya_doma.svg": "/tv/static/media/dlya_doma.fee33603b063e6c300c9.svg",
     "static/media/sprite.svg": "/tv/static/media/sprite.4577f9fd302206c668d1.svg",
-    "static/media/icons.svg": "/tv/static/media/icons.8cd143da151365606aa214ad524a8910.svg",
+    "static/media/icons.svg": "/tv/static/media/icons.8ecb88d076007ed7c96c4b90304400f9.svg",
     "static/media/sborka.svg": "/tv/static/media/sborka.44dd764f570562e33c8ecfd7f420e5dc.svg",
     "static/media/cats.svg": "/tv/static/media/cats.89ac0f0555b45a33ed78f534220fdd4f.svg",
     "static/media/term.svg": "/tv/static/media/term.a48bed8448dd8fb638e3abb3b2cd9549.svg",
@@ -44,11 +44,11 @@
     "static/media/electronika.svg": "/tv/static/media/electronika.bf7cc320cb3057021fdb.svg",
     "index.html": "/tv/index.html",
     "static/media/map_pin.svg": "/tv/static/media/map_pin.b257515597cc54307125.svg",
-    "main.423014a2.css.map": "/tv/static/css/main.423014a2.css.map",
-    "main.51581f23.js.map": "/tv/static/js/main.51581f23.js.map"
+    "main.cbab1b7e.css.map": "/tv/static/css/main.cbab1b7e.css.map",
+    "main.d66b499e.js.map": "/tv/static/js/main.d66b499e.js.map"
   },
   "entrypoints": [
-    "static/css/main.423014a2.css",
-    "static/js/main.51581f23.js"
+    "static/css/main.cbab1b7e.css",
+    "static/js/main.d66b499e.js"
   ]
 }

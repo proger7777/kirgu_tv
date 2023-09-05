@@ -81,9 +81,7 @@ const Catalog = () => {
     })
 
     const [fetchCatalog, isCatalogLoading, catalogError] = useFetching(async(id) => {
-        console.log('start')
         const result = await getCatalog(id, currentPage, sort, filters)
-        console.log('end', result)
         setCatalog(result)
         setStartPageLoad(false)
     })

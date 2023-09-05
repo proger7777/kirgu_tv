@@ -4,8 +4,9 @@ import termSvg from '../../images/textureBuildingMap/term.svg';
 import { getBuilding } from './assetsMap';
 import { useNavigate } from 'react-router-dom';
 
-const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor, activeZone, setActiveZone }) => {
+const MapProject = ({ buildingData, city, activeTerminal, floor, setFloor, activeZone, setActiveZone  }) => {
 
+    // console.log(buildingData)
     const defaultScale = 0.7
     const [positionTerminal, setPositionTerminal] = useState({ x: 395, y: 170 });
     const [project, setProject] = useState(mebel_1);
@@ -119,7 +120,7 @@ const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor, ac
             if (floor !== activeTerminal.floor) {
                 setTerminal(false)
             } else {
-                setTerminal(true)
+                activeTerminal.position && setTerminal(true)
             }
         }
     }, [floor]);
@@ -194,4 +195,4 @@ const MapProjectTWO = ({ buildingData, city, activeTerminal, floor, setFloor, ac
     );
 };
 
-export default MapProjectTWO;
+export default MapProject;
