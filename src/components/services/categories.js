@@ -57,7 +57,7 @@ function setImages(res) {
 
         let images = []
 
-        if(i.images.length) {
+        if(i.images && i.images.length) {
             i.images.forEach(img => { if(img) images.push(img) })
         }
         
@@ -171,10 +171,10 @@ export const loadCategories = async() => {
 export const getCatalog = async(id, pageNum, sort = 'popular', filter = {}) => {
     let res = await KirguSource.getCatalog(id, pageNum, sort, filter)
 
-    // res = { items: res.items, totalCount: res.totalCount }
+    res = { items: res.items, totalCount: res.totalCount }
 
-    // res.items = setPrice(res.items)
-    // res.items = setImages(res.items)
+    res.items = setPrice(res.items)
+    res.items = setImages(res.items)
 
     //if(res.items.length) res.items = await setRating(res.items)
 

@@ -38,29 +38,20 @@ class KirguSource {
 
     static async getCatalog(id, pageNum, sort = 'popular', filter = {}) {
 
-        // const response = await axios.get(this.siteUrl + '/section_elements2', {
-        //     params: {
-        //         id: id, 
-        //         count: 8, 
-        //         PAGEN_1: pageNum, 
-        //         sort: sort === 'popular' ? 'desc' : sort,
-        //         sort_type: sort === 'popular' ? 'popular' : null,
-        //         // filter: JSON.stringify(filter)
-        //     }
-        // })    
-
-        const response = await axios.get(this.siteUrl + '/section_elements', {
+        const response = await axios.get(this.siteUrl + '/section_elements2', {
             params: {
                 id: id, 
                 count: 8, 
                 PAGEN_1: pageNum, 
+                sort: sort === 'popular' ? 'desc' : sort,
+                sort_type: sort === 'popular' ? 'popular' : null,
+                // filter: JSON.stringify(filter)
             }
         })    
 
         const res = response.data
 
-        // return { items: res.items, totalCount: parseInt(res.elements_count) }
-        return res
+        return { items: res.items, totalCount: parseInt(res.elements_count) }
     }
 
     static async getProduct(id) {
