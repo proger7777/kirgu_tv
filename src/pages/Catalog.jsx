@@ -110,7 +110,7 @@ const Catalog = () => {
                                 <h2 className='text-[24px]'>{category.name}</h2>
                                 <Pagination
                                     currentPage={currentPage}
-                                    totalCount={catalog.totalCount}
+                                    totalCount={100}
                                     pageSize={pageSize}
                                     onPageChange={page => setCurrentPage(page)}
                                 />
@@ -125,10 +125,11 @@ const Catalog = () => {
 
                             {isCatalogLoading
                                 ? <Loadering />
-                                : (catalog.totalCount > 0
-                                    ? <CatalogList catalog={catalog.items} catalogId={params.id} fromAllCats={fromAllCats} />
-                                    : <p className='mt-[10px] text-[#e14a4a]'>Данные отсутствуют</p>
-                                )
+                                : <CatalogList catalog={catalog} catalogId={params.id} fromAllCats={fromAllCats} />
+                                // : (catalog.totalCount > 0
+                                //     ? <CatalogList catalog={catalog.items} catalogId={params.id} fromAllCats={fromAllCats} />
+                                //     : <p className='mt-[10px] text-[#e14a4a]'>Данные отсутствуют</p>
+                                // )
                             }
                         </>
                     </div>
