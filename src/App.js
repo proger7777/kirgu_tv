@@ -26,8 +26,9 @@ import Comparison from './pages/Comparison';
 import ComparisonItem from './components/Compare/ComparisonItem';
 import Cart from './pages/Cart';
 import CartBarcode from './components/Cart/CartBarcode';
-import BuildingMap from './pages/BuildingMap';
-import SettingBuildingMap from './pages/SettingBuildingMap';
+import BuildingChecker from './pages/BuildingChecker';
+import BuildingMap from './components/BuildingMap/BuildingMap';
+import SettingBuildingMap from './components/BuildingMap/SettingBuildingMap';
 
 function App() {
 
@@ -46,7 +47,8 @@ function App() {
       <CatContext.Provider value={{homeCategories}}>
         <BrowserRouter basename='/tv'>
           <Routes>
-            <Route index roo element={<BuildingMap />} />
+            <Route index roo element={<BuildingChecker />} />
+            <Route path="building/:city" element={<BuildingMap />} />
             <Route path="main" element={<Home />} />
             <Route path="setBuildingMap" element={<SettingBuildingMap />} />
             <Route path='info' element={<Info />} />

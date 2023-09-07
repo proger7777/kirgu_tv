@@ -60,13 +60,8 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
     const image = (cat) => {
 
-        // if (cat.image_url) { return cat.image_url }
-        // else if (cat.images[0]) { return cat.images[0][1] }
-
         if (cat.image_url) { return cat.image_url }
-        else if (cat.images) { return cat.images[0] }
-        else if (cat.offers) { return cat.offers[0].images[0] }
-
+        else if (cat.images[0]) { return cat.images[0][1] }
 
     }
 
@@ -111,8 +106,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
                     
                     </div>
 
-                // ) : <p className='text-green text-[28px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>}
-                ) : <p className='text-green text-[28px]'>{parseInt(cat.offers ? cat.offers[0].price_1 : cat.price_1).toLocaleString('ru-RU')} ₽</p>}
+                ) : <p className='text-green text-[28px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>}
 
             </Link>
 
