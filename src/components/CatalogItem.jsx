@@ -61,7 +61,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
     const image = (cat) => {
 
         if (cat.image_url) { return cat.image_url }
-        else if (cat.images[0]) { return cat.images[0][1] }
+        else if (cat.images && cat.images[0]) { return cat.images[0][1] }
 
     }
 
