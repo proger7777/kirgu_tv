@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/tv/static/css/main.cbab1b7e.css",
-    "main.js": "/tv/static/js/main.6a353179.js",
+    "main.js": "/tv/static/js/main.b4e9fdff.js",
     "static/media/makhachkala_digital.png": "/tv/static/media/makhachkala_digital.b482f26d109f16444afc.png",
     "static/media/mebel_1.png": "/tv/static/media/mebel_1.4f82b270986fa30363ae.png",
     "static/media/kids_1.png": "/tv/static/media/kids_1.82e8da713397c29557ad.png",
@@ -45,10 +45,10 @@
     "index.html": "/tv/index.html",
     "static/media/map_pin.svg": "/tv/static/media/map_pin.b257515597cc54307125.svg",
     "main.cbab1b7e.css.map": "/tv/static/css/main.cbab1b7e.css.map",
-    "main.6a353179.js.map": "/tv/static/js/main.6a353179.js.map"
+    "main.b4e9fdff.js.map": "/tv/static/js/main.b4e9fdff.js.map"
   },
   "entrypoints": [
     "static/css/main.cbab1b7e.css",
-    "static/js/main.6a353179.js"
+    "static/js/main.b4e9fdff.js"
   ]
 }

@@ -45,7 +45,7 @@ class KirguSource {
                 PAGEN_1: pageNum, 
                 sort: sort === 'popular' ? 'desc' : sort,
                 sort_type: sort === 'popular' ? 'popular' : null,
-                // filter: JSON.stringify(filter)
+                filter: Object.keys(filter)?.length && JSON.stringify(filter)
             }
         })    
 
