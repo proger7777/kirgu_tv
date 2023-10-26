@@ -10,6 +10,7 @@ import Layout from "../layout";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import SearchBlock from "../components/SearchBlock";
+import KirguSource from '../components/API/KirguSource';
 
 const Search = () => {
     
@@ -24,16 +25,20 @@ const Search = () => {
 
     const crumbs = [['Поиск', 'search'], [params.query, '']]
 
-    const pageSize = 8
+    const pageSize = 10
 
     const [search, searchLoading, searchError] = useFetching(async() => {
-        const result = await DigineticaSource.search(params.query, currentPage)
+        const result = await KirguSource.search({
+            q: params.query,
+            PAGEN_2: currentPage,
+            count: pageSize
+          })
 
         const { products, filters, totalCount } = result
 
-        setSearchItems(products)
-        setFilters(filters)  
-        setTotalCount(totalCount)             
+        setSearchItems(result)
+        // setFilters(filters)
+        setTotalCount(2350)             
     })
 
     function setFilterProp(checked, propParent, propCurr) {
@@ -77,8 +82,8 @@ const Search = () => {
                 onClickSearchInp={newSearchPage}
             >
                 <div className='flex justify-between'>
-                    {filters && <FiltersCatalog filterData={filters} setFilterProp={setFilterProp} /> }
-                    <div className='w-[1363px]'>
+                    {/* {filters && <FiltersCatalog filterData={filters} setFilterProp={setFilterProp} /> } */}
+                    <div className='w-[1720px]'>
                         <div className='flex justify-end items-center'>
                             {totalCount > 0 && <Pagination
                                 currentPage={currentPage}
@@ -91,7 +96,7 @@ const Search = () => {
                         {searchLoading
                             ? <Loadering />
                             : (searchItems.length
-                                ? <CatalogList catalog={searchItems} catalogId='' />
+                                ? <CatalogList catalog={searchItems} catalogId='' columns={5}/>
                                 : <p className='mt-[10px] text-[#e14a4a]'>Ничего не найдено</p>
                             )
                         }
