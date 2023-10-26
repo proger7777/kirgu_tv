@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import { setImagePath } from "./services/images";
+import { getAllImages, setImagePath } from "./services/images";
 import { truncate } from "./services/str";
 import Icons from "./Icons";
 import { getProduct, setProductUrl } from "./services/product";
@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { favoritesAction } from '../store/addFavorites';
 import { cartAction } from '../store/addCart';
 import { comparisonAction } from '../store/addComparison';
+import { getPrice } from './services/prices';
 
 
 
@@ -57,13 +58,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
         setArticle(resProduct.properties)
     })
 
-
-    const image = (cat) => {
-
-        if (cat.image_url) { return cat.image_url }
-        else if (cat.images && cat.images[0]) { return cat.images[0][1] }
-
-    }
+    const priceArray = getPrice(cat)
 
     useEffect(() => {
 
@@ -83,7 +78,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
             <Link to={setProductUrl(catalogId, cat.id, fromAllCats)} className='product_item flex flex-col items-center w-[320px] h-[285px]  pl-[20px] pr-[30px]'>
 
-                <img src={setImagePath(image(cat))} alt='' className='object-contain h-[137px] mt-[20px] mb-[10px]' />
+                <img src={getAllImages(cat)[0]} alt='' className='object-contain h-[137px] mt-[20px] mb-[10px]' />
 
                 {/* <span className='flex mb-[10px]'>
                     {[1, 2, 3, 4, 5].map(i =>
@@ -94,23 +89,23 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
                 <p className='text-[20px] text-center mb-[7px] w-[220px] h-[55px] truncateText'>{cat.name}</p>
                 <p className='text-[12px] text-slate-500'>Артикул: {article['Артикул']}</p>
 
-                {cat.skidka ? (
+                {priceArray.skidka ? (
 
                     <div className='flex'>
 
-                        <p className='text-green text-[22px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>
+                        <p className='text-green text-[22px]'>{priceArray.price.toLocaleString('ru-RU')} ₽</p>
                         
                         &nbsp;&nbsp;&nbsp;
                         
-                        <p className='text-[#b1b1b1] text-[18px] whitespace-pre relative inline-block lineDiagonal'>{parseInt(cat.old_price).toLocaleString('ru-RU')} ₽</p>
+                        <p className='text-[#b1b1b1] text-[18px] whitespace-pre relative inline-block lineDiagonal'>{priceArray.oldPrice.toLocaleString('ru-RU')} ₽</p>
                     
                     </div>
 
-                ) : <p className='text-green text-[28px]'>{parseInt(cat.price).toLocaleString('ru-RU')} ₽</p>}
+                ) : <p className='text-green text-[28px]'>{priceArray.price.toLocaleString('ru-RU')} ₽</p>}
 
             </Link>
 
-            {cat.skidka ? (
+            {priceArray.skidka ? (
 
                 <div>
                     { cat.action[1] !== null && cat.action[1] !=='пустое значение' && 
