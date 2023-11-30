@@ -99,6 +99,13 @@ class KirguSource {
         return response.data
     }
     
+    static async search2(data) {
+        const params = Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&');
+        const response = await axios.get(`${this.siteUrl}/search2/?${params}`)
+
+        return response.data
+    }
+    
     
 }
 

@@ -91,3 +91,19 @@ select {
 	border-bottom:2px solid #b5b5b5;
 	transform:rotate(-8deg);
 }
+
+.search-categories {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-top: 15px;
+  align-items: center;
+}
+
+
+.search-categories button {
+  flex-shrink: 0;
+  border: 1px solid #008954;
+  border-radius: 4px;
+  padding: 5px;
+}

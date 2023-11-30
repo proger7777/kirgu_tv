@@ -11,10 +11,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import SearchBlock from "../components/SearchBlock";
 import KirguSource from '../components/API/KirguSource';
+import CategoriesSearch from '../components/CategoriesSearch';
 
 const Search = () => {
     
     const [searchItems, setSearchItems] = useState([])
+    const [categories, setCategories] = useState();
+    const [categoryActiveId, setCategoryActiveId] = useState('');
     const [filters, setFilters] = useState()
     const [totalCount, setTotalCount] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
@@ -28,15 +31,17 @@ const Search = () => {
     const pageSize = 10
 
     const [search, searchLoading, searchError] = useFetching(async() => {
-        const result = await KirguSource.search({
+        const result = await KirguSource.search2({
             q: params.query,
             PAGEN_2: currentPage,
-            count: pageSize
+            count: pageSize,
+            idSection: categoryActiveId,
           })
 
         const { products, filters, totalCount } = result
 
-        setSearchItems(result)
+        setSearchItems(result.data)
+        setCategories(result.categoryFilter)
         // setFilters(filters)
         setTotalCount(2350)             
     })
@@ -57,6 +62,8 @@ const Search = () => {
     }
 
     function submitSearch() {
+        setCategoryActiveId('')
+        setCategories()
         search()
     }
 
@@ -72,6 +79,11 @@ const Search = () => {
         search()
     }, [currentPage])
 
+    useEffect(() => {
+        setCurrentPage(1)
+        search()
+    }, [categoryActiveId])
+
     return(
         <Layout crumbs={crumbs} activeMenu='search'>
 
@@ -84,7 +96,8 @@ const Search = () => {
                 <div className='flex justify-between'>
                     {/* {filters && <FiltersCatalog filterData={filters} setFilterProp={setFilterProp} /> } */}
                     <div className='w-[1720px]'>
-                        <div className='flex justify-end items-center'>
+                        <div className='flex justify-between items-center'>
+                            <CategoriesSearch categories={categories} categoryActiveId={categoryActiveId} setCategoryActiveId={setCategoryActiveId}/>
                             {totalCount > 0 && <Pagination
                                 currentPage={currentPage}
                                 totalCount={totalCount}
@@ -95,7 +108,7 @@ const Search = () => {
         
                         {searchLoading
                             ? <Loadering />
-                            : (searchItems.length
+                            : (searchItems && searchItems.length
                                 ? <CatalogList catalog={searchItems} catalogId='' columns={5}/>
                                 : <p className='mt-[10px] text-[#e14a4a]'>Ничего не найдено</p>
                             )

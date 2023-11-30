@@ -4,7 +4,7 @@ const SearchBlock = ({children, value, searchInpRef, clearRef, onSubmitSearch, o
     
     return (
         <div className='flex flex-col'>
-            <div className='flex h-[65px] text-[22px] mb-[20px]'>
+            <div className='flex h-[65px] text-[22px] mb-[10px]'>
                 <div className='relative'>
                     <input ref={searchInpRef} defaultValue={value} onClick={onClickSearchInp} onKeyUp={onKeyupSearchInp} type='text' readOnly autoFocus className='focus:border-green focus:outline-none w-[1421px] h-full  pl-[30px] pr-[70px] border border-[#e6e6e6] rounded-tl-[5px] rounded-bl-[5px]' placeholder='Поиск' />
                     
