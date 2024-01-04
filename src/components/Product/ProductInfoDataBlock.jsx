@@ -83,6 +83,15 @@ const ProductInfoDataBlock = ({ item, catId }) => {
                 {item.properties.Артикул && <span className='text-[14px] text-[#8f8f8f]'>#{item.properties.Артикул}</span>}
             </p>
 
+            {item?.rating > 0 && (
+                <span className='flex mb-[10px] items-center'>
+                    {[1, 2, 3, 4, 5].map(i =>
+                        <Icons key={i} name='star' className={`w-[16px] h-[16px] ${item.rating >= i ? 'fill-[#f0a83c]' : 'fill-[#e6e6e6]'}`} />
+                    )}
+                    &nbsp;{item.rating} отзывов
+                </span>
+            )}
+            
             <div className='flex items-center mt-[20px]'>
                 <span className='text-[24px] font-semibold mr-[10px]'>{price.toLocaleString('ru-RU')} ₽</span>
 

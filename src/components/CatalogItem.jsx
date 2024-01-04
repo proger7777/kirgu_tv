@@ -72,6 +72,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
     }, [cart, favorites, comparison])
 
+    console.log(cat)
     return (
 
         <div className='border border-[#e6e6e6] rounded items-center flex flex-col relative'>
@@ -80,13 +81,16 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
 
                 <img src={getAllImages(cat)[0]} alt='' className='object-contain h-[137px] mt-[20px] mb-[10px]' />
 
-                {/* <span className='flex mb-[10px]'>
-                    {[1, 2, 3, 4, 5].map(i =>
-                        <Icons key={i} name='star' className={`w-[16px] h-[16px] ${cat.rating >= i ? 'fill-[#f0a83c]' : 'fill-[#e6e6e6]'}`} />
-                    )}
-                </span> */}
+                {cat?.rating > 0 && (
+                    <span className='flex mb-[10px] items-center'>
+                        {[1, 2, 3, 4, 5].map(i =>
+                            <Icons key={i} name='star' className={`w-[16px] h-[16px] ${cat.rating >= i ? 'fill-[#f0a83c]' : 'fill-[#e6e6e6]'}`} />
+                        )}
+                        {/* &nbsp;{cat.rating} отзывов */}
+                    </span>
+                )}
 
-                <p className='text-[20px] text-center mb-[7px] w-[220px] h-[55px] truncateText'>{cat.name}</p>
+                <p className='text-[18px] text-center mb-[7px] w-[220px] h-[55px] truncateText'>{cat.name}</p>
                 <p className='text-[12px] text-slate-500'>Артикул: {article['Артикул']}</p>
 
                 {priceArray.skidka ? (
@@ -101,7 +105,7 @@ const CatalogItem = ({ cat, catalogId, fromAllCats }) => {
                     
                     </div>
 
-                ) : <p className='text-green text-[28px]'>{priceArray.price.toLocaleString('ru-RU')} ₽</p>}
+                ) : <p className='text-green text-[22px]'>{priceArray.price.toLocaleString('ru-RU')} ₽</p>}
 
             </Link>
 
